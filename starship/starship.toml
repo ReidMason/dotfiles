@@ -1,3 +1,6 @@
+# Add completions
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
 $username\
 $hostfile\
@@ -15,6 +18,9 @@ $cmd_duration\
 $line_break\
 $character
 """
+
+add_newline = false
+
 [fill]
 symbol = " "
 
