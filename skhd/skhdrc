@@ -32,3 +32,4 @@ lctrl + alt - l : yabai -m window --resize right:50:0; \
 # Equalize size of windows
 lctrl + alt - e : yabai -m space --balance
 
+alt - r : yabai -m space --rotate 270
