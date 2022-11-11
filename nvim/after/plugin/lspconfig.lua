@@ -3,7 +3,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 local keymap = vim.keymap
 -- Golang
-require'lspconfig'.gopls.setup { 
+require('lspconfig').gopls.setup { 
     capabilities = capabilities, -- Register autocomplete
     on_attach = function()
         keymap.set("n", "K", vim.lsp.buf.hover, {buffer = 0})
