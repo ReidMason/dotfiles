@@ -54,7 +54,7 @@ vim.opt.formatoptions = "c"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- Use telescope files instead of git files
-lvim.builtin.which_key.mappings["f"] = {"<cmd>Telescope find_files<CR>"}
+lvim.builtin.which_key.mappings["f"] = {"<cmd>Telescope find_files<CR>", "Find files"}
 
 -- Bufferline tab switching
 lvim.builtin.which_key.mappings["1"] = {"<cmd>BufferLineGoToBuffer 1<CR>", "First buffer"}
