@@ -1,10 +1,13 @@
 live_config_reload: true
 
 window:
-  opacity: 0.85
+  # opacity: 0.85
   padding:
     x: 16
     y: 15
+  # dimensions:
+  #   columns: 125
+  #   lines: 30
   dynamic_padding: false
   decorations: buttonless
 
