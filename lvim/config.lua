@@ -188,7 +188,8 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
-  { "navarasu/onedark.nvim" }
+  { "navarasu/onedark.nvim" },
+  { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   -- {
   --   "folke/trouble.nvim",
   --   cmd = "TroubleToggle",
