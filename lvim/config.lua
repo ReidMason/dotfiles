@@ -11,7 +11,11 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "onedark"
+-- require('onedark').setup {
+--   style = 'cool'
+-- }
+
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -23,6 +27,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.builtin.bufferline.options.numbers = "ordinal"
 -- Disable continue comment on new line
 vim.opt.formatoptions = "c"
+vim.opt.guifont = "JetBrainsMono Nerd Font Mono"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -50,7 +55,7 @@ vim.opt.formatoptions = "c"
 
 -- Change theme settings
 -- lvim.builtin.theme.options.dim_inactive = true
--- lvim.builtin.theme.options.style = "storm"
+-- lvim.builtin.theme.options.style = "darker"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- Use telescope files instead of git files
@@ -182,12 +187,13 @@ lvim.builtin.treesitter.highlight.enable = true
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+  { "navarasu/onedark.nvim" }
+  -- {
+  --   "folke/trouble.nvim",
+  --   cmd = "TroubleToggle",
+  -- },
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
