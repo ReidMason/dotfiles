@@ -189,11 +189,7 @@ lvim.builtin.treesitter.highlight.enable = true
 -- Additional Plugins
 lvim.plugins = {
   { "navarasu/onedark.nvim" },
-  { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-  -- {
-  --   "folke/trouble.nvim",
-  --   cmd = "TroubleToggle",
-  -- },
+  { "tpope/vim-fugitive" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
