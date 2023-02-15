@@ -15,6 +15,7 @@ lvim.colorscheme = "onedark"
 --   style = 'cool'
 -- }
 
+lvim.builtin.dap.active = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -25,6 +26,10 @@ lvim.builtin.bufferline.options.numbers = "ordinal"
 vim.opt.formatoptions = "c"
 -- Set font
 vim.opt.guifont = "JetBrainsMono Nerd Font Mono"
+-- Enable relative line numbers
+vim.opt.relativenumber = true
+-- Only highlight when pressing f or t
+vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
@@ -186,8 +191,10 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
+  "simrat39/rust-tools.nvim",
   { "navarasu/onedark.nvim" },
-  { "tpope/vim-fugitive" }
+  { "tpope/vim-fugitive" },
+  { "unblevable/quick-scope" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -203,3 +210,89 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+
+-- Below is the setup for Rust debugging (This is magic, no idea what's going on here)
+-- This sets up the debugger, you need to have codelldb installed with mason use the command ":MasonInstall codelldb"
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+local codelldb_adapter = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = mason_path .. "bin/codelldb",
+    args = { "--port", "${port}" },
+  },
+}
+
+pcall(function()
+  require("rust-tools").setup {
+    tools = {
+      executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
+      reload_workspace_from_cargo_toml = true,
+      runnables = {
+        use_telescope = true,
+      },
+      inlay_hints = {
+        auto = true,
+        only_current_line = false,
+        show_parameter_hints = false,
+        parameter_hints_prefix = "<-",
+        other_hints_prefix = "=>",
+        max_len_align = false,
+        max_len_align_padding = 1,
+        right_align = false,
+        right_align_padding = 7,
+        highlight = "Comment",
+      },
+      hover_actions = {
+        border = "rounded",
+      },
+      on_initialized = function()
+        vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+          pattern = { "*.rs" },
+          callback = function()
+            local _, _ = pcall(vim.lsp.codelens.refresh)
+          end,
+        })
+      end,
+    },
+    dap = {
+      adapter = codelldb_adapter,
+    },
+    server = {
+      on_attach = function(client, bufnr)
+        require("lvim.lsp").common_on_attach(client, bufnr)
+        local rt = require "rust-tools"
+        vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
+      end,
+
+      capabilities = require("lvim.lsp").common_capabilities(),
+      settings = {
+        ["rust-analyzer"] = {
+          lens = {
+            enable = true,
+          },
+          checkOnSave = {
+            enable = true,
+            command = "clippy",
+          },
+        },
+      },
+    },
+  }
+end)
+
+lvim.builtin.dap.on_config_done = function(dap)
+  dap.adapters.codelldb = codelldb_adapter
+  dap.configurations.rust = {
+    {
+      name = "Launch file",
+      type = "codelldb",
+      request = "launch",
+      program = function()
+        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+      end,
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+    },
+  }
+end
