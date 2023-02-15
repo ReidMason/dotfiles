@@ -16,11 +16,11 @@ font:
     family: "JetBrainsMono Nerd Font Mono"
     style: Regular
   size: 18.0
-  AppleFontSmoothing: true
+  # AppleFontSmoothing: true
 
 key_bindings:
   # Make the hashtag work on Macos
-  - { key: Key3, mods: Alt, chars: "#" }
+  - { key: Key3, mods: Alt, chars: "\x23" }
 
   # Alias cmd+b to ctrl+t for tmux
   - { key: T, mods: Command, chars: "\x02" }
