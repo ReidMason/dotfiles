@@ -10,7 +10,7 @@ export PATH="${HOME}/Library/Python/3.8/bin:${HOME}/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
 
 # Zsh settings commands
-alias zshconfig="lvim ~/.zshrc"
+alias config="lvim ~/.config"
 alias zshsource="source ~/.zshrc"
 
 # General aliases
