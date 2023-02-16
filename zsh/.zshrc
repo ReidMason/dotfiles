@@ -1,7 +1,23 @@
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='lvim'
+else
+  export EDITOR='vim'
+fi
 
 # Add local bin to path
 export PATH="${HOME}/Library/Python/3.8/bin:${HOME}/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
+
+# Zsh settings commands
+alias zshconfig="lvim ~/.zshrc"
+alias zshsource="source ~/.zshrc"
+
+# General aliases
+alias c='code'
+alias g='git'
+alias lvim='/Users/reid/.local/bin/lvim'
+alias v='/Users/reid/.local/bin/lvim'
 
 # Exa aliases
 alias ls='exa -lh --icons --color automatic --no-user --no-time --git --group-directories-first'
@@ -10,11 +26,6 @@ alias tree='exa --tree --icons --color automatic --no-user --no-time --git --gro
 
 # Bat aliases
 alias cat='bat'
-
-# General aliases
-alias c='code'
-alias {lvim, vi}='/Users/reid/.local/bin/lvim'
-alias v='/Users/reid/.local/bin/lvim'
 
 # Stop alacritty errors during ssh
 alias ssh='TERM=xterm-256color ssh'
