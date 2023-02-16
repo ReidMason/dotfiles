@@ -15,7 +15,7 @@ lvim.colorscheme = "onedark"
 require('onedark').setup {
   transparent = false,
   lualine = {
-    transparent = true,
+    transparent = false,
   },
 }
 
