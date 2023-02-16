@@ -90,11 +90,18 @@ lvim.builtin.which_key.mappings["0"] = { "<cmd>BufferLineGoToBuffer 0<CR>", "Ten
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 -- }
 
--- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
+
+-- Use nvimtree instead of netrw
+lvim.builtin.nvimtree.setup.hijack_directories = {
+  enable = true,
+  auto_open = true
+}
+-- lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
+lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
