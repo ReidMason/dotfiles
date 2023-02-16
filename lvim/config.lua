@@ -4,16 +4,20 @@ lvim is the global options object
 Linters should be
 filled in as strings with either
 a global executable or a path to
-an executable
+an executab
 ]]
-
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
+
+-- Set up colourscheme
 lvim.colorscheme = "onedark"
--- require('onedark').setup {
---   style = 'cool'
--- }
+require('onedark').setup {
+  transparent = false,
+  lualine = {
+    transparent = true,
+  },
+}
 
 lvim.builtin.dap.active = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -30,7 +34,6 @@ vim.opt.guifont = "JetBrainsMono Nerd Font Mono"
 vim.opt.relativenumber = true
 -- Only highlight when pressing f or t
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
-
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
