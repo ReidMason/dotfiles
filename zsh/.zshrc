@@ -1,6 +1,6 @@
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 else
   export EDITOR='vim'
 fi
@@ -10,14 +10,14 @@ export PATH="${HOME}/Library/Python/3.8/bin:${HOME}/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
 
 # Zsh settings commands
-alias config="lvim ~/.config"
+alias config="nvim ~/.config"
 alias zshsource="source ~/.zshrc"
 
 # General aliases
 alias c='code'
 alias g='git'
 alias lvim='/Users/reid/.local/bin/lvim'
-alias v='/Users/reid/.local/bin/lvim'
+alias v='nvim'
 
 # Exa aliases
 alias ls='exa -lh --icons --color automatic --no-user --no-time --git --group-directories-first'
