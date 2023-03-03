@@ -12,10 +12,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Set leader key to space
-vim.keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
-vim.g.mapleader = " "
-vim.g.maplocalleader = ' '
+vim.keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false }) -- Prepare leader key
+vim.g.mapleader = " " -- Set leader
+vim.g.maplocalleader = ' ' -- Set local leader
 
 -- Auto format on save
 -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
@@ -26,18 +25,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- Save undo history
-vim.o.undofile = true
+vim.o.undofile = true -- Save undo history
+vim.o.ignorecase = true -- Case insensitive search
+vim.o.smartcase = true -- Only case sensitive when search has caps
+vim.wo.signcolumn = 'yes' -- Stop window shifting when gutter is present
+vim.o.termguicolors = true -- Custom colours
 
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default (Stops the whole window shifting every time signs are added to the gutter)
-vim.wo.signcolumn = 'yes'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+-- Remove netrw
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
 
 -- Decrease update time
 vim.o.updatetime = 250
@@ -54,17 +50,38 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
--- Make vim use the native clipboard so vim and the machine share the same clipboard
-vim.opt.clipboard = "unnamedplus"
-
+vim.opt.clipboard = "unnamedplus" -- Use native clipboard
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.relativenumber = true
-vim.opt.number = true
-
+vim.opt.relativenumber = true -- Relative line numbers
+vim.opt.number = true -- Current line number
 
 -- Setup lazy.nvim
 -- Here we tell lazy.nvim to load the contents of the lua/plugins/init.lua file
 require("lazy").setup("plugins", {
 	change_detection = { enabled = false }
 })
+
+-- Setup custom commands
+require("utils.commands").setup_commands()
+
+function is_dir(path)
+	local f = io.open(path, "r")
+	if f == nil then
+		return false
+	end
+
+	local _, _, code = f:read(1)
+	f:close()
+	return code == 21
+end
+
+-- Open alpha if the opened file is a directory
+vim.defer_fn(function()
+	local args          = vim.fn.argc()
+	local path          = vim.api.nvim_buf_get_name(0)
+	local path_is_empty = string.len(string.gsub(path, '%s+', '')) == 0
+	if not path_is_empty and is_dir(path) then
+		vim.cmd(':Dashboard')
+	end
+end, 0)
