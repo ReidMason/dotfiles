@@ -65,23 +65,16 @@ require("lazy").setup("plugins", {
 -- Setup custom commands
 require("utils.commands").setup_commands()
 
-function is_dir(path)
-	local f = io.open(path, "r")
-	if f == nil then
-		return false
-	end
-
-	local _, _, code = f:read(1)
-	f:close()
-	return code == 21
+function is_directory(path)
+	local stat = vim.loop.fs_stat(path)
+	return stat and stat.type == "directory" or false
 end
 
 -- Open alpha if the opened file is a directory
 vim.defer_fn(function()
-	local args          = vim.fn.argc()
 	local path          = vim.api.nvim_buf_get_name(0)
 	local path_is_empty = string.len(string.gsub(path, '%s+', '')) == 0
-	if not path_is_empty and is_dir(path) then
+	if not path_is_empty and is_directory(path) then
 		vim.cmd(':Dashboard')
 	end
 end, 0)
