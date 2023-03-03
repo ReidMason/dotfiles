@@ -13,7 +13,7 @@ lvim.format_on_save.enabled = true
 -- Set up colourscheme
 lvim.colorscheme = "onedark"
 require('onedark').setup {
-  transparent = false,
+  transparent = true,
   lualine = {
     transparent = false,
   },
@@ -35,7 +35,7 @@ vim.opt.relativenumber = true
 -- Only highlight when pressing f or t
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 
-lvim.keys.normal_mode["<C-l>"] = "<cmd>lua vim.diagnostic.open_float()<CR>"
+lvim.keys.normal_mode["<C-k>"] = "<cmd>lua vim.diagnostic.open_float()<CR>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -207,7 +207,8 @@ lvim.plugins = {
   { "simrat39/rust-tools.nvim" },
   { "navarasu/onedark.nvim" },
   { "tpope/vim-fugitive" },
-  { "unblevable/quick-scope" }
+  { "unblevable/quick-scope" },
+  { "mattn/emmet-vim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -309,3 +310,5 @@ lvim.builtin.dap.on_config_done = function(dap)
     },
   }
 end
+
+require("lvim.lsp.manager").setup("emmet_ls")
