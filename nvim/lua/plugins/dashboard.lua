@@ -24,6 +24,9 @@ return {
 					'',
 					'',
 				},
+				project = {
+					enable = false,
+				},
 				week_header = {
 					enable = false,
 				},
