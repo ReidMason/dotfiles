@@ -15,7 +15,14 @@ return {
 			["b"] = { telescope.buffers, "Open buffers" },
 			["s"] = {
 				name = "Search",
-				t = { "<cmd>Telescope live_grep<cr>", "Text" }
+				t = { telescope.live_grep, "Text" },
+				f = { telescope.current_buffer_fuzzy_find, "Current buffer" }
+			},
+			["l"] = {
+				name = "Lsp",
+				a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+				d = { telescope.diagnostics, "Buffer Diagnostics" },
+				r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 			},
 			["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "First buffer" },
 			["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Second buffer" },

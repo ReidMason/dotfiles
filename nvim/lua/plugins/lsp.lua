@@ -5,6 +5,8 @@ local servers = {
 	gopls = {},
 	rust_analyzer = {},
 	tsserver = {},
+	tailwindcss = {},
+	astro = {},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -14,14 +16,19 @@ local servers = {
 }
 
 -- These are any commands we want to run when starting up the language server
-local on_attach = function()
+local on_attach = function(client, bufnr)
 	-- Lunarvim has this and I think it's in place to only set the binds for the current buffer
 	-- local opts = { buffer = bufnr, noremap = true, silent = true }
+
+	local navic = require("nvim-navic")
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
 
 	local opts = { noremap = true, silent = true }
 	local telescope = require("telescope.builtin")
 	-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set("n", "gd", telescope.lsp_definitions, opts)
+	vim.keymap.set("n", "gd", telescope.lsp_definitions, opt)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
 	-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
@@ -46,6 +53,7 @@ return {
 		-- This handles the installation and management of lsp, formatting and dap servers
 		"williamboman/mason.nvim",
 		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+		lazy = true,
 		config = function()
 			require("mason").setup()
 		end
@@ -55,8 +63,10 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
 			'williamboman/mason.nvim',
-			'hrsh7th/cmp-nvim-lsp'
+			'hrsh7th/cmp-nvim-lsp',
+			'nvim-telescope/telescope.nvim'
 		},
+		lazy = true,
 		cmd = { "LspInstall", "LspUninstall" },
 		config = function()
 			local mason_lspconfig = require("mason-lspconfig")

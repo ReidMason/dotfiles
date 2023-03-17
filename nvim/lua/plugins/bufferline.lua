@@ -5,6 +5,8 @@ return {
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	config = function()
 		vim.opt.termguicolors = true
+		local icons = require("utils.icons")
+
 		require("bufferline").setup({
 			options = {
 				mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -15,15 +17,15 @@ return {
 				right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
 				left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
 				middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-				-- indicator = {
-				--   icon = lvim.icons.ui.BoldLineLeft, -- this should be omitted if indicator style is not 'icon'
-				--   style = "icon", -- can also be 'underline'|'none',
-				-- },
-				-- buffer_close_icon = lvim.icons.ui.Close,
-				-- modified_icon = lvim.icons.ui.Circle,
-				-- close_icon = lvim.icons.ui.BoldClose,
-				-- left_trunc_marker = lvim.icons.ui.ArrowCircleLeft,
-				-- right_trunc_marker = lvim.icons.ui.ArrowCircleRight,
+				indicator = {
+					icon = icons.ui.BoldLineLeft, -- this should be omitted if indicator style is not 'icon'
+					style = "icon", -- can also be 'underline'|'none',
+				},
+				buffer_close_icon = icons.ui.Close,
+				modified_icon = icons.ui.Circle,
+				close_icon = icons.ui.BoldClose,
+				left_trunc_marker = icons.ui.ArrowCircleLeft,
+				right_trunc_marker = icons.ui.ArrowCircleRight,
 				--- name_formatter can be used to change the buffer's label in the bufferline.
 				--- Please note some names can/will break the
 				--- bufferline so use this at your discretion knowing that it has
@@ -75,8 +77,6 @@ return {
 					},
 				},
 				color_icons = true, -- whether or not to add the filetype icon highlights
-				-- show_buffer_icons = lvim.use_icons, -- disable filetype icons for buffers
-				-- show_buffer_close_icons = lvim.use_icons,
 				show_close_icon = false,
 				show_tab_indicators = true,
 				persist_buffer_sort = true, -- whether or not custom sorted buffers should persist

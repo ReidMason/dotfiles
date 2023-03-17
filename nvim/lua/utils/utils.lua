@@ -68,4 +68,9 @@ function M.buf_kill(kill_command, bufnr, force)
 	end
 end
 
+function M.is_directory(path)
+	local stat = vim.loop.fs_stat(path)
+	return stat and stat.type == "directory" or false
+end
+
 return M

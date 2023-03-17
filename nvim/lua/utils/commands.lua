@@ -17,6 +17,4 @@ function M.setup_commands()
 	end
 end
 
-M.setup_commands()
-
 return M
