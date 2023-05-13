@@ -64,7 +64,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Setup lazy.nvim
 -- Here we tell lazy.nvim to load the contents of the lua/plugins/init.lua file
 require("lazy").setup("plugins", {
-	change_detection = { enabled = false },
 	performance = {
 		rtp = {
 			-- disable some rtp plugins
