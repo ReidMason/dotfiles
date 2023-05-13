@@ -1,7 +1,17 @@
 lvim.plugins = {
   { "folke/trouble.nvim" },
   { "simrat39/rust-tools.nvim" },
-  { "navarasu/onedark.nvim" },
+  {
+    "navarasu/onedark.nvim",
+    config = function()
+      require('onedark').setup {
+        transparent = true,
+        lualine = {
+          transparent = false,
+        },
+      }
+    end
+  },
   { "tpope/vim-fugitive" },
   { "unblevable/quick-scope" },
   { "mattn/emmet-vim" },
@@ -12,4 +22,7 @@ lvim.plugins = {
       require("persistence").setup()
     end
   },
+  {
+    "goolord/alpha-nvim"
+  }
 }

@@ -1,18 +1,19 @@
 -- Use which-key to add extra bindings with the leader-key prefix
+
+lvim.builtin.which_key.setup = {
+  ignore_missing = true -- Hide mappings that don't have a label
+}
+
+-- Binds for persistence
+lvim.builtin.which_key.mappings["S"] = {
+  name = "Session",
+  s = { "<cmd>lua require('persistence').load()<cr>", lvim.icons.ui.History .. " Reload last session for dir" },
+  l = { "<cmd>lua require('persistence').load({ last = true })<cr>", lvim.icons.ui.History .. " Restore last session" },
+  q = { "<cmd>lua require('persistence').stop()<cr>", lvim.icons.ui.Close .. " Quit without saving session" },
+}
+
 -- Use telescope files instead of git files
 lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope find_files<CR>", "Find files" }
-
--- Bufferline tab switching
-lvim.builtin.which_key.mappings["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "First buffer" }
-lvim.builtin.which_key.mappings["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Second buffer" }
-lvim.builtin.which_key.mappings["3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "Third buffer" }
-lvim.builtin.which_key.mappings["4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "Fourth buffer" }
-lvim.builtin.which_key.mappings["5"] = { "<cmd>BufferLineGoToBuffer 5<CR>", "Fifth buffer" }
-lvim.builtin.which_key.mappings["6"] = { "<cmd>BufferLineGoToBuffer 6<CR>", "Sixth buffer" }
-lvim.builtin.which_key.mappings["7"] = { "<cmd>BufferLineGoToBuffer 7<CR>", "Seventh buffer" }
-lvim.builtin.which_key.mappings["8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "Eighth buffer" }
-lvim.builtin.which_key.mappings["9"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "Ninth buffer" }
-lvim.builtin.which_key.mappings["0"] = { "<cmd>BufferLineGoToBuffer 0<CR>", "Tenth buffer" }
 
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {

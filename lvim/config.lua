@@ -1,33 +1,30 @@
---[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executab
-]]
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
 
+-- keymappings [view all the defaults by pressing <leader>Lk]
+lvim.leader = "space"
+
+reload('user.plugins')      -- Additional Plugins
+reload('user.which-key')    -- Whichkey keybinds
+reload('user.keybinds')     -- Additional keybinds
+reload('user.autocommands') -- Autom commands
+
 -- Set up colourscheme
 lvim.colorscheme = "onedark"
-require('onedark').setup {
-  transparent = true,
-  lualine = {
-    transparent = false,
-  },
-}
 
 -- Setup code folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
 
-lvim.builtin.dap.active = true
 
--- keymappings [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
+lvim.builtin.terminal.active = true
+
+-- lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
+-- lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
 lvim.builtin.bufferline.options.numbers =
 "ordinal"                                           -- Display buffer numbers on bufferline
@@ -37,29 +34,15 @@ vim.opt.guifont = "JetBrainsMono Nerd Font Mono"    -- Set font
 vim.opt.relativenumber = true                       -- Enable relative line numbers
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' } -- Only highlight when pressing f or t
 
-lvim.lsp.buffer_mappings.normal_mode['gd'] = lvim.builtin.telescope.defaults
-    .lsp_definitions -- Use telescope for goto definition
-
-lvim.keys.normal_mode["<C-k>"] = "<cmd>lua vim.diagnostic.open_float()<CR>"
-
-reload('user.plugins')   -- Additional Plugins
-reload('user.which-key') -- Whichkey keybinds
-
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.terminal.active = true
-
--- Use nvimtree instead of netrw
--- lvim.builtin.nvimtree.setup.hijack_directories = {
---   enable = true,
---   auto_open = true
+-- lvim.builtin.project.detection_methods = { "pattern", "lsp" }
+-- lvim.builtin.project.patterns = {
+--   ".git",
+--   "package-lock.json",
+--   "yarn.lock",
+--   "package.json",
+--   "requirenets.txt",
+--   "cargo.toml"
 -- }
-
--- lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
-lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
-lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -79,6 +62,8 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
+
+require("lvim.lsp.manager").setup("emmet_ls")
 
 -- Below is the setup for Rust debugging (This is magic, no idea what's going on here)
 -- This sets up the debugger, you need to have codelldb installed with mason use the command ":MasonInstall codelldb"
@@ -165,5 +150,3 @@ lvim.builtin.treesitter.highlight.enable = true
 --     },
 --   }
 -- end
---
-require("lvim.lsp.manager").setup("emmet_ls")
