@@ -9,6 +9,7 @@ reload('user.plugins')      -- Additional Plugins
 reload('user.which-key')    -- Whichkey keybinds
 reload('user.keybinds')     -- Additional keybinds
 reload('user.autocommands') -- Autom commands
+reload('user.dashboard')    -- Load startpage
 
 -- Set up colourscheme
 lvim.colorscheme = "onedark"
