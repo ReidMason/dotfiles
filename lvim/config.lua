@@ -20,12 +20,16 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
 
 
-lvim.builtin.terminal.active = true
+lvim.builtin.terminal.active = false
 
 -- lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
 -- lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+
+lvim.builtin.telescope.on_config_done = function(telescope)
+  pcall(telescope.load_extension, "ui-select")
+end
 
 lvim.builtin.bufferline.options.numbers =
 "ordinal"                                           -- Display buffer numbers on bufferline
@@ -64,7 +68,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
 
-require("lvim.lsp.manager").setup("emmet_ls")
+-- require("lvim.lsp.manager").setup("emmet_ls")
 
 -- Below is the setup for Rust debugging (This is magic, no idea what's going on here)
 -- This sets up the debugger, you need to have codelldb installed with mason use the command ":MasonInstall codelldb"
@@ -78,63 +82,69 @@ require("lvim.lsp.manager").setup("emmet_ls")
 --   },
 -- }
 
--- pcall(function()
--- 	require("rust-tools").setup {
--- 		tools = {
--- 			executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
--- 			reload_workspace_from_cargo_toml = true,
--- 			runnables = {
--- 				use_telescope = true,
--- 			},
--- 			inlay_hints = {
--- 				auto = true,
--- 				only_current_line = false,
--- 				show_parameter_hints = false,
--- 				parameter_hints_prefix = "<-",
--- 				other_hints_prefix = "=>",
--- 				max_len_align = false,
--- 				max_len_align_padding = 1,
--- 				right_align = false,
--- 				right_align_padding = 7,
--- 				highlight = "Comment",
--- 			},
--- 			hover_actions = {
--- 				border = "rounded",
--- 			},
--- 			on_initialized = function()
--- 				vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
--- 					pattern = { "*.rs" },
--- 					callback = function()
--- 						local _, _ = pcall(vim.lsp.codelens.refresh)
--- 					end,
--- 				})
--- 			end,
--- 		},
--- 		dap = {
--- 			adapter = codelldb_adapter,
--- 		},
--- 		server = {
--- 			on_attach = function(client, bufnr)
--- 				require("lvim.lsp").common_on_attach(client, bufnr)
--- 				local rt = require "rust-tools"
--- 				vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
--- 			end,
---
--- 			capabilities = require("lvim.lsp").common_capabilities(),
--- 			settings = {
--- 				["rust-analyzer"] = {
--- 					lens = {
--- 						enable = true,
--- 					},
--- 					checkOnSave = {
--- 						enable = true,
--- 						command = "clippy",
--- 					},
--- 				},
--- 			},
--- 		},
--- 	}
--- end)
+pcall(function()
+  require("rust-tools").setup {
+    tools = {
+      executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
+      reload_workspace_from_cargo_toml = true,
+      runnables = {
+        use_telescope = true,
+      },
+      inlay_hints = {
+        auto = true,
+        only_current_line = false,
+        show_parameter_hints = false,
+        parameter_hints_prefix = "<-",
+        other_hints_prefix = "=>",
+        max_len_align = false,
+        max_len_align_padding = 1,
+        right_align = false,
+        right_align_padding = 7,
+        highlight = "Comment",
+      },
+      hover_actions = {
+        border = "rounded",
+      },
+      on_initialized = function()
+        vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+          pattern = { "*.rs" },
+          callback = function()
+            local _, _ = pcall(vim.lsp.codelens.refresh)
+          end,
+        })
+      end,
+    },
+    dap = {
+      adapter = codelldb_adapter,
+    },
+    server = {
+      on_attach = function(client, bufnr)
+        require("lvim.lsp").common_on_attach(client, bufnr)
+        local rt = require "rust-tools"
+        vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
+      end,
+
+      capabilities = require("lvim.lsp").common_capabilities(),
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            -- allFeatures = true,
+            -- features = {
+            --   "v2"
+            -- }
+          },
+          lens = {
+            enable = true,
+          },
+          checkOnSave = {
+            enable = true,
+            command = "clippy",
+          },
+        },
+      },
+    },
+  }
+end)
 
 -- lvim.builtin.dap.on_config_done = function(dap)
 --   dap.adapters.codelldb = codelldb_adapter
