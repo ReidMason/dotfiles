@@ -10,14 +10,14 @@ export PATH="${HOME}/Library/Python/3.8/bin:${HOME}/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
 
 # Zsh settings commands
-alias config="(cd ~/.config && nvim .)"
+alias config="(cd ~/.config && lvim .)"
 alias zshsource="source ~/.zshrc"
 
 # General aliases
-alias c='code'
 alias g='git'
 alias lvim='/Users/reid/.local/bin/lvim'
-alias v='nvim'
+alias v='/Users/reid/.local/bin/lvim'
+alias python='python3'
 
 # Exa aliases
 alias ls='exa -lh --icons --color automatic --no-user --no-time --git --group-directories-first'
