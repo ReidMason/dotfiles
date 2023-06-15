@@ -29,14 +29,15 @@ return {
 		-- Adds a number of user-friendly snippets
 		'rafamadriz/friendly-snippets',
 
+		-- Other autocomplete options
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
 	config = function()
-		local cmp = require 'cmp'
-		local luasnip = require 'luasnip'
+		local cmp = require('cmp')
+		local luasnip = require('luasnip')
 		local cmp_window = require('cmp.config.window')
 
 		cmp.setup {
@@ -86,7 +87,7 @@ return {
 					local max_width = 0
 					if max_width ~= 0 and #vim_item.abbr > max_width then
 						vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) ..
-						    icons.ui.Ellipsis
+								icons.ui.Ellipsis
 					end
 
 					-- Add icon for kind of suggestion
@@ -109,7 +110,7 @@ return {
 					name = "nvim_lsp",
 					entry_filter = function(entry, ctx)
 						local kind = require("cmp.types.lsp").CompletionItemKind
-						    [entry:get_kind()]
+								[entry:get_kind()]
 						if kind == "Snippet" and ctx.prev_context.filetype == "java" then
 							return false
 						end

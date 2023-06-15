@@ -36,6 +36,8 @@ for i = 1, 10, 1 do
 	vim.keymap.set('n', string.format('<leader>%d', i), function() require 'bufferline'.go_to(i, true) end)
 end
 
+vim.keymap.set('n', '<leader>/', "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
+vim.keymap.set('v', '<leader>/', "<Plug>(comment_toggle_linewise_visual)", { desc = "Comment line" })
 
 --[[
 local keybinds = {
