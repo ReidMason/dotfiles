@@ -1,5 +1,19 @@
 local colourscheme = "tokyonight"
+
 return {
+	{
+		'folke/trouble.nvim',
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {}
+	},
+	{
+		'windwp/nvim-autopairs',
+		opts = {}
+	},
+	{
+		'preservim/nerdtree',
+		enabled = false,
+	},
 	{ 'nvim-lua/plenary.nvim' },
 	{
 		'tpope/vim-fugitive',
@@ -27,7 +41,6 @@ return {
 	{
 		-- Nice ui for builtin neovim prompts like rename and code_actions
 		'stevearc/dressing.nvim',
-		event = "VeryLazy"
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -41,7 +54,6 @@ return {
 	{
 		-- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
-		event = "VeryLazy",
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
 			{
@@ -66,7 +78,6 @@ return {
 	{
 		-- Set lualine as statusline
 		'nvim-lualine/lualine.nvim',
-		event = "VeryLazy",
 		opts = {
 			options = {
 				icons_enabled = false,
@@ -79,7 +90,6 @@ return {
 	{
 		-- Add indentation guides even on blank lines
 		'lukas-reineke/indent-blankline.nvim',
-		event = "VeryLazy",
 		enabled = false,
 		opts = {
 			char = '┊',
@@ -91,7 +101,6 @@ return {
 		-- Gitsigns diffthis
 		'lewis6991/gitsigns.nvim',
 		enabled = false,
-		event = "VeryLazy",
 		opts = {
 			signs = {
 				add = { text = '+' },
