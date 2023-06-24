@@ -22,16 +22,16 @@ key_bindings:
   # Make the hashtag work on Macos
   # - { key: Key3, mods: Alt, chars: "#" }
   - { key: Key3, mods: Alt, chars: "\x23" }
-  
+
   # Zellij can't bind ctrl+\ so we need to use alt+\
   - { key: Backslash, mods: Control, chars: "\x1b\x5c" }
-    
+
   # Override symbols with propert Alt key functionality
-  - { key: H,         mods: Alt, chars: "\x1bH"                       }
-  - { key: I,         mods: Alt, chars: "\x1bI"                       }
-  - { key: J,         mods: Alt, chars: "\x1bJ"                       }
-  - { key: K,         mods: Alt, chars: "\x1bK"                       }
-  - { key: L,         mods: Alt, chars: "\x1bL"                       }
+  - { key: H, mods: Alt, chars: "\x1bH" }
+  - { key: I, mods: Alt, chars: "\x1bI" }
+  - { key: J, mods: Alt, chars: "\x1bJ" }
+  - { key: K, mods: Alt, chars: "\x1bK" }
+  - { key: L, mods: Alt, chars: "\x1bL" }
 
   # Make the option arrow work
   - { key: Left, mods: Alt, chars: "\x1bb" } # one word left
@@ -55,51 +55,53 @@ key_bindings:
   # Alias cmd+b to ctrl+t for tmux
   # - { key: T, mods: Command, chars: "\x02" }
 
-colors:
-  primary:
-    background: "#282c34" # "#2e3440"
-    foreground: "#d8dee9"
-    dim_foreground: "#a5abb6"
-  cursor:
-    text: "#2e3440"
-    cursor: "#d8dee9"
-  vi_mode_cursor:
-    text: "#2e3440"
-    cursor: "#d8dee9"
-  selection:
-    text: CellForeground
-    background: "#4c566a"
-  search:
-    matches:
-      foreground: CellBackground
-      background: "#88c0d0"
-    footer_bar:
-      background: "#434c5e"
-      foreground: "#d8dee9"
-  normal:
-    black: "#3b4252"
-    red: "#bf616a"
-    green: "#a3be8c"
-    yellow: "#ebcb8b"
-    blue: "#81a1c1"
-    magenta: "#b48ead"
-    cyan: "#88c0d0"
-    white: "#e5e9f0"
-  bright:
-    black: "#4c566a"
-    red: "#bf616a"
-    green: "#a3be8c"
-    yellow: "#ebcb8b"
-    blue: "#81a1c1"
-    magenta: "#b48ead"
-    cyan: "#8fbcbb"
-    white: "#eceff4"
-  dim:
-    black: "#373e4d"
-    red: "#94545d"
-    green: "#809575"
-    yellow: "#b29e75"
-    blue: "#68809a"
-    magenta: "#8c738c"
-    cyan: "#6d96a5"
-    white: "#aeb3bb"
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+# colors:
+#   primary:
+#     background: "#282c34" # "#2e3440"
+#     foreground: "#d8dee9"
+#     dim_foreground: "#a5abb6"
+#   cursor:
+#     text: "#2e3440"
+#     cursor: "#d8dee9"
+#   vi_mode_cursor:
+#     text: "#2e3440"
+#     cursor: "#d8dee9"
+#   selection:
+#     text: CellForeground
+#     background: "#4c566a"
+#   search:
+#     matches:
+#       foreground: CellBackground
+#       background: "#88c0d0"
+#     footer_bar:
+#       background: "#434c5e"
+#       foreground: "#d8dee9"
+#   normal:
+#     black: "#3b4252"
+#     red: "#bf616a"
+#     green: "#a3be8c"
+#     yellow: "#ebcb8b"
+#     blue: "#81a1c1"
+#     magenta: "#b48ead"
+#     cyan: "#88c0d0"
+#     white: "#e5e9f0"
+#   bright:
+#     black: "#4c566a"
+#     red: "#bf616a"
+#     green: "#a3be8c"
+#     yellow: "#ebcb8b"
+#     blue: "#81a1c1"
+#     magenta: "#b48ead"
+#     cyan: "#8fbcbb"
+#     white: "#eceff4"
+#   dim:
+#     black: "#373e4d"
+#     red: "#94545d"
+#     green: "#809575"
+#     yellow: "#b29e75"
+#     blue: "#68809a"
+#     magenta: "#8c738c"
+#     cyan: "#6d96a5"
+#     white: "#aeb3bb"
