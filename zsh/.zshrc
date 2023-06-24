@@ -29,6 +29,7 @@ alias cat='bat'
 
 # Stop alacritty errors during ssh
 alias ssh='TERM=xterm-256color ssh'
+export TERM="xterm-256color"
 
 # Enable saceship
 [[ $UID == 0 ]] && SPACESHIP_PROMPT_NEED_NEWLINE=true
