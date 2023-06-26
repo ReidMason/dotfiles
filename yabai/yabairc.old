@@ -1,0 +1,42 @@
+#!/usr/bin/env sh
+
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+#
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# sudo yabai --load-sa
+#
+# List opened windows
+# osascript -e 'tell application "System Events" to get the title of every window of every process'
+
+gap_width=0
+yabai -m config top_padding                $gap_width   # Top gap width (configured in variables)
+yabai -m config bottom_padding             $gap_width   # Bottom gap width (configured in variables)
+yabai -m config left_padding               $gap_width   # left gap width (configured in variables)
+yabai -m config right_padding              $gap_width   # right gap width (configured in variables)
+yabai -m config window_gap                 $gap_width   # inside gap width (configured in variables)
+
+# Configure window borders ###
+yabai -m config window_border on # Turn on/off window borders (configured in variables)
+yabai -m config window_border_width 2 # Set border width (configured in variables)
+yabai -m config active_window_border_color 0xFF6faec0   # Set border color for the active window
+yabai -m config normal_window_border_color 0xFF3e4050   # set border color for other windows
+yabai -m config window_border_radius 12
+yabai -m config window_opacity off
+
+# Configure mouse
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config mouse_drop_action            swap
+
+yabai -m config layout bsp
+
+# split_ratio                  0.50           \
+yabai -m rule --add app="^(System Settings|Calculator)$" manage=off
+yabai -m rule --add title="^(Copy|Delete|Digital Colour Meter)$" layer=above manage=off
+
