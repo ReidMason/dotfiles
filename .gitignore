@@ -5,6 +5,7 @@ Microsoft\\VisualStudio Services
 tmux/plugins
 Unreal Engine/
 .github
+.DS_Store
 
 nvim-lazy
 nvim-mine
