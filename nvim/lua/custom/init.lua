@@ -23,6 +23,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
 })
 
+vim.api.nvim_create_augroup("diagnostics", { clear = true })
+
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+  group = "diagnostics",
+  callback = function()
+    vim.diagnostic.setloclist { open = false }
+  end,
+})
+
 -- Settings
 vim.o.termguicolors = true -- Enable advanced terminal colours
 vim.opt.guifont = "JetBrainsMono Nerd Font Mono" -- Set font

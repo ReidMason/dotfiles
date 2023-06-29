@@ -10,13 +10,6 @@ local options = {
         cargo = {
           allFeatures = true,
         },
-        lens = {
-          enable = true,
-        },
-        checkOnSave = {
-          enable = true,
-          command = "clippy",
-        },
       },
     },
   },

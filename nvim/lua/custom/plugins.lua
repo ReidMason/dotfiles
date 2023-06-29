@@ -1,5 +1,11 @@
 local plugins = {
   {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = require("custom.configs.flash").keys,
+  },
+  {
     "folke/noice.nvim",
     event = "BufReadPost",
     dependencies = {
@@ -50,6 +56,7 @@ local plugins = {
     ft = "rust",
     init = function()
       vim.g.rustfmt_autosave = 1
+      vim.g.rustfmt_fail_silently = 1
     end,
   },
   {

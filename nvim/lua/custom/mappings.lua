@@ -28,6 +28,15 @@ M.custom = {
     ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
 
     ["Ss"] = { "<cmd> lua require('persistence').load() <cr>", "Reload last session" },
+
+    ["<leader>E"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    ["<C-k>"] = {
+      function()
+        vim.diagnostic.open_float { border = "rounded" }
+      end,
+      "Floating diagnostic",
+    },
   },
 }
 

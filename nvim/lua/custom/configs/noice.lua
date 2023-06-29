@@ -9,6 +9,12 @@ M.opts = {
       enabled = false,
     },
   },
+  routes = {
+    {
+      view = "notify",
+      filter = { event = "msg_showmode" },
+    },
+  },
 }
 
 return M
