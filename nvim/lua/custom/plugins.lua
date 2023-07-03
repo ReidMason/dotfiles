@@ -1,8 +1,28 @@
 local plugins = {
   {
+    -- Can't get this to stage files though the diff view is good
+    "sindrets/diffview.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    enabled = false,
+    event = "VeryLazy",
+    config = function()
+      local actions = require("diffview.config").actions
+
+      return {
+        keymaps = {
+          file_panel = {
+            ["<C-p>"] = actions.toggle_stage_entry,
+          },
+        },
+      }
+    end,
+  },
+  {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = require("custom.configs.flash").opts,
     keys = require("custom.configs.flash").keys,
   },
   {
@@ -63,6 +83,13 @@ local plugins = {
     "folke/persistence.nvim",
     event = "BufReadPre",
     opts = {},
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    opts = function()
+      return require "custom.configs.cmp"
+    end,
   },
 }
 
