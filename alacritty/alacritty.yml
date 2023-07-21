@@ -41,15 +41,15 @@ key_bindings:
   - { key: Back, mods: Super, chars: "\x15" } # delete word/line
 
   # Select window 1-9
-  - { key: Key1, mods: Control, chars: "\x1b\x31" }
-  - { key: Key2, mods: Control, chars: "\x1b\x32" }
-  - { key: Key3, mods: Control, chars: "\x1b\x33" }
-  - { key: Key4, mods: Control, chars: "\x1b\x34" }
-  - { key: Key5, mods: Control, chars: "\x1b\x35" }
-  - { key: Key6, mods: Control, chars: "\x1b\x36" }
-  - { key: Key7, mods: Control, chars: "\x1b\x37" }
-  - { key: Key8, mods: Control, chars: "\x1b\x38" }
-  - { key: Key9, mods: Control, chars: "\x1b\x39" }
+  - { key: Key1, mods: Super, chars: "\x1b\x31" }
+  - { key: Key2, mods: Super, chars: "\x1b\x32" }
+  - { key: Key3, mods: Super, chars: "\x1b\x33" }
+  - { key: Key4, mods: Super, chars: "\x1b\x34" }
+  - { key: Key5, mods: Super, chars: "\x1b\x35" }
+  - { key: Key6, mods: Super, chars: "\x1b\x36" }
+  - { key: Key7, mods: Super, chars: "\x1b\x37" }
+  - { key: Key8, mods: Super, chars: "\x1b\x38" }
+  - { key: Key9, mods: Super, chars: "\x1b\x39" }
 
   #####~~~~~ Keybind graveyard ~~~~~#####
   # Rename the current tmux window

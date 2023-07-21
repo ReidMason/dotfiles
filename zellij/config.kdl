@@ -3,6 +3,7 @@ keybinds {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
+        unbind "Ctrl q"
         unbind "Ctrl o"
 				bind r"Alt \" { ToggleFloatingPanes; }
         bind "Alt 1" { GoToTab 1; }
