@@ -15,6 +15,19 @@ for i = 1, 9, 1 do
   end)
 end
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  callback = function()
+    local path = vim.fn.expand "%"
+    local is_keymap_file = string.match(path, "keymap.c") ~= nil
+    if not is_keymap_file then
+      return
+    end
+    local cmd = '/Users/reid/Documents/repos/qmk_formatter/target/release/qmk_formatter "' .. path .. '"'
+    os.execute(cmd)
+    vim.cmd "edit!"
+  end,
+})
+
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.cmd "set formatoptions-=cro"

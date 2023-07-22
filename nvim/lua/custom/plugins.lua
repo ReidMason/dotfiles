@@ -2,6 +2,7 @@ local plugins = {
   {
     "codethread/qmk.nvim",
     event = "VeryLazy",
+    enabled = false,
     config = function()
       local qmk = require "qmk"
       qmk.setup {
