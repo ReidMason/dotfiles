@@ -51,11 +51,6 @@ local plugins = {
     opts = require("custom.configs.noice").opts,
   },
   {
-    "f-person/git-blame.nvim",
-    enabled = false,
-    event = "VeryLazy",
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
