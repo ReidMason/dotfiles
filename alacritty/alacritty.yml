@@ -25,10 +25,10 @@ key_bindings:
   # - { key: Key3, mods: Alt, chars: "#" }
   - { key: Key3, mods: Alt, chars: "\x23" }
 
-  # Zellij can't bind ctrl+\ so we need to use alt+\
-  # - { key: Backslash, mods: Control, chars: "\x1b\x5c" }
+  # Zellij can't bind cmd+\ so we need to use alt+\
+  - { key: Backslash, mods: Super, chars: "\x1b\x5c" }
   # Zellij can't bind cmd+' so we need to use alt+'
-  - { key: Apostrophe, mods: Super, chars: "\x1b\x27" }
+  # - { key: Apostrophe, mods: Super, chars: "\x1b\x27" }
 
   # Override symbols with propert Alt key functionality
   - { key: H, mods: Alt, chars: "\x1bH" }
