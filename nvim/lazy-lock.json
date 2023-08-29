@@ -31,5 +31,6 @@
   "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
   "telescope.nvim": { "branch": "master", "commit": "32e6792f865221dfaf2a3751fd3cfeac96557433" },
   "ui": { "branch": "v2.0", "commit": "b3a343e866f1b31d61193ea6e21c417e2e7a5355" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "addb64a772cb4a3ae1f1363583012b2cada2cd66" },
   "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" }
 }

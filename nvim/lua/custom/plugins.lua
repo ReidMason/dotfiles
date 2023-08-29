@@ -5,6 +5,10 @@ local plugins = {
   flashNvim,
   autocomplete,
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false
+  },
+  {
     -- Can't get this to stage files though the diff view is good
     "sindrets/diffview.nvim",
     dependencies = {
