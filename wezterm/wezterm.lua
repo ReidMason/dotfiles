@@ -34,6 +34,11 @@ config.keys = {
 		mods = "CMD",
 		action = wezterm.action.SendKey({ mods = "ALT", key = "\\" }),
 	},
+	{
+		key = "3",
+		mods = "ALT",
+		action = wezterm.action.SendKey({ key = "#" }),
+	},
 }
 
 -- and finally, return the configuration to wezterm
