@@ -23,6 +23,12 @@ lspconfig.gopls.setup {
       completeUnimported = true,
       analyses = {
         unusedparams = true,
+        usePlaceholders = false,
+        unusedvariable = true,
+        fieldalignment = true,
+        nilness = true,
+        shadow = true,
+        unusedwrite = true,
       },
     },
   },
