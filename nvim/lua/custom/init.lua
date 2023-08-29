@@ -47,5 +47,4 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 
 -- Settings
 vim.o.termguicolors = true -- Enable advanced terminal colours
-vim.opt.guifont = "JetBrainsMono Nerd Font Mono" -- Set font
 vim.o.pumheight = 10 -- Set popup menu height this works for autocompletion
