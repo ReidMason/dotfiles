@@ -1,7 +1,7 @@
 local original_opts = require "plugins.configs.cmp"
 
 local format_function = function(_, item)
-  local icons = require("nvchad_ui.icons").lspkind
+  local icons = require "nvchad.icons.lspkind"
   local icon = icons[item.kind]
   local max_width = 35
 
