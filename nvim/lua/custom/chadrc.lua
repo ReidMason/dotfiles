@@ -15,7 +15,6 @@ M.ui = {
     -- border_color = "folder_bg", -- only applicable for "default" style, use color names from base30 variables
     -- selected_item_bg = "simple", -- colored / simple
   },
-
   transparency = true,
   nvdash = {
     load_on_startup = true,
