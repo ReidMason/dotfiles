@@ -31,7 +31,7 @@ M.custom = {
 
     ["<leader>E"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
-    ["<C-k>"] = {
+    ["<M-k>"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
