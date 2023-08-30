@@ -52,11 +52,18 @@ local plugins = {
   },
   {
     "folke/noice.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
     },
     opts = require("custom.configs.noice").opts,
+  },
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000",
+    },
   },
   {
     -- Nice ui for builtin neovim prompts like rename and code_actions
