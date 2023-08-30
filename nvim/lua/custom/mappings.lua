@@ -38,6 +38,9 @@ M.custom = {
 
     ["<leader>E"] = { "<cmd> NvimTreeToggle <CR>", "Close nvimtree" },
 
+    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
+    ["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
+
     ["<M-k>"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }

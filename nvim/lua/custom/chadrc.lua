@@ -9,6 +9,7 @@ M.ui = {
   telescope = { style = "bordered" }, -- borderless / bordered
   tabufline = {
     show_numbers = true,
+    enabled = false,
   },
   transparency = true,
   nvdash = {
