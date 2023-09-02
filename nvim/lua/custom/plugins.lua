@@ -1,9 +1,11 @@
 local flashNvim = require "custom.flash"
 local autocomplete = require "custom.autocomplete"
+local treesitter = require "custom.treesitter"
 
 local plugins = {
   flashNvim,
   autocomplete,
+  treesitter,
   {
     "NvChad/nvterm",
     opts = {
