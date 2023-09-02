@@ -7,22 +7,6 @@ local plugins = {
   autocomplete,
   treesitter,
   {
-    "NvChad/nvterm",
-    opts = {
-      terminals = {
-        type_opts = {
-          float = {
-            border = "rounded",
-            row = 0.15,
-            col = 0.15,
-            height = 0.7,
-            width = 0.7,
-          },
-        },
-      },
-    },
-  },
-  {
     "ThePrimeagen/harpoon",
     dependencies = {
       "nvim-lua/plenary.nvim",
