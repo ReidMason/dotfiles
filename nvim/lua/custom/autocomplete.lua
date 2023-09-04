@@ -7,6 +7,7 @@ local customMasonOpts = {
     "gopls",
     "yaml-language-server",
     "typescript-language-server",
+    "eslint-lsp",
   },
 }
 

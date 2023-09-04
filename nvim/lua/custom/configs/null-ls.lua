@@ -12,7 +12,7 @@ local sources = {
   lint.shellcheck,
 }
 
--- Autoformatting
+-- Autoformatting on save
 local on_attach = function(client, bufnr)
   if client.supports_method "textDocument/formatting" then
     vim.api.nvim_clear_autocmds {
