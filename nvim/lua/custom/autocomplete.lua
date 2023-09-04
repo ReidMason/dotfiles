@@ -1,3 +1,19 @@
+local customMasonOpts = {
+  ensure_installed = {
+    "html-lsp",
+    "prettier",
+    "stylua",
+    "rust-analyzer",
+    "gopls",
+    "yaml-language-server",
+    "typescript-language-server",
+  },
+}
+
+local masonOpts = require "plugins.configs.mason"
+
+masonOpts.ensure_installed = vim.list_extend(masonOpts.ensure_installed, customMasonOpts.ensure_installed)
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -14,17 +30,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "html-lsp",
-        "prettier",
-        "stylua",
-        "rust-analyzer",
-        "gopls",
-        "yaml-language-server",
-      },
-    },
+    opts = masonOpts,
   },
   {
     "hrsh7th/nvim-cmp",
