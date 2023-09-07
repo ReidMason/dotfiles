@@ -8,6 +8,7 @@ local customMasonOpts = {
     "yaml-language-server",
     "typescript-language-server",
     "eslint-lsp",
+    "astro-language-server",
   },
 }
 

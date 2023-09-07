@@ -4,6 +4,7 @@ opts.ensure_installed = {
   "sql",
   "rust",
   "go",
+  "astro",
 }
 
 return {
