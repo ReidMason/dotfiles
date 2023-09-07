@@ -1,4 +1,4 @@
-lctrl + shift + alt - t : open -a /Applications/Alacritty.app
+lctrl + shift + alt - t : open -a /Applications/WezTerm.app
 lctrl + shift + alt - b : open -a /Applications/Arc.app
 
 # # Change window focus
