@@ -21,7 +21,7 @@ M.custom = {
     -- Telescope binds
     ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>st"] = { "<cmd> Telescope live_grep <CR>", "Search text" },
-    ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Find references" },
+    ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Open diagnostics" },
     ["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
     ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
 
