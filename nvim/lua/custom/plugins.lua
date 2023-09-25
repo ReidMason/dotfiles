@@ -7,6 +7,11 @@ local plugins = {
   autocomplete,
   treesitter,
   {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
+  {
     "ThePrimeagen/harpoon",
     dependencies = {
       "nvim-lua/plenary.nvim",

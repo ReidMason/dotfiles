@@ -6,7 +6,7 @@ local customMasonOpts = {
     "rust-analyzer",
     "gopls",
     "yaml-language-server",
-    "typescript-language-server",
+    -- "typescript-language-server",
     "eslint-lsp",
     "astro-language-server",
   },

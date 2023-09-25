@@ -2,7 +2,7 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "tsserver", "astro" }
+local servers = { "astro" }
 local util = require "lspconfig/util"
 
 for _, lsp in ipairs(servers) do
@@ -11,6 +11,11 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+require("typescript-tools").setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 
 -- Golang setup
 lspconfig.gopls.setup {
