@@ -7,7 +7,24 @@ local plugins = {
   autocomplete,
   treesitter,
   {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      local options = {
+        override_by_extension = {
+          astro = {
+            icon = "",
+            color = "#EF8547",
+            name = "astro",
+          },
+        },
+      }
 
+      options.override = require "nvchad.icons.devicons"
+
+      return options
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = "nvim-treesitter/nvim-treesitter",
     lazy = false,
@@ -80,16 +97,17 @@ local plugins = {
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      -- "rcarriga/nvim-notify",
     },
     opts = require("custom.configs.noice").opts,
   },
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      background_colour = "#000",
-    },
-  },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   enable = false,
+  --   opts = {
+  --     background_colour = "#000",
+  --   },
+  -- },
   {
     -- Nice ui for builtin neovim prompts like rename and code_actions
     "stevearc/dressing.nvim",
