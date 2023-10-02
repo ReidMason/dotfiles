@@ -27,7 +27,8 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    lazy = false,
+    lazy = true,
+    event = "BufReadPost",
     config = function()
       require("nvim-treesitter.configs").setup {
         textobjects = {
