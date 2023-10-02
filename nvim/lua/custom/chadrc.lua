@@ -28,6 +28,7 @@ M.ui = {
 
     buttons = {
       { "󰈚  Restore Session", "Spc S s", "lua require('persistence').load()" },
+      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
       { "  Find File", "Spc f f", "Telescope find_files" },
       { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
       { "  Bookmarks", "Spc m a", "Telescope marks" },
