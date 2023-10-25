@@ -98,17 +98,9 @@ local plugins = {
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
-      -- "rcarriga/nvim-notify",
     },
     opts = require("custom.configs.noice").opts,
   },
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   enable = false,
-  --   opts = {
-  --     background_colour = "#000",
-  --   },
-  -- },
   {
     -- Nice ui for builtin neovim prompts like rename and code_actions
     "stevearc/dressing.nvim",
