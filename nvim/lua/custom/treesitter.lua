@@ -10,5 +10,4 @@ opts.ensure_installed = {
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = opts,
-  config = {},
 }
