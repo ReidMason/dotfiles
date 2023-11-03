@@ -40,3 +40,5 @@ eval "$(starship init zsh)"
 
 # Enable z jump around
 . ~/z.sh
+
+bindkey -e command
