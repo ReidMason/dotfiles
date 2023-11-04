@@ -12,6 +12,9 @@ M.disabled = {
 
 M.custom = {
   n = {
+    ["<leader>tr"] = { "<cmd> lua require('neotest').run.run() <CR>" },
+    ["<leader>tf"] = { "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>" },
+
     -- Pane navigation
     ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },
     ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Window down" },
