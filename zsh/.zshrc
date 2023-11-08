@@ -25,10 +25,6 @@ alias tree='exa --tree --icons --color automatic --no-user --no-time --git --gro
 # Bat aliases
 alias cat='bat'
 
-# Stop alacritty errors during ssh
-alias ssh='TERM=xterm-256color ssh'
-export TERM="xterm-256color"
-
 # Enable saceship
 [[ $UID == 0 ]] && SPACESHIP_PROMPT_NEED_NEWLINE=true
 [[ $SPACESHIP_PROMPT_ADD_NEWLINE == true && $SPACESHIP_PROMPT_NEED_NEWLINE == true ]] && echo -n "$NEWLINE"
