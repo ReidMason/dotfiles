@@ -15,6 +15,12 @@ local mappings = { n = {
     ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Open diagnostics" },
     ["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
     ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
+
+        -- Tmux navigation
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Window down" },
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Window up" },
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Window right" },
 },
 x = {
 	-- Don't copy the replaced text after pasting in visual mode
