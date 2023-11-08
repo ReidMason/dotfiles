@@ -17,3 +17,8 @@ require("lazy").setup("plugins", {})
 
 require ("config")
 require ("mappings")
+
+local function something()
+	print("testing")
+	return "Testing"
+end

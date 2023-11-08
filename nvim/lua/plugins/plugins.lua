@@ -5,12 +5,31 @@ return {
       "nvim-lua/plenary.nvim",
     },
   },
-  {"NvChad/nvim-colorizer.lua"},
+
+  {"NvChad/nvim-colorizer.lua", 
+  opts = {
+	  filetypes = {"*"},
+	  user_default_options = {
+		  names = false,
+		  tailwind = true,
+		  css = true,
+		  css_fn = true,
+	  },
+  }
+  },
   { "catppuccin/nvim",
   name = "catppuccin",
   priority = 1000,
   opts = {
-	  transparent_background = true
+	  transparent_background = true,
   }
+  },
+
+  {"nvim-treesitter/nvim-treesitter",
+  config = function()
+	  require'nvim-treesitter.configs'.setup{
+	  auto_install=true,
+  	}
+  end
   }
   }

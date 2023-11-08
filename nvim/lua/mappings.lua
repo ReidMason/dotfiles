@@ -8,6 +8,11 @@ local mappings = { n = {
     -- Harpoon
 ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
     ["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
+},
+x = {
+	-- Don't copy the replaced text after pasting in visual mode
+    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+ ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
 }
 }
 
@@ -21,3 +26,10 @@ for mode, values in pairs(mappings) do
 	end 
 end
 
+-- Switch between buffers
+for i = 1, 9, 1 do
+  vim.keymap.set("n", string.format("<leader>%s", i), function()
+    -- vim.api.nvim_set_current_buf(vim.t.bufs[i])
+    require("harpoon.ui").nav_file(i)
+  end)
+end
