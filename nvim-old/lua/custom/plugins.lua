@@ -6,6 +6,7 @@ local plugins = {
   flashNvim,
   autocomplete,
   treesitter,
+  { "AndrewRadev/tagalong.vim", event = "VeryLazy" },
   {
     "nvim-neotest/neotest",
     dependencies = {
