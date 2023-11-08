@@ -8,6 +8,13 @@ local mappings = { n = {
     -- Harpoon
 ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
     ["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
+
+-- Telescope
+    ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>st"] = { "<cmd> Telescope live_grep <CR>", "Search text" },
+    ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Open diagnostics" },
+    ["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
+    ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
 },
 x = {
 	-- Don't copy the replaced text after pasting in visual mode
