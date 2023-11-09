@@ -1,3 +1,17 @@
+local on_attach = function(client, bufnr)
+  local util = require("lspconfig/util")
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+
+  util.load_mappings("lspconfig", { buffer = bufnr })
+
+  if not util.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 return{
   "williamboman/mason.nvim",
   dependencies = {
@@ -7,9 +21,11 @@ return{
   config = function()
     require("mason").setup()
     local lspconfig = require("lspconfig")
+    local util = require("lspconfig/util")
+
     local masonLspConfig = require("mason-lspconfig")
     masonLspConfig.setup({
-      ensure_installed = {'lua_ls'}
+      ensure_installed = {'lua_ls', 'gopls'}
     })
 
     masonLspConfig.setup_handlers {
@@ -40,6 +56,30 @@ return{
               },
             },
           }
+        }
+      end,
+
+      ["gopls"] = function ()
+        lspconfig.gopls.setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          cmd = { "gopls" },
+          filetypes = { "go", "gomod", "gowork", "gotmpl" },
+          root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+          settings = {
+            gopls = {
+              completeUnimported = true,
+              analyses = {
+                unusedparams = true,
+                usePlaceholders = false,
+                unusedvariable = true,
+                fieldalignment = true,
+                nilness = true,
+                shadow = true,
+                unusedwrite = true,
+              },
+            },
+          },
         }
       end
     }
