@@ -64,6 +64,6 @@ return {
   },
   {
     "stevearc/dressing.nvim",
-    event = "VeryLazy",
+    event = "BufReadPre",
   },
 }

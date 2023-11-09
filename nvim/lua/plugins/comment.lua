@@ -1,7 +1,6 @@
+local mappings = require("mappings")
+
 return {
   "numToStr/Comment.nvim",
-  opts = {
-    -- add any options here
-  },
-  lazy = false,
+  keys = { mappings.comment.keys },
 }
