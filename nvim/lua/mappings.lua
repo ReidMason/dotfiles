@@ -8,20 +8,6 @@ mappings.general = {
     ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
     ["<C-a>"] = { "ggVG", "Select all" },
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-    ["<M-k>"] = {
-      function()
-        vim.diagnostic.open_float({ border = "rounded" })
-      end,
-      "Floating diagnostic",
-    },
-
-    -- Lsp commands
-    ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
-    ["<leader>lr"] = { vim.lsp.buf.rename, "LSP rename" },
-
-    -- Harpoon
-    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
-    ["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
   },
   x = {
     -- Don't copy the replaced text after pasting in visual mode
@@ -29,6 +15,44 @@ mappings.general = {
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
   },
 }
+
+mappings.rename = {
+  n = {
+    ["<leader>lr"] = { ":IncRename ", "LSP rename" },
+  },
+}
+
+mappings.lsp = {
+  n = {
+    ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
+    -- ["<leader>lr"] = { vim.lsp.buf.rename, "LSP rename" },
+
+    ["<M-k>"] = {
+      function()
+        vim.diagnostic.open_float({ border = "rounded" })
+      end,
+      "Floating diagnostic",
+    },
+    ["K"] = { vim.lsp.buf.hover, "Lsp info" },
+  },
+}
+
+mappings.harpoon = {
+  n = {
+    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
+    ["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
+  },
+}
+
+-- Switch between buffers
+for i = 1, 9, 1 do
+  mappings.harpoon.n[string.format("<leader>%s", i)] = {
+    function()
+      require("harpoon.ui").nav_file(i)
+    end,
+    "Goto buffer",
+  }
+end
 
 mappings.tmux = {
   n = {
@@ -67,24 +91,14 @@ mappings.comment = {
   },
 }
 
--- vim.g.mapleader = " " -- Set <space> as leader key
--- vim.keymap.set("n", "<leader>-", vim.cmd.Ex)
-
-for section, modes in pairs(mappings) do
+-- Add keybinds
+for _, modes in pairs(mappings) do
   for mode, values in pairs(modes) do
     for keybind, mapping_info in pairs(values) do
       local opts = { desc = mapping_info[2] }
       vim.keymap.set(mode, keybind, mapping_info[1], opts)
     end
   end
-end
-
--- Switch between buffers
-for i = 1, 9, 1 do
-  vim.keymap.set("n", string.format("<leader>%s", i), function()
-    -- vim.api.nvim_set_current_buf(vim.t.bufs[i])
-    require("harpoon.ui").nav_file(i)
-  end)
 end
 
 -- Highlight on yank
