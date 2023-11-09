@@ -1,5 +1,5 @@
-vim.cmd.colorscheme("catppuccin-mocha")
 vim.o.termguicolors = true
+vim.cmd.colorscheme("catppuccin-mocha")
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.ignorecase = true
