@@ -30,7 +30,6 @@ return {
 			},
 		},
 	},
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
@@ -46,58 +45,39 @@ return {
 		end,
 	},
 	{
-		"nvim-telescope/telescope.nvim",
-		cmd = { "Telescope" },
-		tag = "0.1.4",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
-		event = "BufReadPre",
-		config = function()
-			local null_ls = require("null-ls")
-			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-			local formatting = null_ls.builtins.formatting
-			local lint = null_ls.builtins.diagnostics
-			local sources = {
-				formatting.prettier,
-				formatting.stylua,
-				null_ls.builtins.formatting.gofmt,
-				null_ls.builtins.formatting.goimports,
-				lint.shellcheck,
-			}
-
-			-- Autoformatting on save
-			local on_attach = function(client, bufnr)
-				if client.supports_method("textDocument/formatting") then
-					vim.api.nvim_clear_autocmds({
-						group = augroup,
-						buffer = bufnr,
-					})
-
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						group = augroup,
-						buffer = bufnr,
-						callback = function()
-							vim.lsp.buf.format({ bufnr = bufnr })
-						end,
-					})
-				end
-			end
-
-			null_ls.setup({
-				debug = false,
-				sources = sources,
-				on_attach = on_attach,
-			})
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
 		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			--"rcarriga/nvim-notify",
+		},
+	},
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
 	},
 }
