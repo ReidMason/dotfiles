@@ -24,7 +24,7 @@ local installed_tools = {
 	--{ "emmet-ls" },
 	--{ "css-lsp" },
 	--{ "json-lsp" },
-	--{ "prettier" },
+	{ "prettier" },
 	--{ "typescript-language-server" },
 	--{ "eslint_d" },
 	--{ "eslint-lsp" },
@@ -37,29 +37,13 @@ return {
 		"williamboman/mason.nvim",
 		cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
 		dependencies = {
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"nvim/nvim-lspconfig",
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
 			require("mason").setup()
-		end,
-	},
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
-		opts = {
-			ensure_installed = installed_tools,
-			run_on_start = true,
-		},
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
-		config = function()
+
 			local lspconfig = require("lspconfig")
 			local util = require("lspconfig/util")
 			local masonLspConfig = require("mason-lspconfig")
@@ -122,6 +106,11 @@ return {
 						},
 					})
 				end,
+			})
+
+			require("mason-tool-installer").setup({
+				ensure_installed = installed_tools,
+				run_on_start = true,
 			})
 		end,
 	},
