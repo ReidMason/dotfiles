@@ -1,18 +1,3 @@
-local function dump(o)
-	if type(o) == "table" then
-		local s = "{ "
-		for k, v in pairs(o) do
-			if type(k) ~= "number" then
-				k = '"' .. k .. '"'
-			end
-			s = s .. "[" .. k .. "] = " .. dump(v) .. ","
-		end
-		return s .. "} "
-	else
-		return tostring(o)
-	end
-end
-
 return {
 	{
 		"williamboman/mason.nvim",
@@ -28,9 +13,6 @@ return {
 
 			local lspconfig = require("lspconfig")
 			local mason_lsp_config = require("mason-lspconfig")
-
-			local test = mason_lsp_config.get_installed_servers()
-			print(dump(test))
 
 			mason_lsp_config.setup_handlers({
 				-- Default handler
