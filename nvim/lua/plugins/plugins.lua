@@ -34,13 +34,12 @@ opts = {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
-    opts = {},
     config = function()
       require'nvim-treesitter.configs'.setup{
-      auto_install=true,
-      highlight = {
-        enable = true
-      }
+        auto_install=true,
+        highlight = {
+          enable = true
+        }
       }
     end
   },
