@@ -34,6 +34,8 @@ SPACESHIP_PROMPT_NEED_NEWLINE=true
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
+tmux new-session -A -s main
+
 # Enable z jump around
 . ~/z.sh
 
