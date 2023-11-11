@@ -7,7 +7,7 @@ local config = {}
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-  config = wezterm.config_builder()
+	config = wezterm.config_builder()
 end
 
 -- This is where you actually apply your config choices
@@ -21,24 +21,24 @@ config.enable_tab_bar = false
 config.max_fps = 144
 
 config.colors = {
-  background = "#1c1f2b",
+	background = "#1c1f2b",
 }
 
 -- - { key: Backslash, mods: Super, chars: "\x1b\x5c" }
 
 config.keys = {
-  -- Turn off the default CMD-m Hide action, allowing CMD-m to
-  -- be potentially recognized and handled by the tab
-  {
-    key = "Backslash",
-    mods = "CMD",
-    action = wezterm.action.SendKey({ mods = "ALT", key = "\\" }),
-  },
-  {
-    key = "3",
-    mods = "ALT",
-    action = wezterm.action.SendKey({ key = "#" }),
-  },
+	-- Turn off the default CMD-m Hide action, allowing CMD-m to
+	-- be potentially recognized and handled by the tab
+	{
+		key = "Backslash",
+		mods = "CMD",
+		action = wezterm.action.SendKey({ mods = "ALT", key = "\\" }),
+	},
+	{
+		key = "3",
+		mods = "ALT",
+		action = wezterm.action.SendKey({ key = "#" }),
+	},
 }
 
 -- and finally, return the configuration to wezterm
