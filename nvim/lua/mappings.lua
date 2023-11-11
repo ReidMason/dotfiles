@@ -29,7 +29,7 @@ mappings.lsp = {
 
     ["<M-k>"] = {
       function()
-        vim.diagnostic.open_float({ border = "rounded" })
+        vim.diagnostic.open_float { border = "rounded" }
       end,
       "Floating diagnostic",
     },
