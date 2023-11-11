@@ -34,7 +34,10 @@ SPACESHIP_PROMPT_NEED_NEWLINE=true
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
-tmux new-session -A -s main
+# Auto attach to Tmux session or create a new session called main
+if ! { [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; } then
+  tmux new-session -A -s main
+fi
 
 # Enable z jump around
 . ~/z.sh
