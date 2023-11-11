@@ -1,114 +1,114 @@
 local mappings = {}
 
 mappings.general = {
-	n = {
-		["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
+  n = {
+    ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
 
-		["<leader>w"] = { "<cmd> w! <CR>", "Save" },
-		["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
-		["<C-a>"] = { "ggVG", "Select all" },
-		["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-	},
-	x = {
-		-- Don't copy the replaced text after pasting in visual mode
-		-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-		["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
-	},
+    ["<leader>w"] = { "<cmd> w! <CR>", "Save" },
+    ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
+    ["<C-a>"] = { "ggVG", "Select all" },
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+  },
+  x = {
+    -- Don't copy the replaced text after pasting in visual mode
+    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
+  },
 }
 
 mappings.rename = {
-	n = {
-		["<leader>lr"] = { ":IncRename ", "LSP rename" },
-	},
+  n = {
+    ["<leader>lr"] = { ":IncRename ", "LSP rename" },
+  },
 }
 
 mappings.lsp = {
-	n = {
-		["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
-		-- ["<leader>lr"] = { vim.lsp.buf.rename, "LSP rename" },
+  n = {
+    ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
+    -- ["<leader>lr"] = { vim.lsp.buf.rename, "LSP rename" },
 
-		["<M-k>"] = {
-			function()
-				vim.diagnostic.open_float({ border = "rounded" })
-			end,
-			"Floating diagnostic",
-		},
-		["K"] = { vim.lsp.buf.hover, "Lsp info" },
-	},
+    ["<M-k>"] = {
+      function()
+        vim.diagnostic.open_float({ border = "rounded" })
+      end,
+      "Floating diagnostic",
+    },
+    ["K"] = { vim.lsp.buf.hover, "Lsp info" },
+  },
 }
 
 mappings.harpoon = {
-	n = {
-		["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
-		["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
-	},
+  n = {
+    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
+    ["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
+  },
 }
 
 -- Switch between buffers
 for i = 1, 9, 1 do
-	mappings.harpoon.n[string.format("<leader>%s", i)] = {
-		function()
-			require("harpoon.ui").nav_file(i)
-		end,
-		"Goto buffer",
-	}
+  mappings.harpoon.n[string.format("<leader>%s", i)] = {
+    function()
+      require("harpoon.ui").nav_file(i)
+    end,
+    "Goto buffer",
+  }
 end
 
 mappings.tmux = {
-	n = {
-		["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },
-		["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Window down" },
-		["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Window up" },
-		["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Window right" },
-	},
+  n = {
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Window down" },
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Window up" },
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Window right" },
+  },
 }
 
 mappings.telescope = {
-	n = {
-		["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-		["<leader>st"] = { "<cmd> Telescope live_grep <CR>", "Search text" },
-		["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Open diagnostics" },
-		["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
-		["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
-	},
+  n = {
+    ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>st"] = { "<cmd> Telescope live_grep <CR>", "Search text" },
+    ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Open diagnostics" },
+    ["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
+    ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
+  },
 }
 
 mappings.comment = {
-	n = {
-		["<leader>/"] = {
-			function()
-				require("Comment.api").toggle.linewise.current()
-			end,
-			"Toggle comment",
-		},
-	},
+  n = {
+    ["<leader>/"] = {
+      function()
+        require("Comment.api").toggle.linewise.current()
+      end,
+      "Toggle comment",
+    },
+  },
 
-	v = {
-		["<leader>/"] = {
-			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-			"Toggle comment",
-		},
-	},
+  v = {
+    ["<leader>/"] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      "Toggle comment",
+    },
+  },
 }
 
 -- Add keybinds
 for _, modes in pairs(mappings) do
-	for mode, values in pairs(modes) do
-		for keybind, mapping_info in pairs(values) do
-			local opts = { desc = mapping_info[2] }
-			vim.keymap.set(mode, keybind, mapping_info[1], opts)
-		end
-	end
+  for mode, values in pairs(modes) do
+    for keybind, mapping_info in pairs(values) do
+      local opts = { desc = mapping_info[2] }
+      vim.keymap.set(mode, keybind, mapping_info[1], opts)
+    end
+  end
 end
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
 })
 
 return mappings
