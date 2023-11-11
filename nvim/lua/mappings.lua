@@ -8,6 +8,9 @@ mappings.general = {
     ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
     ["<C-a>"] = { "ggVG", "Select all" },
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    ["<leader>tr"] = { "<cmd> lua require('neotest').run.run() <CR>" },
+    ["<leader>tf"] = { "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>" },
   },
   x = {
     -- Don't copy the replaced text after pasting in visual mode
