@@ -4,6 +4,9 @@ mappings.general = {
   n = {
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
 
+    -- TODO: Add a mapping for split vertical and horizontal (vsplit and split)
+    -- TODO: Adda  mapping for closing vim splits (ctrl+w c)
+
     ["<leader>w"] = { "<cmd> w! <CR>", "Save" },
     ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
     ["<C-a>"] = { "ggVG", "Select all" },
