@@ -13,7 +13,7 @@ end
 
 local formatting_style = {
   format = function(_, item)
-    local icons = require "icons"
+    local icons = require "core.icons"
     local icon = icons[item.kind]
 
     --icon = (" " .. icon .. " ")
