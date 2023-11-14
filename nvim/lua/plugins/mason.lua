@@ -1,3 +1,23 @@
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
+
 return {
   {
     "williamboman/mason.nvim",
@@ -17,13 +37,16 @@ return {
       mason_lsp_config.setup_handlers {
         -- Default handler
         function(server)
-          lspconfig[server].setup {}
+          lspconfig[server].setup {
+            capabilities = capabilities,
+          }
         end,
 
         -- Dedicated handlers
         ["gopls"] = function()
           lspconfig.gopls.setup {
             cmd = { "gopls" },
+            capabilities = capabilities,
             settings = {
               gopls = {
                 completeUnimported = true,
@@ -43,6 +66,7 @@ return {
 
         ["lua_ls"] = function()
           lspconfig.lua_ls.setup {
+            capabilities = capabilities,
             settings = {
               Lua = {
                 format = {
