@@ -1,23 +1,3 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = { valueSet = { 1 } },
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  },
-}
-
 return {
   {
     "williamboman/mason.nvim",
@@ -30,6 +10,7 @@ return {
     },
     config = function()
       require("mason").setup()
+      local capabilities = require("core.utils").get_capabilities()
 
       local lspconfig = require "lspconfig"
       local mason_lsp_config = require "mason-lspconfig"
