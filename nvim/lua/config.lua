@@ -1,5 +1,5 @@
 vim.o.termguicolors = true
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme "catppuccin-mocha"
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.ignorecase = true
@@ -23,7 +23,7 @@ vim.opt.smartcase = true
 vim.opt.mouse = "a"
 
 -- disable nvim intro
-vim.opt.shortmess:append("sI")
+vim.opt.shortmess:append "sI"
 
 vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
