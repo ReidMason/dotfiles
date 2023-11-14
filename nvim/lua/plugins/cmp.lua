@@ -1,7 +1,7 @@
 local function border(hl_name)
   return {
     { "╭", hl_name },
-    cmp { "─", hl_name },
+    { "─", hl_name },
     { "╮", hl_name },
     { "│", hl_name },
     { "╯", hl_name },
