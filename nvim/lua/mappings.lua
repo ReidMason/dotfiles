@@ -4,9 +4,6 @@ mappings.general = {
   n = {
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
 
-    -- TODO: Add a mapping for split vertical and horizontal (vsplit and split)
-    -- TODO: Adda  mapping for closing vim splits (ctrl+w c)
-
     ["<leader>w"] = { "<cmd> w! <CR>", "Save" },
     ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
     ["<C-a>"] = { "ggVG", "Select all" },
@@ -18,9 +15,7 @@ mappings.general = {
     ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line" },
     ["<leader>dus"] = {
       function()
-        local widgets = require "dap.ui.widgets"
-        local sidebar = widgets.sidebar(widgets.scopes)
-        sidebar.open()
+        require("dapui").toggle()
       end,
       "Open debugging sidebar",
     },
@@ -29,6 +24,14 @@ mappings.general = {
     -- Don't copy the replaced text after pasting in visual mode
     -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
+  },
+}
+
+mappings.vim = {
+  n = {
+    ["<leader>sv"] = { "<cmd>vsplit<CR>" },
+    ["<leader>sh"] = { "<cmd>split<CR>" },
+    ["<leader>sc"] = { "<C-w>c" },
   },
 }
 
