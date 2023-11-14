@@ -14,6 +14,16 @@ mappings.general = {
 
     ["<leader>tr"] = { "<cmd> lua require('neotest').run.run() <CR>" },
     ["<leader>tf"] = { "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>" },
+
+    ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line" },
+    ["<leader>dus"] = {
+      function()
+        local widgets = require "dap.ui.widgets"
+        local sidebar = widgets.sidebar(widgets.scopes)
+        sidebar.open()
+      end,
+      "Open debugging sidebar",
+    },
   },
   x = {
     -- Don't copy the replaced text after pasting in visual mode
