@@ -8,6 +8,7 @@ return {
     return {
       options = {
         icons_enabled = true,
+        -- theme = "catppuccin",
         theme = {
           normal = {
             a = { fg = colours.blue, bg = colours.background },
