@@ -11,19 +11,28 @@ mappings.general = {
 
     ["<leader>tr"] = { "<cmd> lua require('neotest').run.run() <CR>" },
     ["<leader>tf"] = { "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>" },
+  },
+  x = {
+    -- Don't copy the replaced text after pasting in visual mode
+    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
+  },
+}
 
+mappings.dap = {
+  n = {
     ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line" },
+  },
+}
+
+mappings.dapui = {
+  n = {
     ["<leader>dus"] = {
       function()
         require("dapui").toggle()
       end,
       "Open debugging sidebar",
     },
-  },
-  x = {
-    -- Don't copy the replaced text after pasting in visual mode
-    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
   },
 }
 
