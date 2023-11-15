@@ -3,6 +3,22 @@ local mappings = require "mappings"
 return {
   {
     "mfussenegger/nvim-dap",
+    init = function()
+      local sign = vim.fn.sign_define
+
+      sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+      sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+      sign("DapLogPoint", { text = "", texthl = "DapLogPoint", linehl = "", numhl = "" })
+
+      -- Visual
+      -- UfoFoldedEllipsis
+      sign("DapStopped", {
+        text = "→",
+        texthl = "NeogitDiffAddHighlight",
+        linehl = "NeogitDiffAddHighlight",
+        numhl = "NeogitDiffAddHighlight",
+      })
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
