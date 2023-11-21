@@ -35,7 +35,7 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 # Auto attach to Tmux session or create a new session called main
-if ! { [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; } then
+if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
   tmux new-session -A -s main
 fi
 
@@ -43,3 +43,10 @@ fi
 . ~/z.sh
 
 bindkey -e command
+
+# bun completions
+[ -s "/Users/reid/.bun/_bun" ] && source "/Users/reid/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
