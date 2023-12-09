@@ -8,11 +8,15 @@ return {
     local formatting = null_ls.builtins.formatting
     local lint = null_ls.builtins.diagnostics
     local sources = {
-      formatting.prettier,
+      formatting.prettier.with {
+        extra_filetypes = { "astro" },
+      },
       formatting.stylua,
       null_ls.builtins.formatting.gofmt,
       null_ls.builtins.formatting.goimports,
       lint.shellcheck,
+      formatting.rustfmt,
+      formatting.fourmolu,
     }
 
     -- Autoformatting on save

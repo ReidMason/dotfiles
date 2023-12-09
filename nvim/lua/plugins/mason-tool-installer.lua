@@ -11,6 +11,8 @@ return {
       { "emmet-ls" },
       { "typescript-language-server" },
       { "tailwindcss-language-server" },
+      { "haskell-language-server" },
+      { "fourmolu" },
 
       --{ "lua-language-server" },
       --{ "bash-language-server" },
