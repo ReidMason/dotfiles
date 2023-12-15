@@ -8,15 +8,15 @@ return {
     local formatting = null_ls.builtins.formatting
     local lint = null_ls.builtins.diagnostics
     local sources = {
-      formatting.prettier.with {
+      formatting.prettier.with { -- JS/TS and stuff
         extra_filetypes = { "astro" },
       },
-      formatting.stylua,
-      null_ls.builtins.formatting.gofmt,
-      null_ls.builtins.formatting.goimports,
+      formatting.stylua, -- Lua
+      null_ls.builtins.formatting.gofmt, -- Golang
+      null_ls.builtins.formatting.goimports, -- Golang
       lint.shellcheck,
-      formatting.rustfmt,
-      formatting.fourmolu,
+      formatting.rustfmt, -- Rust
+      formatting.fourmolu, -- Haskell
     }
 
     -- Autoformatting on save
