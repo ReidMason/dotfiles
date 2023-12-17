@@ -6,5 +6,8 @@ tmux/plugins
 Unreal Engine/
 .github
 .DS_Store
+cabal
+jgit
+.zshrc-e
 
 nvim-old
