@@ -5,7 +5,7 @@ return {
     require("auto-session").setup {
       log_level = "error",
       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      pre_save_cmds = { "tabdo NvimTreeClose", "tabdo DapUiClose" },
+      pre_save_cmds = { "tabdo NvimTreeClose", "tabdo DapUiClose", "CloseMdPreview" },
     }
   end,
   init = function()

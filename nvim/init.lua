@@ -13,41 +13,44 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 
-require("lazy").setup({ { import = "plugins" } }, {
-  defaults = {
-    lazy = true,
-  },
-  change_detection = {
-    notify = false,
-  },
-  performance = {
-    cache = {
-      enabled = true,
+require("lazy").setup(
+  { { import = "plugins" }, { dir = "~/Documents/repos/md-preview.nvim", lazy = false, opts = {} } },
+  {
+    defaults = {
+      lazy = true,
     },
-    rtp = {
-      disabled_plugins = {
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "gzip",
-        "zip",
-        "zipPlugin",
-        "tar",
-        "tarPlugin",
-        "getscript",
-        "getscriptPlugin",
-        "vimball",
-        "vimballPlugin",
-        "2html_plugin",
-        "logipat",
-        "rrhelper",
-        "spellfile_plugin",
-        "matchit",
+    change_detection = {
+      notify = false,
+    },
+    performance = {
+      cache = {
+        enabled = true,
+      },
+      rtp = {
+        disabled_plugins = {
+          "netrw",
+          "netrwPlugin",
+          "netrwSettings",
+          "netrwFileHandlers",
+          "gzip",
+          "zip",
+          "zipPlugin",
+          "tar",
+          "tarPlugin",
+          "getscript",
+          "getscriptPlugin",
+          "vimball",
+          "vimballPlugin",
+          "2html_plugin",
+          "logipat",
+          "rrhelper",
+          "spellfile_plugin",
+          "matchit",
+        },
       },
     },
-  },
-})
+  }
+)
 
 require "config"
 require "mappings"
