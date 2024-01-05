@@ -19,12 +19,39 @@ mappings.general = {
   },
 }
 
+mappings.copilot = {
+  i = {
+    ["<C-l>"] = {
+      function()
+        require("copilot.suggestion").next()
+      end,
+      "Copilot trigger",
+      {},
+    },
+  },
+  n = {
+    ["<C-l>"] = {
+      function()
+        require("copilot.suggestion").next()
+      end,
+      "Copilot trigger",
+      {},
+    },
+  },
+}
+
 mappings.dap = {
   n = {
     ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line" },
     ["<leader>dc"] = { "<cmd> DapContinue <CR>", "Dap continue" },
     ["<leader>do"] = { "<cmd> DapStepOver <CR>", "Dap step over" },
     ["<leader>di"] = { "<cmd> DapStepInto <CR>", "Dap step i" },
+  },
+}
+
+mappings.mdPreview = {
+  n = {
+    ["<C-b>"] = { "<cmd>OpenMdPreview<CR>", "Open markdown preview" },
   },
 }
 
