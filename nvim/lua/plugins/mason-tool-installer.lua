@@ -13,6 +13,9 @@ return {
       { "tailwindcss-language-server" },
       { "haskell-language-server" },
       { "fourmolu" },
+      { "docker-compose-language-service" },
+      { "ansible-language-server" },
+      { "ansible-lint" },
 
       --{ "lua-language-server" },
       --{ "bash-language-server" },

@@ -24,6 +24,15 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
+      vim.filetype.add {
+        pattern = {
+          -- ansible playbook
+          [".*/.*playbook.*.ya?ml"] = "yaml.ansible",
+          [".*/.*tasks.*/.*ya?ml"] = "yaml.ansible",
+          [".*/local.ya?ml"] = "yaml.ansible",
+        },
+      }
+
       require("mason").setup()
       local capabilities = require("core.utils").get_capabilities()
 
