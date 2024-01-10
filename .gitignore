@@ -9,5 +9,6 @@ Unreal Engine/
 cabal
 jgit
 .zshrc-e
+github-copilot
 
 nvim-old
