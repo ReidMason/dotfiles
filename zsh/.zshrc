@@ -1,9 +1,5 @@
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='vim'
-fi
+export EDITOR='nvim'
 
 # Add local bin to path
 export PATH="${HOME}/Library/Python/3.8/bin:${HOME}/bin:${PATH}"
