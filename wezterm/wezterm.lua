@@ -14,15 +14,12 @@ end
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 18
-config.window_background_opacity = 0.8
-config.macos_window_background_blur = 64
+-- config.window_background_opacity = 1
+-- config.macos_window_background_blur = 64
+
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
 config.max_fps = 144
-
-config.colors = {
-	background = "#1c1f2b",
-}
 
 -- - { key: Backslash, mods: Super, chars: "\x1b\x5c" }
 
