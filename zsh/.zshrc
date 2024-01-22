@@ -31,9 +31,9 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 # Auto attach to Tmux session or create a new session called main
-if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
-  tmux new-session -A -s main
-fi
+# if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
+#   tmux new-session -A -s main
+# fi
 
 # Enable z jump around
 . ~/z.sh
