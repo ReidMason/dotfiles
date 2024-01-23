@@ -1,4 +1,4 @@
-local mappings = require("mappings")
+local mappings = require "mappings"
 
 return {
   "ThePrimeagen/harpoon",
