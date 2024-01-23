@@ -30,3 +30,11 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.timeoutlen = 400
 vim.opt.undofile = true
+
+-- Disable continuing comment on new line
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions:remove { "c", "r", "o" }
+  end,
+  desc = "Disable New Line Comment",
+})
