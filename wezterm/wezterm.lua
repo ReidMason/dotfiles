@@ -24,8 +24,6 @@ config.max_fps = 144
 -- - { key: Backslash, mods: Super, chars: "\x1b\x5c" }
 
 config.keys = {
-	-- Turn off the default CMD-m Hide action, allowing CMD-m to
-	-- be potentially recognized and handled by the tab
 	{
 		key = "Backslash",
 		mods = "CMD",
@@ -35,6 +33,25 @@ config.keys = {
 		key = "3",
 		mods = "ALT",
 		action = wezterm.action.SendKey({ key = "#" }),
+	},
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action.SendKey({ key = "F2" }),
+	},
+	-- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
+	{
+		key = "LeftArrow",
+		mods = "OPT",
+		action = wezterm.action.SendKey({
+			key = "b",
+			mods = "ALT",
+		}),
+	},
+	{
+		key = "RightArrow",
+		mods = "OPT",
+		action = wezterm.action.SendKey({ key = "f", mods = "ALT" }),
 	},
 }
 
