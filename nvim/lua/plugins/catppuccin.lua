@@ -10,7 +10,7 @@ return {
       mason = true,
       telescope = {
         enabled = true,
-        style = "nvchad",
+        -- style = "nvchad",
       },
       dap = {
         enabled = true,
