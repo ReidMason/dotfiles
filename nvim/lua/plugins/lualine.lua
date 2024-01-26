@@ -8,32 +8,31 @@ return {
     return {
       options = {
         icons_enabled = true,
-        -- theme = "catppuccin",
         theme = {
           normal = {
-            a = { fg = colours.blue, bg = colours.background },
-            b = { fg = colours.sapphire, bg = colours.background },
-            c = { fg = colours.rosewater, bg = colours.background },
-            x = { fg = colours.rosewater, bg = colours.background },
-            y = { fg = colours.lavender, bg = colours.background },
-            z = { fg = colours.overlay1, bg = colours.background },
+            a = { fg = colours.blue, bg = colours.base },
+            b = { fg = colours.sapphire, bg = colours.base },
+            c = { fg = colours.rosewater, bg = colours.base },
+            x = { fg = colours.rosewater, bg = colours.base },
+            y = { fg = colours.lavender, bg = colours.base },
+            z = { fg = colours.overlay1, bg = colours.base },
           },
           insert = {
-            a = { fg = colours.green, bg = colours.background },
-            z = { fg = colours.overlay1, bg = colours.background },
+            a = { fg = colours.green, bg = colours.base },
+            z = { fg = colours.overlay1, bg = colours.base },
           },
           visual = {
-            a = { fg = colours.lavender, bg = colours.background },
-            z = { fg = colours.overlay1, bg = colours.background },
+            a = { fg = colours.lavender, bg = colours.base },
+            z = { fg = colours.overlay1, bg = colours.base },
           },
           terminal = {
-            a = { fg = colours.peach, bg = colours.background },
-            z = { fg = colours.overlay1, bg = colours.background },
+            a = { fg = colours.peach, bg = colours.base },
+            z = { fg = colours.overlay1, bg = colours.base },
           },
         },
         component_separators = { left = " ", right = " " },
         disabled_filetypes = {
-          statusline = { "NvimTree" },
+          -- statusline = { "NvimTree" },
           winbar = {},
         },
         ignore_focus = {},
