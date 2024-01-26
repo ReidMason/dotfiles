@@ -14,6 +14,12 @@ end
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 18
+config.window_padding = {
+	left = 8,
+	right = 8,
+	top = 8,
+	bottom = 0,
+}
 -- config.window_background_opacity = 1
 -- config.macos_window_background_blur = 64
 
