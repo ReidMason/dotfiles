@@ -16,6 +16,7 @@ return {
       { "docker-compose-language-service" },
       { "ansible-language-server" },
       { "ansible-lint" },
+      { "csharp-language-server" },
 
       --{ "lua-language-server" },
       --{ "bash-language-server" },
