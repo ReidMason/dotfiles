@@ -1,71 +1,36 @@
-local function border(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
-local formatting_style = {
-  format = function(_, item)
-    local icons = require "core.icons"
-    local icon = icons[item.kind]
-
-    --icon = (" " .. icon .. " ")
-    --item.kind = string.format("%s %s", icon, item.kind)
-    item.kind = icon
-    item.menu = nil
-
-    local max_width = 35
-    if max_width ~= 0 and #item.abbr > max_width then
-      item.abbr = string.sub(item.abbr, 1, max_width - 1) .. "..."
-    end
-
-    return item
-  end,
-}
-
 local function setup()
   local cmp = require "cmp"
+  local lspkind = require "lspkind"
 
   local options = {
-    completion = {
-      completeopt = "menu,menuone",
-    },
-
-    window = {
-      completion = {
-        side_padding = 1,
-        scrollbar = true,
-      },
-      documentation = {
-        border = border "CmpDocBorder",
-      },
-    },
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
       end,
     },
-
-    formatting = formatting_style,
-
-    mapping = {
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+    formatting = {
+      expandable_indicator = true,
+      format = lspkind.cmp_format {
+        mode = "symbol_text",
+        maxwidth = 50,
+        ellipsis_char = "...",
+        symbol_map = {
+          Copilot = "",
+        },
+      },
+    },
+    mapping = cmp.mapping.preset.insert {
       ["<C-p>"] = cmp.mapping.select_prev_item(),
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true,
-      },
+      ["<C-c>"] = cmp.mapping.close(),
+      ["<CR>"] = cmp.mapping.confirm { select = true },
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -93,7 +58,7 @@ local function setup()
         "s",
       }),
     },
-    sources = {
+    sources = cmp.config.sources {
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "buffer" },
@@ -101,8 +66,6 @@ local function setup()
       { name = "path" },
     },
   }
-
-  options.window.completion.border = border "CmpBorder"
 
   return options
 end
@@ -146,6 +109,7 @@ return {
     { "windwp/nvim-autopairs" },
     -- cmp sources plugins
     {
+      "onsails/lspkind.nvim",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp",
