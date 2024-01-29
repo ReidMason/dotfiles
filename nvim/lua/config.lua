@@ -22,8 +22,14 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.mouse = "a"
 
--- disable nvim intro
+-- Disable nvim intro
 vim.opt.shortmess:append "sI"
+
+-- Enable cursor line highlight
+vim.opt.cursorline = true
+
+-- Keep 8 lines above and below cursor
+vim.opt.scrolloff = 8
 
 vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
