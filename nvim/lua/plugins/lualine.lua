@@ -46,7 +46,7 @@ return {
       },
       sections = {
         lualine_a = { { "mode", icon = "" } },
-        lualine_b = { { "branch", icon = "" } },
+        lualine_b = { { "branch", icon = "" } },
         lualine_c = {
           {
             "diagnostics",
@@ -62,15 +62,6 @@ return {
             "filename",
             symbols = { modified = "  ", readonly = "", unnamed = "" },
           },
-          -- {
-          --   function()
-          --     return require("nvim-navic").get_location()
-          --   end,
-          --   cond = function()
-          --     return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-          --   end,
-          --   color = { fg = colours.grey, bg = colours.bg },
-          -- },
         },
         lualine_x = {
           {
