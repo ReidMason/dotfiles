@@ -17,6 +17,21 @@ mappings.general = {
 
     ["<leader>tr"] = { "<cmd> lua require('neotest').run.run() <CR>" },
     ["<leader>tf"] = { "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>" },
+
+    -- Center buffer while navigating
+    ["<C-u>"] = { "<C-u>zz" },
+    ["<C-d>"] = { "<C-d>zz" },
+    ["{"] = { "{zz" },
+    ["}"] = { "}zz" },
+    ["N"] = { "Nzz" },
+    ["n"] = { "nzz" },
+    ["G"] = { "Gzz" },
+    ["gg"] = { "ggzz" },
+    ["<C-i>"] = { "<C-i>zz" },
+    ["<C-o>"] = { "<C-o>zz" },
+    ["%"] = { "%zz" },
+    ["*"] = { "*zz" },
+    ["#"] = { "#zz" },
   },
   x = {
     -- Don't copy the replaced text after pasting in visual mode
