@@ -7,7 +7,13 @@ mappings.general = {
     ["<leader>w"] = { "<cmd> w! <CR>", "Save" },
     ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
     ["<C-a>"] = { "ggVG", "Select all" },
-    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    -- ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>e"] = {
+      function()
+        require("oil").toggle_float()
+      end,
+      "Toggle nvimtree",
+    },
 
     ["<leader>tr"] = { "<cmd> lua require('neotest').run.run() <CR>" },
     ["<leader>tf"] = { "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>" },
