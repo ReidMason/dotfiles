@@ -174,6 +174,12 @@ mappings.comment = {
   },
 }
 
+mappings.lazygit = {
+  n = {
+    ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazygit" },
+  },
+}
+
 -- Add keybinds
 for _, modes in pairs(mappings) do
   for mode, values in pairs(modes) do
