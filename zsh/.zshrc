@@ -21,11 +21,6 @@ alias tree='exa --tree --icons --color automatic --no-user --no-time --git --gro
 # Bat aliases
 alias cat='bat'
 
-# Enable saceship
-[[ $UID == 0 ]] && SPACESHIP_PROMPT_NEED_NEWLINE=true
-[[ $SPACESHIP_PROMPT_ADD_NEWLINE == true && $SPACESHIP_PROMPT_NEED_NEWLINE == true ]] && echo -n "$NEWLINE"
-SPACESHIP_PROMPT_NEED_NEWLINE=true
-
 # Init starship terminal prompt
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
