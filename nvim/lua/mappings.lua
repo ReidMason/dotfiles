@@ -32,6 +32,9 @@ mappings.general = {
     ["%"] = { "%zz" },
     ["*"] = { "*zz" },
     ["#"] = { "#zz" },
+
+    ["L"] = { "$" },
+    ["H"] = { "^" },
   },
   x = {
     -- Don't copy the replaced text after pasting in visual mode
