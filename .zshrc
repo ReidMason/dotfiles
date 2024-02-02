@@ -22,7 +22,6 @@ alias tree='exa --tree --icons --color automatic --no-user --no-time --git --gro
 alias cat='bat'
 
 # Init starship terminal prompt
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 # Auto attach to Tmux session or create a new session called main
