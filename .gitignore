@@ -1,14 +1,1 @@
-yarn
-configstore
-lvim/plugin
-Microsoft\\VisualStudio Services
-tmux/plugins
-Unreal Engine/
-.github
 .DS_Store
-cabal
-jgit
-.zshrc-e
-github-copilot
-
-nvim-old
