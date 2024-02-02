@@ -5,9 +5,7 @@ return {
       ["q"] = "actions.close",
     },
     view_options = {
-      is_hidden_file = function(name, _)
-        return vim.startswith(name, ".") and name ~= ".zshrc"
-      end,
+      show_hidden = true,
     },
   },
   -- Optional dependencies
