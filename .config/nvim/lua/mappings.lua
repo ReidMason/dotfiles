@@ -136,15 +136,6 @@ for i = 1, 9, 1 do
   }
 end
 
-mappings.tmux = {
-  n = {
-    ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },
-    ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Window down" },
-    ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Window up" },
-    ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Window right" },
-  },
-}
-
 mappings.telescope = {
   n = {
     ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "Find files" },
