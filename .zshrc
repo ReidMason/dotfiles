@@ -18,6 +18,9 @@ alias ls='exa -lh --icons --color automatic --no-user --no-time --git --group-di
 alias ll='exa -lah --icons --color automatic --no-user --no-time --git --group-directories-first'
 alias tree='exa --tree --icons --color automatic --no-user --no-time --git --group-directories-first'
 
+alias cp='cp -iv'
+alias ..='cd ..'
+
 # Bat aliases
 alias cat='bat'
 
