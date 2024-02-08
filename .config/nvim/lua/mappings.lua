@@ -109,7 +109,7 @@ mappings.lsp = {
     ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
     -- ["<leader>lr"] = { vim.lsp.buf.rename, "LSP rename" },
 
-    ["<M-k>"] = {
+    ["<leader>ld"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
