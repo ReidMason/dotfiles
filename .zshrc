@@ -32,9 +32,6 @@ if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
   tmux new-session -A -s main
 fi
 
-# Enable z jump around
-. ~/z.sh
-
 bindkey -e command
 
 # bun completions
@@ -45,3 +42,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 [ -f "/Users/reid/.ghcup/env" ] && source "/Users/reid/.ghcup/env" # ghcup-env
+
+# Init zoxide
+eval "$(zoxide init zsh)"
