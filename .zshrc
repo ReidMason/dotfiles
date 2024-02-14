@@ -44,4 +44,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 [ -f "/Users/reid/.ghcup/env" ] && source "/Users/reid/.ghcup/env" # ghcup-env
 
 # Init zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
