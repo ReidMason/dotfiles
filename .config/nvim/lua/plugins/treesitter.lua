@@ -9,6 +9,13 @@ return {
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     config = function()
+      -- Add custom filetypes
+      vim.filetype.add {
+        extension = {
+          templ = "templ",
+        },
+      }
+
       require("nvim-treesitter.configs").setup {
         auto_install = true,
         autotag = {
