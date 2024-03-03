@@ -18,6 +18,7 @@ return {
       { "ansible-lint" },
       { "csharp-language-server" },
       { "vue-language-server" },
+      { "templ" },
 
       --{ "lua-language-server" },
       --{ "bash-language-server" },
