@@ -29,7 +29,7 @@ vim.opt.shortmess:append "sI"
 vim.opt.cursorline = true
 
 -- Keep 8 lines above and below cursor
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 12
 
 vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
