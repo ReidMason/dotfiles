@@ -7,7 +7,6 @@ mappings.general = {
     ["<leader>w"] = { "<cmd> w! <CR>", "Save" },
     ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
     ["<C-a>"] = { "ggVG", "Select all" },
-    -- ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     ["<leader>e"] = {
       function()
         require("oil").toggle_float()
