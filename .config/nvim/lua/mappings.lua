@@ -153,6 +153,7 @@ mappings.telescope = {
     ["<leader>st"] = { "<cmd> Telescope live_grep <CR>", "Search text" },
     ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Open diagnostics" },
     ["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
+    ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Find type definition" },
     ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
     ["gi"] = { "<cmd> Telescope lsp_implementations <CR>", "Find references" },
   },
