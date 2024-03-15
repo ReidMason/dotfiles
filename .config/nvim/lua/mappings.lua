@@ -120,8 +120,20 @@ mappings.lsp = {
 
 mappings.harpoon = {
   n = {
-    ["<leader>a"] = { "<cmd> lua require('harpoon.mark').add_file() <CR>", "Harpoon file" },
-    ["<C-e>"] = { "<cmd> lua require('harpoon.ui').toggle_quick_menu() <CR>", "Toggle Harpon quick menu" },
+    ["<leader>a"] = {
+      function()
+        local harpoon = require "harpoon"
+        harpoon:list():append()
+      end,
+      "Harpoon file",
+    },
+    ["<C-e>"] = {
+      function()
+        local harpoon = require "harpoon"
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end,
+      "Toggle Harpon quick menu",
+    },
   },
 }
 
