@@ -8,8 +8,19 @@ return {
         enabled = true,
         auto_trigger = true,
         keymap = {
-          accept = "<F2>",
+          accept = "<S-Tab>",
         },
+      },
+      filetypes = {
+        yaml = true,
+        markdown = true,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ["."] = false,
       },
     }
   end,

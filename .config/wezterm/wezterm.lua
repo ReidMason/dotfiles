@@ -40,11 +40,11 @@ config.keys = {
 		mods = "ALT",
 		action = wezterm.action.SendKey({ key = "#" }),
 	},
-	{
-		key = "Enter",
-		mods = "SHIFT",
-		action = wezterm.action.SendKey({ key = "F2" }),
-	},
+	-- {
+	-- 	key = "Enter",
+	-- 	mods = "SHIFT",
+	-- 	action = wezterm.action.SendKey({ key = "F2" }),
+	-- },
 	-- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
 	{
 		key = "LeftArrow",
