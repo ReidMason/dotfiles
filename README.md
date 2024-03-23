@@ -9,5 +9,5 @@ Create symlinks with [GNU stow](https://www.gnu.org/software/stow/)
 
 ```bash
 git clone git@github.com:ReidMason/dotfiles.git
-stow .
+stow . -t ~
 ```
