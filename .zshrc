@@ -30,7 +30,7 @@ eval "$(starship init zsh)"
 
 # Auto attach to Tmux session or create a new session called main
 if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
-  tmux new-session -A -s main
+  tmux-new
 fi
 
 bindkey -e command
