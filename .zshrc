@@ -6,6 +6,8 @@ export PATH="${HOME}/Library/Python/3.8/bin:${HOME}/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
 export PATH="${HOME}/scripts:${PATH}"
 
+export TMS_CONFIG_FILE="${HOME}/.config/tms/tms.toml"
+
 # Zsh settings commands
 alias zshsource="source ~/.zshrc"
 

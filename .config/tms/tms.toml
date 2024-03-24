@@ -1,0 +1,5 @@
+default_session = "default"
+
+[[search_dirs]]
+path = "/Users/reid/Documents/repos"
+depth = 2
