@@ -4,6 +4,12 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = function()
     return {
+      pickers = {
+        find_files = {
+          hidden = true,
+          file_ignore_patterns = { ".git/.*" },
+        },
+      },
       defaults = {
         vimgrep_arguments = {
           "rg",
