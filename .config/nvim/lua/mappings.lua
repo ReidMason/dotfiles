@@ -141,7 +141,8 @@ mappings.harpoon = {
 for i = 1, 9, 1 do
   mappings.harpoon.n[string.format("<leader>%s", i)] = {
     function()
-      require("harpoon.ui").nav_file(i)
+      local harpoon = require "harpoon"
+      harpoon:list():select(i)
     end,
     "Goto buffer",
   }
