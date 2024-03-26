@@ -14,8 +14,8 @@ mappings.general = {
       "Toggle nvimtree",
     },
 
-    ["<leader>tr"] = { "<cmd> lua require('neotest').run.run() <CR>" },
-    ["<leader>tf"] = { "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>" },
+    ["<leader>tr"] = { "<cmd> TestNearest <CR>" },
+    ["<leader>tf"] = { "<cmd> TestFile <CR>" },
 
     -- Center buffer while navigating
     ["<C-u>"] = { "<C-u>zz" },
