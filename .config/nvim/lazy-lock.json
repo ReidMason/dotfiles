@@ -37,6 +37,7 @@
   "nvim-ts-autotag": { "branch": "main", "commit": "531f48334c422222aebc888fd36e7d109cb354cd" },
   "nvim-web-devicons": { "branch": "master", "commit": "a851380fbea4c1312d11f13d5cdc86a7a19808dd" },
   "oil.nvim": { "branch": "master", "commit": "32e18df30f937e02135398c270b72a4d24b40120" },
+  "omnisharp-extended-lsp.nvim": { "branch": "main", "commit": "6e0aa6465f8fa8ac6c833f6ac4713adfee0202a0" },
   "plenary.nvim": { "branch": "master", "commit": "f7adfc4b3f4f91aab6caebf42b3682945fbc35be" },
   "rust-tools.nvim": { "branch": "master", "commit": "676187908a1ce35ffcd727c654ed68d851299d3e" },
   "telescope.nvim": { "branch": "master", "commit": "67c598fdd4fca113224281c85721c4d8a6df055e" },

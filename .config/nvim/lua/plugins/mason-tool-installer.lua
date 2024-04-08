@@ -16,7 +16,7 @@ return {
       { "docker-compose-language-service" },
       { "ansible-language-server" },
       { "ansible-lint" },
-      { "csharp-language-server" },
+      { "omnisharp" },
       { "vue-language-server" },
       { "templ" },
 
