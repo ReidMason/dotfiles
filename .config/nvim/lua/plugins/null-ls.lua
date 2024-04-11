@@ -17,6 +17,7 @@ return {
       lint.shellcheck,
       formatting.rustfmt, -- Rust
       formatting.fourmolu, -- Haskell
+      null_ls.builtins.formatting.csharpier, -- C#
     }
 
     -- Autoformatting on save
