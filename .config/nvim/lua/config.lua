@@ -44,3 +44,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
   desc = "Disable New Line Comment",
 })
+
+-- Generally read .keymap files as C ones
+vim.cmd [[autocmd BufNewFile,BufRead *.keymap setfiletype c]]
