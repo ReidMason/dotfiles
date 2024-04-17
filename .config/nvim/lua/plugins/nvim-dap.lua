@@ -22,7 +22,7 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap" },
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     keys = { mappings.dapui.n.keys },
     config = function()
       vim.api.nvim_create_user_command("DapUiClose", function()
