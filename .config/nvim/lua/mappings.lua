@@ -118,6 +118,15 @@ mappings.lsp = {
   },
 }
 
+mappings.tmuxNavigator = {
+  n = {
+    ["<M-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Tmux navigate left" },
+    ["<M-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Tmux navigate down" },
+    ["<M-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Tmux navigate up" },
+    ["<M-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Tmux navigate right" },
+  },
+}
+
 mappings.harpoon = {
   n = {
     ["<leader>a"] = {

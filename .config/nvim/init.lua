@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
+vim.g.tmux_navigator_no_mappings = 1
 
 require("lazy").setup({ { import = "plugins" } }, {
   defaults = {
