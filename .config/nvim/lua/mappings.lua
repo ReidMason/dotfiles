@@ -143,19 +143,36 @@ mappings.harpoon = {
       end,
       "Toggle Harpon quick menu",
     },
+    ["<C-j>"] = {
+      function()
+        local harpoon = require "harpoon"
+        harpoon:list():select(1)
+      end,
+      "Harpoon 1",
+    },
+    ["<C-k>"] = {
+      function()
+        local harpoon = require "harpoon"
+        harpoon:list():select(2)
+      end,
+      "Harpoon 2",
+    },
+    ["<C-l>"] = {
+      function()
+        local harpoon = require "harpoon"
+        harpoon:list():select(3)
+      end,
+      "Harpoon 3",
+    },
+    ["<C-;>"] = {
+      function()
+        local harpoon = require "harpoon"
+        harpoon:list():select(4)
+      end,
+      "Harpoon 4",
+    },
   },
 }
-
--- Switch between buffers
-for i = 1, 9, 1 do
-  mappings.harpoon.n[string.format("<leader>%s", i)] = {
-    function()
-      local harpoon = require "harpoon"
-      harpoon:list():select(i)
-    end,
-    "Goto buffer",
-  }
-end
 
 mappings.telescope = {
   n = {
@@ -197,7 +214,7 @@ mappings.lazygit = {
 for _, modes in pairs(mappings) do
   for mode, values in pairs(modes) do
     for keybind, mapping_info in pairs(values) do
-      local opts = { desc = mapping_info[2] }
+      local opts = { desc = mapping_info[2], noremap = true, silent = true }
       vim.keymap.set(mode, keybind, mapping_info[1], opts)
     end
   end
