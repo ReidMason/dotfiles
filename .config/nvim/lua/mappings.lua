@@ -42,27 +42,6 @@ mappings.general = {
   },
 }
 
-mappings.copilot = {
-  i = {
-    ["<C-l>"] = {
-      function()
-        require("copilot.suggestion").next()
-      end,
-      "Copilot trigger",
-      {},
-    },
-  },
-  n = {
-    ["<C-l>"] = {
-      function()
-        require("copilot.suggestion").next()
-      end,
-      "Copilot trigger",
-      {},
-    },
-  },
-}
-
 mappings.dap = {
   n = {
     ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line" },
