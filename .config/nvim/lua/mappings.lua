@@ -143,28 +143,28 @@ mappings.harpoon = {
       end,
       "Toggle Harpon quick menu",
     },
-    ["<C-j>"] = {
+    ["<C-h>"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(1)
       end,
       "Harpoon 1",
     },
-    ["<C-k>"] = {
+    ["<C-j>"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(2)
       end,
       "Harpoon 2",
     },
-    ["<C-l>"] = {
+    ["<C-k>"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(3)
       end,
       "Harpoon 3",
     },
-    ["<C-;>"] = {
+    ["<C-l>"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(4)
