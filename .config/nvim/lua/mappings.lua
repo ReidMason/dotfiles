@@ -78,15 +78,19 @@ mappings.vim = {
 
 mappings.rename = {
   n = {
-    ["<leader>lr"] = { ":IncRename ", "LSP rename" },
+    ["<leader>lr"] = {
+      function()
+        return ":IncRename " .. vim.fn.expand "<cword>"
+      end,
+      "LSP rename",
+      { expr = true },
+    },
   },
 }
 
 mappings.lsp = {
   n = {
     ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
-    -- ["<leader>lr"] = { vim.lsp.buf.rename, "LSP rename" },
-
     ["<leader>ld"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
@@ -193,7 +197,8 @@ mappings.lazygit = {
 for _, modes in pairs(mappings) do
   for mode, values in pairs(modes) do
     for keybind, mapping_info in pairs(values) do
-      local opts = { desc = mapping_info[2], noremap = true, silent = true }
+      local defaultOpts = { desc = mapping_info[2], noremap = true, silent = true }
+      local opts = vim.tbl_extend("keep", defaultOpts, mapping_info[3] or {})
       vim.keymap.set(mode, keybind, mapping_info[1], opts)
     end
   end
