@@ -27,10 +27,7 @@ alias ..='cd ..'
 # Bat aliases
 alias cat='bat'
 
-# Init starship terminal prompt
-eval "$(starship init zsh)"
-
-# Auto attach to Tmux session or create a new session called main
+# Auto attach to Tmux session or create a new session called default
 if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
   tmux-new
 fi
