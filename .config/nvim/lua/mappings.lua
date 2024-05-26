@@ -34,6 +34,19 @@ mappings.general = {
 
     ["L"] = { "$" },
     ["H"] = { "^" },
+
+    ["<leader>/"] = {
+      "gcc",
+      "Toggle comment",
+      { remap = true },
+    },
+  },
+  v = {
+    ["<leader>/"] = {
+      "gc",
+      "Toggle comment",
+      { remap = true },
+    },
   },
   x = {
     -- Don't copy the replaced text after pasting in visual mode
@@ -166,24 +179,6 @@ mappings.telescope = {
     ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Find type definition" },
     ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
     ["gi"] = { "<cmd> Telescope lsp_implementations <CR>", "Find references" },
-  },
-}
-
-mappings.comment = {
-  n = {
-    ["<leader>/"] = {
-      function()
-        require("Comment.api").toggle.linewise.current()
-      end,
-      "Toggle comment",
-    },
-  },
-
-  v = {
-    ["<leader>/"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      "Toggle comment",
-    },
   },
 }
 
