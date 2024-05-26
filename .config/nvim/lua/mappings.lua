@@ -110,7 +110,6 @@ mappings.lsp = {
       end,
       "Floating diagnostic",
     },
-    ["K"] = { vim.lsp.buf.hover, "Lsp info" },
   },
 }
 
