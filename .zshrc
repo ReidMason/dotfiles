@@ -20,9 +20,9 @@ alias lvim='/Users/reid/.local/bin/lvim'
 alias python='python3'
 
 # Exa aliases
-alias ls='exa -lh --icons --color automatic --no-user --no-time --git --group-directories-first'
-alias ll='exa -lah --icons --color automatic --no-user --no-time --git --group-directories-first'
-alias tree='exa --tree --icons --color automatic --no-user --no-time --git --group-directories-first'
+alias ls='exa -lh --icons --color automatic --no-user --group-directories-first'
+alias ll='exa -lah --icons --color automatic --no-user --no-time --group-directories-first'
+alias tree='exa --tree --icons --color automatic --no-user --no-time --group-directories-first'
 
 alias cp='cp -iv'
 alias ..='cd ..'
