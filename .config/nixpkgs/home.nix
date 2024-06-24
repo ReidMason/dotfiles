@@ -77,12 +77,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.bash = {
+  programs.zsh = {
     enable = true;
     shellAliases = {
       rebuild-system = "sudo nixos-rebuild switch --flake ~/dotfiles/.config/nixpkgs";
       rebuild-home = "home-manager switch --flake ~/dotfiles/.config/nixpkgs";
-      cp = "cp -iv"
+      cp = "cp -iv";
     };
   };
 

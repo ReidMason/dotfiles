@@ -53,6 +53,8 @@
 
   nix.settings.experimental-features = [ "nix-command"  "flakes" ];
 
+  users.defaultUserShell = pkgs.zsh;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.reid = {
     isNormalUser = true;
@@ -76,6 +78,7 @@
     home-manager
     lazygit
     zoxide
+    zsh
 
     neovim
     ripgrep
@@ -88,6 +91,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.zsh.enable = true;
 
   # List services that you want to enable:
 
