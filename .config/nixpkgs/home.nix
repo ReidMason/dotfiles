@@ -82,6 +82,7 @@
     shellAliases = {
       rebuild-system = "sudo nixos-rebuild switch --flake ~/dotfiles/.config/nixpkgs";
       rebuild-home = "home-manager switch --flake ~/dotfiles/.config/nixpkgs";
+      cp = "cp -iv"
     };
   };
 
