@@ -77,7 +77,6 @@
     stow
     home-manager
     lazygit
-    zoxide
     zsh
 
     neovim

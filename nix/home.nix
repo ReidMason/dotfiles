@@ -16,6 +16,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.zoxide
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -77,8 +78,11 @@
       rebuild-system = "sudo nixos-rebuild switch --flake ~/dotfiles/nix";
       rebuild-home = "home-manager switch --flake ~/dotfiles/nix";
       cp = "cp -iv";
+      cd = "z";
     };
   };
+
+  programs.zoxide.enable = true;
 
   programs.git = {
     enable = true;
