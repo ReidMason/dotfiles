@@ -66,7 +66,7 @@
 
   programs.bash = {
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch -I nixos-config=~/.config/nixpkgs/configuration.nix";
+      rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/.config/nixpkgs";
     };
   };
 
@@ -80,6 +80,7 @@
     git
     stow
     home-manager
+    lazygit
   #  wget
   ];
 
