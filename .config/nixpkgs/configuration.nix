@@ -75,6 +75,7 @@
     stow
     home-manager
     lazygit
+    zoxide
 
     neovim
     ripgrep
