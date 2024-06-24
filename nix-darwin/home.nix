@@ -58,7 +58,7 @@
       };
       git_status = {
         format = "([$ahead_behind]($style))";
-        ahead = "[⇡{count}](green)";
+        ahead = "[⇡$count](green)";
         diverged = "[⇡$ahead_count(green)][⇣$behind_count(red)]";
         behind = "[⇣$count(red)]";
       };
