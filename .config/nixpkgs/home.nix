@@ -68,11 +68,19 @@
   #  /etc/profiles/per-user/reid/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      rebuild-system = "sudo nixos-rebuild switch --flake ~/dotfiles/.config/nixpkgs";
+      rebuild-home = "home-manager switch --flake ~/dotfiles/.config/nixpkgs";
+    };
+  };
 
   programs.git = {
     enable = true;

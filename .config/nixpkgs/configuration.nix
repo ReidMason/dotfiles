@@ -64,12 +64,6 @@
     ];
   };
 
-  programs.bash = {
-    shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles/.config/nixpkgs";
-    };
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
