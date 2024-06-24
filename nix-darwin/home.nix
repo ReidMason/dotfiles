@@ -47,10 +47,11 @@
       # General aliases
       cp = "cp -iv";
       cd = "z";
+      ".." = "cd ..";
     };
   };
 
-  # programs.zoxide.enable = true;
+  programs.zoxide.enable = true;
 
   programs.starship = {
     enable = true;
