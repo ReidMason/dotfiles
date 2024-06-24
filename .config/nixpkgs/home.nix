@@ -69,6 +69,9 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    # Without this tmux will crash on a machine sshed into this machine
+    # might be fixed for tmux versions after 3.4
+    TMUX = "meow";
   };
 
   # Let Home Manager install and manage itself.
