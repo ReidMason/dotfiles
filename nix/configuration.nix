@@ -78,9 +78,9 @@
     home-manager
     lazygit
     zsh
-
     neovim
     ripgrep
+    libgccjit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
