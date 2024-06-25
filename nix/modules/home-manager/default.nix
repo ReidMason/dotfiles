@@ -5,6 +5,7 @@
     ./programs/zsh.nix
     ./programs/neovim.nix
     ./programs/zoxide.nix
+    ./programs/tmux.nix
     ./programs/wezterm.nix
   ];
 
@@ -13,5 +14,6 @@
   zsh.enable = lib.mkDefault true;
   neovim.enable = lib.mkDefault true;
   zoxide.enable = lib.mkDefault true;
+  tmux.enable = lib.mkDefault true;
   wezterm.enable = lib.mkDefault true;
 }
