@@ -10,7 +10,8 @@
     ./programs/tmux-sessionizer.nix
     ./programs/bat.nix
     ./programs/utils.nix
-    ./programs/golang.nix
+
+    ./programming/golang.nix
   ];
 
   neofetch.enable = lib.mkDefault true;
@@ -23,5 +24,6 @@
   tmux-sessionizer.enable = lib.mkDefault true;
   bat.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
+
   golang.enable = lib.mkDefault true;
 }
