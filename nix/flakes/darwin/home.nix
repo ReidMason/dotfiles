@@ -13,8 +13,6 @@
     pkgs.wezterm
   ];
 
-  programs.zoxide.enable = true;
-
   programs.git = {
     enable = true;
     userName = "Reid Mason";

@@ -21,7 +21,6 @@
 
         # General aliases
         cp = "cp -iv";
-        cd = "z";
         ".." = "cd ..";
       };
     };
