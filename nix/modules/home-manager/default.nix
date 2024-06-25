@@ -7,6 +7,7 @@
     ./programs/zoxide.nix
     ./programs/tmux.nix
     ./programs/wezterm.nix
+    ./programs/tmux-sessionizer.nix
   ];
 
   neofetch.enable = lib.mkDefault true;
@@ -16,4 +17,5 @@
   zoxide.enable = lib.mkDefault true;
   tmux.enable = lib.mkDefault true;
   wezterm.enable = lib.mkDefault true;
+  tmux-sessionizer.enable =lib.mkDefault true;
 }

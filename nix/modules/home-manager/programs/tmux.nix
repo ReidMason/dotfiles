@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }: {
   options = {
-tmux.enable = lib.mkEnableOption "Enable tmux";
+    tmux.enable = lib.mkEnableOption "Enable tmux";
   };
 
   config = lib.mkIf config.tmux.enable {
@@ -20,6 +20,8 @@ tmux.enable = lib.mkEnableOption "Enable tmux";
         set-option -sa terminal-overrides ",xterm*:Tc"
 
         set-option -g status-interval 5
+        # Don't detach when destroying a session
+        set-option -g detach-on-destroy off 
 
         # Split panes
         bind h split-window -v -c "#{pane_current_path}"
