@@ -22,7 +22,10 @@
 
   neofetch.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
+
   zsh.enable = lib.mkDefault true;
+  zsh.autoAttachToTmux = lib.mkDefault false;
+  
   neovim.enable = lib.mkDefault true;
   zoxide.enable = lib.mkDefault true;
   tmux.enable = lib.mkDefault true;

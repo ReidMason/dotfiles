@@ -8,6 +8,8 @@
 
   home.packages = [];
 
+  zsh.autoAttachToTmux = true;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

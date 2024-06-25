@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }: {
   options = {
     zsh.enable = lib.mkEnableOption "Enable zsh";
+    zsh.autoAttachToTmux = lib.mkEnableOption "Auto attach to Tmux session";
   };
 
   config = lib.mkIf config.zsh.enable {
@@ -15,16 +16,12 @@
         ignoreDups = true;
       };
       shellAliases = {
-        # Nix commands
-        rebuild-system = "sudo nixos-rebuild switch --flake ~/Documents/repos/dotfiles/nix-darwin/";
-        rebuild-home = "home-manager switch --flake ~/Documents/repos/dotfiles/nix-darwin/";
-
         # General aliases
         cp = "cp -iv";
         ".." = "cd ..";
       };
 
-      initExtra = ''
+      initExtra = lib.mkIf config.zsh.autoAttachToTmux ''
         # Auto attach to Tmux session or create a new session called default
         if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
           tmux new -As default
