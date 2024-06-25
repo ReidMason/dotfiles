@@ -50,7 +50,6 @@
         set -g renumber-windows on    # Renumber all windows when any window is closed
         set -g set-clipboard on       # Use system clipboard
         set -g status-interval 2      # Update status every 2 seconds
-        set -g status-right ""      # Empty right statusline
         set -g status-position top    # macOS / darwin style
 
         # Switch panes
