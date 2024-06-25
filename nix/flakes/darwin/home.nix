@@ -13,12 +13,6 @@
     pkgs.wezterm
   ];
 
-  home.file = {
-    ".config/wezterm" = {
-      source = ../../../.config/wezterm;
-    };
-  };
-
   programs.zoxide.enable = true;
 
   programs.git = {
