@@ -14,6 +14,8 @@
 
     ./programming/golang.nix
     ./programming/node.nix
+    ./programming/git.nix
+    ./programming/lazygit.nix
 
     ./server-tools/ansible.nix
   ];
@@ -32,6 +34,8 @@
 
   golang.enable = lib.mkDefault true;
   node.enable = lib.mkDefault true;
+  git.enable = lib.mkDefault true;
+  lazygit.enable = lib.mkDefault true;
 
   ansible.enable = lib.mkDefault true;
 }
