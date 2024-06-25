@@ -16,6 +16,9 @@
       baseIndex = 1;
       mouse = true;
       extraConfig = ''
+        # Reload tmux config
+        bind r source-file ~/.config/tmux/tmux.conf
+
         # Enable full rgb colours
         set-option -sa terminal-overrides ",xterm*:Tc"
 
@@ -49,6 +52,25 @@
         set -g status-interval 2      # Update status every 2 seconds
         set -g status-right ""      # Empty right statusline
         set -g status-position top    # macOS / darwin style
+
+        # Switch panes
+        is_vim="ps -o state= -o comm= -t \'#{pane_tty}\' | grep -iqE \'^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$\'"
+
+        bind-key -n "M-h" if-shell "$is_vim" "send-keys M-h" { if -F "#{pane_at_left}" "" "select-pane -L" }
+        bind-key -n "M-j" if-shell "$is_vim" "send-keys M-j" { if -F "#{pane_at_bottom}" "" "select-pane -D" }
+        bind-key -n "M-k" if-shell "$is_vim" "send-keys M-k" { if -F "#{pane_at_top}" "" "select-pane -U" }
+        bind-key -n "M-l" if-shell "$is_vim" "send-keys M-l" { if -F "#{pane_at_right}" "" "select-pane -R" }
+
+        bind-key -T copy-mode-vi "M-h" if -F "#{pane_at_left}" "" "select-pane -L"
+        bind-key -T copy-mode-vi "M-j" if -F "#{pane_at_bottom}" "" "select-pane -D"
+        bind-key -T copy-mode-vi "M-k" if -F "#{pane_at_top}" "" "select-pane -U"
+        bind-key -T copy-mode-vi "M-l" if -F "#{pane_at_right}" "" "select-pane -R"
+
+        # Resize panes
+        bind -n M-J resize-pane -D 10
+        bind -n M-K resize-pane -U 10
+        bind -n M-H resize-pane -L 10
+        bind -n M-L resize-pane -R 10
       '';
       plugins = [
       {
