@@ -12,6 +12,7 @@
     ./programs/utils.nix
 
     ./programming/golang.nix
+    ./programming/node.nix
   ];
 
   neofetch.enable = lib.mkDefault true;
@@ -26,4 +27,5 @@
   utils.enable = lib.mkDefault true;
 
   golang.enable = lib.mkDefault true;
+  node.enable = lib.mkDefault true;
 }
