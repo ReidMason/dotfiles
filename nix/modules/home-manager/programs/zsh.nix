@@ -14,7 +14,6 @@
         expireDuplicatesFirst = true;
         ignoreDups = true;
       };
-      historySubstringSearch.enable = true;
       shellAliases = {
         # Nix commands
         rebuild-system = "sudo nixos-rebuild switch --flake ~/Documents/repos/dotfiles/nix-darwin/";
