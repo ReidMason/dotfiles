@@ -6,6 +6,7 @@
   config = lib.mkIf config.neovim.enable {
     home.packages = [
       pkgs.neovim
+      pkgs.ripgrep
     ];
 
     home.file = {
