@@ -10,7 +10,6 @@
     pkgs.eza
     pkgs.git
     pkgs.lazygit
-    pkgs.wezterm
   ];
 
   programs.git = {
