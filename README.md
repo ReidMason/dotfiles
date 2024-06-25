@@ -9,12 +9,20 @@ Most of the configs are managed by home-manager so start by setting up the syste
 
 ```bash
 sudo nixos-rebuild switch --flake PATH_TO_FLAKE
+
+# Examples
+sudo nixos-rebuild switch --flake ./flakes/darwin
+sudo nixos-rebuild switch --flake ./flakes/darwin#user
 ```
 
 Then you can set up the user packages with home-manager.
 
 ```bash
 home-manager switch --flake PATH_TO_FLAKE
+
+# Examples
+home-manager switch --flake ./flakes/darwin
+home-manager switch --flake ./flakes/darwin#user
 ```
 
 ## Editing
