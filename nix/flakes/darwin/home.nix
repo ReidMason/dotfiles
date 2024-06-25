@@ -9,7 +9,6 @@
   home.packages = [
     pkgs.zsh
     pkgs.eza
-    pkgs.neofetch
     pkgs.git
     pkgs.starship
     pkgs.lazygit
