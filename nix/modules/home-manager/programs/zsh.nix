@@ -9,6 +9,7 @@
     ];
     programs.zsh = {
       enable = true;
+      syntaxHighlighting.enable = true;
       shellAliases = {
         # Nix commands
         rebuild-system = "sudo nixos-rebuild switch --flake ~/Documents/repos/dotfiles/nix-darwin/";
