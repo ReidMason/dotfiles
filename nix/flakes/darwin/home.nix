@@ -4,14 +4,7 @@
   home.username = "reid";
   home.homeDirectory = "/Users/reid";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.05";
 
   home.packages = [
     pkgs.zsh
@@ -26,10 +19,10 @@
 
   home.file = {
     ".config/nvim" = {
-      source = ../.config/nvim;
+      source = ../../../.config/nvim;
     };
     ".config/wezterm" = {
-      source = ../.config/wezterm;
+      source = ../../../.config/wezterm;
     };
   };
   home.sessionVariables = {
