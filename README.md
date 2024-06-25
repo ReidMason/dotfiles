@@ -1,6 +1,6 @@
 # Dotfiles
 
-A collection of all my configs.
+A collection of all my configs.\
 Most of these are using the nix package manager.
 
 ## Usage
