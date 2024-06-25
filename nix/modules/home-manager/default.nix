@@ -13,6 +13,8 @@
 
     ./programming/golang.nix
     ./programming/node.nix
+
+    ./server-tools/ansible.nix
   ];
 
   neofetch.enable = lib.mkDefault true;
@@ -28,4 +30,6 @@
 
   golang.enable = lib.mkDefault true;
   node.enable = lib.mkDefault true;
+
+  ansible.enable = lib.mkDefault true;
 }
