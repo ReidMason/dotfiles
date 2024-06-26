@@ -11,9 +11,6 @@
   wezterm.enable = false;
   tmux.enable = false;
   tmux-sessionizer.enable = false;
-  golang.enable = false;
-  node.enable = false;
-  ansible.enable = false;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

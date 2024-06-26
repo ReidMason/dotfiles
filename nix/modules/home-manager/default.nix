@@ -12,13 +12,12 @@
     ./programs/utils.nix
     ./programs/eza.nix
 
-    ./programming/golang.nix
-    ./programming/node.nix
-    ./programming/git.nix
-    ./programming/lazygit.nix
+    ./programming/programming.nix
 
     ./server-tools/ansible.nix
   ];
+
+  programming.enable = lib.mkDefault false;
 
   neofetch.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
@@ -35,10 +34,5 @@
   utils.enable = lib.mkDefault true;
   eza.enable = lib.mkDefault true;
 
-  golang.enable = lib.mkDefault true;
-  node.enable = lib.mkDefault true;
-  git.enable = lib.mkDefault true;
-  lazygit.enable = lib.mkDefault true;
-
-  ansible.enable = lib.mkDefault true;
+  ansible.enable = lib.mkDefault false;
 }
