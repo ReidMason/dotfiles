@@ -13,11 +13,13 @@
     ./programs/eza.nix
 
     ./programming/programming.nix
+    ./desktop-applications/desktop-applications.nix
 
     ./server-tools/ansible.nix
   ];
 
   programming.enable = lib.mkDefault false;
+  desktop-applications.enable = lib.mkDefault false;
 
   neofetch.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;

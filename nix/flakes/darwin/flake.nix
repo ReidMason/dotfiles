@@ -18,7 +18,6 @@
     system = "aarch64-darwin";
     pkgs = nixpkgs.legacyPackages.${system};
     configuration = {pkgs, ... }: {
-
         services.nix-daemon.enable = true;
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
