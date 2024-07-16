@@ -13,7 +13,7 @@
   tmux-sessionizer.enable = false;
 
   docker.enable = true;
-  git.enable = true;
+  programming.git.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
