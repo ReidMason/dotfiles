@@ -12,6 +12,8 @@
   tmux.enable = false;
   tmux-sessionizer.enable = false;
 
+  docker.enable = true;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
