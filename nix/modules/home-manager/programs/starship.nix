@@ -12,7 +12,8 @@
       settings = {
         add_newline = false;
         format = pkgs.lib.concatStrings [
-          "$hostfile"
+            "$hostname"
+            "$hostfile"
             "$directory"
             "$git_branch"
             "$git_commit"
@@ -27,6 +28,10 @@
             "$line_break"
             "$character"
         ];
+        hostname = {
+          ssh_only = true;
+          detect_env_vars = ["SSH_CONNECTION"];
+        };
         fill = {
           symbol = " ";
         };
