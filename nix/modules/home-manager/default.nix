@@ -16,7 +16,6 @@
     ./desktop-applications/desktop-applications.nix
 
     ./server-tools/ansible.nix
-    ./server-tools/docker.nix
   ];
 
   programming.enable = lib.mkDefault false;
@@ -38,5 +37,4 @@
   eza.enable = lib.mkDefault true;
 
   ansible.enable = lib.mkDefault false;
-  docker.enable = lib.mkDefault false;
 }
