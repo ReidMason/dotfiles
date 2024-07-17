@@ -9,7 +9,6 @@
     ./terminal-apps/wezterm.nix
     ./terminal-apps/tmux-sessionizer.nix
     ./terminal-apps/terminal-apps.nix
-    ./terminal-apps/utils.nix
 
     ./programming/programming.nix
     ./desktop-applications/desktop-applications.nix
@@ -21,7 +20,6 @@
   zsh.enable = lib.mkDefault true;
   neofetch.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
-  utils.enable = lib.mkDefault true;
 
   programming.enable = lib.mkDefault false;
   desktop-applications.enable = lib.mkDefault false;

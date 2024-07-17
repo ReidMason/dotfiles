@@ -4,16 +4,27 @@
 
     bat.enable = lib.mkEnableOption "Enable bat";
     eza.enable = lib.mkEnableOption "Enable eza";
-
+    htop.enable = lib.mkEnableOption "Enable htop";
+    glow.enable = lib.mkEnableOption "Enable glow";
+    iperf.enable = lib.mkEnableOption "Enable iperf";
+    rsync.enable = lib.mkEnableOption "Enable rsync";
   };
 
   config = {
     terminal-apps.bat.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.eza.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.htop.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.glow.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.iperf.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.rsync.enable = lib.mkDefault config.terminal-apps.enable;
 
     home.packages = lib.concatLists [
       (lib.optional config.terminal-apps.bat.enable pkgs.bat)
       (lib.optional config.terminal-apps.eza.enable pkgs.eza)
+      (lib.optional config.terminal-apps.htop.enable pkgs.htop)
+      (lib.optional config.terminal-apps.glow.enable pkgs.glow)
+      (lib.optional config.terminal-apps.iperf.enable pkgs.iperf)
+      (lib.optional config.terminal-apps.rsync.enable pkgs.rsync)
     ];
 
     home.shellAliases = lib.mkMerge [
