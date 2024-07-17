@@ -1,6 +1,5 @@
 { pkgs, lib, ... }: {
   imports = [
-    ./terminal-apps/neofetch.nix
     ./terminal-apps/starship.nix
     ./terminal-apps/zsh.nix
     ./terminal-apps/neovim.nix
@@ -18,7 +17,6 @@
   ];
 
   zsh.enable = lib.mkDefault true;
-  neofetch.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
 
   programming.enable = lib.mkDefault false;

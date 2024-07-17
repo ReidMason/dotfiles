@@ -8,6 +8,7 @@
     glow.enable = lib.mkEnableOption "Enable glow";
     iperf.enable = lib.mkEnableOption "Enable iperf";
     rsync.enable = lib.mkEnableOption "Enable rsync";
+    neofetch.enable = lib.mkEnableOption "Enable neofetch";
   };
 
   config = {
@@ -17,6 +18,7 @@
     terminal-apps.glow.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.iperf.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.rsync.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.neofetch.enable = lib.mkDefault config.terminal-apps.enable;
 
     home.packages = lib.concatLists [
       (lib.optional config.terminal-apps.bat.enable pkgs.bat)
@@ -25,6 +27,7 @@
       (lib.optional config.terminal-apps.glow.enable pkgs.glow)
       (lib.optional config.terminal-apps.iperf.enable pkgs.iperf)
       (lib.optional config.terminal-apps.rsync.enable pkgs.rsync)
+      (lib.optional config.terminal-apps.neofetch.enable pkgs.neofetch)
     ];
 
     home.shellAliases = lib.mkMerge [
