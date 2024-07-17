@@ -16,5 +16,7 @@
   programs.home-manager.enable = true;
   desktop-applications.enable = true;
 
+  terraform.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 }

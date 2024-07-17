@@ -16,6 +16,7 @@
     ./desktop-applications/desktop-applications.nix
 
     ./server-tools/ansible.nix
+    ./server-tools/terraform.nix
   ];
 
   programming.enable = lib.mkDefault false;
@@ -37,4 +38,5 @@
   eza.enable = lib.mkDefault true;
 
   ansible.enable = lib.mkDefault false;
+  terraform.enable = lib.mkDefault false;
 }
