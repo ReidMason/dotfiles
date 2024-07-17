@@ -10,7 +10,6 @@
     ./programs/tmux-sessionizer.nix
     ./programs/programs.nix
     ./programs/utils.nix
-    ./programs/eza.nix
 
     ./programming/programming.nix
     ./desktop-applications/desktop-applications.nix
@@ -35,7 +34,6 @@
   wezterm.enable = lib.mkDefault true;
   tmux-sessionizer.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
-  eza.enable = lib.mkDefault true;
 
   ansible.enable = lib.mkDefault false;
   terraform.enable = lib.mkDefault false;
