@@ -8,7 +8,7 @@
     ./programs/tmux.nix
     ./programs/wezterm.nix
     ./programs/tmux-sessionizer.nix
-    ./programs/bat.nix
+    ./programs/programs.nix
     ./programs/utils.nix
     ./programs/eza.nix
 
@@ -21,6 +21,7 @@
 
   programming.enable = lib.mkDefault false;
   desktop-applications.enable = lib.mkDefault false;
+  programs.enable = lib.mkDefault false;
 
   neofetch.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
@@ -33,7 +34,6 @@
   tmux.enable = lib.mkDefault true;
   wezterm.enable = lib.mkDefault true;
   tmux-sessionizer.enable = lib.mkDefault true;
-  bat.enable = lib.mkDefault true;
   utils.enable = lib.mkDefault true;
   eza.enable = lib.mkDefault true;
 
