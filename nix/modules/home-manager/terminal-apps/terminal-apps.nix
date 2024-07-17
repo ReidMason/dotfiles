@@ -9,6 +9,7 @@
     iperf.enable = lib.mkEnableOption "Enable iperf";
     rsync.enable = lib.mkEnableOption "Enable rsync";
     neofetch.enable = lib.mkEnableOption "Enable neofetch";
+    zoxide.enable = lib.mkEnableOption "Enable zoxide";
   };
 
   config = {
@@ -19,6 +20,7 @@
     terminal-apps.iperf.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.rsync.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.neofetch.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.zoxide.enable = lib.mkDefault config.terminal-apps.enable;
 
     home.packages = lib.concatLists [
       (lib.optional config.terminal-apps.bat.enable pkgs.bat)
@@ -28,6 +30,7 @@
       (lib.optional config.terminal-apps.iperf.enable pkgs.iperf)
       (lib.optional config.terminal-apps.rsync.enable pkgs.rsync)
       (lib.optional config.terminal-apps.neofetch.enable pkgs.neofetch)
+      (lib.optional config.terminal-apps.zoxide.enable pkgs.zoxide)
     ];
 
     home.shellAliases = lib.mkMerge [
@@ -41,6 +44,12 @@
        ll = "eza -lah --icons --no-user --no-time --group-directories-first";
        tree = "eza --tree --icons --no-user --no-time --group-directories-first";
        })
+
+      (lib.mkIf config.terminal-apps.zoxide.enable {
+       cd = "z";
+       })
     ];
+
+    programs.zoxide.enable = config.terminal-apps.zoxide.enable;
   };
 }

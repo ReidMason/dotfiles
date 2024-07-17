@@ -18,7 +18,6 @@
   terminal-apps.enable = true;
 
   neovim.enable = true;
-  zoxide.enable = true;
   tmux.enable = true;
   wezterm.enable = true;
   tmux-sessionizer.enable = true;
