@@ -9,6 +9,9 @@
   home.packages = [];
 
   programming.git.enable = true;
+  terminal-apps.bat.enable = true;
+  terminal-apps.eza.enable = true;
+  terminal-apps.htop.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
