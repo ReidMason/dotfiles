@@ -5,7 +5,26 @@
 
   config = lib.mkIf config.tmux.enable {
     home.packages = [
-      pkgs.tmux
+      (pkgs.stdenv.mkDerivation rec {
+        pname = "tmux";
+        version = "next-3.5";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "tmux";
+          repo = "tmux";
+          rev = "3c2621b41b9e1466d2b06718a0a8514f5d10ded9"; # Use the exact commit or tag here
+          sha256 = "sha256-IySSTUl7ur49brFk3seUUep1n68hCmbPA0qAfeiPNIg"; # Use the correct sha256 here
+        };
+
+        buildInputs = [ pkgs.autoreconfHook pkgs.pkg-config pkgs.libevent pkgs.ncurses pkgs.yacc pkgs.utf8proc ];
+
+        configureFlags = [ "--enable-utf8proc" ];
+        buildPhase = ''
+          sh autogen.sh
+          ./configure $configureFlags
+          make
+        '';
+      })
     ];
 
     programs.tmux = {

@@ -33,6 +33,22 @@ Each module can be enabled or disabled by setting the `enable` option to true or
 wezterm.enable = false;
 ```
 
+## Updating
+
+For darwin cd into the flakes directory and run the following command.
+
+```bash
+nix flake update
+```
+
+## Clean up old packages
+
+```bash
+nix-collect-garbage -d
+```
+
+You can then update your packages with the usual command.
+
 ### Useful nix utils
 
 - [Home manager options](https://nix-community.github.io/home-manager/options.xhtml) - A list of all the options available in home manager for programs
