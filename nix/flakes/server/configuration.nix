@@ -92,6 +92,13 @@
 
   programs.zsh.enable = true;
 
+  # Mount nfs shares
+  fileSystems."/mnt/fern/Downloads" = {
+    device = "fern.lan:/mnt/user/Downloads";
+    fsType = "nfs";
+    options = [ "ro" ];
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
