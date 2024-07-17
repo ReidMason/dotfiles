@@ -2,17 +2,17 @@
   options.programs = {
     enable = lib.mkEnableOption "Enable all programs";
 
-    bat.enable = lib.mkEnableOption "Enable bat";
+    batcat.enable = lib.mkEnableOption "Enable bat";
   };
 
   config = {
-    programs.bat.enable = lib.mkDefault config.programs.enable;
+    programs.batcat.enable = lib.mkDefault config.programs.enable;
 
     home.packages = lib.concatLists [
-      (lib.optional config.programs.bat.enable pkgs.bat)
+      (lib.optional config.programs.batcat.enable pkgs.bat)
     ];
 
-    home.shellAliases = lib.mkIf config.programs.bat.enable {
+    home.shellAliases = lib.mkIf config.programs.batcat.enable {
       cat = "bat";
     };
   };
