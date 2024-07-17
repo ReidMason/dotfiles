@@ -1,15 +1,15 @@
 { pkgs, lib, ... }: {
   imports = [
-    ./programs/neofetch.nix
-    ./programs/starship.nix
-    ./programs/zsh.nix
-    ./programs/neovim.nix
-    ./programs/zoxide.nix
-    ./programs/tmux.nix
-    ./programs/wezterm.nix
-    ./programs/tmux-sessionizer.nix
-    ./programs/programs.nix
-    ./programs/utils.nix
+    ./terminal-apps/neofetch.nix
+    ./terminal-apps/starship.nix
+    ./terminal-apps/zsh.nix
+    ./terminal-apps/neovim.nix
+    ./terminal-apps/zoxide.nix
+    ./terminal-apps/tmux.nix
+    ./terminal-apps/wezterm.nix
+    ./terminal-apps/tmux-sessionizer.nix
+    ./terminal-apps/terminal-apps.nix
+    ./terminal-apps/utils.nix
 
     ./programming/programming.nix
     ./desktop-applications/desktop-applications.nix
@@ -18,22 +18,22 @@
     ./server-tools/terraform.nix
   ];
 
-  programming.enable = lib.mkDefault false;
-  desktop-applications.enable = lib.mkDefault false;
-  programs.enable = lib.mkDefault false;
-
+  zsh.enable = lib.mkDefault true;
   neofetch.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
+  utils.enable = lib.mkDefault true;
 
-  zsh.enable = lib.mkDefault true;
+  programming.enable = lib.mkDefault false;
+  desktop-applications.enable = lib.mkDefault false;
+  terminal-apps.enable = lib.mkDefault false;
+
   zsh.autoAttachToTmux = lib.mkDefault false;
   
-  neovim.enable = lib.mkDefault true;
-  zoxide.enable = lib.mkDefault true;
-  tmux.enable = lib.mkDefault true;
-  wezterm.enable = lib.mkDefault true;
-  tmux-sessionizer.enable = lib.mkDefault true;
-  utils.enable = lib.mkDefault true;
+  neovim.enable = lib.mkDefault false;
+  zoxide.enable = lib.mkDefault false;
+  tmux.enable = lib.mkDefault false;
+  wezterm.enable = lib.mkDefault false;
+  tmux-sessionizer.enable = lib.mkDefault false;
 
   ansible.enable = lib.mkDefault false;
   terraform.enable = lib.mkDefault false;
