@@ -10,6 +10,8 @@
     rsync.enable = lib.mkEnableOption "Enable rsync";
     neofetch.enable = lib.mkEnableOption "Enable neofetch";
     zoxide.enable = lib.mkEnableOption "Enable zoxide";
+    talosctl.enable = lib.mkEnableOption "Enable talosctl";
+    kubectl.enable = lib.mkEnableOption "Enable kubectl";
   };
 
   config = {
@@ -21,6 +23,8 @@
     terminal-apps.rsync.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.neofetch.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.zoxide.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.talosctl.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.kubectl.enable = lib.mkDefault config.terminal-apps.enable;
 
     home.packages = lib.concatLists [
       (lib.optional config.terminal-apps.bat.enable pkgs.bat)
@@ -31,6 +35,8 @@
       (lib.optional config.terminal-apps.rsync.enable pkgs.rsync)
       (lib.optional config.terminal-apps.neofetch.enable pkgs.neofetch)
       (lib.optional config.terminal-apps.zoxide.enable pkgs.zoxide)
+      (lib.optional config.terminal-apps.talosctl.enable pkgs.talosctl)
+      (lib.optional config.terminal-apps.kubectl.enable pkgs.kubectl)
     ];
 
     home.shellAliases = lib.mkMerge [
