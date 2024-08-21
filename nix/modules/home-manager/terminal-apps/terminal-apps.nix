@@ -54,6 +54,10 @@
       (lib.mkIf config.terminal-apps.zoxide.enable {
        cd = "z";
        })
+
+      (lib.mkIf config.terminal-apps.kubectl.enable {
+        k = "kubectl";
+       })
     ];
 
     programs.zoxide.enable = config.terminal-apps.zoxide.enable;
