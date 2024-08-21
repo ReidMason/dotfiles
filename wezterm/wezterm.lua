@@ -40,6 +40,19 @@ config.keys = {
 		mods = "ALT",
 		action = wezterm.action.SendKey({ key = "#" }),
 	},
+	{
+		key = "t",
+		mods = "CMD",
+		action = wezterm.action.Multiple({
+			wezterm.action.SendKey({ mods = "CTRL", key = " " }),
+			wezterm.action.SendKey({ key = "c" }),
+		}),
+	},
+	{
+		key = "w",
+		mods = "CMD",
+		action = wezterm.action.SendString("tmux kill-window\n"),
+	},
 	-- {
 	-- 	key = "Enter",
 	-- 	mods = "SHIFT",
