@@ -15,6 +15,12 @@
     ./server-tools/terraform.nix
   ];
 
+  # Add nerd fonts to the system 
+  fonts.fontconfig.enable = true;
+  home.packages = [
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+
   zsh.enable = lib.mkDefault true;
   starship.enable = lib.mkDefault true;
 
