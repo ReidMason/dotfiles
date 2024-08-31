@@ -50,7 +50,7 @@ config.keys = {
 	},
 	{
 		key = "w",
-		mods = "CMD",
+		mods = "CMD|SHIFT",
 		action = wezterm.action.SendString("tmux kill-window\n"),
 	},
 	-- {
