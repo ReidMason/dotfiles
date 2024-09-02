@@ -68,9 +68,11 @@
     description = "Reid Mason";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDgPliRySp1AulAYaB3/Nz1fZEmc8WNDTu1cxuqa/e6yYk1e/LYI7i7UHwzn4JxgZhA26X8GMhXBFw7Nrv7vgcyeDoTl0nZogqbzWiWpe0ETJkGaF19jiBjDWQbIXFNxNmy1ZCeIzZ+QSn5G2Z4mTF7ePbWqcmA9NDFzX8nRGa9mRBnjbg2XIobClN05XLQa7YuaaLL77NmTYLMqKhP5VGrUTYCyNGAZhNKaa6GPVX+I9C8X9uNUyvMG2YVrc3QJzLZ7u85xdKXnyxizJxEIrABMYXLhmBHGoGAHQTt2fk6VscS0ZQedCHweT34hhuD4+sY5GYZES4bXICzpFfAWqSXn0uXoOSRgRKDe7ZfWYsMDxxfmCFCVwPmNnwOJRYn3bDAPcMiFrTTMTfefyOh2MpkWFVGWeHXxA5gkq0QmcySLHNG9ucZedKOLETtccHOb7i8UIJ6+uk0ZfWGtpyW/iOl54AtB457A9AJ8OjVB2O9w9pvQE1+AuHenZFOKvvJ6Ok= reid@Reids-MacBook-Pro.local"
-    ];
+    openssh.authorizedKeys.keys = let
+      authorizedKeys = pkgs.fetchurl {
+        url = "https://github.com/reidmason.keys";
+      };
+    in pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
   };
 
   # Allow unfree packages
