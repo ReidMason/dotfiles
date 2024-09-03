@@ -39,6 +39,20 @@
           ../../modules/home-manager
         ];
       };
+      
+      linux = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };
+        modules = [ 
+          ../linux/home.nix
+          ../../modules/home-manager
+        ];
+      };
+
     };
   };
 }
