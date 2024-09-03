@@ -15,6 +15,9 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
+    home-manager-config = {
+      allowUnfree = true;
+    };
   in
   {
     darwinConfigurations = {
@@ -30,9 +33,7 @@
       macos = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
-          config = {
-            allowUnfree = true;
-          };
+          config = home-manager-config;
         };
         modules = [ 
           ./home.nix
@@ -43,9 +44,7 @@
       linux = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-          };
+          config = home-manager-config;
         };
         modules = [ 
           ../linux/home.nix
