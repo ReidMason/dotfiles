@@ -44,8 +44,6 @@
     ];
 
     home.shellAliases = lib.mkMerge [
-      home.shellAliases
-
       (lib.mkIf config.terminal-apps.bat.enable {
        cat = "bat";
        })
@@ -69,17 +67,15 @@
     programs.zoxide.enable = config.terminal-apps.zoxide.enable;
 
     home.sessionVariables = lib.mkMerge [
-      home.sessionVariables
       (lib.mkIf config.terminal-apps.neovim.enable {
         EDITOR = "nvim";
       })
     ]; 
 
-    home.file = lib.mkMerge [
-      home.file
-        (lib.mkIf config.terminal-apps.neovim.enable ".config/nvim" = {
-         source = ../../../../nvim;
-         })
-    ];
+    home.file = lib.mkIf config.terminal-apps.neovim.enable {
+      ".config/nvim" = {
+        source = ../../../../nvim;
+      };
+    };
   };
 }
