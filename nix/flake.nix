@@ -29,6 +29,15 @@
       };
     };
 
+    nixosConfigurations = {
+      linux = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/linux/configuration.nix
+        ];
+      };
+    }
+
     homeConfigurations = {
       macos = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
@@ -36,8 +45,8 @@
           config = home-manager-config;
         };
         modules = [ 
-          ./home.nix
-          ../../modules/home-manager
+          ./hosts/macbook/home.nix
+          ./modules/home-manager
         ];
       };
       
@@ -47,8 +56,8 @@
           config = home-manager-config;
         };
         modules = [ 
-          ../linux/home.nix
-          ../../modules/home-manager
+          ./hosts/linux/home.nix
+          ./modules/home-manager
         ];
       };
     };

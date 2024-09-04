@@ -8,7 +8,7 @@
 
   home.packages = [];
 
-  wezterm.enable = false;
+  wezterm.enable = true;
   tmux.enable = false;
   tmux-sessionizer.enable = false;
 
