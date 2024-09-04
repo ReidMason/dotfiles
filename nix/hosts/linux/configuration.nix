@@ -67,6 +67,7 @@
     openssh.authorizedKeys.keys = let
       authorizedKeys = pkgs.fetchurl {
         url = "https://github.com/reidmason.keys";
+        hash = "sha256-HRI/UIplTM/xcYZY4NWJ22ETlcAHIodWKeAiLXXQC1M=";
       };
     in pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
   };
