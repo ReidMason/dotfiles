@@ -2,7 +2,6 @@
   imports = [
     ./terminal-apps/starship.nix
     ./terminal-apps/zsh.nix
-    ./terminal-apps/neovim.nix
     ./terminal-apps/tmux.nix
     ./terminal-apps/wezterm.nix
     ./terminal-apps/tmux-sessionizer.nix
@@ -30,7 +29,6 @@
 
   zsh.autoAttachToTmux = lib.mkDefault false;
   
-  neovim.enable = lib.mkDefault false;
   tmux.enable = lib.mkDefault false;
   wezterm.enable = lib.mkDefault false;
   tmux-sessionizer.enable = lib.mkDefault false;
