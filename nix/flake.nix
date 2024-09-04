@@ -36,7 +36,7 @@
           ./hosts/linux/configuration.nix
         ];
       };
-    }
+    };
 
     homeConfigurations = {
       macos = home-manager.lib.homeManagerConfiguration {
