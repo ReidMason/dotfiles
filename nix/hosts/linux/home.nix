@@ -13,7 +13,7 @@
   tmux-sessionizer.enable = false;
 
   programming.git.enable = true;
-  terminal-applications.neovim.enable = true;
+  terminal-apps.neovim.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
