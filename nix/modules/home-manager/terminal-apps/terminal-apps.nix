@@ -12,6 +12,7 @@
     zoxide.enable = lib.mkEnableOption "Enable zoxide";
     talosctl.enable = lib.mkEnableOption "Enable talosctl";
     kubectl.enable = lib.mkEnableOption "Enable kubectl";
+    neovim.enable = lib.mkEnableOption "Enable neovim";
   };
 
   config = {
@@ -25,6 +26,7 @@
     terminal-apps.zoxide.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.talosctl.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.kubectl.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.neovim.enable = lib.mkDefault config.terminal-apps.enable;
 
     home.packages = lib.concatLists [
       (lib.optional config.terminal-apps.bat.enable pkgs.bat)
@@ -37,9 +39,13 @@
       (lib.optional config.terminal-apps.zoxide.enable pkgs.zoxide)
       (lib.optional config.terminal-apps.talosctl.enable pkgs.talosctl)
       (lib.optional config.terminal-apps.kubectl.enable pkgs.kubectl)
+      (lib.optional config.terminal-apps.neovim.enable pkgs.neovim)
+      (lib.optional config.terminal-apps.neovim.enable pkgs.ripgrep)
     ];
 
     home.shellAliases = lib.mkMerge [
+      home.shellAliases
+
       (lib.mkIf config.terminal-apps.bat.enable {
        cat = "bat";
        })
@@ -61,5 +67,19 @@
     ];
 
     programs.zoxide.enable = config.terminal-apps.zoxide.enable;
+
+    home.sessionVariables = lib.mkMerge [
+      home.sessionVariables
+      (lib.mkIf config.terminal-apps.neovim.enable {
+        EDITOR = "nvim";
+      })
+    ]; 
+
+    home.file = lib.mkMerge [
+      home.file
+        (lib.mkIf config.terminal-apps.neovim.enable ".config/nvim" = {
+         source = ../../../../nvim;
+         })
+    ];
   };
 }
