@@ -19,6 +19,7 @@ return {
       { "omnisharp" },
       { "vue-language-server" },
       { "templ" },
+      { "rnix-lsp" },
 
       --{ "lua-language-server" },
       --{ "bash-language-server" },
