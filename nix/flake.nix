@@ -51,7 +51,6 @@
           ../../modules/home-manager
         ];
       };
-
     };
   };
 }
