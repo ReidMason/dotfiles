@@ -1,6 +1,6 @@
-{pkgs, system, ...}:
+{ self, nixpkgs, ... }:
 let
-  pkgs = nixpkgs.legacyPackages.${system};
+  pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 in
 {
   services.nix-daemon.enable = true;
@@ -15,7 +15,7 @@ in
 
   # The platform the configuration will be used on.
   # If you're on an Intel system, replace with "x86_64-darwin"
-  nixpkgs.hostPlatform = "${system}";
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Declare the user that will be running `nix-darwin`.
   users.users.reid = {
@@ -23,8 +23,19 @@ in
     home = "/Users/reid";
   };
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;
+  security.pam.enableSudoTouchIdAuth = true;
+
+  system.defaults = {
+    dock.autohide = true;
+
+    finder.AppleShowAllFiles = true;
+    finder.ShowPathbar = true;
+    finder.ShowStatusBar = true;
+    finder.AppleShowAllExtensions = true;
+  };
 
   environment.systemPackages = [ pkgs.home-manager ];
+
+  # Styling
+  stylix.image = ../../background.PNG;
 }
