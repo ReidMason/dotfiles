@@ -8,27 +8,25 @@
         url = "github:LnL7/nix-darwin";
         inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, stylix }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager }:
   let
     home-manager-config = {
       allowUnfree = true;
     };
-    inherit (self) outputs;
+    custom-overlays = [ self.overlays.unstable-packages ];
   in
   {
-    overlays = import ./modules/overlays { inherit inputs; };
+    overlays = import ./modules/overlays/unstable-packages.nix { inherit nixpkgs-unstable; };
 
     darwinConfigurations = {
       macos = nix-darwin.lib.darwinSystem {
         modules = [
-          stylix.darwinModules.stylix
           ./hosts/macos/configuration.nix
         ];
         specialArgs = { inherit nixpkgs; inherit self; };
@@ -49,8 +47,8 @@
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config = home-manager-config;
+          overlays = custom-overlays;
         };
-        extraSpecialArgs = { inherit outputs; };
         modules = [ 
           ./hosts/macos/home.nix
           ./modules/home-manager
@@ -61,6 +59,7 @@
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config = home-manager-config;
+          overlays = custom-overlays;
         };
         modules = [ 
           ./hosts/linux/home.nix

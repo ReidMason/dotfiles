@@ -37,7 +37,4 @@ in
   environment.systemPackages = [ pkgs.home-manager ];
 
   programs.zsh.enable = true;
-
-  # Styling
-  # stylix
 }
