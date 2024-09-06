@@ -1,2 +1,5 @@
-home-switch-darwin:
-  home-manager switch --flake ./nix/flakes/darwin
+home $host:
+  home-manager switch --flake .#$host
+
+nixos $host:
+  sudo nixos-rebuild switch --flake .#$host
