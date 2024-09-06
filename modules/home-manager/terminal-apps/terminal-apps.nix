@@ -39,8 +39,10 @@
       (lib.optional config.terminal-apps.zoxide.enable pkgs.zoxide)
       (lib.optional config.terminal-apps.talosctl.enable pkgs.talosctl)
       (lib.optional config.terminal-apps.kubectl.enable pkgs.kubectl)
+
       (lib.optional config.terminal-apps.neovim.enable pkgs.neovim)
       (lib.optional config.terminal-apps.neovim.enable pkgs.ripgrep)
+      (lib.optional config.terminal-apps.neovim.enable pkgs.lazygit)
     ];
 
     home.shellAliases = lib.mkMerge [
@@ -74,7 +76,7 @@
 
     home.file = lib.mkIf config.terminal-apps.neovim.enable {
       ".config/nvim" = {
-        source = ../../../../nvim;
+        source = ../../../configs/nvim;
       };
     };
   };

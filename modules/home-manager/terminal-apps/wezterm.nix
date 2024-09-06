@@ -10,7 +10,7 @@
 
     home.file = {
       ".config/wezterm" = {
-        source = ../../../../wezterm;
+        source = ../../../config/wezterm;
       };
     };
   };

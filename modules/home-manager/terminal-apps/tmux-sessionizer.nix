@@ -10,7 +10,7 @@
 
     home.file = {
       ".config/tms" = {
-        source = ../../../../tms;
+        source = ../../../configs/tms;
       };
     };
 
