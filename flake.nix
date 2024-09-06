@@ -2,7 +2,8 @@
   description = "System configuration using Nix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
         url = "github:LnL7/nix-darwin";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -14,13 +15,16 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, stylix }:
   let
     home-manager-config = {
       allowUnfree = true;
     };
+    inherit (self) outputs;
   in
   {
+    overlays = import ./modules/overlays { inherit inputs; };
+
     darwinConfigurations = {
       macos = nix-darwin.lib.darwinSystem {
         modules = [
@@ -46,6 +50,7 @@
           system = "aarch64-darwin";
           config = home-manager-config;
         };
+        extraSpecialArgs = { inherit outputs; };
         modules = [ 
           ./hosts/macos/home.nix
           ./modules/home-manager

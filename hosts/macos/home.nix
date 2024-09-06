@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, outputs, inputs, ... }:
 
 {
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.unstable-packages
+    ];
+  };
+
   home.username = "reid";
   home.homeDirectory = "/Users/reid";
 
