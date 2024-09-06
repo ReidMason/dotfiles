@@ -13,6 +13,7 @@
     talosctl.enable = lib.mkEnableOption "Enable talosctl";
     kubectl.enable = lib.mkEnableOption "Enable kubectl";
     neovim.enable = lib.mkEnableOption "Enable neovim";
+    just.enable = lib.mkEnableOption "Enable just";
   };
 
   config = {
@@ -27,6 +28,7 @@
     terminal-apps.talosctl.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.kubectl.enable = lib.mkDefault config.terminal-apps.enable;
     terminal-apps.neovim.enable = lib.mkDefault config.terminal-apps.enable;
+    terminal-apps.just.enable = lib.mkDefault config.terminal-apps.enable;
 
     home.packages = lib.concatLists [
       (lib.optional config.terminal-apps.bat.enable pkgs.bat)
@@ -43,6 +45,8 @@
       (lib.optional config.terminal-apps.neovim.enable pkgs.neovim)
       (lib.optional config.terminal-apps.neovim.enable pkgs.ripgrep)
       (lib.optional config.terminal-apps.neovim.enable pkgs.lazygit)
+
+      (lib.optional config.terminal-apps.just.enable pkgs.just)
     ];
 
     home.shellAliases = lib.mkMerge [
