@@ -24,7 +24,7 @@
       macos = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ./hosts/macbook/configuration.nix
+          ./hosts/macos/configuration.nix
         ];
       };
     };
@@ -45,7 +45,7 @@
           config = home-manager-config;
         };
         modules = [ 
-          ./hosts/macbook/home.nix
+          ./hosts/macos/home.nix
           ./modules/home-manager
         ];
       };
