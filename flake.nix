@@ -7,13 +7,14 @@
         url = "github:LnL7/nix-darwin";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:danth/stylix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix }:
   let
     home-manager-config = {
       allowUnfree = true;
@@ -22,10 +23,11 @@
   {
     darwinConfigurations = {
       macos = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
         modules = [
+          stylix.darwinModules.stylix
           ./hosts/macos/configuration.nix
         ];
+        specialArgs = { inherit nixpkgs; inherit self; };
       };
     };
 
@@ -63,4 +65,3 @@
     };
   };
 }
-# nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake .
