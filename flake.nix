@@ -16,37 +16,27 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager }:
   let
-    home-config-builder = {host, system}: import ./modules/utils/home-config-builder.nix { inherit nixpkgs nixpkgs-unstable host system home-manager; };
+    home-config-builder = {host, system}: import ./modules/utils/home-config-builder.nix { inherit nixpkgs nixpkgs-unstable home-manager host system; };
+    nix-config-builder = {host, system}: import ./modules/utils/nix-config-builder.nix { inherit nixpkgs host system;};
+    darwin-config-builder = {host, system}: import ./modules/utils/darwin-config-builder.nix { inherit self nixpkgs nixpkgs-unstable nix-darwin host system; };
   in
   {
     darwinConfigurations = {
-      macos = nix-darwin.lib.darwinSystem {
+      macos = darwin-config-builder {
         system = "aarch64-darwin";
-        modules = [
-          ./hosts/macos/configuration.nix
-        ];
-        specialArgs = {
-          inherit nixpkgs;
-          inherit self;
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
-        };
+        host = "macos";
       };
     };
 
     nixosConfigurations = {
-      linux = nixpkgs.lib.nixosSystem {
+      linux = nix-config-builder {
         system = "x86_64-linux";
-        modules = [
-          ./hosts/linux/configuration.nix
-        ];
+        host = "linux";
       };
 
-      old-laptop = nixpkgs.lib.nixosSystem {
+      old-laptop = nix-config-builder {
         system = "x86_64-linux";
-        modules = [
-          ./hosts/old-laptop/configuration.nix
-        ];
+        host = "old-laptop";
       };
     };
 
