@@ -1,4 +1,5 @@
-{ system, host, nixpkgs, nixpkgs-unstable }: {
+{ system, host, nixpkgs, nixpkgs-unstable, home-manager }:
+home-manager.lib.homeManagerConfiguration {
   pkgs = import nixpkgs {
     inherit system;
     config = {

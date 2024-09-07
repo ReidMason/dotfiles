@@ -16,7 +16,7 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager }:
   let
-    pkgs-builder = {host, system}: import ./modules/utils/pkgs-builder.nix { inherit nixpkgs nixpkgs-unstable host system; };
+    home-config-builder = {host, system}: import ./modules/utils/home-config-builder.nix { inherit nixpkgs nixpkgs-unstable host system home-manager; };
   in
   {
     darwinConfigurations = {
@@ -51,20 +51,20 @@
     };
 
     homeConfigurations = {
-      macos = home-manager.lib.homeManagerConfiguration (pkgs-builder { 
+      macos = home-config-builder { 
         host = "macos";
         system = "aarch64-darwin"; 
-      });
+      };
       
-      linux = home-manager.lib.homeManagerConfiguration (pkgs-builder { 
+      linux = home-config-builder { 
         host = "linux";
         system = "x86_64-linux";
-      });
+      };
 
-      old-laptop = home-manager.lib.homeManagerConfiguration (pkgs-builder { 
+      old-laptop = home-config-builder { 
         host = "old-laptop";
         system = "x86_64-linux";
-      });
+      };
     };
   };
 }
