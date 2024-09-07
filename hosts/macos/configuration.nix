@@ -1,7 +1,4 @@
-{ self, nixpkgs, ... }:
-let
-  pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-in
+{ self, nixpkgs, pkgs, pkgs-unstable, ... }:
 {
   services.nix-daemon.enable = true;
   # Necessary for using flakes on this system.

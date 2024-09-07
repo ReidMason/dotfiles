@@ -19,17 +19,20 @@
     home-manager-config = {
       allowUnfree = true;
     };
-    custom-overlays = [ self.overlays.unstable-packages ];
   in
   {
-    overlays = import ./modules/overlays/unstable-packages.nix { inherit nixpkgs-unstable; };
-
     darwinConfigurations = {
       macos = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         modules = [
           ./hosts/macos/configuration.nix
         ];
-        specialArgs = { inherit nixpkgs; inherit self; };
+        specialArgs = {
+          inherit nixpkgs;
+          inherit self;
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+        };
       };
     };
 
@@ -47,7 +50,9 @@
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config = home-manager-config;
-          overlays = custom-overlays;
+        };
+        extraSpecialArgs = {
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
         };
         modules = [ 
           ./hosts/macos/home.nix
@@ -59,7 +64,9 @@
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config = home-manager-config;
-          overlays = custom-overlays;
+        };
+        extraSpecialArgs = {
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
         };
         modules = [ 
           ./hosts/linux/home.nix

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, pkgs-unstable, lib, config, ... }: {
   options.terminal-apps = {
     enable = lib.mkEnableOption "Enable all terminal-apps";
 
@@ -42,7 +42,7 @@
       (lib.optional config.terminal-apps.talosctl.enable pkgs.talosctl)
       (lib.optional config.terminal-apps.kubectl.enable pkgs.kubectl)
 
-      (lib.optional config.terminal-apps.neovim.enable pkgs.unstable.neovim)
+      (lib.optional config.terminal-apps.neovim.enable pkgs-unstable.neovim)
       (lib.optional config.terminal-apps.neovim.enable pkgs.ripgrep)
       (lib.optional config.terminal-apps.neovim.enable pkgs.lazygit)
 
