@@ -16,9 +16,10 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager }:
   let
-    home-config-builder = {host, system}: import ./modules/utils/home-config-builder.nix { inherit nixpkgs nixpkgs-unstable home-manager host system; };
-    nix-config-builder = {host, system}: import ./modules/utils/nix-config-builder.nix { inherit nixpkgs host system;};
-    darwin-config-builder = {host, system}: import ./modules/utils/darwin-config-builder.nix { inherit self nixpkgs nixpkgs-unstable nix-darwin host system; };
+    utils = import ./modules/utils;
+    home-config-builder = {host, system}: utils.home-config-builder { inherit nixpkgs nixpkgs-unstable home-manager host system; };
+    nix-config-builder = {host, system}: utils.nix-config-builder { inherit nixpkgs host system;};
+    darwin-config-builder = {host, system}: utils.darwin-config-builder { inherit self nixpkgs nixpkgs-unstable nix-darwin host system; };
   in
   {
     darwinConfigurations = {
