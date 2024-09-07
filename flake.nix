@@ -16,9 +16,7 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager }:
   let
-    home-manager-config = {
-      allowUnfree = true;
-    };
+    pkgs-builder = {host, system}: import ./modules/utils/pkgs-builder.nix { inherit nixpkgs nixpkgs-unstable host system; };
   in
   {
     darwinConfigurations = {
@@ -53,47 +51,20 @@
     };
 
     homeConfigurations = {
-      macos = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-          config = home-manager-config;
-        };
-        extraSpecialArgs = {
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
-        };
-        modules = [ 
-          ./hosts/macos/home.nix
-          ./modules/home-manager
-        ];
-      };
+      macos = home-manager.lib.homeManagerConfiguration (pkgs-builder { 
+        host = "macos";
+        system = "aarch64-darwin"; 
+      });
       
-      linux = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config = home-manager-config;
-        };
-        extraSpecialArgs = {
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
-        };
-        modules = [ 
-          ./hosts/linux/home.nix
-          ./modules/home-manager
-        ];
-      };
+      linux = home-manager.lib.homeManagerConfiguration (pkgs-builder { 
+        host = "linux";
+        system = "x86_64-linux";
+      });
 
-      old-laptop = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config = home-manager-config;
-        };
-        extraSpecialArgs = {
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-        };
-        modules = [ 
-          ./hosts/old-laptop/home.nix
-          ./modules/home-manager
-        ];
-      };
+      old-laptop = home-manager.lib.homeManagerConfiguration (pkgs-builder { 
+        host = "old-laptop";
+        system = "x86_64-linux";
+      });
     };
   };
 }
