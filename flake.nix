@@ -43,6 +43,13 @@
           ./hosts/linux/configuration.nix
         ];
       };
+
+      old-laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/old-laptop/configuration.nix
+        ];
+      };
     };
 
     homeConfigurations = {
@@ -70,6 +77,20 @@
         };
         modules = [ 
           ./hosts/linux/home.nix
+          ./modules/home-manager
+        ];
+      };
+
+      old-laptop = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = home-manager-config;
+        };
+        extraSpecialArgs = {
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+        };
+        modules = [ 
+          ./hosts/old-laptop/home.nix
           ./modules/home-manager
         ];
       };
