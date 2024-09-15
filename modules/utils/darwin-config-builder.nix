@@ -1,12 +1,12 @@
-{ system, host, self, nixpkgs, nixpkgs-unstable, nix-darwin }:
-nix-darwin.lib.darwinSystem {
+{ system, host, inputs }:
+inputs.nix-darwin.lib.darwinSystem {
   inherit system;
   modules = [
     ../../hosts/${host}/configuration.nix
   ];
   specialArgs = {
-    inherit self nixpkgs;
-    pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+    inherit "inputs.self" "inputs.nixpkgs";
+    pkgs = inputs.nixpkgs.legacyPackages.${system};
+    pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
   };
 }

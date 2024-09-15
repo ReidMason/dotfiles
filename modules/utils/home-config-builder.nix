@@ -1,13 +1,13 @@
-{ system, host, nixpkgs, nixpkgs-unstable, home-manager }:
-home-manager.lib.homeManagerConfiguration {
-  pkgs = import nixpkgs {
+{ system, host, inputs }:
+inputs.home-manager.lib.homeManagerConfiguration {
+  pkgs = import inputs.nixpkgs {
     inherit system;
     config = {
       allowUnfree = true;
     };
   };
   extraSpecialArgs = {
-    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+    pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
   };
   modules = [ 
     ../../hosts/${host}/home.nix
