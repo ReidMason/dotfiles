@@ -15,6 +15,7 @@
       history = {
         expireDuplicatesFirst = true;
         ignoreDups = true;
+        share = false;
       };
       shellAliases = {
         # General aliases
