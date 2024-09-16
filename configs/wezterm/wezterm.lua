@@ -22,8 +22,9 @@ config.window_padding = {
 	top = 8,
 	bottom = 0,
 }
--- config.window_background_opacity = 1
--- config.macos_window_background_blur = 64
+
+config.window_background_opacity = 1
+config.macos_window_background_blur = 64
 
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
@@ -73,6 +74,11 @@ config.keys = {
 		key = "RightArrow",
 		mods = "OPT",
 		action = wezterm.action.SendKey({ key = "f", mods = "ALT" }),
+	},
+	{
+		key = "r",
+		mods = "CMD|SHIFT",
+		action = wezterm.action.ReloadConfiguration,
 	},
 }
 
