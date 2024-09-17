@@ -6,12 +6,12 @@ in
   imports = [
      (import ./starship.nix { inherit pkgs lib options config; parent-name = module-name; })
      (import ./bat.nix { inherit pkgs lib options config; parent-name = module-name; })
+     (import ./eza.nix { inherit pkgs lib options config; parent-name = module-name; })
   ];
 
   options.${module-name} = {
     enable = lib.mkEnableOption "Enable all terminal apps";
 
-    eza.enable = lib.mkEnableOption "Enable eza";
     htop.enable = lib.mkEnableOption "Enable htop";
     glow.enable = lib.mkEnableOption "Enable glow";
     iperf.enable = lib.mkEnableOption "Enable iperf";
@@ -25,7 +25,6 @@ in
   };
 
   config = {
-    terminal.eza.enable = lib.mkDefault config.terminal.enable;
     terminal.htop.enable = lib.mkDefault config.terminal.enable;
     terminal.glow.enable = lib.mkDefault config.terminal.enable;
     terminal.iperf.enable = lib.mkDefault config.terminal.enable;
@@ -38,7 +37,6 @@ in
     terminal.just.enable = lib.mkDefault config.terminal.enable;
 
     home.packages = lib.concatLists [
-        (lib.optional config.terminal.eza.enable pkgs.eza)
         (lib.optional config.terminal.htop.enable pkgs.htop)
         (lib.optional config.terminal.glow.enable pkgs.glow)
         (lib.optional config.terminal.iperf.enable pkgs.iperf)
@@ -56,13 +54,6 @@ in
     ];
 
     home.shellAliases = lib.mkMerge [
-    (lib.mkIf config.terminal.eza.enable {
-# Eza aliases
-     ls = "eza -lh --icons --no-user --group-directories-first";
-     ll = "eza -lah --icons --no-user --no-time --group-directories-first";
-     tree = "eza --tree --icons --no-user --no-time --group-directories-first";
-     })
-
     (lib.mkIf config.terminal.zoxide.enable {
      cd = "z";
      })
