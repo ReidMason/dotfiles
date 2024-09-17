@@ -5,12 +5,12 @@ in
 {
   imports = [
      (import ./starship.nix { inherit pkgs lib options config; parent-name = module-name; })
+     (import ./bat.nix { inherit pkgs lib options config; parent-name = module-name; })
   ];
 
   options.${module-name} = {
     enable = lib.mkEnableOption "Enable all terminal apps";
 
-    bat.enable = lib.mkEnableOption "Enable bat";
     eza.enable = lib.mkEnableOption "Enable eza";
     htop.enable = lib.mkEnableOption "Enable htop";
     glow.enable = lib.mkEnableOption "Enable glow";
@@ -25,7 +25,6 @@ in
   };
 
   config = {
-    terminal.bat.enable = lib.mkDefault config.terminal.enable;
     terminal.eza.enable = lib.mkDefault config.terminal.enable;
     terminal.htop.enable = lib.mkDefault config.terminal.enable;
     terminal.glow.enable = lib.mkDefault config.terminal.enable;
@@ -39,7 +38,6 @@ in
     terminal.just.enable = lib.mkDefault config.terminal.enable;
 
     home.packages = lib.concatLists [
-      (lib.optional config.terminal.bat.enable pkgs.bat)
         (lib.optional config.terminal.eza.enable pkgs.eza)
         (lib.optional config.terminal.htop.enable pkgs.htop)
         (lib.optional config.terminal.glow.enable pkgs.glow)
@@ -58,10 +56,6 @@ in
     ];
 
     home.shellAliases = lib.mkMerge [
-      (lib.mkIf config.terminal.bat.enable {
-       cat = "bat";
-       })
-
     (lib.mkIf config.terminal.eza.enable {
 # Eza aliases
      ls = "eza -lh --icons --no-user --group-directories-first";
