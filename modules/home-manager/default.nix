@@ -24,7 +24,6 @@
 
     programming.enable = lib.mkDefault false;
     desktop-applications.enable = lib.mkDefault false;
-    terminal.enable = lib.mkDefault false;
 
     zsh.autoAttachToTmux = lib.mkDefault false;
 
