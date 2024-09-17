@@ -5,7 +5,8 @@ inputs.nix-darwin.lib.darwinSystem {
     ../../hosts/${host}/configuration.nix
   ];
   specialArgs = {
-    inherit "inputs.self" "inputs.nixpkgs";
+    self = inputs.self;
+    nixpkgs = inputs.nixpkgs;
     pkgs = inputs.nixpkgs.legacyPackages.${system};
     pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
   };
