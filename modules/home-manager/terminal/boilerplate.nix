@@ -1,8 +1,9 @@
 { config, lib, module-name, parent-name, data, label }:
 {
-  imports = [
-    (import ./builder.nix { inherit config lib parent-name module-name label; })
-  ];
+  options.${module-name}.enable = lib.mkEnableOption label;
 
-  config = lib.mkIf config.${module-name}.enable data;
+  config = lib.mkMerge [
+    {${module-name}.enable = lib.mkDefault config.${parent-name}.enable;}
+    (lib.mkIf config.${module-name}.enable data)
+  ];
 }
