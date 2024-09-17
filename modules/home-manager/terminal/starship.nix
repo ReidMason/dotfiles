@@ -1,9 +1,11 @@
-{ pkgs, lib, config, ... }: {
-  options = {
-    starship.enable = lib.mkEnableOption "Enable starship";
-  };
+{ pkgs, config, lib, options, parent-name, ... }:
+let
+module-name = "starship";
+in
+{
+  options.${parent-name}.${module-name}.enable = lib.mkEnableOption "Starship prompt";
 
-  config = lib.mkIf config.starship.enable {
+  config = lib.mkIf (config.${parent-name}.${module-name}.enable || config.${parent-name}.enable) {
     home.packages = [
       pkgs.starship
     ];
@@ -12,7 +14,7 @@
       settings = {
         add_newline = false;
         format = pkgs.lib.concatStrings [
-            "$hostname"
+          "$hostname"
             "$hostfile"
             "$directory"
             "$git_branch"
