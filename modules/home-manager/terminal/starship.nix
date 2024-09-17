@@ -1,11 +1,8 @@
-{ pkgs, config, lib, options, parent-name, ... }:
+{pkgs, config, lib, options, parent-name, ...}:
 let
 module-name = "starship";
-in
-{
-  options.${parent-name}.${module-name}.enable = lib.mkEnableOption "Starship prompt";
-
-  config = lib.mkIf (config.${parent-name}.${module-name}.enable || config.${parent-name}.enable) {
+label = "Starship prompt";
+data = {
     home.packages = [
       pkgs.starship
     ];
@@ -69,5 +66,10 @@ in
         };
       };
     };
-  };
+};
+in
+{
+  imports = [
+    (import ./boilerplate.nix { inherit config lib parent-name data module-name label; })
+  ];
 }
