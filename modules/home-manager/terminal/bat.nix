@@ -1,19 +1,21 @@
 {pkgs, config, lib, options, parent-name, ...}:
 let
-module-name = "bat";
-label = "Bat";
-data = {
-  home.packages = [
-    pkgs.bat
-  ];
+module = {
+  module-name = "bat";
+  label = "Bat";
+  config = {
+    home.packages = [
+      pkgs.bat
+    ];
 
-  home.shellAliases = {
-    cat = "bat";
+    home.shellAliases = {
+      cat = "bat";
+    };
   };
 };
 in
 {
   imports = [
-    (import ./boilerplate.nix { inherit config lib parent-name data module-name label; })
+    (import ../module-setup.nix { inherit config lib parent-name module; })
   ];
 }

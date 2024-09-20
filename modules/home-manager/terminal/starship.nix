@@ -1,8 +1,9 @@
 {pkgs, config, lib, options, parent-name, ...}:
 let
-module-name = "starship";
-label = "Starship prompt";
-data = {
+module = {
+  module-name = "starship";
+  label = "Starship prompt";
+  config = {
     home.packages = [
       pkgs.starship
     ];
@@ -66,10 +67,11 @@ data = {
         };
       };
     };
+  };
 };
 in
 {
   imports = [
-    (import ./boilerplate.nix { inherit config lib parent-name data module-name label; })
+    (import ../module-setup.nix { inherit config lib parent-name module; })
   ];
 }
