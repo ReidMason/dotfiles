@@ -39,6 +39,11 @@
         system = "x86_64-linux";
         host = "old-laptop";
       };
+
+      vera = nix-config-builder {
+        system = "x86_64-linux";
+        host = "vera";
+      };
     };
 
     homeConfigurations = {
@@ -54,6 +59,11 @@
 
       old-laptop = home-config-builder { 
         host = "old-laptop";
+        system = "x86_64-linux";
+      };
+
+      vera = home-config-builder { 
+        host = "vera";
         system = "x86_64-linux";
       };
     };
