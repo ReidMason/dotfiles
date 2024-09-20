@@ -9,5 +9,7 @@
 
   home.packages = [];
 
+  terminal.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 }
