@@ -10,6 +10,7 @@
   home.packages = [];
 
   terminal.enable = true;
+  programming.git.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 }
