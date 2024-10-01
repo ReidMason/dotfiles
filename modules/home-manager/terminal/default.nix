@@ -60,6 +60,7 @@ in
 
     (lib.mkIf config.terminal.kubectl.enable {
      k = "kubectl";
+     kn = "kubectl config set-context --current --namespace";
      })
     ];
 
