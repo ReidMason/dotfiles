@@ -19,6 +19,7 @@
     home.packages = lib.concatLists [
       (lib.optional config.programming.golang.enable pkgs.go)
       (lib.optional config.programming.golang.enable pkgs.sqlc)
+      (lib.optional config.programming.golang.enable pkgs.goose)
 
       (lib.optional config.programming.node.enable pkgs.nodejs)
       (lib.optional config.programming.node.enable pkgs.pnpm)
