@@ -14,7 +14,9 @@
   programming.enable = true;
 
   desktop-applications.enable = true;
+
   terminal.enable = true;
+  server-tools.enable = true;
 
   tmux.enable = true;
   wezterm.enable = true;

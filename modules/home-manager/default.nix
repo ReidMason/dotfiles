@@ -5,11 +5,11 @@
     ./terminal/wezterm.nix
     ./terminal/tmux-sessionizer.nix
     ./terminal
+    ./server-tools
 
     ./programming/programming.nix
     ./desktop-applications/desktop-applications.nix
 
-    ./server-tools/ansible.nix
     ./server-tools/terraform.nix
   ];
 
@@ -31,7 +31,6 @@
     wezterm.enable = lib.mkDefault false;
     tmux-sessionizer.enable = lib.mkDefault false;
 
-    ansible.enable = lib.mkDefault false;
     terraform.enable = lib.mkDefault false;
   };
 }
