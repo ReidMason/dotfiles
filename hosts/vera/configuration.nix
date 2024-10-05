@@ -87,6 +87,9 @@
     in pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
   };
 
+  # Allow sudo without password
+  security.sudo.wheelNeedsPassword = false;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
