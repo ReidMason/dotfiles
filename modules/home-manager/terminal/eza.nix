@@ -10,7 +10,7 @@ module = {
 
     home.shellAliases = {
       ls = "eza -lh --icons --no-user --group-directories-first";
-      ll = "eza -lah --icons --no-user --no-time --group-directories-first";
+      ll = "eza -lah --group --icons --no-time --group-directories-first";
       tree = "eza --tree --icons --no-user --no-time --group-directories-first";
     };
   };
