@@ -48,7 +48,7 @@
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
-    xkbVariant = "";
+    xkb.Variant = "";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
