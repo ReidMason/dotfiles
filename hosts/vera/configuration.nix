@@ -54,9 +54,16 @@
   };
 
   # Mount nfs shares
-  fileSystems."/mnt/fern" = {
-    device = "fern.lan:/mnt/user/Temp/vera";
-    fsType = "nfs";
+  fileSystems = {
+    "/mnt/fern/plex" = {
+      device = "fern.lan:/mnt/user/Plex";
+      fsType = "nfs";
+    };
+
+    "/mnt/fern/appdata" = {
+      device = "fern.lan:/mnt/user/Temp/vera";
+      fsType = "nfs";
+    };
   };
 
   # Docker setup
