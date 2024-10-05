@@ -53,6 +53,24 @@
       variant = "";
     };
   };
+  
+  # -- Start enable nvidia gpu passthrough --
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+  
+  hardware.nvidia-container-toolkit.enable = true;
+  boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+  # -- End --
 
   # Mount nfs shares
   fileSystems = {
