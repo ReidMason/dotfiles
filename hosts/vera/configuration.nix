@@ -53,11 +53,18 @@
     };
   };
 
+  # Docker setup
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vera = {
     isNormalUser = true;
     description = "vera";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
     openssh.authorizedKeys.keys = let
       authorizedKeys = pkgs.fetchurl {
