@@ -53,6 +53,12 @@
     };
   };
 
+  # Mount nfs shares
+  fileSystems."/mnt/fern" = {
+    device = "fern.lan:/mnt/user/Temp/vera";
+    fsType = "nfs";
+  };
+
   # Docker setup
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
