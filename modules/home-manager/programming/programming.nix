@@ -1,4 +1,12 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, options, ... }:
+let 
+module-name = "programming";
+in
+{
+  imports = [
+     (import ./python.nix { inherit pkgs lib options config; parent-name = module-name; })
+  ];
+
   options.programming = {
     enable = lib.mkEnableOption "Enable all programming tools";
 
