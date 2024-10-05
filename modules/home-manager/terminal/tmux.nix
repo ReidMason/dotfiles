@@ -1,12 +1,10 @@
-{ pkgs, lib, config, ... }: {
-  options = {
-    tmux.enable = lib.mkEnableOption "Enable tmux";
-  };
-
-  config = lib.mkIf config.tmux.enable {
-    home.packages = [
-      pkgs.tmux
-    ];
+{ pkgs-unstable, config, lib, options, parent-name, ...}:
+let
+module = {
+  module-name = "tmux";
+  label = "Tmux";
+  config = {
+    programs.tmux.package = pkgs-unstable.tmux;
 
     programs.tmux = {
       enable = true;
@@ -73,7 +71,7 @@
       '';
       plugins = [
       {
-        plugin = pkgs.tmuxPlugins.catppuccin;
+        plugin = pkgs-unstable.tmuxPlugins.catppuccin;
         extraConfig = ''
           set -g @catppuccin_window_left_separator " "
           set -g @catppuccin_window_right_separator " "
@@ -94,8 +92,14 @@
           set -g @catppuccin_status_right_separator ""
         '';
       }
-        pkgs.tmuxPlugins.sensible
+        pkgs-unstable.tmuxPlugins.sensible
       ];
     };
   };
+};
+in
+{
+  imports = [
+    (import ../module-setup.nix { inherit config lib parent-name module; })
+  ];
 }

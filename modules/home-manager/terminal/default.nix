@@ -7,6 +7,7 @@ in
      (import ./starship.nix { inherit pkgs lib options config; parent-name = module-name; })
      (import ./bat.nix { inherit pkgs lib options config; parent-name = module-name; })
      (import ./eza.nix { inherit pkgs lib options config; parent-name = module-name; })
+     (import ./tmux.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
   ];
 
   options.${module-name} = {
