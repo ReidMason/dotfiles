@@ -47,7 +47,6 @@
 
   # Configure keymap in X11
   services.xserver = {
-    videoDrivers = [ "nvidia" ];
     xkb = {
       layout = "us";
       variant = "";
