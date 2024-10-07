@@ -25,9 +25,9 @@
   system.defaults = {
     dock.autohide = true;
     dock.persistent-apps = [
-      "/System/Applications/Mail.app"
       "/Applications/Arc.app"
       "${pkgs.wezterm}/Applications/WezTerm.app"
+      "/System/Applications/Mail.app"
     ];
 
     finder.AppleShowAllFiles = true;
