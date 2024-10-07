@@ -127,7 +127,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+    };
+  };
+
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
