@@ -34,6 +34,9 @@
     finder.ShowPathbar = true;
     finder.ShowStatusBar = true;
     finder.AppleShowAllExtensions = true;
+
+    NSGlobalDomain.AppleInterfaceStyle = "Dark";
+    NSGlobalDomain.KeyRepeat = 2;
   };
 
   environment.systemPackages = [ pkgs.home-manager ];
