@@ -50,6 +50,7 @@ in
         (lib.optional config.terminal.neovim.enable pkgs-unstable.neovim)
         (lib.optional config.terminal.neovim.enable pkgs.ripgrep)
         (lib.optional config.terminal.neovim.enable pkgs.lazygit)
+        (lib.optional config.terminal.neovim.enable pkgs.clang)
 
         (lib.optional config.terminal.just.enable pkgs.just)
     ];
