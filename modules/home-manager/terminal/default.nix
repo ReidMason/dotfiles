@@ -14,7 +14,6 @@ in
   options.${module-name} = {
     enable = lib.mkEnableOption "Enable all terminal apps";
 
-    htop.enable = lib.mkEnableOption "Enable htop";
     glow.enable = lib.mkEnableOption "Enable glow";
     iperf.enable = lib.mkEnableOption "Enable iperf";
     rsync.enable = lib.mkEnableOption "Enable rsync";
@@ -27,7 +26,6 @@ in
   };
 
   config = {
-    terminal.htop.enable = lib.mkDefault config.terminal.enable;
     terminal.glow.enable = lib.mkDefault config.terminal.enable;
     terminal.iperf.enable = lib.mkDefault config.terminal.enable;
     terminal.rsync.enable = lib.mkDefault config.terminal.enable;
@@ -39,7 +37,6 @@ in
     terminal.just.enable = lib.mkDefault config.terminal.enable;
 
     home.packages = lib.concatLists [
-        (lib.optional config.terminal.htop.enable pkgs.htop)
         (lib.optional config.terminal.glow.enable pkgs.glow)
         (lib.optional config.terminal.iperf.enable pkgs.iperf)
         (lib.optional config.terminal.rsync.enable pkgs.rsync)
