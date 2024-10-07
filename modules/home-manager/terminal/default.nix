@@ -9,6 +9,7 @@ in
      (import ./eza.nix { inherit pkgs lib options config; parent-name = module-name; })
      (import ./tmux.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
      (import ./btop.nix { inherit pkgs lib options config; parent-name = module-name; })
+     (import ./neovim.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
   ];
 
   options.${module-name} = {
@@ -21,7 +22,6 @@ in
     zoxide.enable = lib.mkEnableOption "Enable zoxide";
     talosctl.enable = lib.mkEnableOption "Enable talosctl";
     kubectl.enable = lib.mkEnableOption "Enable kubectl";
-    neovim.enable = lib.mkEnableOption "Enable neovim";
     just.enable = lib.mkEnableOption "Enable just";
   };
 
@@ -33,7 +33,6 @@ in
     terminal.zoxide.enable = lib.mkDefault config.terminal.enable;
     terminal.talosctl.enable = lib.mkDefault config.terminal.enable;
     terminal.kubectl.enable = lib.mkDefault config.terminal.enable;
-    terminal.neovim.enable = lib.mkDefault config.terminal.enable;
     terminal.just.enable = lib.mkDefault config.terminal.enable;
 
     home.packages = lib.concatLists [
@@ -44,12 +43,6 @@ in
         (lib.optional config.terminal.zoxide.enable pkgs.zoxide)
         (lib.optional config.terminal.talosctl.enable pkgs.talosctl)
         (lib.optional config.terminal.kubectl.enable pkgs.kubectl)
-
-        (lib.optional config.terminal.neovim.enable pkgs-unstable.neovim)
-        (lib.optional config.terminal.neovim.enable pkgs.ripgrep)
-        (lib.optional config.terminal.neovim.enable pkgs.lazygit)
-        (lib.optional config.terminal.neovim.enable pkgs.clang)
-        (lib.optional config.terminal.neovim.enable pkgs.lua)
 
         (lib.optional config.terminal.just.enable pkgs.just)
     ];
@@ -66,17 +59,5 @@ in
     ];
 
     programs.zoxide.enable = config.terminal.zoxide.enable;
-
-    home.sessionVariables = lib.mkMerge [
-      (lib.mkIf config.terminal.neovim.enable {
-       EDITOR = "nvim";
-       })
-    ]; 
-
-    home.file = lib.mkIf config.terminal.neovim.enable {
-      ".config/nvim" = {
-        source = ../../../configs/nvim;
-      };
-    };
   };
 }
