@@ -1,11 +1,17 @@
-{ pkgs, lib, config, ... }: {
-  options = {
-    terraform.enable = lib.mkEnableOption "Enable terraform";
-  };
-
-  config = lib.mkIf config.terraform.enable {
+{pkgs, pkgs-unstable, config, lib, options, parent-name, ...}:
+let
+module = {
+  module-name = "terraform";
+  label = "Terraform";
+  config = {
     home.packages = [
-      pkgs.terraform
+      pkgs-unstable.terraform
     ];
   };
+};
+in
+{
+  imports = [
+    (import ../module-setup.nix { inherit config lib parent-name module; })
+  ];
 }

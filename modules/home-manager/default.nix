@@ -8,8 +8,6 @@
 
     ./programming/programming.nix
     ./desktop-applications/desktop-applications.nix
-
-    ./server-tools/terraform.nix
   ];
 
   config = {
@@ -28,7 +26,5 @@
 
     wezterm.enable = lib.mkDefault false;
     tmux-sessionizer.enable = lib.mkDefault false;
-
-    terraform.enable = lib.mkDefault false;
   };
 }
