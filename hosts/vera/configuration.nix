@@ -77,11 +77,6 @@
       device = "fern.lan:/mnt/user/Plex";
       fsType = "nfs";
     };
-
-    "/mnt/fern/appdata" = {
-      device = "fern.lan:/mnt/user/Temp/vera";
-      fsType = "nfs";
-    };
   };
 
   # Docker setup
