@@ -7,6 +7,10 @@ module = {
     home.packages = with pkgs; [
       sysbench
     ];
+
+    home.shellAliases = {
+      sysbench-cpu = "sysbench --threads=\"$(nproc)\" cpu run";
+    };
   };
 };
 in
