@@ -12,6 +12,7 @@
   terminal.enable = true;
   programming.git.enable = true;
   wezterm.enable = true;
+  hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 }

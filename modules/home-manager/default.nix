@@ -4,6 +4,7 @@
     ./terminal/tmux-sessionizer.nix
     ./terminal
     ./server-tools
+    ./desktop-environments
 
     ./programming/programming.nix
     ./desktop-applications
