@@ -10,6 +10,7 @@ in
      (import ./tmux.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
      (import ./btop.nix { inherit pkgs lib options config; parent-name = module-name; })
      (import ./neovim.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
+     (import ./sysbench.nix { inherit pkgs lib options config; parent-name = module-name; })
   ];
 
   options.${module-name} = {
