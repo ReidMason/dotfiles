@@ -7,7 +7,18 @@ module = {
     programs.waybar = {
       enable = true;
       settings = {
-
+        mainbar = {
+          modules-right = [
+            "network"
+            "clock"
+          ];
+          network = {
+            format-ethernet = "{ipaddr}";
+          };
+          clock = {
+            format = "{:%a %Om %b %I:%M}";
+          };
+        };
       };
     };
 
