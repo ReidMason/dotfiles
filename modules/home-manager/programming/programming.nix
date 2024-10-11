@@ -5,6 +5,7 @@ in
 {
   imports = [
      (import ./python.nix { inherit pkgs lib options config; parent-name = module-name; })
+     (import ./git.nix { inherit pkgs lib options config; parent-name = module-name; })
   ];
 
   options.programming = {
@@ -12,7 +13,6 @@ in
 
     golang.enable = lib.mkEnableOption "Enable Golang";
     node.enable = lib.mkEnableOption "Enable Nodejs";
-    git.enable = lib.mkEnableOption "Enable Git";
     lazygit.enable = lib.mkEnableOption "Enable Lazygit";
     rust.enable = lib.mkEnableOption "Enable rust";
   };
@@ -20,7 +20,6 @@ in
   config = {
     programming.golang.enable = lib.mkDefault config.programming.enable;
     programming.node.enable = lib.mkDefault config.programming.enable;
-    programming.git.enable = lib.mkDefault config.programming.enable;
     programming.lazygit.enable = lib.mkDefault config.programming.enable;
     programming.rust.enable = lib.mkDefault config.programming.enable;
 
@@ -34,14 +33,7 @@ in
 
       (lib.optional config.programming.rust.enable pkgs.cargo)
 
-      (lib.optional config.programming.git.enable pkgs.git)
       (lib.optional config.programming.lazygit.enable pkgs.lazygit)
     ];
-
-    programs.git = lib.mkIf config.programming.git.enable {
-      enable = true;
-      userName = "Reid Mason";
-      userEmail = "maddogshain132@gmail.com";
-    };
   };
 }

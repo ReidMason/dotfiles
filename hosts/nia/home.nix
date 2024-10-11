@@ -10,7 +10,7 @@
   home.packages = [];
 
   terminal.enable = true;
-  programming.git.enable = true;
+  git.enable = true;
   wezterm.enable = true;
   hyprland.enable = true;
 
