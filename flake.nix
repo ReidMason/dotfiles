@@ -44,6 +44,11 @@
         system = "x86_64-linux";
         host = "vera";
       };
+
+      nia = nix-config-builder {
+        system = "x86_64-linux";
+        host = "nia";
+      };
     };
 
     homeConfigurations = {
@@ -64,6 +69,11 @@
 
       vera = home-config-builder { 
         host = "vera";
+        system = "x86_64-linux";
+      };
+
+      nia = home-config-builder { 
+        host = "nia";
         system = "x86_64-linux";
       };
     };
