@@ -1,13 +1,12 @@
 { pkgs, lib, ... }: {
   imports = [
     ./terminal/zsh.nix
-    ./terminal/wezterm.nix
     ./terminal/tmux-sessionizer.nix
     ./terminal
     ./server-tools
 
     ./programming/programming.nix
-    ./desktop-applications/desktop-applications.nix
+    ./desktop-applications
   ];
 
   config = {
@@ -24,7 +23,6 @@
 
     zsh.autoAttachToTmux = lib.mkDefault false;
 
-    wezterm.enable = lib.mkDefault false;
     tmux-sessionizer.enable = lib.mkDefault false;
   };
 }
