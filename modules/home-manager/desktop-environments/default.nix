@@ -6,4 +6,8 @@ in
   imports = [
      (import ./hyprland.nix { inherit pkgs lib options config; parent-name = module-name; })
   ];
+
+  options.${module-name} = {
+    enable = lib.mkEnableOption "Enable all desktop environments";
+  };
 }
