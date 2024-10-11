@@ -4,6 +4,13 @@ module = {
   module-name = "hyprland";
   label = "Hyprland";
   config = {
+    programs.waybar = {
+      enable = true;
+      settings = {
+
+      };
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
@@ -11,7 +18,9 @@ module = {
         bind = [
          "$mod, q, exec, wezterm"
         ];
-        exec-once = [];
+        exec-once = [
+          "waybar"
+        ];
         general = {
           gaps_in = 5;
           gaps_out = 20;
