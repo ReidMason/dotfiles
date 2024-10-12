@@ -59,6 +59,11 @@
       device = "fern.lan:/mnt/user/Plex";
       fsType = "nfs";
     };
+
+    "/mnt/fern/downloads" = {
+      device = "fern.lan:/mnt/user/Downloads";
+      fsType = "nfs";
+    };
   };
 
   # Docker setup
