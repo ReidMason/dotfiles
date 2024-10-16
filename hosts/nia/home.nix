@@ -9,6 +9,7 @@
 
   home.packages = [];
 
+  firefox.enable = true;
   terminal.enable = true;
   git.enable = true;
   wezterm.enable = true;

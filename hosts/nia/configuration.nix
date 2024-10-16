@@ -14,6 +14,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
+
   networking.hostName = "nia"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -76,7 +82,7 @@
 
   fileSystems = {
     "/home/nia/public" = {
-      device = "fern.lan.skippythesnake.com:/mnt/user/Public";
+      device = "fern.lan:/mnt/user/Public";
       fsType = "nfs";
     };
   };

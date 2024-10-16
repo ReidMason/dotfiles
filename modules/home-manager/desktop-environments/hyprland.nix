@@ -9,6 +9,7 @@ module = {
       settings = {
         mainbar = {
           modules-right = [
+            "bluetooth"
             "network"
             "clock"
           ];
@@ -17,6 +18,13 @@ module = {
           };
           clock = {
             format = "{:%a %Om %b %I:%M}";
+          };
+          bluetooth = {
+            "format-on" = "on";
+            "format-disabled" = "dis";
+            "format-connected" = "con";
+            "tooltip-format-connected" = "{device_enumerate}";
+            "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
           };
         };
       };
@@ -28,9 +36,13 @@ module = {
         "$mod" = "SUPER";
         bind = [
          "$mod, q, exec, wezterm"
+         "$mod, f, exec, firefox"
+         "$mod, x, exit"
+         "$mod, mouse:272, movewindow"
         ];
         exec-once = [
           "waybar"
+          "blueman-applet"
         ];
         general = {
           gaps_in = 5;
