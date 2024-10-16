@@ -15,6 +15,7 @@
 
   desktop-applications.enable = true;
 
+  firefox.enable = false;
   terminal.enable = true;
   server-tools.enable = true;
 
