@@ -9,7 +9,7 @@
 
   home.packages = [];
 
-  # python.enable = true;
+  python.enable = true;
 
   terminal.enable = true;
   git.enable = true;
