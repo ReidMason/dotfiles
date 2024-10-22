@@ -21,7 +21,7 @@ in {
 
   networking = {
     hostName = name;
-    networkManager.enable = true;
+    networkmanager.enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command"  "flakes" ];
