@@ -22,6 +22,8 @@ in {
   networking = {
     hostName = name;
     networkmanager.enable = true;
+    firewall.allowedTCPPorts = [ 53 80 ];
+    firewall.allowedUDPPorts = [ 53 ];
   };
 
   nix.settings.experimental-features = [ "nix-command"  "flakes" ];
