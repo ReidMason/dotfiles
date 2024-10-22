@@ -45,6 +45,11 @@
         host = "vera";
       };
 
+      mona = nix-config-builder {
+        system = "aarch64-linux";
+        host = "mona";
+      };
+
       nia = nix-config-builder {
         system = "x86_64-linux";
         host = "nia";
@@ -70,6 +75,11 @@
       vera = home-config-builder { 
         host = "vera";
         system = "x86_64-linux";
+      };
+
+      mona = home-config-builder { 
+        host = "mona";
+        system = "aarch64-linux";
       };
 
       nia = home-config-builder { 
