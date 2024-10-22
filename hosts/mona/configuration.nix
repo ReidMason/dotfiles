@@ -64,7 +64,6 @@ in {
   users.users."${name}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
-    # password = password;
     openssh.authorizedKeys.keys = let
       authorizedKeys = pkgs.fetchurl {
         url = "https://github.com/reidmason.keys";

@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   home.username = "mona";
-  home.homeDirectory = "mona";
+  home.homeDirectory = "/home/mona";
   home.stateVersion = "24.05";
 
   # Let Home Manager install and manage itself.
