@@ -61,8 +61,6 @@ in {
     home-manager
   ];
 
-  services.openssh.enable = true;
-
   users.users."${name}" = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
