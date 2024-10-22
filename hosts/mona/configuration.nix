@@ -21,7 +21,7 @@ in {
 
   networking = {
     hostName = name;
-    # networkManager.enable = true;
+    networkManager.enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command"  "flakes" ];
@@ -63,7 +63,7 @@ in {
 
   users.users."${name}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "networkManager" "wheel" "docker" ];
     openssh.authorizedKeys.keys = let
       authorizedKeys = pkgs.fetchurl {
         url = "https://github.com/reidmason.keys";
