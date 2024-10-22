@@ -21,7 +21,7 @@ in {
 
   networking = {
     hostName = name;
-    networkManager.enable = true;
+    # networkManager.enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command"  "flakes" ];
@@ -63,7 +63,7 @@ in {
 
   users.users."${name}" = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" ];
     # password = password;
     openssh.authorizedKeys.keys = let
       authorizedKeys = pkgs.fetchurl {
