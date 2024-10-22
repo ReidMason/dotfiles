@@ -11,7 +11,7 @@
 
   # python.enable = true;
 
-  # terminal.enable = true;
+  terminal.enable = true;
   git.enable = true;
 
   nixpkgs.config.allowUnfree = true;
