@@ -9,7 +9,7 @@ module = {
     ];
 
     home.shellAliases = {
-      cat = "bat";
+      cat = "bat --style=plain";
     };
   };
 };
