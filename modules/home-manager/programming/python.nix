@@ -5,6 +5,9 @@ module = {
   label = "Python";
   config = {
     home.packages = with pkgs; [
+      (pkgs.python311.withPackages (ppkgs: [ ppkgs.requests ]))
+    ];
+    home.packages = with pkgs; [
       python3
     ];
   };
