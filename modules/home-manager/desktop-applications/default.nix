@@ -6,6 +6,7 @@ in
   imports = [
      (import ./wezterm.nix { inherit pkgs lib options config; parent-name = module-name; })
      (import ./firefox.nix { inherit pkgs lib options config; parent-name = module-name; })
+     (import ./ollama.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
   ];
 
   options.${module-name} = {
