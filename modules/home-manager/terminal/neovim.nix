@@ -8,7 +8,7 @@ module = {
         pkgs-unstable.neovim
         pkgs.ripgrep
         pkgs.lazygit
-        pkgs.clang
+        # pkgs.clang
         pkgs.lua
     ];
 
