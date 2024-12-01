@@ -4,8 +4,9 @@ module-name = "programming";
 in
 {
   imports = [
-     (import ./python.nix { inherit pkgs lib options config; parent-name = module-name; })
-     (import ./git.nix { inherit pkgs lib options config; parent-name = module-name; })
+    (import ./python.nix { inherit pkgs lib options config; parent-name = module-name; })
+    (import ./git.nix { inherit pkgs lib options config; parent-name = module-name; })
+    (import ./haskell.nix { inherit pkgs lib options config; parent-name = module-name; })
   ];
 
   options.programming = {
