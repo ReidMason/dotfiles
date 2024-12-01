@@ -39,6 +39,19 @@ return {
       local lspconfig = require "lspconfig"
       local mason_lsp_config = require "mason-lspconfig"
 
+      lspconfig.hls.setup {
+        capabilities = capabilities,
+        cmd = { "haskell-language-server-wrapper", "--lsp" },
+        filetypes = { "haskell" },
+        root_dir = require("lspconfig").util.root_pattern(
+          "*.cabal",
+          "stack.yaml",
+          "cabal.project",
+          "package.yaml",
+          ".git"
+        ),
+      }
+
       mason_lsp_config.setup_handlers {
         -- Default handler
         function(server)

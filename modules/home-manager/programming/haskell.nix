@@ -1,4 +1,4 @@
-{pkgs, config, lib, options, parent-name, ...}:
+{pkgs, pkgs-unstable, config, lib, options, parent-name, ...}:
 let
 module = {
   module-name = "haskell";
@@ -6,6 +6,8 @@ module = {
   config = {
     home.packages = with pkgs; [
       ghc
+      cabal-install
+      haskell-language-server
     ];
   };
 };

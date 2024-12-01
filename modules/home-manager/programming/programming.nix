@@ -1,4 +1,4 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs, pkgs-unstable, lib, config, options, ... }:
 let 
 module-name = "programming";
 in
@@ -6,7 +6,7 @@ in
   imports = [
     (import ./python.nix { inherit pkgs lib options config; parent-name = module-name; })
     (import ./git.nix { inherit pkgs lib options config; parent-name = module-name; })
-    (import ./haskell.nix { inherit pkgs lib options config; parent-name = module-name; })
+    (import ./haskell.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
   ];
 
   options.programming = {
