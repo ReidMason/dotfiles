@@ -20,7 +20,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
-      "nvim/nvim-lspconfig",
+      "neovim/nvim-lspconfig",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
