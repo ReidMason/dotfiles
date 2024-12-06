@@ -8,6 +8,7 @@ return {
     -- refer to the configuration section below
     bigfile = { enabled = false },
     notifier = { enabled = true },
+    lazygit = { enabled = true },
     quickfile = { enabled = false },
     statuscolumn = { enabled = false },
     words = { enabled = false },

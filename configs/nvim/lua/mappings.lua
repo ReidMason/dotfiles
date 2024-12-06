@@ -181,9 +181,9 @@ mappings.telescope = {
   },
 }
 
-mappings.lazygit = {
+mappings.snacks = {
   n = {
-    ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazygit" },
+    ["<leader>gg"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
   },
 }
 
