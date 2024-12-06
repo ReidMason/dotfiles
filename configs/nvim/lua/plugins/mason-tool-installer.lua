@@ -16,7 +16,6 @@ return {
       { "ansible-language-server" },
       { "ansible-lint" },
       { "vue-language-server" },
-      { "templ" },
       { "rnix-lsp" },
     },
     run_on_start = true,
