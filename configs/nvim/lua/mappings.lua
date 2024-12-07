@@ -64,12 +64,6 @@ mappings.dap = {
   },
 }
 
-mappings.mdPreview = {
-  n = {
-    ["<C-b>"] = { "<cmd>OpenMdPreview<CR>", "Open markdown preview" },
-  },
-}
-
 mappings.dapui = {
   n = {
     ["<leader>dt"] = {
