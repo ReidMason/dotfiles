@@ -11,7 +11,7 @@ mappings.general = {
       function()
         require("oil").toggle_float()
       end,
-      "Toggle nvimtree",
+      "Toggle oil",
     },
 
     ["<leader>tr"] = { "<cmd> TestNearest <CR>" },
