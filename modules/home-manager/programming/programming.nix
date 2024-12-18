@@ -8,6 +8,7 @@ in
     (import ./git.nix { inherit pkgs lib options config; parent-name = module-name; })
     (import ./haskell.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
     (import ./node.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
+    (import ./dotnet.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
   ];
 
   options.programming = {
