@@ -66,6 +66,11 @@ let
           bind -n M-K resize-pane -U 10
           bind -n M-H resize-pane -L 10
           bind -n M-L resize-pane -R 10
+
+          # Tmux sensible fix for tmux 3.5 and 3.5a to stop zsh from breaking
+          # Without this the default shell will be /bin/sh
+          set -gu default-command
+          set -g default-shell "$SHELL"
         '';
         plugins = [
           {
