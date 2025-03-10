@@ -25,7 +25,7 @@
   system.defaults = {
     dock.autohide = true;
     dock.persistent-apps = [
-      "/Applications/Arc.app"
+      "/Applications/Zen Browser.app"
       "${pkgs.wezterm}/Applications/WezTerm.app"
       "/System/Applications/Mail.app"
     ];
