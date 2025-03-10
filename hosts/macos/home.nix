@@ -19,8 +19,8 @@
   terminal.enable = true;
   server-tools.enable = true;
 
-  tmux.enable = true;
   wezterm.enable = true;
+  tmux.enable = true;
   tmux-sessionizer.enable = true;
 
   terraform.enable = true;
