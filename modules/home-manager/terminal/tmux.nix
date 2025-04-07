@@ -27,11 +27,15 @@ let
           # Don't detach when destroying a session
           set-option -g detach-on-destroy off 
 
+          # Window creation/deletion
+          bind t new-window
+          bind w kill-window
+
           # Switch windows
-          bind -n M-q select-window -t 1
-          bind -n M-w select-window -t 2
-          bind -n M-e select-window -t 3
-          bind -n M-r select-window -t 4
+          bind h select-window -t 1
+          bind j select-window -t 2
+          bind k select-window -t 3
+          bind l select-window -t 4
 
           # Toggle between last active windows
           bind -n M-o switch-client -l
