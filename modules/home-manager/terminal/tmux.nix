@@ -27,8 +27,7 @@ let
           # Don't detach when destroying a session
           set-option -g detach-on-destroy off 
 
-          # Window creation/deletion
-          bind t new-window
+          # Window deletion
           bind w kill-window
 
           # Switch windows
