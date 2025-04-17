@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -25,7 +26,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command"  "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -64,6 +65,22 @@
       device = "fern.lan:/mnt/user/Downloads";
       fsType = "nfs";
     };
+
+    "/home/vera/export/appdata" = {
+      device = "/home/vera/appdata";
+      options = [ "bind" ];
+    };
+  };
+
+  # Configure NFS server
+  services.nfs.server = {
+    enable = true;
+    # fixed rpc.statd port; for firewall
+    lockdPort = 4001;
+    mountdPort = 4002;
+    statdPort = 4000;
+    extraNfsdConfig = '''';
+    exports = "/home/vera/export/appdata fern.lan(sec=sys,ro,no_root_squash)";
   };
 
   # Docker setup
@@ -77,13 +94,15 @@
     isNormalUser = true;
     description = "vera";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [];
-    openssh.authorizedKeys.keys = let
-      authorizedKeys = pkgs.fetchurl {
-        url = "https://github.com/reidmason.keys";
-        hash = "sha256-HRI/UIplTM/xcYZY4NWJ22ETlcAHIodWKeAiLXXQC1M=";
-      };
-    in pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
+    packages = with pkgs; [ ];
+    openssh.authorizedKeys.keys =
+      let
+        authorizedKeys = pkgs.fetchurl {
+          url = "https://github.com/reidmason.keys";
+          hash = "sha256-HRI/UIplTM/xcYZY4NWJ22ETlcAHIodWKeAiLXXQC1M=";
+        };
+      in
+      pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
   };
 
   # Allow sudo without password
@@ -101,10 +120,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-   # programs.gnupg.agent = {
-   #   enable = true;
-   #   enableSSHSupport = true;
-   # };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
 
   # List services that you want to enable:
 
@@ -125,6 +144,11 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
