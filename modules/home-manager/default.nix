@@ -5,8 +5,7 @@
     ./terminal
     ./server-tools
     ./desktop-environments
-
-    ./programming/programming.nix
+    ./programming
     ./desktop-applications
   ];
 
