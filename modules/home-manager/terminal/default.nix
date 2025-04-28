@@ -14,6 +14,7 @@ in
     (import ./dust.nix { inherit pkgs lib options config; parent-name = module-name; })
     (import ./glow.nix { inherit pkgs lib options config; parent-name = module-name; })
     (import ./zoxide.nix { inherit pkgs lib options config; parent-name = module-name; })
+    (import ./kubectl.nix { inherit pkgs lib options config; parent-name = module-name; })
   ];
 
   options.${module-name} = {
@@ -24,7 +25,6 @@ in
     neofetch.enable = lib.mkEnableOption "Enable neofetch";
     zoxide.enable = lib.mkEnableOption "Enable zoxide";
     talosctl.enable = lib.mkEnableOption "Enable talosctl";
-    kubectl.enable = lib.mkEnableOption "Enable kubectl";
     just.enable = lib.mkEnableOption "Enable just";
   };
 
@@ -34,7 +34,6 @@ in
     terminal.neofetch.enable = lib.mkDefault config.terminal.enable;
     terminal.zoxide.enable = lib.mkDefault config.terminal.enable;
     terminal.talosctl.enable = lib.mkDefault config.terminal.enable;
-    terminal.kubectl.enable = lib.mkDefault config.terminal.enable;
     terminal.just.enable = lib.mkDefault config.terminal.enable;
 
     home.packages = lib.concatLists [
@@ -42,8 +41,6 @@ in
       (lib.optional config.terminal.rsync.enable pkgs.rsync)
       (lib.optional config.terminal.neofetch.enable pkgs.neofetch)
       (lib.optional config.terminal.talosctl.enable pkgs.talosctl)
-      (lib.optional config.terminal.kubectl.enable pkgs.kubectl)
-
       (lib.optional config.terminal.just.enable pkgs.just)
     ];
   };
