@@ -1,14 +1,14 @@
-{pkgs, pkgs-unstable, config, lib, options, parent-name, ...}:
+{ pkgs, pkgs-unstable, config, lib, options, parent-name, ... }:
 let
-module = {
-  module-name = "ollama";
-  label = "Ollama";
-  config = {
-    home.packages = [
-      pkgs-unstable.ollama
-    ];
+  module = {
+    module-name = "ollama";
+    label = "Ollama";
+    config = {
+      home.packages = [
+        pkgs-unstable.ollama
+      ];
+    };
   };
-};
 in
 {
   imports = [
