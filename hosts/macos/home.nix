@@ -21,7 +21,7 @@
 
   wezterm.enable = true;
   tmux.enable = true;
-  # tmux-sessionizer.enable = true;
+  tmux-sessionizer.enable = true;
 
   terraform.enable = true;
 

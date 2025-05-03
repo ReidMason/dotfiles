@@ -20,6 +20,7 @@ in
     (import ./neofetch.nix { inherit pkgs lib options config; parent-name = module-name; })
     (import ./talosctl.nix { inherit pkgs lib options config; parent-name = module-name; })
     (import ./just.nix { inherit pkgs lib options config; parent-name = module-name; })
+    (import ./tmux-sessionizer.nix { inherit pkgs lib options config; parent-name = module-name; })
     (import ./zsh.nix)
   ];
 
