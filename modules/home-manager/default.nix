@@ -17,12 +17,7 @@
     ];
 
     zsh.enable = lib.mkDefault true;
-
-    programming.enable = lib.mkDefault false;
-    desktop-applications.enable = lib.mkDefault false;
-
     zsh.autoAttachToTmux = lib.mkDefault false;
-
     tmux-sessionizer.enable = lib.mkDefault false;
   };
 }
