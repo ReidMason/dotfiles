@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }: {
   options = {
-    zsh.enable = lib.mkEnableOption "Enable zsh";
+    zsh.enable = lib.mkEnableOption "Enable zsh" // { default = true; };
     zsh.autoAttachToTmux = lib.mkEnableOption "Auto attach to Tmux session";
   };
 
