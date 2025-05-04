@@ -9,6 +9,7 @@ let
         go
         sqlc
         goose
+        air
       ];
     };
   };
