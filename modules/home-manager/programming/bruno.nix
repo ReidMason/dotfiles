@@ -1,14 +1,11 @@
 { pkgs, config, lib, options, parent-name, ... }:
 let
   module = {
-    module-name = "golang";
-    label = "Golang";
+    module-name = "bruno";
+    label = "Bruno";
     config = {
       home.packages = with pkgs; [
-        go
-        sqlc
-        goose
-        air
+        bruno
       ];
     };
   };

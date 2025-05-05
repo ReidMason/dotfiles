@@ -12,6 +12,7 @@ in
     (import ./golang.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
     (import ./lazygit.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
     (import ./rust.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
+    (import ./bruno.nix { inherit pkgs pkgs-unstable lib options config; parent-name = module-name; })
   ];
 
   options.programming = {
