@@ -31,10 +31,10 @@ let
           bind w kill-window
 
           # Switch windows
-          bind h select-window -t 1
-          bind j select-window -t 2
-          bind k select-window -t 3
-          bind l select-window -t 4
+          bind j select-window -t 1
+          bind k select-window -t 2
+          bind l select-window -t 3
+          # bind ; select-window -t 4
 
           # Toggle between last active windows
           bind -n M-o switch-client -l
