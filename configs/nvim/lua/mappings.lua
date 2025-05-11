@@ -109,10 +109,10 @@ mappings.lsp = {
 
 mappings.tmuxNavigator = {
   n = {
-    ["<M-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Tmux navigate left" },
-    ["<M-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Tmux navigate down" },
-    ["<M-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Tmux navigate up" },
-    ["<M-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Tmux navigate right" },
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Tmux navigate left" },
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Tmux navigate down" },
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Tmux navigate up" },
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Tmux navigate right" },
   },
 }
 
@@ -132,28 +132,28 @@ mappings.harpoon = {
       end,
       "Toggle Harpon quick menu",
     },
-    ["<C-h>"] = {
+    ["H"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(1)
       end,
       "Harpoon 1",
     },
-    ["<C-j>"] = {
+    ["J"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(2)
       end,
       "Harpoon 2",
     },
-    ["<C-k>"] = {
+    ["K"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(3)
       end,
       "Harpoon 3",
     },
-    ["<C-l>"] = {
+    ["L"] = {
       function()
         local harpoon = require "harpoon"
         harpoon:list():select(4)

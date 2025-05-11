@@ -62,12 +62,12 @@ config.keys = {
 	{
 		key = "l",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action.DisableDefaultAssignment,
+		action = wezterm.action.SendKey({ key = "l", mods = "CTRL" }),
 	},
 	{
 		key = "h",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action.DisableDefaultAssignment,
+		action = wezterm.action.SendKey({ key = "h", mods = "CTRL" }),
 	},
 }
 
