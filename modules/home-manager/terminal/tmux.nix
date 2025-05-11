@@ -8,7 +8,7 @@ let
 
       programs.tmux = {
         enable = true;
-        prefix = "C-Space";
+        prefix = "M-Space";
         terminal = "xterm-256color";
         escapeTime = 0;
         baseIndex = 1;
