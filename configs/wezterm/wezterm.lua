@@ -34,33 +34,10 @@ config.max_fps = 144
 
 config.keys = {
 	{
-		key = "Backslash",
-		mods = "CMD",
-		action = wezterm.action.SendKey({ mods = "ALT", key = "\\" }),
-	},
-	{
 		key = "3",
 		mods = "ALT",
 		action = wezterm.action.SendKey({ key = "#" }),
 	},
-	{
-		key = "t",
-		mods = "CMD",
-		action = wezterm.action.Multiple({
-			wezterm.action.SendKey({ mods = "CTRL", key = " " }),
-			wezterm.action.SendKey({ key = "c" }),
-		}),
-	},
-	{
-		key = "w",
-		mods = "CMD|SHIFT",
-		action = wezterm.action.SendString("tmux kill-window\n"),
-	},
-	-- {
-	-- 	key = "Enter",
-	-- 	mods = "SHIFT",
-	-- 	action = wezterm.action.SendKey({ key = "F2" }),
-	-- },
 	-- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
 	{
 		key = "LeftArrow",
@@ -75,10 +52,22 @@ config.keys = {
 		mods = "OPT",
 		action = wezterm.action.SendKey({ key = "f", mods = "ALT" }),
 	},
+	-- Reload wezterm config
 	{
 		key = "r",
 		mods = "CMD|SHIFT",
 		action = wezterm.action.ReloadConfiguration,
+	},
+	-- Disable binds
+	{
+		key = "l",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "h",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
 
