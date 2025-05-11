@@ -25,5 +25,7 @@
 
   terraform.enable = true;
 
+  aerospace.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 }
