@@ -60,14 +60,24 @@ config.keys = {
 	},
 	-- Disable binds
 	{
-		key = "l",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SendKey({ key = "l", mods = "CTRL" }),
-	},
-	{
 		key = "h",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action.SendKey({ key = "h", mods = "CTRL" }),
+		action = wezterm.action.SendKey({ key = "F1" }),
+	},
+	{
+		key = "j",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SendKey({ key = "F2" }),
+	},
+	{
+		key = "k",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SendKey({ key = "F3" }),
+	},
+	{
+		key = "l",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SendKey({ key = "F4" }),
 	},
 }
 
