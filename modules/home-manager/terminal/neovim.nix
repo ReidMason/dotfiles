@@ -24,6 +24,7 @@ let
 
       home.shellAliases = {
         v = "nvim";
+        vim = "nvim";
       };
     };
   };
