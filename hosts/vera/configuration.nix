@@ -89,6 +89,18 @@
     package = pkgs.docker_27;
   };
 
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
+      portainer-agent = {
+        image = "portainer/agent:latest";
+        ports = [ "9001:9001" ];
+        volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
+        restart = "always";
+      };
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vera = {
     isNormalUser = true;
