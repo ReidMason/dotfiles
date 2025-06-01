@@ -96,7 +96,7 @@
         image = "portainer/agent:latest";
         ports = [ "9001:9001" ];
         volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
-        restart = "always";
+        autoStart = true;
       };
     };
   };
