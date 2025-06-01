@@ -105,7 +105,7 @@
         environment = {
           TS_STATE_DIR = "/var/lib/tailscale";
           TS_USERSPACE = "false";
-          TS_ROUTES = "10.128.0.0./24";
+          TS_ROUTES = "10.128.0.0/24";
         };
         volumes = [
           "/home/vera/appdata/tailscale:/var/lib/tailscale"
