@@ -174,7 +174,7 @@
       };
 
       sonarr = {
-        image = "linuxserver/sonarr:4.0.10";
+        image = "linuxserver/sonarr:4.0.14";
         volumes = [
           "/home/vera/appdata/sonarr:/config"
           "/mnt/fern/downloads/qBittorrent/Completed:/downloads"
