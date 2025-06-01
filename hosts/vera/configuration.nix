@@ -98,6 +98,26 @@
         volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
         autoStart = true;
       };
+
+      tailscale = {
+        image = "tailscale/tailscale:v1.84.0";
+        hostname = "Vera";
+        environment = {
+          TS_STATE_DIR = "/var/lib/tailscale";
+          TS_USERSPACE = false;
+          TS_ROUTES = "10.128.0.0./24";
+        };
+        ports = [ "9001:9001" ];
+        volumes = [
+          "/home/vera/appdata/tailscale:/var/lib/tailscale"
+          "/dev/net/tun:/dev/net/tun"
+        ];
+        capabilities = {
+          net_admin = true;
+          sys_module = true;
+        };
+        autoStart = true;
+      };
     };
   };
 
