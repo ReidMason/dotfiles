@@ -117,6 +117,94 @@
         };
         autoStart = true;
       };
+
+      qbittorrent = {
+        image = "binhex/arch-qbittorrentvpn:5.1.0-1-01";
+        ports = [
+          "6881:6881"
+          "6881:6881/udp"
+          "8118:8118"
+          "8080:8080" # Webui
+          "9117:9117" # Jackett port
+          "8989:8989" # Sonarr port
+          "7878:7878" # Radarr port
+        ];
+        volumes = [
+          "/home/vera/appdata/qbittorrent:/config"
+          "/mnt/fern/downloads/qBittorrent:/downloads"
+          "/etc/localtime:/etc/localtime:ro"
+        ];
+        environmentFiles = [
+          "/home/vera/secrets/downloads/qbittorrent.env"
+        ];
+        environment = {
+          VPN_ENABLED = "yes";
+          # VPN_USER = ""; In secrets env file
+          # VPN_PASS = ""; In secrets env file
+          VPN_PROV = "pia";
+          VPN_CLIENT = "openvpn";
+          STRICT_PORT_FORWARD = "no";
+          ENABLE_PRIVOXY = "yes";
+          WEBUI_PORT = "8080";
+          LAN_NETWORK = "10.128.0.0/24";
+          NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
+          VPN_INPUT_PORTS = "9117,8989,7878";
+          VPN_OUTPUT_PORTS = "9117,8989,7878";
+          UMASK = "000";
+          PUID = "99";
+          PGID = "100";
+        };
+        capabilities = {
+          net_admin = true;
+        };
+      };
+
+      jackett = {
+        image = "linuxserver/jackett:0.22.1974";
+        volumes = [
+          "/home/vera/appdata/jackett:/config"
+          "/etc/localtime:/etc/localtime:ro"
+        ];
+        environment = {
+          PUID = "99";
+          PGID = "100";
+        };
+        dependsOn = [ "qbittorrent" ];
+        networks = [ "container:qbittorrent" ];
+      };
+
+      sonarr = {
+        image = "linuxserver/sonarr:4.0.10";
+        volumes = [
+          "/home/vera/appdata/sonarr:/config"
+          "/mnt/fern/downloads/qBittorrent/Completed:/downloads"
+          "/mnt/fern/plex:/tv"
+          "/dev/rtc:/dev/rtc"
+          "/etc/localtime:/etc/localtime:ro"
+        ];
+        environment = {
+          PUID = "99";
+          PGID = "100";
+        };
+        dependsOn = [ "qbittorrent" ];
+        networks = [ "container:qbittorrent" ];
+      };
+
+      radarr = {
+        image = "binhex/arch-radarr:5.25";
+        volumes = [
+          "/home/vera/appdata/radarr:/config"
+          "/mnt/fern/downloads/qBittorrent:/data"
+          "/mnt/fern/plex:/media"
+        ];
+        environment = {
+          PUID = "99";
+          PGID = "100";
+          UMASK = "000";
+        };
+        dependsOn = [ "qbittorrent" ];
+        networks = [ "container:qbittorrent" ];
+      };
     };
   };
 
