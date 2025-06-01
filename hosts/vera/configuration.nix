@@ -93,7 +93,7 @@
     backend = "docker";
     containers = {
       portainer-agent = {
-        image = "portainer/agent:latest";
+        image = "portainer/agent:2.30.1-alpine";
         ports = [ "9001:9001" ];
         volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
         autoStart = true;
