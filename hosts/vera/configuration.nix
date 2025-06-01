@@ -104,10 +104,9 @@
         hostname = "Vera";
         environment = {
           TS_STATE_DIR = "/var/lib/tailscale";
-          TS_USERSPACE = false;
+          TS_USERSPACE = "false";
           TS_ROUTES = "10.128.0.0./24";
         };
-        ports = [ "9001:9001" ];
         volumes = [
           "/home/vera/appdata/tailscale:/var/lib/tailscale"
           "/dev/net/tun:/dev/net/tun"
