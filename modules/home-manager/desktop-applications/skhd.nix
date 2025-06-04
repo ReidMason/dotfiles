@@ -8,6 +8,8 @@ let
         pkgs.skhd
       ];
 
+      services.skhd.enable = true;
+
       home.file.".skhdrc".text = ''
         # These are binds set in the macos keybinds (System Settings > Accessibility > Keyboard Shortcuts > Windows > Halves)
         # You have to change these binds because by default they are "fn + ctrl + arrows"
