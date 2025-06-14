@@ -23,8 +23,8 @@ let
 
         # Applications
         alt - b : open /Applications/Arc.app
-        alt - t : open "${pkgs-unstable.wezterm}/Applications/WezTerm.app"
-        alt - n : open "${pkgs-unstable.obsidian}/Applications/Obsidian.app"
+        alt - t : open "${pkgs.wezterm}/Applications/WezTerm.app"
+        alt - n : open "${pkgs.obsidian}/Applications/Obsidian.app"
       '';
     };
   };
