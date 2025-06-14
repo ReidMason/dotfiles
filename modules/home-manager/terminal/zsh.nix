@@ -23,6 +23,17 @@
         ".." = "cd ..";
       };
 
+      # Key bindings for history search
+      initExtra = ''
+        # Bind up and down arrow keys to history search
+        bindkey "^[[A" history-search-backward
+        bindkey "^[[B" history-search-forward
+        
+        # Alternative bindings for different terminal types
+        bindkey "^[OA" history-search-backward
+        bindkey "^[OB" history-search-forward
+      '';
+
       initContent = lib.mkIf config.zsh.autoAttachToTmux ''
         # Auto attach to Tmux session or create a new session called default
         if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
