@@ -31,13 +31,13 @@
         "...." = "cd ../../..";
 
         h = "cd ~";
-        
+
         # System shortcuts
         reload = "source ~/.zshrc";
       };
 
       # Key bindings for history search
-      initExtra = ''
+      initContent = ''
         # Bind up and down arrow keys to history search
         bindkey "^[[A" history-search-backward
         bindkey "^[[B" history-search-forward
@@ -72,13 +72,13 @@
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
         zstyle ':completion:*' menu select
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-      '';
-
-      initContent = lib.mkIf config.zsh.autoAttachToTmux ''
-        # Auto attach to Tmux session or create a new session called default
-        if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
-          tmux new -As default
-        fi
+        
+        ${lib.optionalString config.zsh.autoAttachToTmux ''
+          # Auto attach to Tmux session or create a new session called default
+          if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
+            tmux new -As default
+          fi
+        ''}
       '';
     };
   };
