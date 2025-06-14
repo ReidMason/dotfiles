@@ -1,6 +1,5 @@
 { self, nixpkgs, pkgs, pkgs-unstable, ... }:
 {
-  services.nix-daemon.enable = true;
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -20,7 +19,7 @@
     home = "/Users/reid";
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  system.primaryUser = "reid";
 
   system.defaults = {
     dock.autohide = true;
