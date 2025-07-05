@@ -205,6 +205,16 @@
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
       };
+
+      uptime-kuma = {
+        image = "louislam/uptime-kuma:1.23.16";
+        volumes = [
+          "/home/vera/appdata/uptime-kuma:/app/data"
+        ];
+        ports = [
+          "3001:3001"
+        ];
+      };
     };
   };
 
