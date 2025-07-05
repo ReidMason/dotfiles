@@ -128,6 +128,7 @@
           "9117:9117" # Jackett port
           "8989:8989" # Sonarr port
           "7878:7878" # Radarr port
+          "8191:8191" # Flaresolverr port
         ];
         volumes = [
           "/home/vera/appdata/qbittorrent:/config"
@@ -202,6 +203,12 @@
           PGID = "100";
           UMASK = "000";
         };
+        dependsOn = [ "qbittorrent" ];
+        networks = [ "container:qbittorrent" ];
+      };
+
+      flaresolverr = {
+        image = "ghcr.io/thephaseless/byparr:latest";
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
       };
