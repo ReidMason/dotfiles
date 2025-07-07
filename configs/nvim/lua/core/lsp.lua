@@ -1,7 +1,8 @@
 vim.lsp.enable {
   "gopls",
   "lua_ls",
-  "nix"
+  "nix",
+  "docker"
 }
 
 vim.diagnostic.config {

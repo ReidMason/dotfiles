@@ -19,7 +19,10 @@ let
         # pkgs.clang
         pkgs.lua
         pkgs.lua-language-server
+
+        # nix tools
         pkgs.nil
+        pkgs.nixfmt-rfc-style # Formatter
       ];
 
       home.sessionVariables = {
