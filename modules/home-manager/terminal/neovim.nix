@@ -10,6 +10,7 @@ let
         pkgs.lazygit
         # pkgs.clang
         pkgs.lua
+        pkgs.lua-language-server
       ];
 
       home.sessionVariables = {

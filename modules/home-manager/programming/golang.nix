@@ -9,6 +9,7 @@ let
         sqlc
         goose
         air
+        gopls
       ];
     };
   };
