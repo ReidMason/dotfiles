@@ -55,26 +55,6 @@ mappings.general = {
   },
 }
 
-mappings.dap = {
-  n = {
-    ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add breakpoint at line" },
-    ["<leader>dc"] = { "<cmd> DapContinue <CR>", "Dap continue" },
-    ["<leader>do"] = { "<cmd> DapStepOver <CR>", "Dap step over" },
-    ["<leader>di"] = { "<cmd> DapStepInto <CR>", "Dap step i" },
-  },
-}
-
-mappings.dapui = {
-  n = {
-    ["<leader>dt"] = {
-      function()
-        require("dapui").toggle()
-      end,
-      "Open debugging sidebar",
-    },
-  },
-}
-
 mappings.vim = {
   n = {
     ["<leader>sv"] = { "<cmd>vsplit<CR>" },

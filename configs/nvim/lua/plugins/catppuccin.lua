@@ -17,11 +17,6 @@ return {
       mason = true,
       telescope = {
         enabled = true,
-        -- style = "nvchad",
-      },
-      dap = {
-        enabled = true,
-        enable_ui = true,
       },
       nvimtree = true,
     },
