@@ -1,4 +1,12 @@
-{ pkgs, pkgs-unstable, config, lib, options, parent-name, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  config,
+  lib,
+  options,
+  parent-name,
+  ...
+}:
 let
   module = {
     module-name = "neovim";
@@ -11,6 +19,7 @@ let
         # pkgs.clang
         pkgs.lua
         pkgs.lua-language-server
+        pkgs.nil
       ];
 
       home.sessionVariables = {
@@ -32,6 +41,13 @@ let
 in
 {
   imports = [
-    (import ../module-setup.nix { inherit config lib parent-name module; })
+    (import ../module-setup.nix {
+      inherit
+        config
+        lib
+        parent-name
+        module
+        ;
+    })
   ];
 }
