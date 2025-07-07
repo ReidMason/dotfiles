@@ -52,3 +52,4 @@ require("lazy").setup({ { import = "plugins" } }, {
 
 require "config"
 require "mappings"
+require "core.lsp"
