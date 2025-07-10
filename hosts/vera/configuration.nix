@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -26,7 +25,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -223,13 +225,47 @@
         ];
       };
     };
+
+    plex-media-sever = {
+      image = "plexinc/pms-docker:1.41.8.9834-071366d65";
+      ports = [
+        "32400:32400/tcp"
+        "3005:3005/tcp"
+        "8324:8324/tcp"
+        "32469:32469/tcp"
+        "1900:1900/udp"
+        "32410:32410/udp"
+        "32412:32412/udp"
+        "32413:32413/udp"
+        "32414:32414/udp"
+      ];
+      volumes = [
+        "/home/vera/appdata/plex-media-server:/config"
+        "/tmp/:/transcode"
+        "/mnt/fern/plex:/data"
+      ];
+      environment = {
+        VERSION = "docker";
+        TZ = "Europe/London";
+        UMASK = "000";
+        PLEX_UID = "1000";
+        ALLOWED_NETWORKS = "10.128.0.0/24";
+      };
+      extraOptions = [
+        "--hostname=vera"
+      ];
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vera = {
     isNormalUser = true;
     description = "vera";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [ ];
     openssh.authorizedKeys.keys =
       let
@@ -271,7 +307,6 @@
     };
   };
 
-
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
@@ -282,8 +317,22 @@
   # networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
-    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedTCPPorts = [
+      111
+      2049
+      4000
+      4001
+      4002
+      20048
+    ];
+    allowedUDPPorts = [
+      111
+      2049
+      4000
+      4001
+      4002
+      20048
+    ];
   };
 
   # This value determines the NixOS release from which the default
