@@ -16,9 +16,10 @@ let
         nodejs
         pnpm
         prettierd
+        typescript
         typescript-language-server
         tailwindcss-language-server
-        # { "emmet-ls" },
+        astro-language-server
       ];
     };
   };
