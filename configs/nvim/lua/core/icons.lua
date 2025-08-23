@@ -39,4 +39,9 @@ return {
   Copilot = "",
   Codeium = "",
   TabNine = "",
+
+  Error = "󰅚",
+  Warn = "󰀪",
+  Info = "󰋽",
+  Hint = "󰌶",
 }
