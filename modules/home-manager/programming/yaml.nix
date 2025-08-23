@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   config,
   lib,
   options,
@@ -9,12 +8,11 @@
 }:
 let
   module = {
-    module-name = "terraform";
-    label = "Terraform";
+    module-name = "yaml";
+    label = "YAML";
     config = {
-      home.packages = [
-        pkgs-unstable.terraform
-        pkgs-unstable.terraform-lsp
+      home.packages = with pkgs; [
+        pkgs.yaml-language-server
       ];
     };
   };

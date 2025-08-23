@@ -7,7 +7,9 @@ local lsp_configs = {
   'docker_compose_language_service',
   'nixd',
   'tailwindcss',
-  'ts_ls'
+  'ts_ls',
+  'yamlls',
+  'terraform_lsp'
 }
 
 vim.lsp.enable(lsp_configs)
