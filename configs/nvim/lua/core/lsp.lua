@@ -1,15 +1,16 @@
-local function enable_lsp_configs()
-  local lsp_configs = {}
+-- To debug use
+--  :checkhealth vim.lsp
+local lsp_configs = {
+  'gopls',
+  'lua_ls',
+  'astro',
+  'docker_compose_language_service',
+  'nixd',
+  'tailwindcss',
+  'ts_ls'
+}
 
-  for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
-    local server_name = vim.fn.fnamemodify(f, ':t:r')
-    table.insert(lsp_configs, server_name)
-  end
-
-  vim.lsp.enable(lsp_configs)
-end
-
-enable_lsp_configs()
+vim.lsp.enable(lsp_configs)
 
 vim.diagnostic.config {
   virtual_text = true,
