@@ -10,7 +10,6 @@ return {
     end,
     integrations = {
       cmp = true,
-      gitsigns = true,
       notify = true,
       harpoon = true,
       which_key = true,

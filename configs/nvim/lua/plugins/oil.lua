@@ -1,5 +1,9 @@
+local mappings = require "mappings"
+
 return {
   "stevearc/oil.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  keys = mappings.oil.keys,
   opts = function()
     local HEIGHT_RATIO = 0.8
     local WIDTH_RATIO = 0.8
@@ -30,7 +34,4 @@ return {
       },
     }
   end,
-  -- Optional dependencies
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  lazy = false,
 }

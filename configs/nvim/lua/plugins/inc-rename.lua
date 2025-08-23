@@ -1,5 +1,5 @@
 return {
   "smjonas/inc-rename.nvim",
-  event = "BufReadPre",
+  event = "InsertEnter",
   opts = {},
 }

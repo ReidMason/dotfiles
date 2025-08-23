@@ -6,5 +6,8 @@ return {
   ---@type AutoSession.Config
   opts = {
     suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-  },
+    session_lens = {
+      load_on_setup = false,
+    },
+  }
 }

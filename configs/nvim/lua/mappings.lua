@@ -7,12 +7,6 @@ mappings.general = {
     ["<leader>w"] = { "<cmd> w! <CR>", "Save" },
     ["<leader>qq"] = { "<cmd> confirm qa <CR>", "Quit" },
     ["<C-a>"] = { "ggVG", "Select all" },
-    ["<leader>e"] = {
-      function()
-        require("oil").toggle_float()
-      end,
-      "Toggle oil",
-    },
 
     ["<leader>tr"] = { "<cmd> TestNearest <CR>" },
     ["<leader>tf"] = { "<cmd> TestFile <CR>" },
@@ -61,6 +55,17 @@ mappings.vim = {
     ["<leader>sh"] = { "<cmd>split<CR>" },
     ["<leader>sc"] = { "<C-w>c" },
   },
+}
+
+mappings.oil = {
+  n = {
+    ["<leader>e"] = {
+      function()
+        require("oil").toggle_float()
+      end,
+      "Toggle oil",
+    },
+  }
 }
 
 mappings.rename = {
