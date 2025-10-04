@@ -121,7 +121,7 @@
       };
 
       qbittorrent = {
-        image = "binhex/arch-qbittorrentvpn:5.1.0-1-01";
+        image = "binhex/arch-qbittorrentvpn:5.1";
         ports = [
           "6881:6881"
           "6881:6881/udp"
@@ -177,7 +177,7 @@
       };
 
       sonarr = {
-        image = "linuxserver/sonarr:4.0.14";
+        image = "linuxserver/sonarr:4.0.15";
         volumes = [
           "/home/vera/appdata/sonarr:/config"
           "/mnt/fern/downloads/qBittorrent/Completed:/downloads"
@@ -210,7 +210,7 @@
       };
 
       flaresolverr = {
-        image = "ghcr.io/thephaseless/byparr:latest";
+        image = "ghcr.io/thephaseless/byparr:v3.4.1";
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
       };
