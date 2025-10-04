@@ -163,7 +163,7 @@
       };
 
       jackett = {
-        image = "linuxserver/jackett:0.22.1987";
+        image = "linuxserver/jackett:0.24.37";
         volumes = [
           "/home/vera/appdata/jackett:/config"
           "/etc/localtime:/etc/localtime:ro"
