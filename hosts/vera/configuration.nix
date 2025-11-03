@@ -216,7 +216,7 @@
       };
 
       uptime-kuma = {
-        image = "louislam/uptime-kuma:1.23.16";
+        image = "louislam/uptime-kuma:2.0.2";
         volumes = [
           "/home/vera/appdata/uptime-kuma:/app/data"
         ];
