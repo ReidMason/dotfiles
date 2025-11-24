@@ -166,6 +166,15 @@ in
         ;
       parent-name = module-name;
     })
+    (import ./blueutil.nix {
+      inherit
+        pkgs
+        lib
+        options
+        config
+        ;
+      parent-name = module-name;
+    })
     (import ./zsh.nix)
   ];
 
