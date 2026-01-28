@@ -226,7 +226,7 @@
       };
 
       plex-media-server = {
-        image = "plexinc/pms-docker:1.42.2.10156-f737b826c";
+        image = "plexinc/pms-docker:1.43.0.10467-2b1ba6e69";
         ports = [
           "32400:32400/tcp"
           "3005:3005/tcp"
