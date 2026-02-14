@@ -210,7 +210,7 @@
       };
 
       flaresolverr = {
-        image = "ghcr.io/thephaseless/byparr:v3.4.6";
+        image = "ghcr.io/flaresolverr/flaresolverr:v3.4.6";
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
       };
