@@ -35,7 +35,8 @@ wezterm.enable = false;
 
 ## Updating
 
-For darwin cd into the flakes directory and run the following command.
+If you aren't getting an old version of an application you probably need to update the flake.\
+Just cd into the flakes directory and run the following command.
 
 ```bash
 nix flake update

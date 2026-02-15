@@ -28,6 +28,8 @@
   tmux.enable = true;
   tmux-sessionizer.enable = true;
 
+  skhd.enable = false;
+
   terraform.enable = true;
 
   nixpkgs.config.allowUnfree = true;
