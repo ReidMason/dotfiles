@@ -64,7 +64,7 @@
       let
         authorizedKeys = pkgs.fetchurl {
           url = "https://github.com/reidmason.keys";
-          hash = "sha256-HRI/UIplTM/xcYZY4NWJ22ETlcAHIodWKeAiLXXQC1M=";
+          hash = "sha256-GAiShmhPpqrvN1rZrqxo3HRsu4s/8GsiqgzjszURQak=";
         };
       in
       pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
