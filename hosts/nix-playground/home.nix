@@ -18,6 +18,7 @@
 
   git.enable = true;
   terminal.enable = true;
+  blueutil.enable = false;
 
   nixpkgs.config.allowUnfree = true;
 }
