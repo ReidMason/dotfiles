@@ -79,6 +79,9 @@
     home-manager
   ];
 
+  # Allow sudo without password
+  security.sudo.wheelNeedsPassword = false;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -89,8 +92,22 @@
 
   # List services that you want to enable:
 
+  # Docker setup
+  virtualisation.docker = {
+    enable = true;
+    package = pkgs.docker_27;
+  };
+
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+    };
+  };
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
