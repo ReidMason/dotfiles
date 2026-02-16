@@ -14,12 +14,20 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager }:
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+    }:
     let
       utils = import ./modules/utils;
       home-config-builder = { host, system }: utils.home-config-builder { inherit inputs host system; };
       nix-config-builder = { host, system }: utils.nix-config-builder { inherit inputs host system; };
-      darwin-config-builder = { host, system }: utils.darwin-config-builder { inherit inputs host system; };
+      darwin-config-builder =
+        { host, system }: utils.darwin-config-builder { inherit inputs host system; };
     in
     {
       darwinConfigurations = {
@@ -35,9 +43,9 @@
           host = "linux";
         };
 
-        old-laptop = nix-config-builder {
+        nix-playground = nix-config-builder {
           system = "x86_64-linux";
-          host = "old-laptop";
+          host = "nix-playground";
         };
 
         vera = nix-config-builder {
@@ -67,8 +75,8 @@
           system = "x86_64-linux";
         };
 
-        old-laptop = home-config-builder {
-          host = "old-laptop";
+        nix-playground = home-config-builder {
+          host = "nix-playground";
           system = "x86_64-linux";
         };
 

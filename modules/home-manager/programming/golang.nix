@@ -18,6 +18,7 @@ let
         goose
         air
         gopls
+        golangci-lint
       ];
     };
   };
