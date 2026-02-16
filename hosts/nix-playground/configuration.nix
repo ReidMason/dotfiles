@@ -49,9 +49,9 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -70,23 +70,14 @@
       pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
   };
 
-  # Enable automatic login for the user.
-  services.getty.autologinUser = "reid";
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Allow sudo without password
-  security.sudo.wheelNeedsPassword = false;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     home-manager
   ];
-
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -99,7 +90,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -113,6 +104,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }
