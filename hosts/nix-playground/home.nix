@@ -17,6 +17,7 @@
   home.packages = [ ];
 
   git.enable = true;
+  terminal.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 }
