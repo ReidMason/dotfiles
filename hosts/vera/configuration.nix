@@ -102,7 +102,7 @@
       };
 
       tailscale = {
-        image = "tailscale/tailscale:v1.84.0";
+        image = "tailscale/tailscale:v1.94.2";
         hostname = "Vera";
         environment = {
           TS_STATE_DIR = "/var/lib/tailscale";
