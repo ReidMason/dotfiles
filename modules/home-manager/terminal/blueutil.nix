@@ -1,3 +1,4 @@
+# Bluetooth cli for Macos
 {
   pkgs,
   config,
