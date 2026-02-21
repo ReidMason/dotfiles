@@ -4,6 +4,10 @@
 
 { config, pkgs, ... }:
 
+let
+  mainUser = "reid";
+  appdataPath = "${config.users.users.${mainUser}.home}/appdata";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -98,6 +102,72 @@
     package = pkgs.docker_27;
   };
 
+  systemd.tmpfiles.rules = [
+    "d ${appdataPath} 0755 ${mainUser} users -"
+    "Z ${appdataPath} - ${mainUser} users -"
+
+    "d ${appdataPath}/uptime-kuma 0755 ${mainUser} users -"
+
+    "d ${appdataPath}/traefik 0755 ${mainUser} users -"
+    "f ${appdataPath}/traefik/acme.json 0600 ${mainUser} users -"
+  ];
+
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
+      uptime-kuma = {
+        image = "louislam/uptime-kuma:2.1.1";
+        volumes = [
+          "${appdataPath}/uptime-kuma:/app/data"
+        ];
+        labels = {
+          "traefik.enable" = "true";
+          "traefik.http.routers.uptime-kuma.rule" = "Host(\`uptime-kuma.dev.reidmason.com\`)";
+          "traefik.http.services.uptime-kuma.loadbalancer.server.port" = "3001";
+          "traefik.http.routers.uptime-kuma.entrypoints" = "websecure";
+          "traefik.http.routers.uptime-kuma.tls" = "true";
+          # WebSocket support
+          "traefik.http.middlewares.uptime-kuma-headers.headers.customrequestheaders.X-Forwarded-Proto" = "https";
+          "traefik.http.routers.uptime-kuma.middlewares" = "uptime-kuma-headers";
+        };
+      };
+
+      traefik = {
+        image = "traefik:v3.6";
+        ports = [
+          "80:80"
+          "443:443"
+        ];
+        volumes = [
+          "/var/run/docker.sock:/var/run/docker.sock"
+          "${appdataPath}/traefik:/data"
+        ];
+        labels = {
+          "traefik.enable" = "true";
+          "traefik.http.routers.traefik-dashboard.rule" = "Host(\`traefik.dev.reidmason.com\`)";
+          "traefik.http.routers.traefik-dashboard.service" = "api@internal";
+          "traefik.http.routers.traefik-dashboard.entrypoints" = "websecure";
+          "traefik.http.routers.traefik-dashboard.tls.certresolver" = "certresolver";
+          "traefik.http.routers.traefik-dashboard.tls.domains[0].main" = "dev.reidmason.com";
+          "traefik.http.routers.traefik-dashboard.tls.domains[0].sans" = "*.dev.reidmason.com";
+        };
+        environmentFiles = [ "/home/reid/secrets/traefik.env" ];
+        cmd = [
+          "--api.dashboard=true"
+          "--providers.docker=true"
+          "--entrypoints.web.address=:80"
+          "--entrypoints.websecure.address=:443"
+          "--certificatesresolvers.certresolver.acme.email=maddogshain132@gmail.com"
+          "--certificatesresolvers.certresolver.acme.storage=/data/acme.json"
+          "--certificatesresolvers.certresolver.acme.dnschallenge=true"
+          "--certificatesresolvers.certresolver.acme.dnschallenge.provider=cloudflare"
+          "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+          "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+        ];
+      };
+    };
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
@@ -110,7 +180,7 @@
   users.defaultUserShell = pkgs.zsh;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
