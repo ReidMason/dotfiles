@@ -1,6 +1,14 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
-    zsh.enable = lib.mkEnableOption "Enable zsh" // { default = true; };
+    zsh.enable = lib.mkEnableOption "Enable zsh" // {
+      default = true;
+    };
     zsh.autoAttachToTmux = lib.mkEnableOption "Auto attach to Tmux session";
   };
 
@@ -41,11 +49,11 @@
         # Bind up and down arrow keys to history search
         bindkey "^[[A" history-search-backward
         bindkey "^[[B" history-search-forward
-        
+
         # Alternative bindings for different terminal types
         bindkey "^[OA" history-search-backward
         bindkey "^[OB" history-search-forward
-        
+
         # Extract various archive formats
         extract() {
           if [ -f "$1" ]; then
@@ -67,15 +75,15 @@
             echo "'$1' is not a valid file"
           fi
         }
-        
+
         # Better completion
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
         zstyle ':completion:*' menu select
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-        
+
         ${lib.optionalString config.zsh.autoAttachToTmux ''
           # Auto attach to Tmux session or create a new session called default
-          if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
+          if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } && [ "$TERM_PROGRAM" != "vscode" ]; then
             tmux new -As default
           fi
         ''}
@@ -83,4 +91,3 @@
     };
   };
 }
-

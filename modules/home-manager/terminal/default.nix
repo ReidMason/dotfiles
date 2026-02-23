@@ -166,7 +166,14 @@ in
         ;
       parent-name = module-name;
     })
-    (import ./zsh.nix)
+    (import ./zsh.nix {
+      inherit
+        pkgs
+        lib
+        options
+        config
+        ;
+    })
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
     (import ./blueutil.nix {
       inherit
