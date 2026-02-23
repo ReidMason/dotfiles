@@ -31,7 +31,6 @@ module = {
         ];
         hostname = {
           ssh_only = true;
-          detect_env_vars = ["SSH_CONNECTION"];
         };
         fill = {
           symbol = " ";
