@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -21,6 +25,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      disko,
     }:
     let
       utils = import ./modules/utils;
@@ -61,6 +66,14 @@
         nia = nix-config-builder {
           system = "x86_64-linux";
           host = "nia";
+        };
+
+        runner = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/runner/configuration.nix
+          ];
         };
       };
 
