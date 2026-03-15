@@ -71,7 +71,6 @@
         runner = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            disko.nixosModules.disko
             ./hosts/runner/configuration.nix
           ];
         };
