@@ -1,21 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./disk.nix ];
-
-  # Proxmox VM bootloader — EFI with GRUB installed to removable path
-  boot = {
-    loader = {
-      grub = {
-        enable = true;
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-      };
-      efi.canTouchEfiVariables = false;
-    };
-    initrd.availableKernelModules = [ "virtio_scsi" "virtio_pci" "virtio_blk" "xhci_pci" ];
-  };
-
   services.qemuGuest.enable = true;
 
   networking = {
@@ -48,8 +33,7 @@
     autoPrune.enable = true;
   };
 
-  # Token file is placed on first deploy via nixos-anywhere --extra-files
-  # Path: /var/lib/secrets/github-runner-token
+  # Token file must exist before deploying: /var/lib/secrets/github-runner-token
   services.github-runners.prod = {
     enable = true;
     url = "https://github.com/reidmason/homelab";
