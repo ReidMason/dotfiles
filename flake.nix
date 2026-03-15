@@ -68,10 +68,10 @@
           host = "nia";
         };
 
-        runner = nixpkgs.lib.nixosSystem {
+        github-runner = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/runner/configuration.nix
+            ./hosts/github-runner/configuration.nix
           ];
         };
       };
