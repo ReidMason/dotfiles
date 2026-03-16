@@ -25,7 +25,7 @@
     let
       utils = import ./modules/utils;
       home-config-builder = { host, system }: utils.home-config-builder { inherit inputs host system; };
-      nix-config-builder = { host, system }: utils.nix-config-builder { inherit inputs host system; };
+      nix-config-builder = { host, system, specialArgs ? { } }: utils.nix-config-builder { inherit inputs host system specialArgs; };
       darwin-config-builder =
         { host, system }: utils.darwin-config-builder { inherit inputs host system; };
     in
