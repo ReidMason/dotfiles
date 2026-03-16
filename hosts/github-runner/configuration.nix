@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   services.qemuGuest.enable = true;
@@ -8,7 +13,10 @@
     networkmanager.enable = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   time.timeZone = "Europe/London";
 
@@ -38,15 +46,27 @@
     enable = true;
     url = "https://github.com/reidmason/homelab";
     tokenFile = "/var/lib/secrets/github-runner-token";
-    extraLabels = [ "self-hosted" "prod" "linux" ];
-    extraPackages = with pkgs; [ docker git ];
+    extraLabels = [
+      "self-hosted"
+      "prod"
+      "linux"
+    ];
+    extraPackages = with pkgs; [
+      docker
+      git
+    ];
   };
 
   systemd.tmpfiles.rules = [
     "d /var/lib/secrets 0700 root root -"
+    "f /var/lib/secrets/github-runner-token 0600 root root -"
   ];
 
-  environment.systemPackages = with pkgs; [ git curl jq ];
+  environment.systemPackages = with pkgs; [
+    git
+    curl
+    jq
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
