@@ -66,13 +66,19 @@
         github-runner-dev = nix-config-builder {
           system = "x86_64-linux";
           host = "github-runner";
-          specialArgs = { env = "dev"; };
+          specialArgs = {
+            env = "dev";
+            pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
+          };
         };
 
         github-runner-prod = nix-config-builder {
           system = "x86_64-linux";
           host = "github-runner";
-          specialArgs = { env = "prod"; };
+          specialArgs = {
+            env = "prod";
+            pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
+          };
         };
       };
 

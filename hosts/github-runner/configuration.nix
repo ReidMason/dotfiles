@@ -1,4 +1,4 @@
-{ pkgs, env, ... }:
+{ pkgs, pkgs-unstable, env, ... }:
 
 {
   services.qemuGuest.enable = true;
@@ -41,6 +41,7 @@
     enable = true;
     url = "https://github.com/reidmason/homelab";
     tokenFile = "/var/lib/secrets/github-runner-token";
+    package = pkgs-unstable.github-runner;
     extraLabels = [
       "self-hosted"
       env
