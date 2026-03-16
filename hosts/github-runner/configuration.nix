@@ -1,15 +1,10 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, env, ... }:
 
 {
   services.qemuGuest.enable = true;
 
   networking = {
-    hostName = "github-runner";
+    hostName = "github-runner-${env}";
     networkmanager.enable = true;
   };
 
@@ -42,13 +37,13 @@
   };
 
   # Token file must exist before deploying: /var/lib/secrets/github-runner-token
-  services.github-runners.prod = {
+  services.github-runners."${env}" = {
     enable = true;
     url = "https://github.com/reidmason/homelab";
     tokenFile = "/var/lib/secrets/github-runner-token";
     extraLabels = [
       "self-hosted"
-      "prod"
+      env
       "linux"
     ];
     extraPackages = with pkgs; [

@@ -63,11 +63,16 @@
           host = "nia";
         };
 
-        github-runner = nixpkgs.lib.nixosSystem {
+        github-runner-dev = nix-config-builder {
           system = "x86_64-linux";
-          modules = [
-            ./hosts/github-runner/configuration.nix
-          ];
+          host = "github-runner";
+          specialArgs = { env = "dev"; };
+        };
+
+        github-runner-prod = nix-config-builder {
+          system = "x86_64-linux";
+          host = "github-runner";
+          specialArgs = { env = "prod"; };
         };
       };
 
@@ -99,6 +104,16 @@
 
         nia = home-config-builder {
           host = "nia";
+          system = "x86_64-linux";
+        };
+
+        github-runner-dev = home-config-builder {
+          host = "github-runner";
+          system = "x86_64-linux";
+        };
+
+        github-runner-prod = home-config-builder {
+          host = "github-runner";
           system = "x86_64-linux";
         };
       };
