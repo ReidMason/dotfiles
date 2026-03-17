@@ -7,10 +7,8 @@
 
   boot.loader.grub = {
     enable = true;
-    efiSupport = true;
-    device = "nodev";
+    device = "/dev/vda";
   };
-  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
