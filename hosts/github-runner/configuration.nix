@@ -13,19 +13,12 @@
     "flakes"
   ];
 
-  nix.settings.trusted-users = [ "github-runner-${env}" ];
-
-  security.sudo.extraRules = [
-    {
-      users = [ "github-runner-${env}" ];
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/nixos-rebuild";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-    }
-  ];
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:reidmason/dotfiles#github-runner-${env}";
+    flags = [ "--refresh" ];
+    dates = "04:00";
+  };
 
   time.timeZone = "Europe/London";
 
