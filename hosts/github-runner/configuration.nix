@@ -35,6 +35,8 @@
 
   # Fetch SSH keys from GitHub — update hash if keys change with:
   # nix-prefetch-url https://github.com/reidmason.keys
+  users.users.root.shell = pkgs.zsh;
+
   users.users.root.openssh.authorizedKeys.keys =
     let
       authorizedKeys = pkgs.fetchurl {
