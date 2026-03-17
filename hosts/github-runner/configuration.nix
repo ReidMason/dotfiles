@@ -1,7 +1,7 @@
 { pkgs, pkgs-unstable, env, ... }:
 
 {
-  services.qemuGuest.enable = true;
+  imports = [ ./hardware-configuration.nix ];
 
   networking = {
     hostName = "github-runner-${env}";
@@ -11,6 +11,20 @@
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+  ];
+
+  nix.settings.trusted-users = [ "github-runner-${env}" ];
+
+  security.sudo.extraRules = [
+    {
+      users = [ "github-runner-${env}" ];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
   ];
 
   time.timeZone = "Europe/London";
