@@ -20,6 +20,12 @@
     dates = "04:00";
   };
 
+  systemd.services.nixos-upgrade.serviceConfig.ExecStartPost =
+    pkgs.writeShellScript "home-manager-upgrade" ''
+      ${pkgs.nix}/bin/nix run github:nix-community/home-manager -- switch \
+        --flake github:reidmason/dotfiles#github-runner-${env}
+    '';
+
   time.timeZone = "Europe/London";
 
   services.openssh = {
