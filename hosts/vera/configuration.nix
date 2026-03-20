@@ -191,6 +191,9 @@
         };
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
+        sysctls = {
+          "net.ipv6.conf.all.disable_ipv6" = "1";
+        };
       };
 
       radarr = {
