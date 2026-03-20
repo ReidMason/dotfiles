@@ -4,6 +4,13 @@
 
 { config, pkgs, ... }:
 
+let
+  # Prefer IPv4 over IPv6 so that .NET apps (Sonarr, Radarr, Jackett) don't
+  # attempt IPv6 connections that fail with EAGAIN inside the VPN network namespace.
+  gaiConf = pkgs.writeText "gai.conf" ''
+    precedence ::ffff:0:0/96 100
+  '';
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -170,6 +177,7 @@
         volumes = [
           "/home/vera/appdata/jackett:/config"
           "/etc/localtime:/etc/localtime:ro"
+          "${gaiConf}:/etc/gai.conf:ro"
         ];
         environment = {
           PUID = "99";
@@ -187,6 +195,7 @@
           "/mnt/fern/plex:/tv"
           "/dev/rtc:/dev/rtc"
           "/etc/localtime:/etc/localtime:ro"
+          "${gaiConf}:/etc/gai.conf:ro"
         ];
         environment = {
           PUID = "99";
@@ -202,6 +211,7 @@
           "/home/vera/appdata/radarr:/config"
           "/mnt/fern/downloads/qBittorrent:/data"
           "/mnt/fern/plex:/media"
+          "${gaiConf}:/etc/gai.conf:ro"
         ];
         environment = {
           PUID = "99";
