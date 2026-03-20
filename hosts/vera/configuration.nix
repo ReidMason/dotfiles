@@ -160,9 +160,9 @@
         capabilities = {
           net_admin = true;
         };
-        sysctls = {
-          "net.ipv6.conf.all.disable_ipv6" = "1";
-        };
+        extraOptions = [
+          "--sysctl=net.ipv6.conf.all.disable_ipv6=1"
+        ];
       };
 
       jackett = {
