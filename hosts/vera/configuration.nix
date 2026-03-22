@@ -137,6 +137,7 @@ in
           "9117:9117" # Jackett port
           "7878:7878" # Radarr port
           "8191:8191" # Flaresolverr port
+          "8989:8989" # Sonarr port
         ];
         volumes = [
           "/home/vera/appdata/qbittorrent:/config"
@@ -195,13 +196,12 @@ in
           "/dev/rtc:/dev/rtc"
           "/etc/localtime:/etc/localtime:ro"
         ];
-        ports = [
-          "8989:8989" # Sonarr port
-        ];
         environment = {
           PUID = "99";
           PGID = "100";
         };
+        dependsOn = [ "qbittorrent" ];
+        networks = [ "container:qbittorrent" ];
       };
 
       radarr = {
