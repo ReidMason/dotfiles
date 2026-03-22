@@ -88,7 +88,7 @@ in
     lockdPort = 4001;
     mountdPort = 4002;
     statdPort = 4000;
-    extraNfsdConfig = '''';
+    extraNfsdConfig = "";
     exports = "/home/vera/export/appdata fern.lan(sec=sys,ro,no_root_squash)";
   };
 
@@ -135,7 +135,6 @@ in
           "8118:8118"
           "8080:8080" # Webui
           "9117:9117" # Jackett port
-          "8989:8989" # Sonarr port
           "7878:7878" # Radarr port
           "8191:8191" # Flaresolverr port
         ];
@@ -195,6 +194,9 @@ in
           "/mnt/fern/plex:/tv"
           "/dev/rtc:/dev/rtc"
           "/etc/localtime:/etc/localtime:ro"
+        ];
+        ports = [
+          "8989:8989" # Sonarr port
         ];
         environment = {
           PUID = "99";
