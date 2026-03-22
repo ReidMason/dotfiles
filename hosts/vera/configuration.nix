@@ -195,14 +195,11 @@ in
           "/mnt/fern/plex:/tv"
           "/dev/rtc:/dev/rtc"
           "/etc/localtime:/etc/localtime:ro"
-          "${gaiConf}:/etc/gai.conf:ro"
         ];
         environment = {
           PUID = "99";
           PGID = "100";
         };
-        dependsOn = [ "qbittorrent" ];
-        networks = [ "container:qbittorrent" ];
       };
 
       radarr = {
