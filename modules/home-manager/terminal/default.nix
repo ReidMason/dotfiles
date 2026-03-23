@@ -130,7 +130,7 @@ in
         ;
       parent-name = module-name;
     })
-    (import ./neofetch.nix {
+    (import ./fastfetch.nix {
       inherit
         pkgs
         lib
@@ -166,6 +166,15 @@ in
         ;
       parent-name = module-name;
     })
+    (import ./yazi.nix {
+      inherit
+        pkgs
+        lib
+        options
+        config
+        ;
+      parent-name = module-name;
+    })
     (import ./zsh.nix {
       inherit
         pkgs
@@ -174,7 +183,8 @@ in
         config
         ;
     })
-  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+  ]
+  ++ lib.optionals pkgs.stdenv.isDarwin [
     (import ./blueutil.nix {
       inherit
         pkgs

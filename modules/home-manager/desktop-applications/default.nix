@@ -69,6 +69,16 @@ in
         ;
       parent-name = module-name;
     })
+    (import ./lmstudio.nix {
+      inherit
+        pkgs
+        pkgs-unstable
+        lib
+        options
+        config
+        ;
+      parent-name = module-name;
+    })
   ];
 
   options.${module-name} = {
