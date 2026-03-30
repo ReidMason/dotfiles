@@ -8,77 +8,17 @@
 }:
 let
   module-name = "desktop-applications";
+  mkModule = path: import path { inherit pkgs pkgs-unstable lib config options; parent-name = module-name; };
 in
 {
-  imports = [
-    (import ./wezterm.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./firefox.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./ollama.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./obsidian.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./skhd.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./docker.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./lmstudio.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
+  imports = map mkModule [
+    ./wezterm.nix
+    ./firefox.nix
+    ./ollama.nix
+    ./obsidian.nix
+    ./skhd.nix
+    ./docker.nix
+    ./lmstudio.nix
   ];
 
   options.${module-name} = {

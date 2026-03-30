@@ -8,120 +8,24 @@
 }:
 let
   module-name = "programming";
+  mkModule = path: import path { inherit pkgs pkgs-unstable lib config options; parent-name = module-name; };
 in
 {
-  imports = [
-    (import ./python.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./git.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./haskell.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./node.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./dotnet.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./golang.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./lazygit.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./rust.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./bruno.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./nix.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./yaml.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
+  imports = map mkModule [
+    ./python.nix
+    ./git.nix
+    ./haskell.nix
+    ./node.nix
+    ./dotnet.nix
+    ./golang.nix
+    ./lazygit.nix
+    ./rust.nix
+    ./bruno.nix
+    ./nix.nix
+    ./yaml.nix
   ];
 
-  options.programming = {
+  options.${module-name} = {
     enable = lib.mkEnableOption "Enable all programming tools";
   };
 }

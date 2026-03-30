@@ -8,202 +8,34 @@
 }:
 let
   module-name = "terminal";
+  mkModule = path: import path { inherit pkgs pkgs-unstable lib config options; parent-name = module-name; };
 in
 {
-  imports = [
-    (import ./starship.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./bat.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./eza.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./tmux.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./btop.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./neovim.nix {
-      inherit
-        pkgs
-        pkgs-unstable
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./sysbench.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./dust.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./glow.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./zoxide.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./kubectl.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./iperf.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./rsync.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./fastfetch.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./talosctl.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./just.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./television.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./sesh.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./yazi.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-    (import ./zsh.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-    })
+  imports = map mkModule [
+    ./starship.nix
+    ./bat.nix
+    ./eza.nix
+    ./tmux.nix
+    ./btop.nix
+    ./neovim.nix
+    ./sysbench.nix
+    ./dust.nix
+    ./glow.nix
+    ./zoxide.nix
+    ./kubectl.nix
+    ./iperf.nix
+    ./rsync.nix
+    ./fastfetch.nix
+    ./talosctl.nix
+    ./just.nix
+    ./television.nix
+    ./sesh.nix
+    ./yazi.nix
+    ./zsh.nix
   ]
-  ++ lib.optionals pkgs.stdenv.isDarwin [
-    (import ./blueutil.nix {
-      inherit
-        pkgs
-        lib
-        options
-        config
-        ;
-      parent-name = module-name;
-    })
-  ];
+  ++ lib.optionals pkgs.stdenv.isDarwin (map mkModule [
+    ./blueutil.nix
+  ]);
 
   options.${module-name} = {
     enable = lib.mkEnableOption "Enable all terminal apps";
