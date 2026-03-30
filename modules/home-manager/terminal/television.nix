@@ -19,12 +19,15 @@ let
             metadata = {
               name = "sesh";
               description = "Session manager integrating tmux sessions, zoxide directories, and config paths";
-              requirements = [ "sesh" ];
+              requirements = [ "sesh" "fd" ];
             };
             source = {
               command = [
+                "sesh list --icons"
                 "sesh list -t --icons"
                 "sesh list -c --icons"
+                "sesh list -z --icons"
+                "fd -H -d 2 -t d -E .Trash . ~"
               ];
               ansi = true;
               output = "{strip_ansi|split: :1..|join: }";
@@ -34,10 +37,7 @@ let
             };
             keybindings = {
               enter = "actions:connect";
-              ctrl-d = [
-                "actions:kill_session"
-                "reload_source"
-              ];
+              ctrl-d = [ "actions:kill_session" "reload_source" ];
             };
             actions = {
               connect = {
