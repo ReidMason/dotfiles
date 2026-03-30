@@ -6,6 +6,12 @@
   ...
 }:
 let
+  projects = [
+    "dotfiles"
+    "homelab"
+    "plex-ani-sync"
+  ];
+
   module = {
     module-name = "sesh";
     label = "Sesh";
@@ -21,6 +27,10 @@ let
           wildcard = [
             { pattern = "~/Documents/repos/*"; }
           ];
+          session = map (name: {
+            inherit name;
+            path = "~/Documents/repos/${name}";
+          }) projects;
         };
       };
     };

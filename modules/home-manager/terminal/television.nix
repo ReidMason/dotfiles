@@ -11,6 +11,10 @@ let
     module-name = "television";
     label = "Television";
     config = {
+      home.packages = with pkgs; [
+        fd
+      ];
+
       programs.television = {
         enable = true;
         enableZshIntegration = true;
@@ -26,8 +30,7 @@ let
                 "sesh list --icons"
                 "sesh list -t --icons"
                 "sesh list -c --icons"
-                "sesh list -z --icons"
-                "fd -H -d 2 -t d -E .Trash . ~"
+                "fd -H -d 1 -t d . ~/Documents/repos"
               ];
               ansi = true;
               output = "{strip_ansi|split: :1..|join: }";
