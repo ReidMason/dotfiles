@@ -157,7 +157,16 @@ in
         ;
       parent-name = module-name;
     })
-    (import ./tmux-sessionizer.nix {
+    (import ./television.nix {
+      inherit
+        pkgs
+        lib
+        options
+        config
+        ;
+      parent-name = module-name;
+    })
+    (import ./sesh.nix {
       inherit
         pkgs
         lib

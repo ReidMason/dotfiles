@@ -1,4 +1,11 @@
-{ pkgs-unstable, config, lib, options, parent-name, ... }:
+{
+  pkgs-unstable,
+  config,
+  lib,
+  options,
+  parent-name,
+  ...
+}:
 let
   module = {
     module-name = "tmux";
@@ -74,6 +81,9 @@ let
           # Without this the default shell will be /bin/sh
           set -gu default-command
           set -g default-shell "$SHELL"
+
+          # Sesh bindings
+          bind-key "s" display-popup -E -w 80% -h 70% -d '#{pane_current_path}' -T 'Sesh' tv sesh
         '';
         plugins = [
           {
@@ -109,6 +119,13 @@ let
 in
 {
   imports = [
-    (import ../module-setup.nix { inherit config lib parent-name module; })
+    (import ../module-setup.nix {
+      inherit
+        config
+        lib
+        parent-name
+        module
+        ;
+    })
   ];
 }

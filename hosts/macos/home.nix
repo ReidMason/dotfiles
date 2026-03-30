@@ -1,7 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
   ...
 }:
 {
@@ -27,7 +24,6 @@
 
   wezterm.enable = true;
   tmux.enable = true;
-  tmux-sessionizer.enable = true;
 
   skhd.enable = false;
 
