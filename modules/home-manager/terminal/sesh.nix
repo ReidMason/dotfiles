@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  options,
   parent-name,
   ...
 }:
@@ -11,9 +10,19 @@ let
     module-name = "sesh";
     label = "Sesh";
     config = {
-      home.packages = with pkgs; [
-        sesh
-      ];
+      programs.sesh = {
+        enable = true;
+        enableTmuxIntegration = false;
+        enableAlias = false;
+
+        settings = {
+          cache = false;
+          dir_length = 1;
+          wildcard = [
+            { pattern = "~/Documents/repos/*"; }
+          ];
+        };
+      };
     };
   };
 in

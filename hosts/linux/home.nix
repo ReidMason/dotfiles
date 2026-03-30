@@ -5,11 +5,10 @@
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  home.packages = [];
+  home.packages = [ ];
 
   wezterm.enable = true;
   tmux.enable = false;
-  tmux-sessionizer.enable = false;
 
   git.enable = true;
   terminal-apps.neovim.enable = true;

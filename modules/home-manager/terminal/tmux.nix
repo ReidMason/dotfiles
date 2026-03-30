@@ -2,7 +2,6 @@
   pkgs-unstable,
   config,
   lib,
-  options,
   parent-name,
   ...
 }:

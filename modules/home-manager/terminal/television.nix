@@ -11,30 +11,20 @@ let
     module-name = "television";
     label = "Television";
     config = {
-      home.packages = with pkgs; [
-        television
-        fd
-      ];
-
       programs.television = {
+        enable = true;
         enableZshIntegration = true;
         channels = {
           sesh = {
             metadata = {
               name = "sesh";
               description = "Session manager integrating tmux sessions, zoxide directories, and config paths";
-              requirements = [
-                "sesh"
-                "fd"
-              ];
+              requirements = [ "sesh" ];
             };
             source = {
               command = [
-                "sesh list --icons"
                 "sesh list -t --icons"
                 "sesh list -c --icons"
-                "sesh list -z --icons"
-                "fd -H -d 2 -t d -E .Trash . ~"
               ];
               ansi = true;
               output = "{strip_ansi|split: :1..|join: }";
