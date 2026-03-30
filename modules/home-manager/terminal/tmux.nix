@@ -82,7 +82,7 @@ let
           set -g default-shell "$SHELL"
 
           # Sesh bindings
-          bind-key "s" display-popup -E -w 80% -h 70% -d '#{pane_current_path}' -T 'Sesh' tv sesh sesh
+          bind-key "s" display-popup -E -w 80% -h 70% -d '#{pane_current_path}' -T 'Sesh' tv sesh
         '';
         plugins = [
           {
