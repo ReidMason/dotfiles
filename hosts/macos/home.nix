@@ -1,6 +1,4 @@
-{
-  ...
-}:
+{ tmux-sessions, ... }:
 {
   home.username = "reid";
   home.homeDirectory = "/Users/reid";
@@ -9,7 +7,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.packages = [ ];
+  home.packages = [ tmux-sessions ];
 
   # Enable packages
   zsh.autoAttachToTmux = true;

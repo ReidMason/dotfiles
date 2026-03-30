@@ -11,10 +11,6 @@ let
     module-name = "television";
     label = "Television";
     config = {
-      home.packages = with pkgs; [
-        fd
-      ];
-
       programs.television = {
         enable = true;
         enableZshIntegration = true;
@@ -23,14 +19,16 @@ let
             metadata = {
               name = "sesh";
               description = "Session manager integrating tmux sessions, zoxide directories, and config paths";
-              requirements = [ "sesh" "fd" ];
+              requirements = [
+                "sesh"
+                "fd"
+              ];
             };
             source = {
               command = [
+                "sh -c \"{ sesh list -t --icons; tmux-sessions; }\""
                 "sesh list --icons"
-                "sesh list -t --icons"
                 "sesh list -c --icons"
-                "fd -H -d 1 -t d . ~/Documents/repos"
               ];
               ansi = true;
               output = "{strip_ansi|split: :1..|join: }";
@@ -40,12 +38,15 @@ let
             };
             keybindings = {
               enter = "actions:connect";
-              ctrl-d = [ "actions:kill_session" "reload_source" ];
+              ctrl-d = [
+                "actions:kill_session"
+                "reload_source"
+              ];
             };
             actions = {
               connect = {
                 description = "Connect to selected session";
-                command = "sesh connect '{strip_ansi|split: :1..|join: }'";
+                command = "sh -c \"tmux-sessions open '{strip_ansi|split: :1..|join: }' | xargs sesh connect\"";
                 mode = "execute";
               };
               kill_session = {
