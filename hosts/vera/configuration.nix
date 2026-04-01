@@ -13,8 +13,8 @@ let
 in
 {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    # Include the results of the hardware scan (generated on machine under /etc/nixos).
+    /etc/nixos/hardware-configuration.nix
   ];
 
   # Bootloader.
