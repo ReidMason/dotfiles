@@ -26,10 +26,44 @@
     }:
     let
       utils = import ./modules/utils;
+      inherit (nixpkgs.lib) listToAttrs nameValuePair;
+
       home-config-builder = { host, system }: utils.home-config-builder { inherit inputs host system; };
       nix-config-builder = { host, system, specialArgs ? { } }: utils.nix-config-builder { inherit inputs host system specialArgs; };
       darwin-config-builder =
         { host, system }: utils.darwin-config-builder { inherit inputs host system; };
+
+      # Flake attribute name → { system, host ? name, specialArgs ? {} }. One row per machine for both NixOS and home-manager.
+      githubRunnerPkgs = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+      mkGithubRunnerArgs = env: {
+        inherit env;
+        pkgs-unstable = githubRunnerPkgs;
+      };
+
+      linuxHosts = [
+        { name = "linux"; system = "x86_64-linux"; }
+        { name = "nix-playground"; system = "x86_64-linux"; }
+        { name = "vera"; system = "x86_64-linux"; }
+        { name = "mona"; system = "aarch64-linux"; }
+        { name = "nia"; system = "x86_64-linux"; }
+        {
+          name = "github-runner-dev";
+          host = "github-runner";
+          system = "x86_64-linux";
+          specialArgs = mkGithubRunnerArgs "dev";
+        }
+        {
+          name = "github-runner-prod";
+          host = "github-runner";
+          system = "x86_64-linux";
+          specialArgs = mkGithubRunnerArgs "prod";
+        }
+      ];
+
+      homeHosts = [ { name = "macos"; system = "aarch64-darwin"; } ] ++ linuxHosts;
     in
     {
       darwinConfigurations = {
@@ -39,91 +73,25 @@
         };
       };
 
-      nixosConfigurations = {
-        linux = nix-config-builder {
-          system = "x86_64-linux";
-          host = "linux";
-        };
+      nixosConfigurations = listToAttrs (
+        map (m:
+          nameValuePair m.name (
+            nix-config-builder {
+              host = m.host or m.name;
+              inherit (m) system;
+              specialArgs = m.specialArgs or { };
+            }
+          )) linuxHosts
+      );
 
-        nix-playground = nix-config-builder {
-          system = "x86_64-linux";
-          host = "nix-playground";
-        };
-
-        vera = nix-config-builder {
-          system = "x86_64-linux";
-          host = "vera";
-        };
-
-        mona = nix-config-builder {
-          system = "aarch64-linux";
-          host = "mona";
-        };
-
-        nia = nix-config-builder {
-          system = "x86_64-linux";
-          host = "nia";
-        };
-
-        github-runner-dev = nix-config-builder {
-          system = "x86_64-linux";
-          host = "github-runner";
-          specialArgs = {
-            env = "dev";
-            pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-          };
-        };
-
-        github-runner-prod = nix-config-builder {
-          system = "x86_64-linux";
-          host = "github-runner";
-          specialArgs = {
-            env = "prod";
-            pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-          };
-        };
-      };
-
-      homeConfigurations = {
-        macos = home-config-builder {
-          host = "macos";
-          system = "aarch64-darwin";
-        };
-
-        linux = home-config-builder {
-          host = "linux";
-          system = "x86_64-linux";
-        };
-
-        nix-playground = home-config-builder {
-          host = "nix-playground";
-          system = "x86_64-linux";
-        };
-
-        vera = home-config-builder {
-          host = "vera";
-          system = "x86_64-linux";
-        };
-
-        mona = home-config-builder {
-          host = "mona";
-          system = "aarch64-linux";
-        };
-
-        nia = home-config-builder {
-          host = "nia";
-          system = "x86_64-linux";
-        };
-
-        github-runner-dev = home-config-builder {
-          host = "github-runner";
-          system = "x86_64-linux";
-        };
-
-        github-runner-prod = home-config-builder {
-          host = "github-runner";
-          system = "x86_64-linux";
-        };
-      };
+      homeConfigurations = listToAttrs (
+        map (m:
+          nameValuePair m.name (
+            home-config-builder {
+              host = m.host or m.name;
+              inherit (m) system;
+            }
+          )) homeHosts
+      );
     };
 }
