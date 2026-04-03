@@ -47,6 +47,8 @@
     in
     pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
 
+  services.qemuGuest.enable = true;
+
   virtualisation.docker = {
     enable = true;
     autoPrune.enable = true;
