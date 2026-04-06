@@ -137,7 +137,6 @@ in
           "9117:9117" # Jackett port
           "7878:7878" # Radarr port
           "8191:8191" # Flaresolverr port
-          "8989:8989" # Sonarr port
         ];
         volumes = [
           "/home/vera/appdata/qbittorrent:/config"
@@ -158,8 +157,8 @@ in
           WEBUI_PORT = "8080";
           LAN_NETWORK = "10.128.0.0/24";
           NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
-          VPN_INPUT_PORTS = "9117,8989,7878";
-          VPN_OUTPUT_PORTS = "9117,8989,7878";
+          VPN_INPUT_PORTS = "9117,7878";
+          VPN_OUTPUT_PORTS = "9117,7878";
           UMASK = "000";
           PUID = "99";
           PGID = "100";
@@ -189,19 +188,19 @@ in
 
       sonarr = {
         image = "linuxserver/sonarr:4.0.15";
+        ports = [ "8989:8989" ];
         volumes = [
           "/home/vera/appdata/sonarr:/config"
           "/mnt/fern/downloads/qBittorrent/Completed:/downloads"
           "/mnt/fern/plex:/tv"
           "/dev/rtc:/dev/rtc"
           "/etc/localtime:/etc/localtime:ro"
+          "${gaiConf}:/etc/gai.conf:ro"
         ];
         environment = {
           PUID = "99";
           PGID = "100";
         };
-        dependsOn = [ "qbittorrent" ];
-        networks = [ "container:qbittorrent" ];
       };
 
       radarr = {
