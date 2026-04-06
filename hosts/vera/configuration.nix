@@ -201,6 +201,9 @@ in
           PUID = "99";
           PGID = "100";
         };
+        extraOptions = [
+          "--add-host=host.docker.internal:host-gateway"
+        ];
       };
 
       radarr = {
@@ -328,6 +331,7 @@ in
   # networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
+    trustedInterfaces = [ "docker0" ];
     allowedTCPPorts = [
       111
       2049
