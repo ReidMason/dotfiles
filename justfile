@@ -14,3 +14,5 @@ darwin $host:
 upgrade:
   systemctl start nixos-upgrade.service
 
+nix-gc:
+  sudo nix-collect-garbage -d
