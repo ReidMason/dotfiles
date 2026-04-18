@@ -197,7 +197,7 @@ in
           PGID = "100";
           TZ = "Europe/London";
         };
-        dependsOn = [ "qBittorrent" ];
+        dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
       };
 
