@@ -158,8 +158,8 @@ in
           WEBUI_PORT = "8080";
           LAN_NETWORK = "10.128.0.0/24,172.17.0.0/16";
           NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
-          VPN_INPUT_PORTS = "9117,7878,8989,9696";
-          VPN_OUTPUT_PORTS = "9117,7878,8989,9696";
+          VPN_INPUT_PORTS = "9117,7878,8191,8989,9696";
+          VPN_OUTPUT_PORTS = "9117,7878,8191,8989,9696";
           UMASK = "000";
           PUID = "99";
           PGID = "100";
@@ -167,9 +167,6 @@ in
         capabilities = {
           net_admin = true;
         };
-        extraOptions = [
-          "--sysctl=net.ipv6.conf.all.disable_ipv6=1"
-        ];
       };
 
       jackett = {
