@@ -133,11 +133,11 @@ in
           "6881:6881"
           "6881:6881/udp"
           "8118:8118"
-          "9118:9118" # microsocks SOCKS5 (VPN egress for tagged Prowlarr indexers)
           "8080:8080" # Webui
           "9117:9117" # Jackett port
           "7878:7878" # Radarr port
           "8191:8191" # Flaresolverr port
+          "9696:9696" # Prowlarr
         ];
         volumes = [
           "/home/vera/appdata/qbittorrent:/config"
@@ -155,15 +155,11 @@ in
           VPN_CLIENT = "openvpn";
           STRICT_PORT_FORWARD = "no";
           ENABLE_PRIVOXY = "yes";
-          ENABLE_SOCKS = "yes";
-          # Override in qbittorrent.env if this port is reachable beyond trusted LANs.
-          SOCKS_USER = "admin";
-          SOCKS_PASS = "socks";
           WEBUI_PORT = "8080";
           LAN_NETWORK = "10.128.0.0/24,172.17.0.0/16";
           NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
-          VPN_INPUT_PORTS = "9117,7878,8191,8989,9118";
-          VPN_OUTPUT_PORTS = "9117,7878,8191,8989,9118";
+          VPN_INPUT_PORTS = "9117,7878,8191,9696";
+          VPN_OUTPUT_PORTS = "9117,7878,8191,9696";
           UMASK = "000";
           PUID = "99";
           PGID = "100";
@@ -190,7 +186,6 @@ in
 
       prowlarr = {
         image = "linuxserver/prowlarr:2.3.5";
-        ports = [ "9696:9696" ];
         volumes = [
           "/home/vera/appdata/prowlarr:/config"
         ];
@@ -199,9 +194,8 @@ in
           PGID = "100";
           TZ = "Europe/London";
         };
-        extraOptions = [
-          "--add-host=host.docker.internal:host-gateway"
-        ];
+        dependsOn = [ "qbittorrent" ];
+        networks = [ "container:qbittorrent" ];
       };
 
       sonarr = {
