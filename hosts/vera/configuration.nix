@@ -5,8 +5,8 @@
 { config, pkgs, ... }:
 
 let
-  # Prefer IPv4 over IPv6 so that .NET apps (Sonarr, Radarr, Jackett) don't
-  # attempt IPv6 connections that fail with EAGAIN inside the VPN network namespace.
+  # Prefer IPv4 over IPv6 so that .NET apps don't hit EAGAIN on dual-stack connects
+  # in the VPN network namespace.
   gaiConf = pkgs.writeText "gai.conf" ''
     precedence ::ffff:0:0/96 100
   '';
@@ -157,7 +157,8 @@ in
           ENABLE_PRIVOXY = "yes";
           WEBUI_PORT = "8080";
           LAN_NETWORK = "10.128.0.0/24,172.17.0.0/16";
-          NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
+          # NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
+          NAME_SERVERS = "1.1.1.1,1.0.0.1";
           VPN_INPUT_PORTS = "9117,7878,8191,9696";
           VPN_OUTPUT_PORTS = "9117,7878,8191,9696";
           UMASK = "000";
@@ -167,6 +168,9 @@ in
         capabilities = {
           net_admin = true;
         };
+        extraOptions = [
+          "--sysctl=net.ipv6.conf.all.disable_ipv6=1"
+        ];
       };
 
       jackett = {
@@ -188,11 +192,13 @@ in
         image = "linuxserver/prowlarr:2.3.5";
         volumes = [
           "/home/vera/appdata/prowlarr:/config"
+          "${gaiConf}:/etc/gai.conf:ro"
         ];
         environment = {
           PUID = "99";
           PGID = "100";
           TZ = "Europe/London";
+          DOTNET_SYSTEM_NET_DISABLEIPV6 = "1";
         };
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
