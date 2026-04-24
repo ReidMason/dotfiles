@@ -135,7 +135,6 @@ in
           "8118:8118"
           "8080:8080" # Webui
           "9117:9117" # Jackett port
-          "7878:7878" # Radarr port
           "8191:8191" # Flaresolverr port
           "9696:9696" # Prowlarr
         ];
@@ -159,8 +158,8 @@ in
           LAN_NETWORK = "10.128.0.0/24,172.17.0.0/16";
           # NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
           NAME_SERVERS = "1.1.1.1,1.0.0.1";
-          VPN_INPUT_PORTS = "9117,7878,8191,9696";
-          VPN_OUTPUT_PORTS = "9117,7878,8191,9696";
+          VPN_INPUT_PORTS = "9117,8191,9696";
+          VPN_OUTPUT_PORTS = "9117,8191,9696";
           UMASK = "000";
           PUID = "99";
           PGID = "100";
@@ -225,7 +224,8 @@ in
       };
 
       radarr = {
-        image = "binhex/arch-radarr:5.25";
+        image = "linuxserver/radarr:6.1.1";
+        ports = [ "7878:7878" ];
         volumes = [
           "/home/vera/appdata/radarr:/config"
           "/mnt/fern/downloads/qBittorrent:/data"
@@ -237,8 +237,9 @@ in
           PGID = "100";
           UMASK = "000";
         };
-        dependsOn = [ "qbittorrent" ];
-        networks = [ "container:qbittorrent" ];
+        extraOptions = [
+          "--add-host=host.docker.internal:host-gateway"
+        ];
       };
 
       flaresolverr = {
