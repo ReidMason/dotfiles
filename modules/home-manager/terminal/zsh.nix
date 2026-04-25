@@ -18,6 +18,8 @@
     ];
     programs.zsh = {
       enable = true;
+      # Stop the dumb vi mode
+      defaultKeymap = "emacs";
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
       enableCompletion = true;
