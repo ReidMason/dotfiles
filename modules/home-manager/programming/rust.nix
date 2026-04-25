@@ -13,7 +13,8 @@ let
     label = "Rust";
     config = {
       home.packages = with pkgs-unstable; [
-        cargo
+        rustup
+        cargo-tarpaulin
       ];
     };
   };
