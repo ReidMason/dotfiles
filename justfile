@@ -22,3 +22,6 @@ update-flake:
 
 nix-gc:
   sudo nix-collect-garbage -d
+
+restart-bluetooth:
+  sudo pkill bluetoothd
