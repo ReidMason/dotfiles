@@ -134,7 +134,7 @@ in
           "6881:6881/udp"
           "8118:8118"
           "8080:8080" # Webui
-          "9117:9117" # Jackett port
+          # "9117:9117" # Jackett port
           "8191:8191" # Flaresolverr port
           "9696:9696" # Prowlarr
         ];
@@ -172,20 +172,20 @@ in
         ];
       };
 
-      jackett = {
-        image = "linuxserver/jackett:0.24.957";
-        volumes = [
-          "/home/vera/appdata/jackett:/config"
-          "/etc/localtime:/etc/localtime:ro"
-          "${gaiConf}:/etc/gai.conf:ro"
-        ];
-        environment = {
-          PUID = "99";
-          PGID = "100";
-        };
-        dependsOn = [ "qbittorrent" ];
-        networks = [ "container:qbittorrent" ];
-      };
+      # jackett = {
+      #   image = "linuxserver/jackett:0.24.957";
+      #   volumes = [
+      #     "/home/vera/appdata/jackett:/config"
+      #     "/etc/localtime:/etc/localtime:ro"
+      #     "${gaiConf}:/etc/gai.conf:ro"
+      #   ];
+      #   environment = {
+      #     PUID = "99";
+      #     PGID = "100";
+      #   };
+      #   dependsOn = [ "qbittorrent" ];
+      #   networks = [ "container:qbittorrent" ];
+      # };
 
       prowlarr = {
         image = "linuxserver/prowlarr:2.3.5";
