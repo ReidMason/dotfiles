@@ -15,6 +15,7 @@ module = {
           "$hostname"
             "$hostfile"
             "$directory"
+            "$nix_shell"
             "$git_branch"
             "$git_commit"
             "$git_state"
@@ -31,6 +32,11 @@ module = {
         ];
         hostname = {
           ssh_only = true;
+        };
+        nix_shell = {
+          symbol = "󱄅 ";
+          format = "[$symbol$state( \($name\))]($style) ";
+          heuristic = true;
         };
         fill = {
           symbol = " ";
