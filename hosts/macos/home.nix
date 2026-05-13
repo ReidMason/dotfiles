@@ -15,6 +15,7 @@
 
   desktop-applications.enable = true;
   lmstudio.enable = false;
+  ollama.enable = false;
 
   firefox.enable = false;
   terminal.enable = true;
