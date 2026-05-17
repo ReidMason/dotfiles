@@ -1,4 +1,11 @@
-{ pkgs, config, lib, options, parent-name, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  options,
+  parent-name,
+  ...
+}:
 let
   module = {
     module-name = "kubectl";
@@ -6,6 +13,7 @@ let
     config = {
       home.packages = [
         pkgs.kubectl
+        pkgs.kubeseal
       ];
       home.shellAliases = {
         k = "kubectl";
@@ -16,6 +24,13 @@ let
 in
 {
   imports = [
-    (import ../module-setup.nix { inherit config lib parent-name module; })
+    (import ../module-setup.nix {
+      inherit
+        config
+        lib
+        parent-name
+        module
+        ;
+    })
   ];
-} 
+}
