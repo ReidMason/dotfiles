@@ -114,7 +114,7 @@ in
         environment = {
           TS_STATE_DIR = "/var/lib/tailscale";
           TS_USERSPACE = "false";
-          TS_ROUTES = "10.128.0.0/24";
+          TS_ROUTES = "10.128.20.0/24";
         };
         volumes = [
           "/home/vera/appdata/tailscale:/var/lib/tailscale"
@@ -155,7 +155,7 @@ in
           STRICT_PORT_FORWARD = "no";
           ENABLE_PRIVOXY = "yes";
           WEBUI_PORT = "8080";
-          LAN_NETWORK = "10.128.0.0/24,172.17.0.0/16";
+          LAN_NETWORK = "10.128.20.0/24,172.17.0.0/16";
           NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
           VPN_INPUT_PORTS = "9117,8191,9696";
           VPN_OUTPUT_PORTS = "9117,8191,9696";
