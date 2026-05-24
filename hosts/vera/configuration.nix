@@ -281,7 +281,7 @@ in
           TZ = "Europe/London";
           UMASK = "000";
           PLEX_UID = "1000";
-          ALLOWED_NETWORKS = "10.128.0.0/24";
+          ALLOWED_NETWORKS = "10.128.20.0/24";
         };
         extraOptions = [
           "--hostname=vera"
