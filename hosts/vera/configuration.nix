@@ -157,6 +157,7 @@ in
           WEBUI_PORT = "8080";
           LAN_NETWORK = "10.128.20.0/24,172.17.0.0/16";
           NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
+          VPN_OPTIONS = "--mssfix 1300";
           VPN_INPUT_PORTS = "9117,8191,9696";
           VPN_OUTPUT_PORTS = "9117,8191,9696";
           UMASK = "000";
@@ -198,6 +199,7 @@ in
           PGID = "100";
           TZ = "Europe/London";
           DOTNET_SYSTEM_NET_DISABLEIPV6 = "1";
+          DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP2SUPPORT = "0";
         };
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
