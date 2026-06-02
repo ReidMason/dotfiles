@@ -46,6 +46,7 @@ in
       ./yazi.nix
       ./zsh.nix
       ./opencode.nix
+      ./claude-code.nix
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin (
       map mkModule [
