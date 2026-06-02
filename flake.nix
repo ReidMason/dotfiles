@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     tmux-sessions.url = "github:ReidMason/tmux-sessions";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,13 +24,27 @@
       nixpkgs-unstable,
       home-manager,
       tmux-sessions,
+      nixos-wsl,
     }:
     let
       utils = import ./modules/utils;
       inherit (nixpkgs.lib) listToAttrs nameValuePair;
 
       home-config-builder = { host, system }: utils.home-config-builder { inherit inputs host system; };
-      nix-config-builder = { host, system, specialArgs ? { } }: utils.nix-config-builder { inherit inputs host system specialArgs; };
+      nix-config-builder =
+        {
+          host,
+          system,
+          specialArgs ? { },
+        }:
+        utils.nix-config-builder {
+          inherit
+            inputs
+            host
+            system
+            specialArgs
+            ;
+        };
       darwin-config-builder =
         { host, system }: utils.darwin-config-builder { inherit inputs host system; };
 
@@ -44,11 +59,26 @@
       };
 
       linuxHosts = [
-        { name = "linux"; system = "x86_64-linux"; }
-        { name = "nix-playground"; system = "x86_64-linux"; }
-        { name = "vera"; system = "x86_64-linux"; }
-        { name = "mona"; system = "aarch64-linux"; }
-        { name = "nia"; system = "x86_64-linux"; }
+        {
+          name = "linux";
+          system = "x86_64-linux";
+        }
+        {
+          name = "nix-playground";
+          system = "x86_64-linux";
+        }
+        {
+          name = "vera";
+          system = "x86_64-linux";
+        }
+        {
+          name = "mona";
+          system = "aarch64-linux";
+        }
+        {
+          name = "nia";
+          system = "x86_64-linux";
+        }
         {
           name = "github-runner-dev";
           host = "github-runner";
@@ -61,9 +91,22 @@
           system = "x86_64-linux";
           specialArgs = mkGithubRunnerArgs "prod";
         }
+        {
+          name = "work-laptop";
+          system = "x86_64-linux";
+          specialArgs = {
+            nixosWsl = inputs.nixos-wsl;
+          };
+        }
       ];
 
-      homeHosts = [ { name = "macos"; system = "aarch64-darwin"; } ] ++ linuxHosts;
+      homeHosts = [
+        {
+          name = "macos";
+          system = "aarch64-darwin";
+        }
+      ]
+      ++ linuxHosts;
     in
     {
       darwinConfigurations = {
@@ -74,24 +117,24 @@
       };
 
       nixosConfigurations = listToAttrs (
-        map (m:
-          nameValuePair m.name (
-            nix-config-builder {
-              host = m.host or m.name;
-              inherit (m) system;
-              specialArgs = m.specialArgs or { };
-            }
-          )) linuxHosts
+        map (
+          m:
+          nameValuePair m.name (nix-config-builder {
+            host = m.host or m.name;
+            inherit (m) system;
+            specialArgs = m.specialArgs or { };
+          })
+        ) linuxHosts
       );
 
       homeConfigurations = listToAttrs (
-        map (m:
-          nameValuePair m.name (
-            home-config-builder {
-              host = m.host or m.name;
-              inherit (m) system;
-            }
-          )) homeHosts
+        map (
+          m:
+          nameValuePair m.name (home-config-builder {
+            host = m.host or m.name;
+            inherit (m) system;
+          })
+        ) homeHosts
       );
     };
 }
