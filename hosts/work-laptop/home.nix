@@ -17,6 +17,7 @@
   terminal.enable = true;
   zsh.autoAttachToTmux = true;
   git.enable = true;
+  golang.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 }
