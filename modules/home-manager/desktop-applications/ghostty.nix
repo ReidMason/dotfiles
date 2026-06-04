@@ -23,6 +23,8 @@ let
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           macos-icon-frame = "plastic";
+          # Send Option as Meta so tmux M-* binds (e.g. M-o) work
+          macos-option-as-alt = true;
           # macos-window-buttons = "hidden";
           # macos-titlebar-style = "hidden";
         };
