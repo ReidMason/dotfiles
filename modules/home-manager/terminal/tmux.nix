@@ -70,11 +70,11 @@ let
           bind-key -T copy-mode-vi "C-k" if -F "#{pane_at_top}" "" "select-pane -U"
           bind-key -T copy-mode-vi "C-l" if -F "#{pane_at_right}" "" "select-pane -R"
 
-          # Resize panes
-          bind -n F1 resize-pane -L 10
-          bind -n F2 resize-pane -D 10
-          bind -n F3 resize-pane -U 10
-          bind -n F4 resize-pane -R 10
+          # Resize panes (works in any terminal; no F-key translation needed)
+          bind -n C-S-h resize-pane -L 10
+          bind -n C-S-j resize-pane -D 10
+          bind -n C-S-k resize-pane -U 10
+          bind -n C-S-l resize-pane -R 10
 
           # Tmux sensible fix for tmux 3.5 and 3.5a to stop zsh from breaking
           # Without this the default shell will be /bin/sh
