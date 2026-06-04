@@ -11,7 +11,7 @@ nixos $host:
 
 darwin $host:
   git add .
-  nix run nix-darwin -- switch --flake .#$host
+  sudo nix run nix-darwin -- switch --flake .#$host
 
 # Trigger an immediate NixOS upgrade from GitHub on the current machine
 upgrade:

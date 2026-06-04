@@ -25,7 +25,7 @@
     dock.autohide = true;
     dock.persistent-apps = [
       "/Applications/Arc.app/"
-      "${pkgs.wezterm}/Applications/WezTerm.app"
+      "${pkgs-unstable.ghostty-bin}/Applications/Ghostty.app"
       "/System/Applications/Mail.app"
     ];
 

@@ -7,7 +7,7 @@ local config = {}
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-	config = wezterm.config_builder()
+  config = wezterm.config_builder()
 end
 
 config.enable_wayland = false
@@ -17,10 +17,10 @@ config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 18
 config.window_padding = {
-	left = 8,
-	right = 8,
-	top = 8,
-	bottom = 0,
+  left = 8,
+  right = 8,
+  top = 8,
+  bottom = 0,
 }
 
 config.window_background_opacity = 1
@@ -33,52 +33,52 @@ config.max_fps = 144
 -- - { key: Backslash, mods: Super, chars: "\x1b\x5c" }
 
 config.keys = {
-	{
-		key = "3",
-		mods = "ALT",
-		action = wezterm.action.SendKey({ key = "#" }),
-	},
-	-- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
-	{
-		key = "LeftArrow",
-		mods = "OPT",
-		action = wezterm.action.SendKey({
-			key = "b",
-			mods = "ALT",
-		}),
-	},
-	{
-		key = "RightArrow",
-		mods = "OPT",
-		action = wezterm.action.SendKey({ key = "f", mods = "ALT" }),
-	},
-	-- Reload wezterm config
-	{
-		key = "r",
-		mods = "CMD|SHIFT",
-		action = wezterm.action.ReloadConfiguration,
-	},
-	-- Disable binds
-	{
-		key = "h",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SendKey({ key = "F1" }),
-	},
-	{
-		key = "j",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SendKey({ key = "F2" }),
-	},
-	{
-		key = "k",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SendKey({ key = "F3" }),
-	},
-	{
-		key = "l",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SendKey({ key = "F4" }),
-	},
+  {
+    key = "3",
+    mods = "ALT",
+    action = wezterm.action.SendKey({ key = "#" }),
+  },
+  -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f respectively to match Terminal.app behavior
+  {
+    key = "LeftArrow",
+    mods = "OPT",
+    action = wezterm.action.SendKey({
+      key = "b",
+      mods = "ALT",
+    }),
+  },
+  {
+    key = "RightArrow",
+    mods = "OPT",
+    action = wezterm.action.SendKey({ key = "f", mods = "ALT" }),
+  },
+  -- Reload wezterm config
+  {
+    key = "r",
+    mods = "CMD|SHIFT",
+    action = wezterm.action.ReloadConfiguration,
+  },
+  -- Disable binds
+  {
+    key = "h",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.SendKey({ key = "F1" }),
+  },
+  {
+    key = "j",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.SendKey({ key = "F2" }),
+  },
+  {
+    key = "k",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.SendKey({ key = "F3" }),
+  },
+  {
+    key = "l",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.SendKey({ key = "F4" }),
+  },
 }
 
 -- and finally, return the configuration to wezterm

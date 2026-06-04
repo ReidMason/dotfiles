@@ -8,7 +8,18 @@
 }:
 let
   module-name = "desktop-applications";
-  mkModule = path: import path { inherit pkgs pkgs-unstable lib config options; parent-name = module-name; };
+  mkModule =
+    path:
+    import path {
+      inherit
+        pkgs
+        pkgs-unstable
+        lib
+        config
+        options
+        ;
+      parent-name = module-name;
+    };
 in
 {
   imports = map mkModule [
@@ -19,6 +30,7 @@ in
     ./skhd.nix
     ./docker.nix
     ./lmstudio.nix
+    ./ghostty.nix
   ];
 
   options.${module-name} = {
