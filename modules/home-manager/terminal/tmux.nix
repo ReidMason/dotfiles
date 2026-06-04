@@ -69,10 +69,6 @@ let
           bind-key -T copy-mode-vi "C-j" if -F "#{pane_at_bottom}" "" "select-pane -D"
           bind-key -T copy-mode-vi "C-k" if -F "#{pane_at_top}" "" "select-pane -U"
           bind-key -T copy-mode-vi "C-l" if -F "#{pane_at_right}" "" "select-pane -R"
-          
-          # Keep selection highlightest on mouse release (don't copy)
-          bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X stop-selection
-          bind-key -T copy-mode MouseDragEnd1Pane send-keys -X stop-selection
 
           # Resize panes
           bind -n F1 resize-pane -L 10
