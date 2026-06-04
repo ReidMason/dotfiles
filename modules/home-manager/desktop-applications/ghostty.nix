@@ -22,6 +22,7 @@ let
           window-padding-y = "4,0";
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
+          macos-icon-frame = "plastic";
           # macos-window-buttons = "hidden";
           # macos-titlebar-style = "hidden";
         };
