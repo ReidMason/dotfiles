@@ -30,6 +30,9 @@ let
               ];
               ansi = true;
               output = "{strip_ansi|split: :1..|join: }";
+              # Keep sesh sessions above tmux-sessions repos (source order).
+              frecency = false;
+              no_sort = true;
             };
             preview = {
               command = "sesh preview '{strip_ansi|split: :1..|join: }'";
