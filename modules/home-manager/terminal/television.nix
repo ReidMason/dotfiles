@@ -19,12 +19,12 @@ let
               description = "Session manager integrating tmux sessions, zoxide directories, and config paths";
               requirements = [
                 "sesh"
-                "fd"
               ];
             };
             source = {
               command = [
-                "sh -c \"{ sesh list -t --icons; tmux-sessions; }\""
+                "tmux-sessions list"
+                # "sh -c \"{ sesh list -t --icons; tmux-sessions; }\""
               ];
               ansi = true;
               output = "{strip_ansi|split: :1..|join: }";
@@ -45,7 +45,7 @@ let
             actions = {
               connect = {
                 description = "Connect to selected session";
-                command = "sh -c \"tmux-sessions open '{strip_ansi|split: :1..|join: }' | xargs sesh connect\"";
+                command = "tmux-sessions connect '{strip_ansi|split: :1..|join: }'";
                 mode = "execute";
               };
               kill_session = {
