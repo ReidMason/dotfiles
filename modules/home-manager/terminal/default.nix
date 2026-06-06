@@ -42,7 +42,6 @@ in
       ./talosctl.nix
       ./just.nix
       ./television.nix
-      ./sesh.nix
       ./yazi.nix
       ./zsh.nix
       ./opencode.nix

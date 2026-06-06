@@ -17,9 +17,7 @@ let
             metadata = {
               name = "sesh";
               description = "Session manager integrating tmux sessions, zoxide directories, and config paths";
-              requirements = [
-                "sesh"
-              ];
+              requirements = [ ];
             };
             source = {
               command = [
@@ -32,7 +30,7 @@ let
               no_sort = true;
             };
             preview = {
-              command = "sesh preview '{strip_ansi|split: :1..|join: }'";
+              command = "tmux-sessions preview '{strip_ansi|split: :1..|join: }'";
             };
             keybindings = {
               enter = "actions:connect";
