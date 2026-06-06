@@ -156,11 +156,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1780754846,
-        "narHash": "sha256-gsawBglNyDLHzOJFOVFzGRwnc+tTvbDamlTyJLPKm9I=",
+        "lastModified": 1780757592,
+        "narHash": "sha256-ry0HGex8eDjqaQdIodsJNeUb07r56A+yLguUi/Hr80Y=",
         "owner": "ReidMason",
         "repo": "tmux-sessions",
-        "rev": "f64ee28f0aea31c7eefe6ab43e2f649a56e65a55",
+        "rev": "e0d7762a788d7e220e04dad19561d5f60e40ae36",
         "type": "github"
       },
       "original": {
