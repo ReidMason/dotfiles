@@ -25,8 +25,6 @@ let
             source = {
               command = [
                 "sh -c \"{ sesh list -t --icons; tmux-sessions; }\""
-                "sesh list --icons"
-                "sesh list -c --icons"
               ];
               ansi = true;
               output = "{strip_ansi|split: :1..|join: }";
