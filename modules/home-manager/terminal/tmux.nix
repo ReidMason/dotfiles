@@ -42,7 +42,7 @@ let
           bind l select-window -t 3
           # bind ; select-window -t 4
 
-          # Toggle between last two tmux sessions (Opt+o on macOS)
+          # Toggle between last two tmux sessions (left Opt+o on macOS)
           bind -n M-o switch-client -l
 
           # Switch Pane positions

@@ -23,7 +23,7 @@ let
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           macos-icon-frame = "plastic";
-          macos-option-as-alt = true;
+          macos-option-as-alt = "left";
         };
       };
     };
