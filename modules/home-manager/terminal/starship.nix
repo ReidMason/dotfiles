@@ -1,18 +1,25 @@
-{pkgs, config, lib, options, parent-name, ...}:
+{
+  pkgs,
+  config,
+  lib,
+  options,
+  parent-name,
+  ...
+}:
 let
-module = {
-  module-name = "starship";
-  label = "Starship prompt";
-  config = {
-    home.packages = [
-      pkgs.starship
-    ];
-    programs.starship = {
-      enable = true;
-      settings = {
-        add_newline = false;
-        format = pkgs.lib.concatStrings [
-          "$hostname"
+  module = {
+    module-name = "starship";
+    label = "Starship prompt";
+    config = {
+      home.packages = [
+        pkgs.starship
+      ];
+      programs.starship = {
+        enable = true;
+        settings = {
+          add_newline = false;
+          format = pkgs.lib.concatStrings [
+            "$hostname"
             "$hostfile"
             "$directory"
             "$nix_shell"
@@ -29,54 +36,61 @@ module = {
             "$cmd_duration"
             "$line_break"
             "$character"
-        ];
-        hostname = {
-          ssh_only = true;
-        };
-        nix_shell = {
-          symbol = "󱄅 ";
-          format = "[$symbol$state( \($name\))]($style) ";
-          heuristic = true;
-        };
-        fill = {
-          symbol = " ";
-        };
-        git_branch = {
-          symbol = " ";
-          format = "[$symbol$branch]($style) ";
-        };
-        git_status = {
-          format = "([$ahead_behind]($style))";
-          ahead = "[⇡$count](green)";
-          diverged = "[⇡$ahead_count(green)][⇣$behind_count(red)]";
-          behind = "[⇣$count(red)]";
-        };
-        git_state = {
-          format = "\([$state( $progress_current/$progress_total)]($style)\) ";
-          style = "bright-black";
-        };
-        git_metrics = {
-          disabled = true;
-        };
-        nodejs = {
-          format = "[$symbol($version )]($style)";
-        };
-        rust = {
-          format = "[$symbol($version )]($style)";
-        };
-        golang = {
-          format = "[$symbol($version )]($style)";
-        };
-        python = {
-          format = "[$symbol$pyenv_prefix($version )(\($virtualenv\) )]($style)";
+          ];
+          hostname = {
+            ssh_only = true;
+          };
+          # nix_shell = {
+          #   symbol = "󱄅 ";
+          #   format = "[$symbol$state( \($name\))]($style) ";
+          #   heuristic = true;
+          # };
+          fill = {
+            symbol = " ";
+          };
+          git_branch = {
+            symbol = " ";
+            format = "[$symbol$branch]($style) ";
+          };
+          git_status = {
+            format = "([$ahead_behind]($style))";
+            ahead = "[⇡$count](green)";
+            diverged = "[⇡$ahead_count(green)][⇣$behind_count(red)]";
+            behind = "[⇣$count(red)]";
+          };
+          git_state = {
+            format = "\([$state( $progress_current/$progress_total)]($style)\) ";
+            style = "bright-black";
+          };
+          git_metrics = {
+            disabled = true;
+          };
+          nodejs = {
+            format = "[$symbol($version )]($style)";
+          };
+          rust = {
+            format = "[$symbol($version )]($style)";
+          };
+          golang = {
+            format = "[$symbol($version )]($style)";
+          };
+          python = {
+            format = "[$symbol$pyenv_prefix($version )(\($virtualenv\) )]($style)";
+          };
         };
       };
     };
   };
-};
 in
 {
   imports = [
-    (import ../module-setup.nix { inherit config lib parent-name module; })
+    (import ../module-setup.nix {
+      inherit
+        config
+        lib
+        parent-name
+        module
+        ;
+    })
   ];
 }
