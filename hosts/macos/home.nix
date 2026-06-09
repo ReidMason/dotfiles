@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   home.username = "reid";
   home.homeDirectory = "/Users/reid";
@@ -24,6 +25,10 @@
   skhd.enable = false;
 
   terraform.enable = true;
+
+  programs.tmux-sessions.projectDirectories = [
+    "${config.home.homeDirectory}/Documents/repos"
+  ];
 
   nixpkgs.config.allowUnfree = true;
 }
