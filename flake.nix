@@ -18,13 +18,8 @@
 
   outputs =
     inputs@{
-      self,
-      nix-darwin,
       nixpkgs,
       nixpkgs-unstable,
-      home-manager,
-      tmux-sessions,
-      nixos-wsl,
     }:
     let
       utils = import ./modules/utils;
