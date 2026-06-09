@@ -9,6 +9,8 @@ let
     module-name = "television";
     label = "Television";
     config = {
+      programs.tmux-sessions.enable = lib.mkDefault true;
+
       programs.television = {
         enable = true;
         enableZshIntegration = true;

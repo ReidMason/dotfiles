@@ -12,9 +12,9 @@ inputs.home-manager.lib.homeManagerConfiguration {
   extraSpecialArgs = {
     inherit pkgs;
     pkgs-unstable = pkgs;
-    tmux-sessions = inputs.tmux-sessions.packages.${system}.default;
   };
   modules = [
+    inputs.tmux-sessions.homeManagerModules.default
     ../../hosts/${host}/home.nix
     ../home-manager
   ];
