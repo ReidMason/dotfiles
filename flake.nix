@@ -2,12 +2,12 @@
   description = "System configuration using Nix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     tmux-sessions.url = "github:ReidMason/tmux-sessions";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-25.05";
+      url = "github:LnL7/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -18,8 +18,13 @@
 
   outputs =
     inputs@{
+      self,
+      nix-darwin,
       nixpkgs,
       nixpkgs-unstable,
+      home-manager,
+      tmux-sessions,
+      nixos-wsl,
     }:
     let
       utils = import ./modules/utils;
