@@ -37,10 +37,10 @@ let
           bind w kill-window
 
           # Switch windows
-          bind j select-window -t 1
-          bind k select-window -t 2
-          bind l select-window -t 3
-          # bind ; select-window -t 4
+          bind -n C-S-j select-window -t 1
+          bind -n C-S-k select-window -t 2
+          bind -n C-S-l select-window -t 3
+          bind -n C-: select-window -t 4
 
           # Toggle between last two tmux sessions (left Opt+o on macOS)
           bind -n M-o switch-client -l
@@ -71,10 +71,10 @@ let
           bind-key -T copy-mode-vi "C-l" if -F "#{pane_at_right}" "" "select-pane -R"
 
           # Resize panes (works in any terminal; no F-key translation needed)
-          bind -n C-S-h resize-pane -L 10
-          bind -n C-S-j resize-pane -D 10
-          bind -n C-S-k resize-pane -U 10
-          bind -n C-S-l resize-pane -R 10
+          bind -n C-Left  resize-pane -L 10
+          bind -n C-Down  resize-pane -D 10
+          bind -n C-Up    resize-pane -U 10
+          bind -n C-Right resize-pane -R 10
 
           # Tmux sensible fix for tmux 3.5 and 3.5a to stop zsh from breaking
           # Without this the default shell will be /bin/sh
