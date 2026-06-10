@@ -55,3 +55,38 @@ You can then update your packages with the usual command.
 - [Home manager options](https://nix-community.github.io/home-manager/options.xhtml) - A list of all the options available in home manager for programs
 - [Nixos search](https://search.nixos.org/packages) - A search engine for nix packages
 - [MyNixos](https://search.nixos.org/packages) - A search engine that displays lots of useful options for nix packages
+
+# Keybindings
+
+Which modifier belongs to which domain. Inside → outside.
+
+---
+
+## Neovim
+
+| Modifier         | Use                                      |
+| ---------------- | ---------------------------------------- |
+| `Space`          | Leader (telescope, LSP, oil, …)          |
+| `Shift` + `hjkl` | Harpoon files                            |
+| `Ctrl` + `hjkl`  | Pane nav — owned by tmux, passed through |
+
+---
+
+## tmux
+
+| Modifier                  | Use          |
+| ------------------------- | ------------ |
+| `Ctrl` + `hjkl`           | Pane nav     |
+| `Ctrl` + `arrow keys`     | Resize panes |
+| `Ctrl` + `Shift` + `hjkl` | Window 1–4   |
+
+---
+
+## macOS (Aerospace)
+
+| Modifier                 | Use                      |
+| ------------------------ | ------------------------ |
+| `Alt` + `hjkl`           | Focus window             |
+| `Alt` + `Shift` + `hjkl` | Move window              |
+| `Alt` + `Tab`            | Workspace back-and-forth |
+| Corne Raise + `1–9`      | Workspaces (infrequent)  |
