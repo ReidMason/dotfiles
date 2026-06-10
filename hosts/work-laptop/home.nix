@@ -1,7 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
   ...
 }:
 {
@@ -18,6 +15,10 @@
   zsh.autoAttachToTmux = true;
   git.enable = true;
   golang.enable = true;
+
+  programs.tmux-sessions.projectDirectories = [
+    "/mnt/c/Documents/projects/Reops"
+  ];
 
   nixpkgs.config.allowUnfree = true;
 }
