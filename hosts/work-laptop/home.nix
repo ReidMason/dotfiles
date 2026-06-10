@@ -17,7 +17,7 @@
   golang.enable = true;
 
   programs.tmux-sessions.projectDirectories = [
-    "/mnt/c/Documents/projects/Reops"
+    "/mnt/c/Documents/projects/Repos"
   ];
 
   nixpkgs.config.allowUnfree = true;
