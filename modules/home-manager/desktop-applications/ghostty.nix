@@ -20,6 +20,8 @@ let
           font-size = 18;
           window-padding-x = "4,4";
           window-padding-y = "4,0";
+          cursor-style = "block";
+          shell-integration-features = "no-cursor";
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           macos-icon-frame = "plastic";
