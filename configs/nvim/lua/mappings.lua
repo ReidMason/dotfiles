@@ -85,11 +85,11 @@ mappings.lsp = {
     ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
     ["<leader>ld"] = {
       function()
-        vim.diagnostic.open_float { border = "rounded" }
+        vim.lsp.buf.signature_help { border = "rounded" }
       end,
-      "Floating diagnostic",
+      "LSP signature help",
     },
-  },
+  }
 }
 
 mappings.tmuxNavigator = {
