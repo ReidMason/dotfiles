@@ -77,6 +77,7 @@ in
 
     "/home/vera/export/appdata" = {
       device = "/home/vera/appdata";
+      fsType = "none";
       options = [ "bind" ];
     };
   };
