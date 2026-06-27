@@ -96,7 +96,7 @@ in
   # Docker setup
   virtualisation.docker = {
     enable = true;
-    package = pkgs.docker_28;
+    package = pkgs.docker_29;
   };
 
   virtualisation.oci-containers = {
