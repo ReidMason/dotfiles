@@ -120,17 +120,20 @@ local function tmux_resize(direction)
   end
 end
 
+local tmux_mappings = {
+  ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Tmux navigate left" },
+  ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Tmux navigate down" },
+  ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Tmux navigate up" },
+  ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Tmux navigate right" },
+  ["<C-S-h>"] = { tmux_resize("L"), "Resize tmux pane left" },
+  ["<C-S-j>"] = { tmux_resize("D"), "Resize tmux pane down" },
+  ["<C-S-k>"] = { tmux_resize("U"), "Resize tmux pane up" },
+  ["<C-S-l>"] = { tmux_resize("R"), "Resize tmux pane right" },
+}
+
 mappings.tmuxNavigator = {
-  n = {
-    ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Tmux navigate left" },
-    ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Tmux navigate down" },
-    ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Tmux navigate up" },
-    ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Tmux navigate right" },
-    ["<C-S-h>"] = { tmux_resize("L"), "Resize tmux pane left" },
-    ["<C-S-j>"] = { tmux_resize("D"), "Resize tmux pane down" },
-    ["<C-S-k>"] = { tmux_resize("U"), "Resize tmux pane up" },
-    ["<C-S-l>"] = { tmux_resize("R"), "Resize tmux pane right" },
-  },
+  n = tmux_mappings,
+  v = tmux_mappings
 }
 
 mappings.harpoon = {
@@ -195,6 +198,61 @@ mappings.telescope = {
 mappings.snacks = {
   n = {
     ["<leader>gg"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
+  },
+}
+
+mappings.sidekick = {
+  n = {
+    ["<leader>ac"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "cursor", focus = true })
+      end,
+      "Toggle agent",
+    },
+    ["<leader>ap"] = {
+      function()
+        require("sidekick.cli").prompt()
+      end,
+      "Prompt picker",
+    },
+    ["<leader>ai"] = {
+      function()
+        require("sidekick.cli").send({ msg = "{this}" })
+      end,
+      "Send context",
+    },
+    ["<leader>af"] = {
+      function()
+        require("sidekick.cli").send({ msg = "{file}" })
+      end,
+      "Send file",
+    },
+    ["<leader>ad"] = {
+      function()
+        require("sidekick.cli").close()
+      end,
+      "Detach agent",
+    },
+  },
+  x = {
+    ["<leader>ap"] = {
+      function()
+        require("sidekick.cli").prompt()
+      end,
+      "Prompt picker",
+    },
+    ["<leader>av"] = {
+      function()
+        require("sidekick.cli").send({ msg = "{selection}" })
+      end,
+      "Send selection",
+    },
+    ["<leader>ai"] = {
+      function()
+        require("sidekick.cli").send({ msg = "{this}" })
+      end,
+      "Send context",
+    },
   },
 }
 

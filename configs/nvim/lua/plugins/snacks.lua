@@ -3,9 +3,6 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
     notifier = { enabled = true },
     lazygit = { enabled = true },
     statuscolumn = { enabled = true },
@@ -13,5 +10,23 @@ return {
     bigfile = { enabled = false },
     quickfile = { enabled = false },
     words = { enabled = false },
+
+    picker = {
+      actions = {
+        sidekick_send = function(...)
+          return require("sidekick.cli.picker.snacks").send(...)
+        end,
+      },
+      win = {
+        input = {
+          keys = {
+            ["<A-a>"] = {
+              "sidekick_send",
+              mode = { "n", "i" },
+            },
+          },
+        },
+      },
+    },
   },
 }
