@@ -26,9 +26,6 @@ mappings.general = {
     ["*"] = { "*zz" },
     ["#"] = { "#zz" },
 
-    ["L"] = { "$" },
-    ["H"] = { "^" },
-
     ["<leader>/"] = {
       "gcc",
       "Toggle comment",
