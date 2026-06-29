@@ -80,13 +80,35 @@ mappings.rename = {
 mappings.lsp = {
   n = {
     ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
+    ["<leader>lh"] = {
+      function()
+        vim.lsp.buf.hover { border = "rounded" }
+      end,
+      "LSP hover",
+    },
     ["<leader>ld"] = {
       function()
         vim.lsp.buf.signature_help { border = "rounded" }
       end,
       "LSP signature help",
     },
-  }
+    ["<leader>lf"] = {
+      function()
+        require("conform").format { async = true, lsp_format = "fallback" }
+      end,
+      "Format buffer",
+    },
+    ["[d"] = { vim.diagnostic.goto_prev, "Previous diagnostic" },
+    ["]d"] = { vim.diagnostic.goto_next, "Next diagnostic" },
+  },
+  v = {
+    ["<leader>lf"] = {
+      function()
+        require("conform").format { async = true, lsp_format = "fallback", range = true }
+      end,
+      "Format selection",
+    },
+  },
 }
 
 mappings.tmuxNavigator = {
