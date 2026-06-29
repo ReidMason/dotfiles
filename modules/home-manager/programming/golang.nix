@@ -18,6 +18,7 @@ let
         goose
         air
         gopls
+        gotools
         golangci-lint
       ];
     };
