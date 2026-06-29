@@ -14,6 +14,7 @@ let
     config = {
       home.packages = [
         pkgs-unstable.neovim
+        pkgs-unstable.tree-sitter
         pkgs.ripgrep
         pkgs.lazygit
         # pkgs.clang
