@@ -65,7 +65,7 @@ mappings.oil = {
       end,
       "Toggle oil",
     },
-  }
+  },
 }
 
 mappings.rename = {
