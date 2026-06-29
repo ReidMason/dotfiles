@@ -2,11 +2,8 @@ vim.o.termguicolors = true
 vim.cmd.colorscheme "catppuccin-mocha"
 
 vim.opt.clipboard = "unnamedplus"
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
 vim.o.pumheight = 10 -- Set popup menu height this works for autocompletion
 
-vim.opt.undofile = true
 -- vim.wo.relativenumber = true
 vim.wo.number = true
 
