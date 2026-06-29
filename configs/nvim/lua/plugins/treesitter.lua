@@ -27,11 +27,11 @@ return {
     branch = "main",
     lazy = false,
     build = ":TSUpdate",
-    opts = {
-      install_dir = vim.fn.stdpath('data') .. '/site'
-    },
     config = function()
-      require('nvim-treesitter').install(ensure_installed)
+      require("nvim-treesitter").setup({
+        install_dir = vim.fn.stdpath("data") .. "/site",
+      })
+      require("nvim-treesitter").install(ensure_installed)
 
       vim.api.nvim_create_autocmd({ "FileType", "BufReadPost" }, {
         callback = function(args)
