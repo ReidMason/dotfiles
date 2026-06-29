@@ -75,10 +75,10 @@ let
           bind-key -T copy-mode-vi "C-l" if -F "#{pane_at_right}" "" "select-pane -R"
 
           # Resize panes (C-S-* requires extended-keys; plain C-* is pane navigation)
-          bind -n C-S-H resize-pane -L 5
-          bind -n C-S-J resize-pane -D 5
-          bind -n C-S-K resize-pane -U 5
-          bind -n C-S-L resize-pane -R 5
+          bind-key -n "C-S-H" if-shell "$is_vim" "send-keys C-S-H" "resize-pane -L 5"
+          bind-key -n "C-S-J" if-shell "$is_vim" "send-keys C-S-J" "resize-pane -D 5"
+          bind-key -n "C-S-K" if-shell "$is_vim" "send-keys C-S-K" "resize-pane -U 5"
+          bind-key -n "C-S-L" if-shell "$is_vim" "send-keys C-S-L" "resize-pane -R 5"
 
           # Tmux sensible fix for tmux 3.5 and 3.5a to stop zsh from breaking
           # Without this the default shell will be /bin/sh

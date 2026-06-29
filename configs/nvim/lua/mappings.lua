@@ -111,12 +111,25 @@ mappings.lsp = {
   },
 }
 
+local function tmux_resize(direction)
+  return function()
+    if not vim.env.TMUX then
+      return
+    end
+    vim.fn.system("tmux resize-pane -" .. direction .. " 5")
+  end
+end
+
 mappings.tmuxNavigator = {
   n = {
     ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Tmux navigate left" },
     ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Tmux navigate down" },
     ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Tmux navigate up" },
     ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Tmux navigate right" },
+    ["<C-S-h>"] = { tmux_resize("L"), "Resize tmux pane left" },
+    ["<C-S-j>"] = { tmux_resize("D"), "Resize tmux pane down" },
+    ["<C-S-k>"] = { tmux_resize("U"), "Resize tmux pane up" },
+    ["<C-S-l>"] = { tmux_resize("R"), "Resize tmux pane right" },
   },
 }
 
