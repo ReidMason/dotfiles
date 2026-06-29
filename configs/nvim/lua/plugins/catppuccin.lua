@@ -9,15 +9,15 @@ return {
       }
     end,
     integrations = {
-      cmp = true,
-      notify = true,
+      blink_cmp = true,
+      gitsigns = true,
       harpoon = true,
-      which_key = true,
-      mason = true,
+      notify = true,
+      noice = true,
+      snacks = true,
       telescope = {
         enabled = true,
       },
-      nvimtree = true,
     },
   },
 }
