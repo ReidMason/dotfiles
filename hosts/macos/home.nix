@@ -20,6 +20,7 @@
   server-tools.enable = true;
 
   wezterm.enable = true;
+  emacs.enable = true;
   tmux.enable = true;
 
   skhd.enable = false;

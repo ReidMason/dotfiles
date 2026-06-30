@@ -14,6 +14,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+    nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -25,6 +27,7 @@
       home-manager,
       tmux-sessions,
       nixos-wsl,
+      ...
     }:
     let
       utils = import ./modules/utils;

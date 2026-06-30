@@ -10,10 +10,11 @@ in
 inputs.home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
   extraSpecialArgs = {
-    inherit pkgs;
+    inherit inputs pkgs;
     pkgs-unstable = pkgs;
   };
   modules = [
+    inputs.nix-doom-emacs-unstraightened.homeModule
     inputs.tmux-sessions.homeManagerModules.default
     ../../hosts/${host}/home.nix
     ../home-manager

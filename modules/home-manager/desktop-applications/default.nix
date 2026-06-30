@@ -31,6 +31,7 @@ in
     ./docker.nix
     ./lmstudio.nix
     ./ghostty.nix
+    ./emacs.nix
   ];
 
   options.${module-name} = {
