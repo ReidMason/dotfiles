@@ -31,7 +31,6 @@ in
     ./obsidian.nix
     ./skhd.nix
     ./docker.nix
-    ./lmstudio.nix
     ./ghostty.nix
     ./emacs.nix
   ];
