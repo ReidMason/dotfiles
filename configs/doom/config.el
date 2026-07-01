@@ -109,3 +109,10 @@
 (let ((nix-bin (expand-file-name "~/.nix-profile/bin")))
   (add-to-list 'exec-path nix-bin)
   (setenv "PATH" (concat nix-bin ":" (or (getenv "PATH") ""))))
+
+;; Neovim-style inline diagnostics: right after the code on each error line.
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable nil))
+
+(after! flymake
+  (setq flymake-show-diagnostics-at-end-of-line 'short))
