@@ -23,5 +23,25 @@ in
         experimentalFetchTree = true;
       };
     }
+    (lib.mkIf pkgs.stdenv.isDarwin {
+      # Stable .app path so macOS remembers Documents access across rebuilds.
+      home.file."Applications/Emacs.app" = {
+        source = "${config.programs.doom-emacs.finalEmacsPackage}/Applications/Emacs.app";
+        recursive = true;
+      };
+
+      # Shadow the nix-store emacs binary; launch via the stable .app instead.
+      home.file.".local/bin/emacs" = {
+        executable = true;
+        text = ''
+          #!${pkgs.runtimeShell}
+          if [ "$#" -eq 0 ]; then
+            exec open -a Emacs
+          else
+            exec open -a Emacs --args "$@"
+          fi
+        '';
+      };
+    })
   ]);
 }
