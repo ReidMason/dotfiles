@@ -35,6 +35,10 @@
 (setq doom-theme 'catppuccin)
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18))
 
+;; Open maximized (fills screen, keeps menu bar/dock — not macOS fullscreen).
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
