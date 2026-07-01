@@ -14,7 +14,6 @@ inputs.home-manager.lib.homeManagerConfiguration {
     pkgs-unstable = pkgs;
   };
   modules = [
-    inputs.nix-doom-emacs-unstraightened.homeModule
     inputs.tmux-sessions.homeManagerModules.default
     ../../hosts/${host}/home.nix
     ../home-manager

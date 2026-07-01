@@ -6,42 +6,29 @@
 }:
 let
   cfg = config.emacs;
+  doomDir = "${config.home.homeDirectory}/.config/doom";
+  doomConfig = toString ../../../configs/doom;
 in
 {
-  options.emacs.enable = lib.mkEnableOption "Emacs (Doom via nix-doom-emacs-unstraightened)";
+  options.emacs.enable = lib.mkEnableOption "Emacs with Doom (config managed like Neovim)";
 
-  config = lib.mkIf cfg.enable (lib.mkMerge [
-    {
-      home.packages = [
-        pkgs.fd
-      ];
+  config = lib.mkIf cfg.enable {
+    home.packages = [
+      pkgs.emacs
+      pkgs.fd
+      pkgs.ripgrep
+      pkgs.git
+    ];
 
-      programs.doom-emacs = {
-        enable = true;
-        doomDir = ../../../configs/doom;
-        doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
-        experimentalFetchTree = true;
-      };
-    }
-    (lib.mkIf pkgs.stdenv.isDarwin {
-      # Stable .app path so macOS remembers Documents access across rebuilds.
-      home.file."Applications/Emacs.app" = {
-        source = "${config.programs.doom-emacs.finalEmacsPackage}/Applications/Emacs.app";
-        recursive = true;
-      };
+    # Live symlink into the repo — edit configs/doom directly, no rebuild needed.
+    home.file.".config/doom".source = config.lib.file.mkOutOfStoreSymlink doomConfig;
 
-      # Shadow the nix-store emacs binary; launch via the stable .app instead.
-      home.file.".local/bin/emacs" = {
-        executable = true;
-        text = ''
-          #!${pkgs.runtimeShell}
-          if [ "$#" -eq 0 ]; then
-            exec open -a Emacs
-          else
-            exec open -a Emacs --args "$@"
-          fi
-        '';
-      };
-    })
-  ]);
+    home.sessionVariables = {
+      DOOMDIR = doomDir;
+    };
+
+    home.sessionPath = [ "${config.home.homeDirectory}/.emacs.d/bin" ];
+
+    # First-time: `just doom-setup`. After init.el/packages.el changes: `just doom-sync`.
+  };
 }
