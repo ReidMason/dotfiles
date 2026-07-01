@@ -79,3 +79,10 @@
 
 ;; Auto discover projects on startup
 (with-eval-after-load 'projectile (projectile-discover-projects-in-search-path))
+
+(map! :g "M-o" #'+workspace/other :desc "Toggle last workspace")
+
+;; GUI Emacs on macOS doesn't inherit the shell PATH from Home Manager.
+(let ((nix-bin (expand-file-name "~/.nix-profile/bin")))
+  (add-to-list 'exec-path nix-bin)
+  (setenv "PATH" (concat nix-bin ":" (or (getenv "PATH") ""))))
