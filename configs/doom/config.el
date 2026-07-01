@@ -56,6 +56,10 @@
   tab-width 2
   c-basic-offset 2)
 
+;; electric-indent on } re-indents the block; fights Go + 2-space settings.
+(setq-hook! '(go-mode-hook go-ts-mode-hook)
+  electric-indent-mode nil)
+
 ;; Stop Doom drawing » on tab chars when files use tabs (e.g. Go).
 (after! doom
   (dolist (fn '(+whitespace-highlight-incorrect-indentation-h
