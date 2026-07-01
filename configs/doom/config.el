@@ -110,9 +110,24 @@
   (add-to-list 'exec-path nix-bin)
   (setenv "PATH" (concat nix-bin ":" (or (getenv "PATH") ""))))
 
-;; Neovim-style inline diagnostics: right after the code on each error line.
+;; Diagnostics — mirror configs/nvim/lua/core/lsp.lua
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil))
 
 (after! flymake
-  (setq flymake-show-diagnostics-at-end-of-line 'short))
+  (setq flymake-show-diagnostics-at-end-of-line 'short
+        flymake-indicator-type 'margins
+        flymake-margin-indicator-position 'left-margin
+        flymake-margin-indicators-string
+        '((error "󰅚 " error)
+          (warning "󰀪 " warning)
+          (note "󰌶 " success)))
+  (dolist (type '(:error :warning :note))
+    (put type 'flymake-overlay-control '((help-echo . nil))))
+  (add-hook 'flymake-mode-hook
+            (lambda ()
+              (setq-local flymake-show-diagnostics-at-end-of-line 'short)
+              (remove-hook 'eldoc-documentation-functions
+                           #'flymake-eldoc-function t)
+              (flymake-start t))
+            100))
