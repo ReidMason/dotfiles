@@ -43,37 +43,21 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-;; Indent with 2 spaces (like nvim's expandtab/shiftwidth/tabstop).
-(setq doom-inhibit-indent-detection t
-      evil-shift-width 2)
-(setq-default indent-tabs-mode nil
-              tab-width 2
-              c-basic-offset 2)
+;; 2-space indent (Doom defaults to 4-wide tabs)
+(setq-default tab-width 2
+              c-basic-offset 2
+              evil-shift-width 2)
 (setq-hook! 'prog-mode-hook
   indent-tabs-mode nil
   tab-width 2
   c-basic-offset 2)
 
-;; Doom shows » (looks like >) on tab chars when indent-tabs-mode is nil.
-(defun +reid/no-indent-whitespace-markers ()
-  (when (and whitespace-mode buffer-file-name)
-    (setq-local whitespace-style
-                (seq-remove (lambda (s) (memq s '(tabs tab-mark indentation)))
-                            whitespace-style))
-    (when (or (null whitespace-style) (equal whitespace-style '(face)))
-      (whitespace-mode -1))))
-
+;; Stop Doom drawing » on tab chars when files use tabs (e.g. Go).
 (after! doom
   (dolist (fn '(+whitespace-highlight-incorrect-indentation-h
-                +emacs-highlight-non-default-indentation-h
-                doom-highlight-non-default-indentation-h))
+                +emacs-highlight-non-default-indentation-h))
     (when (fboundp fn)
-      (advice-add fn :override #'ignore)
-      (remove-hook 'after-change-major-mode-hook fn t)))
-  (setq whitespace-display-mappings
-        (cl-delete-if (lambda (k) (eq (car k) 'tab-mark))
-                      whitespace-display-mappings))
-  (add-hook 'after-change-major-mode-hook #'+reid/no-indent-whitespace-markers 100 t))
+      (advice-add fn :override #'ignore))))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
