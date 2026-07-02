@@ -9,6 +9,7 @@ return {
     notifier = { enabled = false },
     lazygit = { enabled = true },
     statuscolumn = { enabled = true },
+    dashboard = { enabled = true },
 
     bigfile = { enabled = false },
     quickfile = { enabled = false },
