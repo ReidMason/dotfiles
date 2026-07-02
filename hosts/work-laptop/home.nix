@@ -16,6 +16,8 @@
   git.enable = true;
   golang.enable = true;
 
+  programs.git.settings.core.autocrlf = "input";
+
   programs.tmux-sessions.projectDirectories = [
     "/mnt/c/Documents/projects/Repos"
   ];
