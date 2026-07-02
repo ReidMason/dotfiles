@@ -16,7 +16,10 @@
   git.enable = true;
   golang.enable = true;
 
-  programs.git.settings.core.autocrlf = "input";
+  programs.git.settings = {
+    core.autocrlf = "input";
+    user.email = "reid.mason@smartcurrencyexchange.com";
+  };
 
   programs.tmux-sessions.projectDirectories = [
     "/mnt/c/Documents/projects/Repos"
