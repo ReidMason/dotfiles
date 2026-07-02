@@ -1,4 +1,5 @@
 {
+  lib,
   ...
 }:
 {
@@ -18,7 +19,7 @@
 
   programs.git.settings = {
     core.autocrlf = "input";
-    user.email = "reid.mason@smartcurrencyexchange.com";
+    user.email = lib.mkForce "reid.mason@smartcurrencyexchange.com";
   };
 
   programs.tmux-sessions.projectDirectories = [
