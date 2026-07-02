@@ -30,7 +30,21 @@ let
         EDITOR = "nvim";
       };
 
-      home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesDir}/configs/nvim";
+      home.file = {
+        # Everything except lazy-lock.json is immutable, symlinked from the Nix store.
+        ".config/nvim" = {
+          source = lib.fileset.toSource {
+            root = ../../../configs/nvim;
+            fileset = lib.fileset.difference ../../../configs/nvim ../../../configs/nvim/lazy-lock.json;
+          };
+          recursive = true;
+        };
+
+        # lazy-lock.json is symlinked directly to the repo checkout (out of the
+        # store) so lazy.nvim can write updated plugin commits to it.
+        ".config/nvim/lazy-lock.json".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.dotfilesDir}/configs/nvim/lazy-lock.json";
+      };
 
       home.shellAliases = {
         v = "nvim";
