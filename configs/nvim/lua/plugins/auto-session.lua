@@ -1,6 +1,7 @@
+---@type LazySpec
 return {
   "rmagatti/auto-session",
-  lazy = false,
+  event = "VeryLazy",
   ---enables autocomplete for opts
   ---@module "auto-session"
   ---@type AutoSession.Config
