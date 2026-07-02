@@ -17,7 +17,7 @@ let
         pkgs-unstable.tree-sitter
         pkgs.ripgrep
         pkgs.lazygit
-        # pkgs.clang
+        pkgs.clang
         pkgs.lua
         pkgs.lua-language-server
 
