@@ -30,11 +30,7 @@ let
         EDITOR = "nvim";
       };
 
-      home.file = {
-        ".config/nvim" = {
-          source = ../../../configs/nvim;
-        };
-      };
+      home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfilesDir}/configs/nvim";
 
       home.shellAliases = {
         v = "nvim";
