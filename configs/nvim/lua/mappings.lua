@@ -195,6 +195,16 @@ mappings.telescope = {
   },
 }
 
+mappings.noice = {
+  n = {
+    ["<leader>nn"] = { "<cmd> Noice history <CR>", "Noice message history" },
+    ["<leader>nl"] = { "<cmd> Noice last <CR>", "Noice last message" },
+    ["<leader>ne"] = { "<cmd> Noice errors <CR>", "Noice errors" },
+    ["<leader>nd"] = { "<cmd> Noice dismiss <CR>", "Dismiss visible notifications" },
+    ["<leader>no"] = { "<cmd> Noice log <CR>", "Open noice log (full errors + stack traces)" },
+  },
+}
+
 mappings.snacks = {
   n = {
     ["<leader>gg"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },

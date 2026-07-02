@@ -1,6 +1,9 @@
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
+  -- load eagerly (not on VeryLazy) so noice is attached before any
+  -- early startup errors fire, otherwise those errors bypass noice
+  -- entirely and are lost (or handled by another notifier, e.g. snacks)
+  lazy = false,
   opts = {
     lsp = {
       hover = {

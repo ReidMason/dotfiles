@@ -3,7 +3,10 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    notifier = { enabled = true },
+    -- disabled in favour of noice's notify/history so there's a single
+    -- source of truth for messages instead of two competing vim.notify
+    -- providers with separate histories
+    notifier = { enabled = false },
     lazygit = { enabled = true },
     statuscolumn = { enabled = true },
 
