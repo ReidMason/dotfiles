@@ -213,6 +213,22 @@ mappings.neogit = {
   },
 }
 
+function mappings.diffview_plugin_keymaps()
+  local actions = require("diffview.actions")
+
+  return {
+    view = {
+      { "n", "q", actions.close, { desc = "Close diffview" } },
+    },
+    file_panel = {
+      { "n", "q", "<cmd>tabclose<cr>", { desc = "Close diffview" } },
+    },
+    file_history_panel = {
+      { "n", "q", "<cmd>tabclose<cr>", { desc = "Close diffview" } },
+    },
+  }
+end
+
 mappings.snacks = {
   n = {
     ["<leader>gL"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
@@ -276,11 +292,13 @@ mappings.sidekick = {
 
 -- Add keybinds
 for _, modes in pairs(mappings) do
-  for mode, values in pairs(modes) do
-    for keybind, mapping_info in pairs(values) do
-      local defaultOpts = { desc = mapping_info[2], noremap = true, silent = true }
-      local opts = vim.tbl_extend("keep", defaultOpts, mapping_info[3] or {})
-      vim.keymap.set(mode, keybind, mapping_info[1], opts)
+  if type(modes) == "table" then
+    for mode, values in pairs(modes) do
+      for keybind, mapping_info in pairs(values) do
+        local defaultOpts = { desc = mapping_info[2], noremap = true, silent = true }
+        local opts = vim.tbl_extend("keep", defaultOpts, mapping_info[3] or {})
+        vim.keymap.set(mode, keybind, mapping_info[1], opts)
+      end
     end
   end
 end

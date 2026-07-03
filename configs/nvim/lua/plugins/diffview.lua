@@ -11,8 +11,6 @@ return {
   },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = function()
-    local actions = require("diffview.actions")
-
     return {
       view = {
         default = {
@@ -22,17 +20,7 @@ return {
           layout = "diff3_horizontal",
         },
       },
-      keymaps = {
-        view = {
-          { "n", "q", actions.close, { desc = "Close diffview" } },
-        },
-        file_panel = {
-          { "n", "q", "<cmd>tabclose<cr>", { desc = "Close diffview" } },
-        },
-        file_history_panel = {
-          { "n", "q", "<cmd>tabclose<cr>", { desc = "Close diffview" } },
-        },
-      },
+      keymaps = require("mappings").diffview_plugin_keymaps(),
     }
   end,
 }
