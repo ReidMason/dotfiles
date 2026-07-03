@@ -14,6 +14,10 @@ local lsp_configs = {
   'terraform_lsp'
 }
 
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
+
 vim.lsp.enable(lsp_configs)
 
 vim.diagnostic.config {
