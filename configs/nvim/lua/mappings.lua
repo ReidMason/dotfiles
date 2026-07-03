@@ -205,9 +205,16 @@ mappings.noice = {
   },
 }
 
+mappings.neogit = {
+  n = {
+    ["<leader>gg"] = { "<cmd>Neogit<cr>", "Neogit" },
+    ["<leader>gc"] = { "<cmd>Neogit commit<cr>", "Neogit commit" },
+  },
+}
+
 mappings.snacks = {
   n = {
-    ["<leader>gg"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
+    ["<leader>gL"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
   },
 }
 

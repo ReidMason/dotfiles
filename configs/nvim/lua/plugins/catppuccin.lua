@@ -13,6 +13,7 @@ return {
       blink_cmp = true,
       gitsigns = true,
       harpoon = true,
+      neogit = true,
       notify = true,
       noice = true,
       snacks = true,

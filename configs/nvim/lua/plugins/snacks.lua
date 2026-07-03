@@ -8,7 +8,7 @@ return {
     -- source of truth for messages instead of two competing vim.notify
     -- providers with separate histories
     notifier = { enabled = false },
-    lazygit = { enabled = true },
+    lazygit = { enabled = false },
     statuscolumn = { enabled = true },
     dashboard = { enabled = true },
 
