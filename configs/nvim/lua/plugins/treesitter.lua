@@ -19,7 +19,7 @@ local ensure_installed = {
   "vim",
   "vimdoc",
   "yaml",
-  "c_sharp"
+  { lang = "c_sharp", filetypes = { "cs" } },
 }
 
 return {
@@ -32,7 +32,17 @@ return {
       require("nvim-treesitter").setup({
         install_dir = vim.fn.stdpath("data") .. "/site",
       })
-      require("nvim-treesitter").install(ensure_installed)
+
+      local parsers = {}
+      for _, entry in ipairs(ensure_installed) do
+        if type(entry) == "string" then
+          parsers[#parsers + 1] = entry
+        else
+          parsers[#parsers + 1] = entry.lang
+          vim.treesitter.language.register(entry.lang, entry.filetypes)
+        end
+      end
+      require("nvim-treesitter").install(parsers)
 
       vim.api.nvim_create_autocmd({ "FileType", "BufReadPost" }, {
         callback = function(args)
