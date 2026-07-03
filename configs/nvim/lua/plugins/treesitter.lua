@@ -3,6 +3,7 @@ local ensure_installed = {
   "css",
   "dockerfile",
   "go",
+  "graphql",
   "haskell",
   "html",
   "javascript",
@@ -19,6 +20,7 @@ local ensure_installed = {
   "vim",
   "vimdoc",
   "yaml",
+  "zsh",
   { lang = "c_sharp", filetypes = { "cs" } },
 }
 
