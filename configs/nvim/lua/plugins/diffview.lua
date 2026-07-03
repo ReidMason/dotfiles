@@ -1,6 +1,6 @@
 ---@type LazySpec
 return {
-  "sindrets/diffview.nvim",
+  "dlyongemallo/diffview.nvim",
   cmd = {
     "DiffviewOpen",
     "DiffviewClose",
@@ -14,10 +14,13 @@ return {
     return {
       view = {
         default = {
-          layout = "diff1_plain",
+          layout = "diff1_inline",
         },
         merge_tool = {
           layout = "diff3_horizontal",
+        },
+        inline = {
+          style = "unified",
         },
       },
       keymaps = require("mappings").diffview_plugin_keymaps(),

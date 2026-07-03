@@ -219,12 +219,18 @@ function mappings.diffview_plugin_keymaps()
   return {
     view = {
       { "n", "q", actions.close, { desc = "Close diffview" } },
+      { "n", "g<C-x>", false },
+      { "n", "t", actions.cycle_layout, { desc = "Cycle diff layout" } },
     },
     file_panel = {
       { "n", "q", "<cmd>tabclose<cr>", { desc = "Close diffview" } },
+      { "n", "g<C-x>", false },
+      { "n", "t", actions.cycle_layout, { desc = "Cycle diff layout" } },
     },
     file_history_panel = {
       { "n", "q", "<cmd>tabclose<cr>", { desc = "Close diffview" } },
+      { "n", "g<C-x>", false },
+      { "n", "t", actions.cycle_layout, { desc = "Cycle diff layout" } },
     },
   }
 end
