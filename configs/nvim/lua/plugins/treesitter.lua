@@ -21,6 +21,8 @@ local ensure_installed = {
   "vimdoc",
   "yaml",
   "zsh",
+  "sql",
+  "rust",
   { lang = "c_sharp", filetypes = { "cs" } },
 }
 
