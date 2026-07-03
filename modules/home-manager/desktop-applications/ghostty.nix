@@ -22,6 +22,9 @@ let
           window-padding-y = "4,0";
           cursor-style = "block";
           shell-integration-features = "no-cursor";
+          keybind = [
+            "alt+3=text:#"
+          ];
         }
         // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           macos-icon-frame = "plastic";
