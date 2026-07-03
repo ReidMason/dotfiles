@@ -19,6 +19,7 @@ local ensure_installed = {
   "vim",
   "vimdoc",
   "yaml",
+  "c_sharp"
 }
 
 return {
