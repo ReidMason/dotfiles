@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "folke/noice.nvim",
   -- load eagerly (not on VeryLazy) so noice is attached before any

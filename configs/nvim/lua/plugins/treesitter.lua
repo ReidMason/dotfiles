@@ -22,6 +22,7 @@ local ensure_installed = {
   { lang = "c_sharp", filetypes = { "cs" } },
 }
 
+---@type LazySpec
 return {
   {
     "nvim-treesitter/nvim-treesitter",

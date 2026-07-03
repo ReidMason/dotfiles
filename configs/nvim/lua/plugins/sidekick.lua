@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "folke/sidekick.nvim",
   dependencies = { "folke/snacks.nvim" },
