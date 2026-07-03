@@ -209,6 +209,7 @@ mappings.neogit = {
   n = {
     ["<leader>gg"] = { "<cmd>Neogit<cr>", "Neogit" },
     ["<leader>gc"] = { "<cmd>Neogit commit<cr>", "Neogit commit" },
+    ["<leader>gd"] = { "<cmd>DiffviewOpen<cr>", "Diffview" },
   },
 }
 

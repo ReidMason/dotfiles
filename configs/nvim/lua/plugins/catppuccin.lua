@@ -14,6 +14,7 @@ return {
       gitsigns = true,
       harpoon = true,
       neogit = true,
+      diffview = true,
       notify = true,
       noice = true,
       snacks = true,

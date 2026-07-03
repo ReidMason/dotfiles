@@ -3,14 +3,14 @@ return {
   "NeogitOrg/neogit",
   cmd = "Neogit",
   dependencies = {
-    "esmuellert/codediff.nvim",
+    "sindrets/diffview.nvim",
     "nvim-telescope/telescope.nvim",
   },
   opts = {
     integrations = {
-      codediff = true,
+      diffview = true,
       telescope = true,
     },
-    diff_viewer = "codediff",
+    diff_viewer = "diffview",
   },
 }
