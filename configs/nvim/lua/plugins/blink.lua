@@ -34,7 +34,11 @@ return
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { "lsp", "path", "snippets", "buffer" },
+      per_filetype = {
+        -- obsidian.nvim uses in-process obsidian-ls; drop buffer/snippets noise in notes
+        markdown = { "lsp", "path" },
+      },
     },
 
     fuzzy = { implementation = "prefer_rust_with_warning" }
