@@ -14,6 +14,9 @@ return {
     picker = {
       name = "telescope.nvim",
     },
+    completion = {
+      min_chars = 1,
+    },
     workspaces = {
       {
         name = "personal",

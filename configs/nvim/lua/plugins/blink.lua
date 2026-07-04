@@ -21,8 +21,13 @@ return
     -- C-e: Hide menu
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
-    -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'default' },
+    -- C-Space is tmux prefix; use Alt-Space or Vim's omni-complete instead
+    keymap = {
+      preset = "default",
+      ["<C-Space>"] = false,
+      ["<A-Space>"] = { "show", "fallback" },
+      ["<C-x><C-o>"] = { "show", "fallback" },
+    },
 
     appearance = {
       nerd_font_variant = 'mono'
