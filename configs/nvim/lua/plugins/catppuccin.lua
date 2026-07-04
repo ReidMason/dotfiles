@@ -15,6 +15,7 @@ return {
       harpoon = true,
       neogit = true,
       diffview = true,
+      render_markdown = true,
       notify = true,
       noice = true,
       snacks = true,
