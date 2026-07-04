@@ -298,6 +298,7 @@ mappings.sidekick = {
 
 mappings.ufo = {
   n = {
+    ["<Tab>"] = { "za", "Toggle fold" },
     ["<leader>zt"] = { "za", "Toggle fold" },
     ["<leader>zc"] = { "zc", "Close fold" },
     ["<leader>zo"] = { "zo", "Open fold" },
