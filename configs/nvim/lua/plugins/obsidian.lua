@@ -24,7 +24,7 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/Documents/Knowledge Base/Knowledge Base",
+        path = "~/Documents/Knowledge Base",
       },
     },
   },
