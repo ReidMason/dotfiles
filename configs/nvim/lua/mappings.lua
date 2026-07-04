@@ -298,6 +298,27 @@ mappings.sidekick = {
 
 mappings.ufo = {
   n = {
+    ["<leader>zt"] = { "za", "Toggle fold" },
+    ["<leader>zc"] = { "zc", "Close fold" },
+    ["<leader>zo"] = { "zo", "Open fold" },
+    ["<leader>zp"] = {
+      function()
+        require("ufo").peekFoldedLinesUnderCursor()
+      end,
+      "Peek fold",
+    },
+    ["<leader>zR"] = {
+      function()
+        require("ufo").openAllFolds()
+      end,
+      "Open all folds",
+    },
+    ["<leader>zM"] = {
+      function()
+        require("ufo").closeAllFolds()
+      end,
+      "Close all folds",
+    },
     ["zR"] = {
       function()
         require("ufo").openAllFolds()
