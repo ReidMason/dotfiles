@@ -8,11 +8,15 @@ return {
   ---@type obsidian.config
   opts = {
     frontmatter = {
-      enabled = false
+      enabled = false,
     },
     legacy_commands = false, -- this will be removed in 4.0.0
+    ui = {
+      -- render-markdown.nvim handles vault UI
+      enable = false,
+    },
     picker = {
-      name = "telescope.nvim",
+      name = "snacks.picker",
     },
     completion = {
       min_chars = 1,
