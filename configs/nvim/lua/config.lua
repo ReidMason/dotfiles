@@ -28,6 +28,9 @@ vim.opt.cursorline = true
 -- Keep 8 lines above and below cursor
 vim.opt.scrolloff = 12
 
+-- Stop vim overwriting created date
+vim.opt.backupcopy = "yes"
+
 vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
