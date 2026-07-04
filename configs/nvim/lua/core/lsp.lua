@@ -15,7 +15,14 @@ local lsp_configs = {
 }
 
 vim.lsp.config("*", {
-  capabilities = require("blink.cmp").get_lsp_capabilities(),
+  capabilities = (function()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
+    return capabilities
+  end)(),
 })
 
 vim.lsp.enable(lsp_configs)

@@ -296,6 +296,29 @@ mappings.sidekick = {
   },
 }
 
+mappings.ufo = {
+  n = {
+    ["zR"] = {
+      function()
+        require("ufo").openAllFolds()
+      end,
+      "Open all folds",
+    },
+    ["zM"] = {
+      function()
+        require("ufo").closeAllFolds()
+      end,
+      "Close all folds",
+    },
+    ["zp"] = {
+      function()
+        require("ufo").peekFoldedLinesUnderCursor()
+      end,
+      "Peek fold",
+    },
+  },
+}
+
 -- Add keybinds
 for _, modes in pairs(mappings) do
   if type(modes) == "table" then
