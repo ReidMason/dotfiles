@@ -11,6 +11,7 @@ return {
     end,
     integrations = {
       blink_cmp = true,
+      mini = { enabled = true },
       gitsigns = true,
       harpoon = true,
       neogit = true,
