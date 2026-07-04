@@ -232,7 +232,6 @@ mappings.snacks = {
       end,
       "Find implementations",
     },
-    ["<leader>gL"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
   },
 }
 
