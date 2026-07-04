@@ -20,9 +20,6 @@ return {
       noice = true,
       snacks = true,
       ufo = true,
-      telescope = {
-        enabled = true,
-      },
     },
   },
 }

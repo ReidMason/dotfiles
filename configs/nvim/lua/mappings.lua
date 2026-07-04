@@ -1,5 +1,10 @@
 local mappings = {}
 
+local picker_ignore = {
+  hidden = true,
+  exclude = { "**/.git/**", "**/node_modules/**" },
+}
+
 mappings.general = {
   n = {
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
@@ -183,15 +188,51 @@ mappings.harpoon = {
   },
 }
 
-mappings.telescope = {
+mappings.snacks = {
   n = {
-    ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-    ["<leader>st"] = { "<cmd> Telescope live_grep <CR>", "Search text" },
-    ["<leader>sd"] = { "<cmd> Telescope diagnostics <CR>", "Open diagnostics" },
-    ["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
-    ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Find type definition" },
-    ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Find references" },
-    ["gi"] = { "<cmd> Telescope lsp_implementations <CR>", "Find references" },
+    ["<leader>sf"] = {
+      function()
+        Snacks.picker.files(picker_ignore)
+      end,
+      "Find files",
+    },
+    ["<leader>st"] = {
+      function()
+        Snacks.picker.grep(picker_ignore)
+      end,
+      "Search text",
+    },
+    ["<leader>sd"] = {
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      "Diagnostics",
+    },
+    ["gd"] = {
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+      "Find definition",
+    },
+    ["gt"] = {
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      "Find type definition",
+    },
+    ["gr"] = {
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      "Find references",
+    },
+    ["gi"] = {
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      "Find implementations",
+    },
+    ["<leader>gL"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
   },
 }
 
@@ -234,12 +275,6 @@ function mappings.diffview_plugin_keymaps()
     },
   }
 end
-
-mappings.snacks = {
-  n = {
-    ["<leader>gL"] = { "<cmd> lua Snacks.lazygit() <CR>", "Lazygit" },
-  },
-}
 
 mappings.sidekick = {
   n = {

@@ -4,12 +4,13 @@ return {
   cmd = "Neogit",
   dependencies = {
     "dlyongemallo/diffview.nvim",
-    "nvim-telescope/telescope.nvim",
+    "folke/snacks.nvim",
   },
   opts = {
     integrations = {
       diffview = true,
-      telescope = true,
+      telescope = false,
+      snacks = true,
     },
     diff_viewer = "diffview",
   },
