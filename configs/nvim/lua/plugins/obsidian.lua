@@ -51,4 +51,8 @@ return {
       },
     }
   end,
+  config = function(_, opts)
+    require("obsidian").setup(opts)
+    require("templater_compat").setup()
+  end,
 }
