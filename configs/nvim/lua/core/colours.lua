@@ -1,7 +1,4 @@
-local utils = require "core.utils"
-
 return {
-  background = utils.get_hlgroup("Normal").bg,
   rosewater = "#f5e0dc",
   flamingo = "#f2cdcd",
   pink = "#f5c2e7",
