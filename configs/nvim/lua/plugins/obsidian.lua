@@ -30,6 +30,8 @@ return {
       templates = templates,
       notes_subdir = "002 - Cortex",
       new_notes_location = "notes_subdir",
+      -- Make name input actually name the file instead of using a zettle style name
+      note_id_func = require("obsidian.builtin").title_id,
       daily_notes = {
         folder = "002 - Cortex",
         template = "Journal",
