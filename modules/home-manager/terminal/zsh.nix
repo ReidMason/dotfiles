@@ -10,9 +10,53 @@
       default = true;
     };
     zsh.autoAttachToTmux = lib.mkEnableOption "Auto attach to Tmux session";
+    zsh.vaultPath = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = ''
+        Path to an Obsidian vault. When set, a tmux session named `vault` is
+        created on bootstrap alongside `default`.
+      '';
+    };
+    zsh.tmuxAttachSession = lib.mkOption {
+      type = lib.types.str;
+      default = "default";
+      description = "Tmux session to attach to after bootstrapping.";
+    };
+    zsh.tmuxBootstrapSessions = lib.mkOption {
+      type = lib.types.listOf (
+        lib.types.submodule {
+          options = {
+            name = lib.mkOption {
+              type = lib.types.str;
+              description = "Tmux session name.";
+            };
+            path = lib.mkOption {
+              type = lib.types.str;
+              description = "Working directory for the session.";
+            };
+          };
+        }
+      );
+      default = [ ];
+      description = "Sessions to create on first shell start if they do not already exist.";
+    };
   };
 
   config = lib.mkIf config.zsh.enable {
+    zsh.tmuxBootstrapSessions = lib.mkDefault (
+      [
+        {
+          name = "default";
+          path = config.home.homeDirectory;
+        }
+      ]
+      ++ lib.optional (config.zsh.vaultPath != null) {
+        name = "vault";
+        path = config.zsh.vaultPath;
+      }
+    );
+
     home.packages = [
       pkgs.zsh
     ];
@@ -84,9 +128,14 @@
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 
         ${lib.optionalString config.zsh.autoAttachToTmux ''
-          # Auto attach to Tmux session or create a new session called default
+          # Bootstrap tmux sessions, then attach to the primary session
           if ! { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } && [ "$TERM_PROGRAM" != "vscode" ]; then
-            tmux new -As default
+            ${lib.concatMapStringsSep "\n" (session: ''
+              if ! tmux has-session -t=${lib.escapeShellArg session.name} 2>/dev/null; then
+                tmux new-session -d -s ${lib.escapeShellArg session.name} -c ${lib.escapeShellArg session.path}
+              fi
+            '') config.zsh.tmuxBootstrapSessions}
+            exec tmux attach -t ${lib.escapeShellArg config.zsh.tmuxAttachSession}
           fi
         ''}
       '';

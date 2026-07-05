@@ -9,6 +9,7 @@
 
   # Enable packages
   zsh.autoAttachToTmux = true;
+  zsh.vaultPath = "${config.home.homeDirectory}/Documents/Knowledge Base";
   programming.enable = true;
 
   desktop-applications.enable = true;
