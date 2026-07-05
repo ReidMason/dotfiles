@@ -19,6 +19,17 @@ return {
           { icon = icons.FindFile .. " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = icons.NewFile .. " ", key = "n", desc = "New File", action = ":ene | startinsert" },
           { icon = icons.FindText .. " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          {
+            icon = icons.BrowseRepo .. " ",
+            key = "b",
+            desc = "Browse Repo",
+            action = function()
+              Snacks.gitbrowse()
+            end,
+            enabled = function()
+              return Snacks.git.get_root() ~= nil
+            end,
+          },
           { icon = icons.RestoreSession .. " ", key = "s", desc = "Restore Session", section = "session" },
           { icon = icons.Lazy .. " ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = icons.Quit .. " ", key = "q", desc = "Quit", action = ":qa" },

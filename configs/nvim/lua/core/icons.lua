@@ -42,6 +42,7 @@
 ---@field FindFile string
 ---@field NewFile string
 ---@field FindText string
+---@field BrowseRepo string
 ---@field RestoreSession string
 ---@field Lazy string
 ---@field Quit string
@@ -96,6 +97,7 @@ return {
   FindFile = "",
   NewFile = "",
   FindText = "",
+  BrowseRepo = "󰖟",
   RestoreSession = "",
   Lazy = "󰒲",
   Quit = "",
