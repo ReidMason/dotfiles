@@ -30,6 +30,15 @@ return {
               return Snacks.git.get_root() ~= nil
             end,
           },
+          {
+            icon = icons.Neogit .. " ",
+            key = "G",
+            desc = "Neogit",
+            action = ":Neogit",
+            enabled = function()
+              return Snacks.git.get_root() ~= nil
+            end,
+          },
           { icon = icons.RestoreSession .. " ", key = "s", desc = "Restore Session", section = "session" },
           { icon = icons.Lazy .. " ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = icons.Quit .. " ", key = "q", desc = "Quit", action = ":qa" },

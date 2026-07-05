@@ -43,6 +43,7 @@
 ---@field NewFile string
 ---@field FindText string
 ---@field BrowseRepo string
+---@field Neogit string
 ---@field RestoreSession string
 ---@field Lazy string
 ---@field Quit string
@@ -98,6 +99,7 @@ return {
   NewFile = "",
   FindText = "",
   BrowseRepo = "󰖟",
+  Neogit = "󰊢",
   RestoreSession = "",
   Lazy = "󰒲",
   Quit = "",
