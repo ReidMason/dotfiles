@@ -1,6 +1,7 @@
----@type LazySpec
+---@type core.Icons
 local icons = require "core.icons"
 
+---@type LazySpec
 return {
   "folke/snacks.nvim",
   priority = 1000,

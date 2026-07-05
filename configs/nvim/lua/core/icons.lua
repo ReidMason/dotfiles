@@ -1,3 +1,56 @@
+---@class core.Icons
+---@field Namespace string
+---@field Text string
+---@field Method string
+---@field Function string
+---@field Constructor string
+---@field Field string
+---@field Variable string
+---@field Class string
+---@field Interface string
+---@field Module string
+---@field Property string
+---@field Unit string
+---@field Value string
+---@field Enum string
+---@field Keyword string
+---@field Snippet string
+---@field Color string
+---@field File string
+---@field Reference string
+---@field Folder string
+---@field EnumMember string
+---@field Constant string
+---@field Struct string
+---@field Event string
+---@field Operator string
+---@field TypeParameter string
+---@field Table string
+---@field Object string
+---@field Tag string
+---@field Array string
+---@field Boolean string
+---@field Number string
+---@field Null string
+---@field String string
+---@field Calendar string
+---@field Watch string
+---@field Package string
+---@field Copilot string
+---@field Codeium string
+---@field TabNine string
+---@field FindFile string
+---@field NewFile string
+---@field FindText string
+---@field RestoreSession string
+---@field Lazy string
+---@field Quit string
+---@field Error string
+---@field Warn string
+---@field Info string
+---@field Hint string
+
+---@type core.Icons
 return {
   Namespace = "󰌗",
   Text = "󰉿",
