@@ -190,6 +190,12 @@ mappings.harpoon = {
 
 mappings.snacks = {
   n = {
+    ["<leader>H"] = {
+      function()
+        Snacks.dashboard()
+      end,
+      "Dashboard",
+    },
     ["<leader>sf"] = {
       function()
         Snacks.picker.files(picker_ignore)
