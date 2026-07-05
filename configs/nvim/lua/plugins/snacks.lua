@@ -1,4 +1,6 @@
 ---@type LazySpec
+local icons = require "core.icons"
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -9,7 +11,19 @@ return {
     -- providers with separate histories
     notifier = { enabled = false },
     statuscolumn = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = {
+      enabled = true,
+      preset = {
+        keys = {
+          { icon = icons.FindFile .. " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = icons.NewFile .. " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = icons.FindText .. " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = icons.RestoreSession .. " ", key = "s", desc = "Restore Session", section = "session" },
+          { icon = icons.Lazy .. " ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = icons.Quit .. " ", key = "q", desc = "Quit", action = ":qa" },
+        },
+      },
+    },
 
     bigfile = { enabled = false },
     quickfile = { enabled = false },

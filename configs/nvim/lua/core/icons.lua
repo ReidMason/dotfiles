@@ -40,6 +40,13 @@ return {
   Codeium = "",
   TabNine = "",
 
+  FindFile = "",
+  NewFile = "",
+  FindText = "",
+  RestoreSession = "",
+  Lazy = "󰒲",
+  Quit = "",
+
   Error = "󰅚",
   Warn = "󰀪",
   Info = "󰋽",
