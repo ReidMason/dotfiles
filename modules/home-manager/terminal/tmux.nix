@@ -6,6 +6,14 @@
   ...
 }:
 let
+  homeDir = config.home.homeDirectory;
+  vaultSessionBind =
+    if config.zsh.vaultPath != null then
+      "bind-key -n M-v new-session -As vault -c '${config.zsh.vaultPath}'"
+    else
+      "";
+in
+let
   module = {
     module-name = "tmux";
     label = "Tmux";
@@ -50,6 +58,10 @@ let
 
             # Toggle between last two tmux sessions (left Opt+o on macOS)
             bind -n M-o switch-client -l
+
+            # Jump to named sessions (create if missing)
+            bind-key -n M-d new-session -As default -c '${homeDir}'
+            ${vaultSessionBind}
 
             # Switch Pane positions
             bind -n M-[ swap-pane -D
