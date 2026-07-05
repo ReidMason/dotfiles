@@ -1,3 +1,6 @@
+local notes_directory = "002 - Cortex"
+local templates_directory = "005 - Templates"
+
 ---@type LazySpec
 return {
   "obsidian-nvim/obsidian.nvim",
@@ -9,7 +12,7 @@ return {
   opts = function()
     ---@type obsidian.config.TemplateOpts
     local templates = vim.tbl_deep_extend("force", require("obsidian.config.default").templates, {
-      folder = "005 - Templates",
+      folder = templates_directory,
     })
 
     return {
@@ -28,12 +31,12 @@ return {
         min_chars = 1,
       },
       templates = templates,
-      notes_subdir = "002 - Cortex",
+      notes_subdir = notes_directory,
       new_notes_location = "notes_subdir",
       -- Make name input actually name the file instead of using a zettle style name
       note_id_func = require("obsidian.builtin").title_id,
       daily_notes = {
-        folder = "002 - Cortex",
+        folder = notes_directory,
         template = "Journal",
         workdays_only = false,
       },
