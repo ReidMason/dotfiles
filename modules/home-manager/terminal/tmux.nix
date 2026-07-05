@@ -19,100 +19,104 @@ let
         escapeTime = 0;
         baseIndex = 1;
         mouse = true;
-        extraConfig = ''
-          # Reload tmux config
-          bind r source-file ~/.config/tmux/tmux.conf
+        extraConfig =
+          # bash
+          ''
+            # Reload tmux config
+            bind r source-file ~/.config/tmux/tmux.conf
 
-          # Enable full rgb colours
-          set-option -sa terminal-overrides ",xterm*:Tc"
+            # Enable full rgb colours
+            set-option -sa terminal-overrides ",xterm*:Tc"
 
-          # Distinguish Ctrl+h from Ctrl+Shift+h (needed for resize bindings)
-          set -s extended-keys on
-          set -as terminal-features 'xterm-ghostty:extkeys'
+            # Distinguish Ctrl+h from Ctrl+Shift+h (needed for resize bindings)
+            set -s extended-keys on
+            set -as terminal-features 'xterm-ghostty:extkeys'
 
-          # Split panes
-          bind h split-window -v -c "#{pane_current_path}"
-          bind v split-window -h -c "#{pane_current_path}"
+            # Split panes
+            bind h split-window -v -c "#{pane_current_path}"
+            bind v split-window -h -c "#{pane_current_path}"
 
-          # Don't detach when destroying a session
-          set-option -g detach-on-destroy off 
+            # Don't detach when destroying a session
+            set-option -g detach-on-destroy off 
 
-          # Window deletion
-          bind w kill-window
+            # Window deletion
+            bind w kill-window
 
-          # Switch windows
-          bind j select-window -t 1
-          bind k select-window -t 2
-          bind l select-window -t 3
-          bind ";" select-window -t 4
+            # Switch windows
+            bind j select-window -t 1
+            bind k select-window -t 2
+            bind l select-window -t 3
+            bind ";" select-window -t 4
 
-          # Toggle between last two tmux sessions (left Opt+o on macOS)
-          bind -n M-o switch-client -l
+            # Toggle between last two tmux sessions (left Opt+o on macOS)
+            bind -n M-o switch-client -l
 
-          # Switch Pane positions
-          bind -n M-[ swap-pane -D
-          bind -n M-] swap-pane -U
+            # Switch Pane positions
+            bind -n M-[ swap-pane -D
+            bind -n M-] swap-pane -U
 
-          # General config
-          set -g renumber-windows on    # Renumber all windows when any window is closed
-          set -g set-clipboard on       # Use system clipboard
+            # General config
+            set -g renumber-windows on    # Renumber all windows when any window is closed
+            set -g set-clipboard on       # Use system clipboard
 
-          set-option -g status-interval 5
-          set -g status-interval 2      # Update status every 2 seconds
-          set -g status-position top    # macOS / darwin style
+            set-option -g status-interval 5
+            set -g status-interval 2      # Update status every 2 seconds
+            set -g status-position top    # macOS / darwin style
 
-          # Switch panes
-          is_vim="ps -o state= -o comm= -t \'#{pane_tty}\' | grep -iqE \'^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$\'"
+            # Switch panes
+            is_vim="ps -o state= -o comm= -t \'#{pane_tty}\' | grep -iqE \'^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$\'"
 
-          bind-key -n "C-h" if-shell "$is_vim" "send-keys C-h" { if -F "#{pane_at_left}" "" "select-pane -L" }
-          bind-key -n "C-j" if-shell "$is_vim" "send-keys C-j" { if -F "#{pane_at_bottom}" "" "select-pane -D" }
-          bind-key -n "C-k" if-shell "$is_vim" "send-keys C-k" { if -F "#{pane_at_top}" "" "select-pane -U" }
-          bind-key -n "C-l" if-shell "$is_vim" "send-keys C-l" { if -F "#{pane_at_right}" "" "select-pane -R" }
+            bind-key -n "C-h" if-shell "$is_vim" "send-keys C-h" { if -F "#{pane_at_left}" "" "select-pane -L" }
+            bind-key -n "C-j" if-shell "$is_vim" "send-keys C-j" { if -F "#{pane_at_bottom}" "" "select-pane -D" }
+            bind-key -n "C-k" if-shell "$is_vim" "send-keys C-k" { if -F "#{pane_at_top}" "" "select-pane -U" }
+            bind-key -n "C-l" if-shell "$is_vim" "send-keys C-l" { if -F "#{pane_at_right}" "" "select-pane -R" }
 
-          bind-key -T copy-mode-vi "C-h" if -F "#{pane_at_left}" "" "select-pane -L"
-          bind-key -T copy-mode-vi "C-j" if -F "#{pane_at_bottom}" "" "select-pane -D"
-          bind-key -T copy-mode-vi "C-k" if -F "#{pane_at_top}" "" "select-pane -U"
-          bind-key -T copy-mode-vi "C-l" if -F "#{pane_at_right}" "" "select-pane -R"
+            bind-key -T copy-mode-vi "C-h" if -F "#{pane_at_left}" "" "select-pane -L"
+            bind-key -T copy-mode-vi "C-j" if -F "#{pane_at_bottom}" "" "select-pane -D"
+            bind-key -T copy-mode-vi "C-k" if -F "#{pane_at_top}" "" "select-pane -U"
+            bind-key -T copy-mode-vi "C-l" if -F "#{pane_at_right}" "" "select-pane -R"
 
-          # Resize panes (C-S-* requires extended-keys; plain C-* is pane navigation)
-          bind-key -n "C-S-H" if-shell "$is_vim" "send-keys C-S-H" "resize-pane -L 5"
-          bind-key -n "C-S-J" if-shell "$is_vim" "send-keys C-S-J" "resize-pane -D 5"
-          bind-key -n "C-S-K" if-shell "$is_vim" "send-keys C-S-K" "resize-pane -U 5"
-          bind-key -n "C-S-L" if-shell "$is_vim" "send-keys C-S-L" "resize-pane -R 5"
+            # Resize panes (C-S-* requires extended-keys; plain C-* is pane navigation)
+            bind-key -n "C-S-H" if-shell "$is_vim" "send-keys C-S-H" "resize-pane -L 5"
+            bind-key -n "C-S-J" if-shell "$is_vim" "send-keys C-S-J" "resize-pane -D 5"
+            bind-key -n "C-S-K" if-shell "$is_vim" "send-keys C-S-K" "resize-pane -U 5"
+            bind-key -n "C-S-L" if-shell "$is_vim" "send-keys C-S-L" "resize-pane -R 5"
 
-          # Tmux sensible fix for tmux 3.5 and 3.5a to stop zsh from breaking
-          # Without this the default shell will be /bin/sh
-          set -gu default-command
-          set -g default-shell "$SHELL"
+            # Tmux sensible fix for tmux 3.5 and 3.5a to stop zsh from breaking
+            # Without this the default shell will be /bin/sh
+            set -gu default-command
+            set -g default-shell "$SHELL"
 
-          # Sesh bindings
-          bind-key "s" display-popup -E -w 80% -h 70% -d '#{pane_current_path}' -T 'Sesh' tv sesh
-        '';
+            # Sesh bindings
+            bind-key "s" display-popup -E -w 80% -h 70% -d '#{pane_current_path}' -T 'Sesh' tv sesh
+          '';
         plugins = [
           {
             plugin = pkgs-unstable.tmuxPlugins.catppuccin;
-            extraConfig = ''
-              set -g @catppuccin_flavor "mocha"
+            extraConfig =
+              # bash
+              ''
+                set -g @catppuccin_flavor "mocha"
 
-              set -g @catppuccin_window_status_style "custom"
-              set -g @catppuccin_window_left_separator " "
-              set -g @catppuccin_window_right_separator " "
-              set -g @catppuccin_window_middle_separator " "
+                set -g @catppuccin_window_status_style "custom"
+                set -g @catppuccin_window_left_separator " "
+                set -g @catppuccin_window_right_separator " "
+                set -g @catppuccin_window_middle_separator " "
 
-              set-window-option -g window-status-current-style "fg=#{@thm_pink}"
-              set-window-option -g window-status-style "fg=#{@thm_overlay_2}"
-              set -g @catppuccin_window_text_color "none"
-              set -g @catppuccin_window_number_color "none"
-              set -g @catppuccin_window_current_text_color "none"
-              set -g @catppuccin_window_current_number_color "none"
+                set-window-option -g window-status-current-style "fg=#{@thm_pink}"
+                set-window-option -g window-status-style "fg=#{@thm_overlay_2}"
+                set -g @catppuccin_window_text_color "none"
+                set -g @catppuccin_window_number_color "none"
+                set -g @catppuccin_window_current_text_color "none"
+                set -g @catppuccin_window_current_number_color "none"
 
-              set -g @catppuccin_window_text "#W"
-              set -g @catppuccin_window_current_text "#W"
+                set -g @catppuccin_window_text "#W"
+                set -g @catppuccin_window_current_text "#W"
 
-              set -g @catppuccin_status_background "none"
-              set -g status-right "#{E:@catppuccin_status_session}"
-              set -g status-left ""
-            '';
+                set -g @catppuccin_status_background "none"
+                set -g status-right "#{E:@catppuccin_status_session}"
+                set -g status-left ""
+              '';
           }
           pkgs-unstable.tmuxPlugins.sensible
         ];
