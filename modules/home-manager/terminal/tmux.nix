@@ -59,6 +59,10 @@ let
             # Toggle between last two tmux sessions (left Opt+o on macOS)
             bind -n M-o switch-client -l
 
+            # Cycle tmux sessions
+            bind -n M-n switch-client -n
+            bind -n M-p switch-client -p
+
             # Jump to named sessions (create if missing)
             bind-key -n M-d new-session -As default -c '${homeDir}'
             ${vaultSessionBind}
