@@ -18,6 +18,8 @@
   golang.enable = true;
   node.enable = true;
   gh.enable = true;
+  terraform.enable = true;
+  dotnet.enable = true;
 
   programs.git.settings = {
     core.autocrlf = "input";
