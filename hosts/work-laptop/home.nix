@@ -26,7 +26,7 @@
 
   programs.tmux-sessions.projectDirectories = [
     "/mnt/c/Documents/projects/Repos"
-    "~/repos"
+    "/home/nixos/repos"
   ];
 
   nixpkgs.config.allowUnfree = true;
