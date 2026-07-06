@@ -19,6 +19,7 @@ in
     ./dotnet.nix
     ./golang.nix
     ./lazygit.nix
+    ./gh.nix
     ./rust.nix
     ./bruno.nix
     ./nix.nix
