@@ -17,6 +17,7 @@
   git.enable = true;
   golang.enable = true;
   node.enable = true;
+  gh.enable = true;
 
   programs.git.settings = {
     core.autocrlf = "input";
