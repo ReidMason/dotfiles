@@ -17,7 +17,7 @@ return {
       preset = {
         keys = {
           { icon = icons.FindFile .. " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = icons.NewFile .. " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = icons.NewFile .. " ",  key = "n", desc = "New File",  action = ":ene | startinsert" },
           { icon = icons.FindText .. " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           {
             icon = icons.BrowseRepo .. " ",
@@ -40,8 +40,8 @@ return {
             end,
           },
           { icon = icons.RestoreSession .. " ", key = "s", desc = "Restore Session", section = "session" },
-          { icon = icons.Lazy .. " ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-          { icon = icons.Quit .. " ", key = "q", desc = "Quit", action = ":qa" },
+          { icon = icons.Lazy .. " ",           key = "L", desc = "Lazy",            action = ":Lazy",   enabled = package.loaded.lazy ~= nil },
+          { icon = icons.Quit .. " ",           key = "q", desc = "Quit",            action = ":qa" },
         },
       },
     },
@@ -59,7 +59,6 @@ return {
       win = {
         input = {
           keys = {
-            ["<c-g>"] = false,
             ["<A-a>"] = {
               "sidekick_send",
               mode = { "n", "i" },
