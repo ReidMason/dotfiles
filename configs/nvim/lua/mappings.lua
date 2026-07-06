@@ -285,7 +285,7 @@ mappings.sidekick = {
   n = {
     ["<leader>ac"] = {
       function()
-        require("sidekick.cli").toggle({ name = "cursor", focus = true })
+        require("sidekick.cli").toggle({ focus = true })
       end,
       "Toggle agent",
     },
