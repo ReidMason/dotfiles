@@ -30,5 +30,7 @@
     "${config.home.homeDirectory}/Documents/repos"
   ];
 
+  dotfilesDir = "${config.home.homeDirectory}/Documents/repos/dotfiles";
+
   nixpkgs.config.allowUnfree = true;
 }
