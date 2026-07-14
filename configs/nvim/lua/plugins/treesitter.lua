@@ -17,6 +17,7 @@ local ensure_installed = {
   "toml",
   "tsx",
   "typescript",
+  "vue",
   "vim",
   "vimdoc",
   "yaml",
