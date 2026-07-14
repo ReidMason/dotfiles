@@ -20,7 +20,7 @@
   gh.enable = true;
   terraform.enable = true;
   dotnet.enable = true;
-  python.enagle = true;
+  python.enable = true;
 
   programs.git.settings = {
     core.autocrlf = "input";
