@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   ...
 }:
@@ -28,9 +29,10 @@
   };
 
   programs.tmux-sessions.projectDirectories = [
-    "/mnt/c/Documents/projects/Repos"
     "/home/nixos/repos"
   ];
+
+  dotfilesDir = "${config.home.homeDirectory}/repos";
 
   nixpkgs.config.allowUnfree = true;
 }
