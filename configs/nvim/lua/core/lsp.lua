@@ -4,6 +4,7 @@ local icons = require "core.icons"
 --  :checkhealth vim.lsp
 local lsp_configs = {
   'gopls',
+  'roslyn_ls',
   'lua_ls',
   'astro',
   'docker_compose_language_service',

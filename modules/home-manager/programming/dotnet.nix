@@ -14,6 +14,7 @@ let
     config = {
       home.packages = with pkgs-unstable; [
         dotnet-sdk_10
+        roslyn-ls
       ];
     };
   };
