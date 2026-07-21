@@ -13,6 +13,7 @@
   programming.enable = true;
 
   desktop-applications.enable = true;
+  sketchybar.enable = false;
   ollama.enable = false;
 
   firefox.enable = false;
