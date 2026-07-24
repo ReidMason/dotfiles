@@ -159,7 +159,7 @@ in
           # NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
           NAME_SERVERS = "1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4";
           VPN_INPUT_PORTS = "9117,8191,9696";
-          VPN_OUTPUT_PORTS = "9117,8191,9696,8989";
+          VPN_OUTPUT_PORTS = "9117,8191,9696,8989,7878";
           UMASK = "000";
           PUID = "99";
           PGID = "100";
@@ -187,25 +187,6 @@ in
         };
         dependsOn = [ "qbittorrent" ];
         networks = [ "container:qbittorrent" ];
-      };
-
-      radarr = {
-        image = "linuxserver/radarr:6.1.1";
-        ports = [ "7878:7878" ];
-        volumes = [
-          "/home/vera/appdata/radarr:/config"
-          "/mnt/fern/downloads/qBittorrent:/data"
-          "/mnt/fern/plex:/media"
-          "${gaiConf}:/etc/gai.conf:ro"
-        ];
-        environment = {
-          PUID = "99";
-          PGID = "100";
-          UMASK = "000";
-        };
-        extraOptions = [
-          "--add-host=host.docker.internal:host-gateway"
-        ];
       };
 
       flaresolverr = {
