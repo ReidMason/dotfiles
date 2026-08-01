@@ -10,9 +10,12 @@ let
     module-name = "claude-code";
     label = "Claude code";
     config = {
-      home.packages = with pkgs; [
-        claude-code
-      ];
+      programs.claude-code = {
+        enable = true;
+        package = pkgs.claude-code;
+        context = ../../../configs/claude/CLAUDE.md;
+        skillsDir = ../../../configs/claude/skills;
+      };
     };
   };
 in
