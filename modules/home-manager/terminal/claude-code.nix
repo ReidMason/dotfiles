@@ -14,7 +14,7 @@ let
         enable = true;
         package = pkgs.claude-code;
         context = ../../../configs/claude/CLAUDE.md;
-        skillsDir = ../../../configs/claude/skills;
+        skills = ../../../configs/claude/skills;
       };
     };
   };
