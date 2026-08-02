@@ -9,7 +9,7 @@ let
   homeDir = config.home.homeDirectory;
   vaultSessionBind =
     if config.zsh.vaultPath != null then
-      "bind-key -n M-v new-session -As vault -c '${config.zsh.vaultPath}'"
+      "bind-key V new-session -As vault -c '${config.zsh.vaultPath}'"
     else
       "";
 in
@@ -56,20 +56,20 @@ let
             bind l select-window -t 3
             bind ";" select-window -t 4
 
-            # Toggle between last two tmux sessions (left Opt+o on macOS)
-            bind -n M-o switch-client -l
+            # Toggle between last two tmux sessions
+            bind-key o switch-client -l
 
             # Cycle tmux sessions
-            bind -n M-n switch-client -n
-            bind -n M-p switch-client -p
+            bind-key n switch-client -n
+            bind-key p switch-client -p
 
             # Jump to named sessions (create if missing)
-            bind-key -n M-d new-session -As default -c '${homeDir}'
+            bind-key d new-session -As default -c '${homeDir}'
             ${vaultSessionBind}
 
             # Switch Pane positions
-            bind -n M-[ swap-pane -D
-            bind -n M-] swap-pane -U
+            bind-key "[" swap-pane -D
+            bind-key "]" swap-pane -U
 
             # General config
             set -g renumber-windows on    # Renumber all windows when any window is closed
