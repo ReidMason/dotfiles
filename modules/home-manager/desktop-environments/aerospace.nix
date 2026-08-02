@@ -19,6 +19,9 @@ let
         launchd.enable = true;
 
         settings = {
+          default-root-container-layout = "tiles";
+          default-root-container-orientation = "auto";
+
           gaps = {
             inner.horizontal = 0;
             inner.vertical = 0;
@@ -37,7 +40,7 @@ let
             alt-slash = "layout tiles horizontal vertical";
             alt-comma = "layout accordion horizontal vertical";
 
-            alt-shift-f = "fullscreen on";
+            alt-shift-f = "fullscreen";
 
             alt-h = "focus left";
             alt-j = "focus down";
