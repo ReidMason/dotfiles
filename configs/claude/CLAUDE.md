@@ -1,3 +1,4 @@
 - Be extremely concise in your responses
 - Never stage, commit or push a git repo
 - Only run read-only Kubectl commands
+- Don't run one off fix commands without asking
