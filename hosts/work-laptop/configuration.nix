@@ -16,7 +16,8 @@
   ];
 
   wsl.enable = true;
-  wsl.defaultuser = "nixos";
+  wsl.defaultUser = "nixos";
+  wsl.docker-desktop.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

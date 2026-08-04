@@ -13,6 +13,8 @@ let
     config = {
       home.packages = [
         pkgs.docker-compose-language-service
+        pkgs.docker
+        pkgs.docker-compose
       ];
     };
   };

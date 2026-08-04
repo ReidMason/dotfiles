@@ -12,15 +12,18 @@ let
     module-name = "golang";
     label = "Golang";
     config = {
-      home.packages = with pkgs-unstable; [
-        go
-        sqlc
-        goose
-        air
-        gopls
-        gotools
-        golangci-lint
-      ];
+      home.packages =
+        with pkgs-unstable;
+        [
+          go
+          sqlc
+          goose
+          air
+          gopls
+          gotools
+          golangci-lint
+        ]
+        ++ [ (lib.hiPro pkgs.gcc) ];
     };
   };
 in

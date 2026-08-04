@@ -22,6 +22,7 @@
   terraform.enable = true;
   dotnet.enable = true;
   python.enable = true;
+  docker.enable = true;
 
   programs.git.settings = {
     core.autocrlf = "input";
