@@ -23,7 +23,7 @@ let
           gotools
           golangci-lint
         ]
-        ++ [ (lib.hiPro pkgs.gcc) ];
+        ++ [ (lib.hiPrio pkgs.gcc) ];
     };
   };
 in
