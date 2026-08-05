@@ -9,7 +9,7 @@ let
   homeDir = config.home.homeDirectory;
   vaultSessionBind =
     if config.zsh.vaultPath != null then
-      "bind-key V new-session -As vault -c '${config.zsh.vaultPath}'"
+      "bind-key b new-session -As vault -c '${config.zsh.vaultPath}'"
     else
       "";
 in

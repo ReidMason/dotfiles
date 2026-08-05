@@ -65,14 +65,14 @@ let
             alt-shift-equal = "resize smart +50";
 
             alt-y = "workspace 1";
-            alt-u = "workspace browser";
-            alt-i = "workspace terminal";
+            alt-u = "workspace terminal";
+            alt-i = "workspace browser";
             alt-o = "workspace 4";
             alt-p = "workspace misc";
 
             alt-shift-y = "move-node-to-workspace 1";
-            alt-shift-u = "move-node-to-workspace browser";
-            alt-shift-i = "move-node-to-workspace terminal";
+            alt-shift-u = "move-node-to-workspace terminal";
+            alt-shift-i = "move-node-to-workspace browser";
             alt-shift-o = "move-node-to-workspace 4";
             alt-shift-p = "move-node-to-workspace misc";
 
