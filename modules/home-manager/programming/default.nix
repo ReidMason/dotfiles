@@ -24,6 +24,7 @@ in
     ./bruno.nix
     ./nix.nix
     ./yaml.nix
+    ./typst.nix
   ];
 
   options.${module-name} = {
