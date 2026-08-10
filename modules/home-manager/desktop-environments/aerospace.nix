@@ -23,12 +23,12 @@ let
           default-root-container-orientation = "auto";
 
           gaps = {
-            inner.horizontal = 0;
-            inner.vertical = 0;
-            outer.left = 0;
-            outer.bottom = 0;
-            outer.top = 0;
-            outer.right = 0;
+            inner.horizontal = 5;
+            inner.vertical = 5;
+            outer.left = 3;
+            outer.bottom = 3;
+            outer.top = 3;
+            outer.right = 3;
           };
 
           workspace-to-monitor-force-assignment = {

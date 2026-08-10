@@ -7,11 +7,10 @@ let
       services.jankyborders = {
         enable = true;
         settings = {
-          style = "round";
-          width = 6.0;
-          hidpi = "off";
-          active_color = "0xffe2e2e3";
-          inactive_color = "0xff414550";
+          width = 5.0;
+          hidpi = "on";
+          active_color = "0xffcba6f7"; # Catppuccin Mocha Mauve
+          inactive_color = "0xff6c7086"; # Catppuccin Mocha Overlay0
         };
       };
     };
