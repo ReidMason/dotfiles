@@ -49,7 +49,7 @@ let
             alt-slash = "layout tiles horizontal vertical";
             alt-comma = "layout accordion horizontal vertical";
 
-            alt-shift-f = "fullscreen";
+            alt-f = "fullscreen";
 
             alt-h = "focus left";
             alt-j = "focus down";
