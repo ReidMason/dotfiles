@@ -23,7 +23,6 @@
   wezterm.enable = true;
   tmux.enable = true;
 
-  skhd.enable = false;
   aerospace.enable = true;
 
   terraform.enable = true;

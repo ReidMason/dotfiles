@@ -29,7 +29,6 @@ in
     ./firefox.nix
     ./ollama.nix
     ./obsidian.nix
-    ./skhd.nix
     ./sketchybar.nix
     ./docker.nix
     ./ghostty.nix
