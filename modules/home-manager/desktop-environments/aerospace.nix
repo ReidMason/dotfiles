@@ -8,6 +8,8 @@
   ...
 }:
 let
+  theme = import ../theme.nix;
+  borderGap = builtins.ceil (theme.borderWidth / 2);
   module = {
     module-name = "aerospace";
     label = "Aerospace";
@@ -23,12 +25,12 @@ let
           default-root-container-orientation = "auto";
 
           gaps = {
-            inner.horizontal = 5;
-            inner.vertical = 5;
-            outer.left = 3;
-            outer.bottom = 3;
-            outer.top = 3;
-            outer.right = 3;
+            inner.horizontal = borderGap;
+            inner.vertical = borderGap;
+            outer.left = borderGap;
+            outer.bottom = borderGap;
+            outer.top = borderGap;
+            outer.right = borderGap;
           };
 
           workspace-to-monitor-force-assignment = {
