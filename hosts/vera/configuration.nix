@@ -22,14 +22,6 @@ in
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  # Needed for the qbittorrent container's VPN/iptables setup
-  boot.kernelModules = [
-    "ip_tables"
-    "iptable_filter"
-    "iptable_nat"
-    "iptable_mangle"
-  ];
-
   networking.hostName = "vera"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -75,11 +67,6 @@ in
   fileSystems = {
     "/mnt/fern/plex" = {
       device = "fern.lan:/mnt/user/Plex";
-      fsType = "nfs";
-    };
-
-    "/mnt/fern/downloads" = {
-      device = "fern.lan:/mnt/user/Downloads";
       fsType = "nfs";
     };
 
@@ -134,73 +121,6 @@ in
           sys_module = true;
         };
         autoStart = true;
-      };
-
-      qbittorrent = {
-        image = "binhex/arch-qbittorrentvpn:5.1";
-        ports = [
-          "6881:6881"
-          "6881:6881/udp"
-          "8118:8118"
-          "8080:8080" # Webui
-          "8191:8191" # Flaresolverr port
-          "9696:9696" # Prowlarr
-        ];
-        volumes = [
-          "/home/vera/appdata/qbittorrent:/config"
-          "/mnt/fern/downloads/qBittorrent:/downloads"
-          "/etc/localtime:/etc/localtime:ro"
-        ];
-        environmentFiles = [
-          "/home/vera/secrets/downloads/qbittorrent.env"
-        ];
-        environment = {
-          VPN_ENABLED = "yes";
-          # VPN_USER = ""; In secrets env file
-          # VPN_PASS = ""; In secrets env file
-          VPN_PROV = "pia";
-          VPN_CLIENT = "openvpn";
-          STRICT_PORT_FORWARD = "no";
-          ENABLE_PRIVOXY = "yes";
-          WEBUI_PORT = "8080";
-          LAN_NETWORK = "10.128.20.0/24,172.17.0.0/16";
-          # NAME_SERVERS = "209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1";
-          NAME_SERVERS = "1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4";
-          VPN_INPUT_PORTS = "9117,8191,9696";
-          VPN_OUTPUT_PORTS = "9117,8191,9696,8989,7878";
-          UMASK = "000";
-          PUID = "99";
-          PGID = "100";
-        };
-        capabilities = {
-          net_admin = true;
-        };
-        extraOptions = [
-          "--sysctl=net.ipv6.conf.all.disable_ipv6=1"
-          "--sysctl=net.ipv6.conf.default.disable_ipv6=1"
-        ];
-      };
-
-      prowlarr = {
-        image = "linuxserver/prowlarr:2.3.5";
-        volumes = [
-          "/home/vera/appdata/prowlarr:/config"
-          "${gaiConf}:/etc/gai.conf:ro"
-        ];
-        environment = {
-          PUID = "99";
-          PGID = "100";
-          TZ = "Europe/London";
-          DOTNET_SYSTEM_NET_DISABLEIPV6 = "1";
-        };
-        dependsOn = [ "qbittorrent" ];
-        networks = [ "container:qbittorrent" ];
-      };
-
-      flaresolverr = {
-        image = "ghcr.io/flaresolverr/flaresolverr:v3.4.6";
-        dependsOn = [ "qbittorrent" ];
-        networks = [ "container:qbittorrent" ];
       };
 
       uptime-kuma = {
