@@ -24,10 +24,10 @@ in
 
   # Needed for the qbittorrent container's VPN/iptables setup
   boot.kernelModules = [
+    "ip_tables"
     "iptable_filter"
     "iptable_nat"
     "iptable_mangle"
-    "ip6table_filter"
   ];
 
   networking.hostName = "vera"; # Define your hostname.
