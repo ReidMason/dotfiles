@@ -23,7 +23,12 @@ in
   boot.loader.grub.useOSProber = true;
 
   # Needed for the qbittorrent container's VPN/iptables setup
-  boot.kernelModules = [ "ip_tables" "iptable_filter" "iptable_nat" "iptable_mangle" ];
+  boot.kernelModules = [
+    "iptable_filter"
+    "iptable_nat"
+    "iptable_mangle"
+    "ip6table_filter"
+  ];
 
   networking.hostName = "vera"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
