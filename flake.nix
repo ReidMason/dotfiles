@@ -5,6 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     tmux-sessions.url = "github:ReidMason/tmux-sessions";
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-26.05";

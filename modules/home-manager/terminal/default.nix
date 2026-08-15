@@ -4,6 +4,7 @@
   lib,
   config,
   options,
+  inputs,
   ...
 }:
 let
@@ -17,6 +18,7 @@ let
         lib
         config
         options
+        inputs
         ;
       parent-name = module-name;
     };
