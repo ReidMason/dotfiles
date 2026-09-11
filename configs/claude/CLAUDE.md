@@ -2,3 +2,5 @@
 - Never stage, commit or push a git repo
 - Only run read-only Kubectl commands
 - Don't run one off fix commands without asking
+- Prefer integration tests over unit tests
+    - If an area has complex business logic use unit tests
