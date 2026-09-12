@@ -65,6 +65,8 @@ update-flake:
 # Delete unused Nix store paths to free disk space
 [group('nix')]
 nix-gc:
+  home-manager expire-generations "-7 days"
+  nix profile wipe-history --older-than 7d --profile ~/.local/state/nix/profiles/profile
   sudo nix-collect-garbage -d
 
 # ── System ────────────────────────────────────────────────────────────────────

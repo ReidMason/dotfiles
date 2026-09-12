@@ -3,6 +3,13 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
+  # Automatically garbage-collect old store paths to keep /nix/store in check.
+  nix.gc = {
+    automatic = true;
+    interval = { Weekday = 0; Hour = 3; Minute = 0; };
+    options = "--delete-older-than 7d";
+  };
+
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
   # Used for backwards compatibility. please read the changelog
