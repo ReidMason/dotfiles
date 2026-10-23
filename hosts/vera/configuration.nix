@@ -98,14 +98,14 @@ in
     backend = "docker";
     containers = {
       portainer-agent = {
-        image = "portainer/agent:2.30.1-alpine";
+        image = "portainer/agent:2.45.2-alpine";
         ports = [ "9001:9001" ];
         volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
         autoStart = true;
       };
 
       tailscale = {
-        image = "tailscale/tailscale:v1.94.2";
+        image = "tailscale/tailscale:v1.104.2";
         hostname = "Vera";
         environment = {
           TS_STATE_DIR = "/var/lib/tailscale";
@@ -124,7 +124,7 @@ in
       };
 
       uptime-kuma = {
-        image = "louislam/uptime-kuma:2.0.2";
+        image = "louislam/uptime-kuma:2.5.7";
         volumes = [
           "/home/vera/appdata/uptime-kuma:/app/data"
         ];
