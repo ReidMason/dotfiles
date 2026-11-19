@@ -15,6 +15,7 @@
   desktop-applications.enable = true;
   sketchybar.enable = false;
   ollama.enable = false;
+  jankyborders.enable = false;
 
   firefox.enable = false;
   terminal.enable = true;
@@ -23,7 +24,7 @@
   wezterm.enable = true;
   tmux.enable = true;
 
-  aerospace.enable = true;
+  aerospace.enable = false;
 
   terraform.enable = true;
 
