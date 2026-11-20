@@ -18,6 +18,8 @@ Types: `feat` (new capability), `fix` (bug fix), `refactor` (no behavior change)
 
 If a change could be `feat` or `refactor`, pick based on whether behavior changed for the user.
 
+Never add `Co-Authored-By` or other Claude attribution lines to commits or PR bodies.
+
 ## Code comments
 
 - Default to no code comments; express intent through naming and structure
