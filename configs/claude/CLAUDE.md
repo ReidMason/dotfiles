@@ -1,7 +1,7 @@
 - Be extremely concise in your responses
-- Never stage, commit or push a git repo
-- Only run read-only Kubectl commands
 - Don't run one off fix commands without asking
+    - For example only run read-only Kubectl commands
+    - We don't want to apply one off command line fixes unless specifically told
 - Prefer integration tests over unit tests
     - If an area has complex business logic use unit tests
 
