@@ -37,6 +37,9 @@ let
     "engineering/to-spec"
     "engineering/to-tickets"
     "engineering/implement"
+    "engineering/implement-spec"
+    "engineering/pr"
+    "engineering/retro"
     "engineering/code-review"
     "engineering/domain-modeling"
 
