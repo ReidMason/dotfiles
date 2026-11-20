@@ -17,3 +17,10 @@ Use [Conventional Commits](https://www.conventionalcommits.org/): `<type>(<scope
 Types: `feat` (new capability), `fix` (bug fix), `refactor` (no behavior change), `docs`, `test`, `chore` (tooling/deps/build, nothing ships), `perf`, `style` (formatting only).
 
 If a change could be `feat` or `refactor`, pick based on whether behavior changed for the user.
+
+## Code comments
+
+- Default to no code comments; express intent through naming and structure
+- Only comment a non-obvious *why* (workaround, hidden constraint), in one short line
+- No commented-out code or TODOs without an issue reference
+- Doc strings: public API only, one or two concise sentences, don't restate the signature
