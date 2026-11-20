@@ -45,6 +45,7 @@ in
       ./just.nix
       ./television.nix
       ./yazi.nix
+      ./herdr.nix
       ./zsh.nix
       ./opencode.nix
       ./claude-code.nix
