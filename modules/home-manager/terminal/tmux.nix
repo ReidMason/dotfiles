@@ -65,6 +65,7 @@ let
 
             # Jump to named sessions (create if missing)
             bind-key d new-session -As default -c '${homeDir}'
+            bind-key H new-session -As home -c '${homeDir}/Documents/repos/home'
             ${vaultSessionBind}
 
             # Switch Pane positions
