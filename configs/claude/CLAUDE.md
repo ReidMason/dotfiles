@@ -7,10 +7,9 @@
 
 ## Commit messages
 
-Use [Conventional Commits](https://www.conventionalcommits.org/): `<type>(<scope>): <summary>`
+Use [Conventional Commits](https://www.conventionalcommits.org/): `<type>: <summary>`
 
 - `<summary>`: imperative, lowercase, no trailing period, under ~72 chars
-- `<scope>`: optional — package/module/area touched; omit for repo-wide changes
 - Body (optional, blank line after summary): explain *why*, not *what*
 - Footer (optional): `BREAKING CHANGE: <description>`, `Refs: <issue/PR>`
 
