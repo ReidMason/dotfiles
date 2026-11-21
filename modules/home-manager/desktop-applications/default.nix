@@ -33,7 +33,7 @@ in
     ./docker.nix
     ./ghostty.nix
     ./emacs.nix
-  ] ++ lib.optionals pkgs.stdenv.isDarwin (map mkModule [ ./jankyborders.nix ]);
+  ] ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin (map mkModule [ ./jankyborders.nix ]);
 
   options.${module-name} = {
     enable = lib.mkEnableOption "Enable all desktop applications";

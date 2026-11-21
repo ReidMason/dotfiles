@@ -51,7 +51,7 @@ in
       ./claude-code.nix
       ./hyperfine.nix
     ]
-    ++ lib.optionals pkgs.stdenv.isDarwin (
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin (
       map mkModule [
         ./blueutil.nix
       ]

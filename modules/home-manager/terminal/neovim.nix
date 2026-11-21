@@ -23,7 +23,7 @@ let
 
         # nix tools
         pkgs.nil
-        pkgs.nixfmt-rfc-style # Formatter
+        pkgs.nixfmt # Formatter
       ];
 
       home.sessionVariables = {
