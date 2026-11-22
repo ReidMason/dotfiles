@@ -69,6 +69,7 @@ let
         context = ../../../configs/claude/CLAUDE.md;
         skills = {
           frontend-design = ../../../configs/claude/skills/frontend-design;
+          unslop = ../../../configs/claude/skills/unslop;
         }
         // lib.listToAttrs (
           map (name: {
