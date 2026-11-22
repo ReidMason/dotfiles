@@ -26,3 +26,9 @@ Never add `Co-Authored-By` or other Claude attribution lines to commits or PR bo
 - Only comment a non-obvious *why* (workaround, hidden constraint), in one short line
 - No commented-out code or TODOs without an issue reference
 - Doc strings: public API only, one or two concise sentences, don't restate the signature
+
+## Git worktrees
+
+- Before branching or committing, check `git branch --show-current`
+- Branch new work from `origin/main`, not whatever is checked out
+- Never switch branches or merge in the primary checkout; use a worktree
