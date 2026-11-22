@@ -2,6 +2,7 @@
 inputs.nix-darwin.lib.darwinSystem {
   inherit system;
   modules = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
     ../../hosts/${host}/configuration.nix
   ];
   specialArgs = {

@@ -45,6 +45,18 @@
     NSGlobalDomain.KeyRepeat = 2;
   };
 
+  nix-homebrew = {
+    enable = true;
+    user = "reid";
+    autoMigrate = true;
+  };
+
+  homebrew = {
+    enable = true;
+    casks = [ "voiceink" ];
+    onActivation.cleanup = "none";
+  };
+
   environment.systemPackages = [ pkgs.home-manager ];
 
   programs.zsh.enable = true;
