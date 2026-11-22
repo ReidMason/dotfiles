@@ -26,38 +26,19 @@ let
 
   mattpocockSkills = inputs.mattpocock-skills;
 
-  # Skills vendored from github:mattpocock/skills, named `category/skill-name`.
-  mattpocockSkillNames = [
-    "productivity/grill-me"
-    "productivity/handoff"
-    "productivity/teach"
-    "productivity/grilling"
-    "engineering/ask-matt"
-    "engineering/grill-with-docs"
-    "engineering/to-spec"
-    "engineering/to-tickets"
-    "engineering/implement"
-    "engineering/implement-spec"
-    "engineering/pr"
-    "engineering/retro"
-    "engineering/code-review"
-    "engineering/domain-modeling"
-
-    # "productivity/to-questionnaire"
-    # "productivity/wait-what"
-    # "productivity/writing-for-agents"
-    # "engineering/codebase-design"
-    # "engineering/diagnosing-bugs"
-    # "engineering/improve-codebase-architecture"
-    # "engineering/prototype"
-    # "engineering/research"
-    # "engineering/resolving-merge-conflicts"
-    "engineering/setup-matt-pocock-skills"
-    "engineering/tdd"
-    # "engineering/triage"
-    # "engineering/wayfinder"
-    # "engineering/wizard"
+  mattpocockBuckets = [
+    "engineering"
+    "productivity"
   ];
+
+  mattpocockSkillNames = lib.concatMap (
+    bucket:
+    map (name: "${bucket}/${name}") (
+      lib.attrNames (lib.filterAttrs (_: type: type == "directory") (
+        builtins.readDir "${mattpocockSkills}/skills/${bucket}"
+      ))
+    )
+  ) mattpocockBuckets;
 
   module = {
     module-name = "claude-code";
