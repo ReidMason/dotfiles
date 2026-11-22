@@ -24,6 +24,15 @@ let
       "$model" "$(basename "$dir")" "$tokens_fmt"
   '';
 
+  blockClaudeAttribution = pkgs.writeShellScript "block-claude-attribution" ''
+    command=$(${pkgs.jq}/bin/jq -r '.tool_input.command // ""')
+
+    if echo "$command" | ${pkgs.gnugrep}/bin/grep -qiE 'co-authored-by:.*(claude|anthropic)|noreply@anthropic\.com|generated with.*claude code'; then
+      echo "Blocked: do not add Claude attribution to commits or PR bodies. Remove it and retry." >&2
+      exit 2
+    fi
+  '';
+
   mattpocockSkills = inputs.mattpocock-skills;
 
   mattpocockBuckets = [
@@ -71,6 +80,17 @@ let
             command = "${statuslineScript}";
             padding = 0;
           };
+          hooks.PreToolUse = [
+            {
+              matcher = "Bash";
+              hooks = [
+                {
+                  type = "command";
+                  command = "${blockClaudeAttribution}";
+                }
+              ];
+            }
+          ];
           permissions = {
             deny = [
               "mcp__claude_ai_Google_Drive__*"
