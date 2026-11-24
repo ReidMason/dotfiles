@@ -75,6 +75,10 @@ let
           disableWorkflows = true;
           disableRemoteControl = true;
           disableArtifact = true;
+          attribution = {
+            commit = "";
+            pr = "";
+          };
           statusLine = {
             type = "command";
             command = "${statuslineScript}";
