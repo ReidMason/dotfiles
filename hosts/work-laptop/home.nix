@@ -14,7 +14,7 @@
   home.packages = [ ];
 
   terminal.enable = true;
-  zsh.autoAttachToTmux = true;
+  zsh.autoAttachToTmux = false;
   git.enable = true;
   golang.enable = true;
   node.enable = true;

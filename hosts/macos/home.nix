@@ -8,7 +8,7 @@
   programs.home-manager.enable = true;
 
   # Enable packages
-  zsh.autoAttachToTmux = true;
+  zsh.autoAttachToTmux = false;
   zsh.vaultPath = "${config.home.homeDirectory}/Documents/Knowledge Base";
   programming.enable = true;
 
